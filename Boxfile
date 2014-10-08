@@ -26,3 +26,5 @@ web1:
     - "php artisan migrate"
 cache1:
   type: redis
+
+  
