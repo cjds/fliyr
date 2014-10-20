@@ -531,10 +531,10 @@
 			}
 		},
 		{
-			"file": "app/config/view.php",
+			"file": "app/views/hello.blade.php",
 			"settings":
 			{
-				"buffer_size": 907,
+				"buffer_size": 3374,
 				"line_ending": "Unix"
 			}
 		}
@@ -722,7 +722,8 @@
 		"/C/wamp/www/campusventure/app/commands",
 		"/C/wamp/www/campusventure/app/config",
 		"/C/wamp/www/campusventure/app/views",
-		"/C/wamp/www/campusventure/app/views/emails"
+		"/C/wamp/www/campusventure/app/views/emails",
+		"/C/wamp/www/campusventure/app/views/emails/auth"
 	],
 	"file_history":
 	[
@@ -857,7 +858,7 @@
 	],
 	"find":
 	{
-		"height": 22.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -871,6 +872,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"ss-form",
 			"menu-icon a ::after",
 			"menu-icon",
 			"Mohave",
@@ -997,8 +999,7 @@
 			"wmd-pre",
 			"wmd-buttons",
 			"wmd-pre",
-			";",
-			"div"
+			";"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1054,24 +1055,24 @@
 				},
 				{
 					"buffer": 1,
-					"file": "app/config/view.php",
-					"semi_transient": true,
+					"file": "app/views/hello.blade.php",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 907,
+						"buffer_size": 3374,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								300,
+								300
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
