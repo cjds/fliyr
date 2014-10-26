@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"backgrou",
+				"background-size"
+			],
+			[
 				"pad",
 				"padding"
 			],
@@ -58,10 +62,6 @@
 			[
 				"margin",
 				"margin-bottom"
-			],
-			[
-				"backgrou",
-				"background"
 			],
 			[
 				"head",
@@ -520,21 +520,26 @@
 	"buffers":
 	[
 		{
-			"contents": "<!doctype html>\n<html lang=\"en\">\n<head>\n	<meta charset=\"UTF-8\">\n	<title>Flyur</title>\n\n	<style>\n		@import url(//fonts.googleapis.com/css?family=Lato:700);\n\n		body {\n			margin:0;\n			font-family:'Lato', sans-serif;\n			text-align:center;\n			color: #999;\n		}\n\n		.welcome {\n			width: 300px;\n			height: 200px;\n			position: absolute;\n			left: 50%;\n			top: 50%;\n			margin-left: -150px;\n			margin-top: -100px;\n		}\n\n		a, a:visited {\n			text-decoration:none;\n		}\n\n		h1 {\n			font-size: 32px;\n			margin: 16px 0 0 0;\n		}\n	</style>\n</head>\n<body>\n	<div class=\"welcome\">\n		\n		{{HTML::image('img/logo.png', 'Flyur',array());}}\n\n		<h1>We help you build teams to make ventures. If you would like to be connected with other entrepreneurs below please fill this out for a Beta \n		invitation</h1>\n	</div>\n</body>\n</html>\n",
-			"file": "app/views/hello.php",
-			"file_size": -1,
-			"file_write_time": -1,
+			"file": "app/config/app.php",
 			"settings":
 			{
-				"buffer_size": 799,
+				"buffer_size": 7577,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "app/views/hello.blade.php",
+			"file": "app/config/auth.php",
 			"settings":
 			{
-				"buffer_size": 6063,
+				"buffer_size": 2111,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/config/cache.php",
+			"settings":
+			{
+				"buffer_size": 2794,
 				"line_ending": "Unix"
 			}
 		}
@@ -721,15 +726,27 @@
 		"/C/wamp/www/campusventure/app",
 		"/C/wamp/www/campusventure/app/commands",
 		"/C/wamp/www/campusventure/app/config",
+		"/C/wamp/www/campusventure/app/config/local",
 		"/C/wamp/www/campusventure/app/views",
 		"/C/wamp/www/campusventure/app/views/emails",
 		"/C/wamp/www/campusventure/app/views/emails/auth"
 	],
 	"file_history":
 	[
-		"/C/wamp/www/campusventure/app/config/app.php",
-		"/C/wamp/www/campusventure/app/views/hello.php",
 		"/C/wamp/www/campusventure/app/routes.php",
+		"/C/wamp/www/campusventure/app/views/form.blade.php",
+		"/C/wamp/www/caring-cory-02/app/config/database.php",
+		"/C/wamp/www/campusventure/vendor/symfony/console/Symfony/Component/Console/Tests/Fixtures/command_astext.txt",
+		"/C/wamp/www/campusventure/composer.json",
+		"/C/wamp/www/campusventure/app/views/home.blade.php",
+		"/C/wamp/www/campusventure/app/config/database.php",
+		"/C/wamp/www/caring-cory-02/app/config/local/database.php",
+		"/C/wamp/www/campusventure/vendor/composer/autoload_psr4.php",
+		"/C/wamp/www/campusventure/artisan",
+		"/C/wamp/www/campusventure/vendor/symfony/routing/Symfony/Component/Routing/Matcher/ApacheUrlMatcher.php",
+		"/C/wamp/www/campusventure/bootstrap/autoload.php",
+		"/C/wamp/www/campusventure/app/views/hello.php",
+		"/C/wamp/www/campusventure/app/config/app.php",
 		"/C/wamp/www/campusventure/Boxfile",
 		"/C/intro to HCI/psych research methods/Food Deserts by Rebbecca Burns",
 		"/E/auzita/index.html",
@@ -843,18 +860,7 @@
 		"/C/blog/index.md",
 		"/C/wamp/www/blade-runner/app/database/migrations/2013_11_18_142204_create_users_table.php",
 		"/C/wamp/www/blade-runner/vendor/predis/predis/bin/create-pear",
-		"/C/wamp/www/blade-runner/vendor/mustache/mustache/bin/create_example.php",
-		"/C/wamp/www/blade-runner/vendor/phpseclib/phpseclib/build/code-sniffer-ruleset.xml",
-		"/C/wamp/www/blade-runner/composer.json",
-		"/C/wamp/www/blade-runner/app/models/Notes.php",
-		"/C/wamp/www/blade-runner/app/models/User.php",
-		"/C/wamp/www/blade-runner/vendor/doctrine/dbal/UPGRADE",
-		"/C/wamp/www/blade-runner/app/controllers/UserController.php",
-		"/C/wamp/www/blade-runner/public/mathjax/extensions/TeX/noErrors.js",
-		"/C/wamp/www/blade-runner/app/views/viewquestion.blade.php",
-		"/C/wamp/www/blade-runner/app/database/migrations/2013_11_18_143533_create_posts_table.php",
-		"/C/wamp/www/blade-runner/vendor/laravel/framework/src/Illuminate/Routing/Route.php",
-		"/C/wamp/www/blade-runner/public/jquery.js"
+		"/C/wamp/www/blade-runner/vendor/mustache/mustache/bin/create_example.php"
 	],
 	"find":
 	{
@@ -1022,16 +1028,45 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "app/views/hello.php",
+					"file": "app/config/app.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 799,
+						"buffer_size": 7577,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7577,
+								7577
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2330.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/config/auth.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2111,
 						"regions":
 						{
 						},
@@ -1055,28 +1090,29 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "app/views/hello.blade.php",
+					"buffer": 2,
+					"file": "app/config/cache.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6063,
+						"buffer_size": 2794,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4554,
-								4554
+								2794,
+								2794
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 0.0,
-						"translation.y": 1425.0,
+						"translation.x": -0.0,
+						"translation.y": 1110.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -1136,6 +1172,18 @@
 		"selected_items":
 		[
 			[
+				"cac",
+				"app\\config\\cache.php"
+			],
+			[
+				"app",
+				"app\\config\\app.php"
+			],
+			[
+				"routes",
+				"app\\routes.php"
+			],
+			[
 				"boxfil",
 				"Boxfile"
 			],
@@ -1174,10 +1222,6 @@
 			[
 				"pre",
 				"css\\prettify.css"
-			],
-			[
-				"app",
-				"_site\\stylesheets\\app.css"
 			],
 			[
 				"jek",
@@ -1262,10 +1306,6 @@
 			[
 				"note",
 				"app\\controllers\\NotesController.php"
-			],
-			[
-				"routes",
-				"app\\routes.php"
 			],
 			[
 				"viewq",
@@ -1642,10 +1682,6 @@
 			[
 				"belon",
 				"vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Relations\\BelongsTo.php"
-			],
-			[
-				"model.",
-				"vendor\\laravel\\framework\\src\\Illuminate\\Database\\Eloquent\\Model.php"
 			]
 		],
 		"width": 0.0
