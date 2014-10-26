@@ -534,7 +534,7 @@
 			"file": "app/views/hello.blade.php",
 			"settings":
 			{
-				"buffer_size": 3374,
+				"buffer_size": 6063,
 				"line_ending": "Unix"
 			}
 		}
@@ -1044,7 +1044,8 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1059,15 +1060,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3374,
+						"buffer_size": 6063,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								300,
-								300
+								4554,
+								4554
 							]
 						],
 						"settings":
@@ -1075,7 +1076,7 @@
 							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1425.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
