@@ -45,11 +45,20 @@
 <div class="column large-4">
 			{{HTML::image('img/logo.png', 'Flyur',array());}}
 </div>
-<div class="column large-4">
-			{{HTML::image('img/logo.png', 'Flyur',array());}}
+<div class="column large-4" style='font-size:30px'>
+	<div class='row'>
+		<div class="column large-12">
+			Expertise {{HTML::image('img/icon.png', 'Flyur',array('style'=>'width:30px;height:30px'));}} Ideas
+		</div>
+		<div class="column large-12">
+		</div>
+	</div>
 </div>
 <div class="column large-4">
+
 			{{HTML::image('img/logo.png', 'Flyur',array());}}
+		
+	
 </div>
 </body>
 </html>
