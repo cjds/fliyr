@@ -60,14 +60,7 @@
    
 
 	</style>
-    <script> 
-        // wait for the DOM to be loaded 
-        $(document).ready(function() { 
-        	var person = prompt("Please Enter The Password", "");
-        	if(person!="Hummingbird"){
-				$('.magic').text("Sorry! You're not authorized. Wait a week for the prelaunch");
-        	}
-        	$('.magic').css("display",'block');
+<script>
             // bind 'myForm' and provide a simple callback function 
             $('#ss-form').submit(function(e){
             	e.preventDefault();
@@ -199,7 +192,7 @@
 	</div>
 	</div>
 
-<div id="five" style="background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
+<div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
 <div style="color:#888;background:#fff;width:40%;height:40%;position:absolute;top:30%;left:30%;font-size:20px;padding:10px;margin:auto">
 <p style="display:none;text-align:center;margin-top:21px">Thanks. Awesome dude. We'll contact you as soon as it is ready</p>
 <br>

@@ -49,6 +49,17 @@
 		p { background-color:white; filter:alpha(opacity=60); opacity:.6; }
 
 	</style>
+
+	    <script> 
+        // wait for the DOM to be loaded 
+        $(document).ready(function() { 
+        	var person = prompt("Please Enter The Password", "");
+        	if(person!="Hummingbird92614"){
+				$('.magic').text("Sorry! You're not authorized. Wait a week for the prelaunch");
+        	}
+        	$('.magic').css("display",'block');
+        });
+        </script>
      
 </head>
 <body>
