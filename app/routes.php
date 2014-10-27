@@ -15,3 +15,16 @@ Route::get('/', function()
 {
 	return View::make('home');
 });
+Route::get('/signup', function()
+{
+	return View::make('form');
+});
+Route::get('/earlyaccess', function()
+{
+	return View::make('form');
+});
+
+Route::get('/aboutus', function()
+{
+	return View::make('aboutus');
+});
