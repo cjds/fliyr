@@ -63,7 +63,7 @@
      
 </head>
 <body>
-<div class="column large-12" style=";">
+<div class="column large-12 magic" style="display:none">
 	<div class="column large-4 large-offset-4" >
 			{{HTML::image('img/logo2.png', 'Fliyr',array('style'=>'width:200px;height:auto;margin-top:50px;margin-left:auto;margin-right: auto;display:block;'));}}
 		<div class='row'>
