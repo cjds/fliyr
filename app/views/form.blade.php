@@ -61,16 +61,28 @@
 
 	</style>
 <script>
+		$(document).ready(function() { 
             // bind 'myForm' and provide a simple callback function 
             $('#ss-form').submit(function(e){
             	e.preventDefault();
-            	$('#ss-form').ajaxSubmit();
-            	$('#five').fadeIn(800);
+            	console.log(validateEmail($('#entry_868751442').val()));
+            	if(validateEmail($('#entry_868751442').val())){
+            		$('#ss-form').ajaxSubmit();
+					$('#five').fadeIn(800);
+				}
+				else{
+					$('#error').fadeIn(300);
+				}
                 	//success: function(){
                 	//	 alert("This form has been submitted");
                 	//}
             	//});
             }); 
+            function validateEmail(email) { 
+            	console.log(email);
+    			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@gatech.edu/;
+    			return re.test(email);
+				} 
         }); 
     </script> 
 </head>
@@ -105,6 +117,7 @@
 		<input type="text" name="entry.1104918926" value="" class="ss-q-short" id="entry_1104918926" dir="auto" aria-label="First Name  " aria-required="true" placeholder="first name" required="" title="" style="margin-bottom:7px;width:150px">
 		<input type="text" name="entry.193253756" value="" class="ss-q-short" id="entry_193253756" dir="auto" aria-label="Last Name  " aria-required="true" required="" title="" placeholder="last name" style="margin-left:7px;width:190px">
 <br>
+<div id="error" style="color:red;font-size:0.7em;display:none;">Please enter a Georgia Tech email</div>
 <input type="email" name="entry.868751442" value="" class="ss-q-short" id="entry_868751442" dir="auto" aria-label="GT E-mail address  Hey you have to enter a Georgia Tech E-mail address" aria-required="true" required="" title="Hey you have to enter a Georgia Tech E-mail ID" placeholder="GT email address" style="width:170px">
 <div class='styled-select'>
 <select name="entry.421333035"  id="group_421333035_1" placeholder="please select your major">
@@ -194,7 +207,7 @@
 
 <div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
 <div style="color:#888;background:#fff;width:40%;height:40%;position:absolute;top:30%;left:30%;font-size:20px;padding:10px;margin:auto">
-<p style="display:none;text-align:center;margin-top:21px">Thanks. Awesome dude. We'll contact you as soon as it is ready</p>
+<p style=";text-align:center;margin-top:21px">Thanks. Awesome dude. We'll contact you as soon as it is ready</p>
 <br>
 <a href="<?php echo url('/');?>" class="button" style="text-transform:uppercase;display:block;margin:auto;width:300px;margin-top:21px">Go Home, Bitch!</a>
 </div>
