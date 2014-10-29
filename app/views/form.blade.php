@@ -69,7 +69,14 @@
    				margin-top: 7px;
    				margin-bottom: 0px
    			}
-   
+
+		.green{
+			background:#58b946;
+		}
+
+		.green:hover{
+			background:#58d946;
+		}   
 
 	</style>
 <script>
@@ -125,8 +132,8 @@
 		<form action="https://docs.google.com/forms/d/1HXw--_sb8ybUlZ2Ucqo_L_Jm1Nh75oe4c4Yj2Sz9Dqo/formResponse" method="POST" id="ss-form" target="_self" onsubmit=""><ol role="list" class="ss-question-list" style="padding-left: 0">
 			</ol>
 		
-		<input type="text" name="entry.1104918926" value="" class="ss-q-short" id="entry_1104918926" dir="auto" aria-label="First Name  " aria-required="true" placeholder="first name" required="" title="" style="margin-bottom:7px;width:190px"><br>
-		<input type="text" name="entry.193253756" value="" class="ss-q-short" id="entry_193253756" dir="auto" aria-label="Last Name  " aria-required="true" required="" title="" placeholder="last name" style="width:190px">
+		<input type="text" name="entry.1104918926" value="" class="ss-q-short" id="entry_1104918926" dir="auto" aria-label="First Name  " aria-required="true" placeholder="first" required="" title="" style="margin-bottom:7px;width:190px"><br>
+		<input type="text" name="entry.193253756" value="" class="ss-q-short" id="entry_193253756" dir="auto" aria-label="Last Name  " aria-required="true" required="" title="" placeholder="last" style="width:190px">
 <br>
 <div id="error" style="margin-top:7px;color:red;font-size:0.7em;display:none;">Please enter a Georgia Tech email</div>
 <input type="email" name="entry.868751442" value="" class="ss-q-short" id="entry_868751442" dir="auto" aria-label="GT E-mail address  Hey you have to enter a Georgia Tech E-mail address" aria-required="true" required="" title="Hey you have to enter a Georgia Tech E-mail ID" placeholder="GT email address" style="margin-top:7px;width:190px">
@@ -370,11 +377,11 @@
 	<div class="column">
 	</div>
 
-<div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
+<div id="five" style="display:block;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
 <div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#888;background:#fff;height:40%;position:absolute;top:30%;font-size:20px;padding:10px;margin:auto">
-<p style=";text-align:center;margin-top:21px">Thank You. We will contact you as soon as the launch is ready</p>
+<p style="font-size:1.2em;text-align:center;margin-top:21px">Thank You. We will contact you as soon as the launch is ready</p>
 <br>
-<a href="http://fliyr.com" class="button" style="text-transform:uppercase;display:block;margin:auto;width:80%;">Thank You</a>
+<a href="http://fliyr.com" class="button green" style="text-transform:uppercase;display:block;margin:auto;width:80%;">Thank You</a>
 </div>
 </div>
 </body>
