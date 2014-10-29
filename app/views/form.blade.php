@@ -204,7 +204,7 @@
 <div class='styled-select'>
 <select type="text" name="entry.1118930444" value="" id="entry_1118930444" dir="auto" aria-label="Tell us what skills you have in your field of expertise  " title="" style="">
 <optgroup>
-<option>-- please select a skill --</option>
+<option>-- select a skill --</option>
 <option>Technical</option>
 <option>-- Front End Development</option>
 <option>-- Back End Development</option>
@@ -257,7 +257,7 @@
 
 <div class='styled-select'>
 <select type="text" name="entry.1528480759" value="" id="entry_1528480759" dir="auto" aria-label="Tell us what skills you have in your field of expertise 2  " title="" >
-<option>-- please select a skill --</option>
+<option>-- select a skill --</option>
 <option>Technical</option>
 <option>-- Front End Development</option>
 <option>-- Back End Development</option>
@@ -308,7 +308,7 @@
 </div>
 <div class='styled-select'>
 <select type="text" name="entry.1687596841" value="" id="entry_1687596841" dir="auto" aria-label="Tell us what skills you have in your field of expertise 3  " title="" >
-<option>-- please select a skill --</option>
+<option>-- select a skill --</option>
 <option>Technical</option>
 <option>-- Front End Development</option>
 <option>-- Back End Development</option>
@@ -388,7 +388,7 @@
 
 <div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
 <div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#888;background:#fff;height:40%;position:absolute;top:30%;font-size:20px;padding:10px;margin:auto">
-<p style="font-size:1.2em;text-align:center;margin-top:21px">Thank You. We will contact you as soon as the launch is ready</p>
+<p style="font-size:1.2em;text-align:center;margin-top:21px;resize:none">Thank You. We will contact you as soon as the launch is ready</p>
 <br>
 <a href="http://fliyr.com" class="button green" style="text-transform:uppercase;display:block;margin:auto;width:80%;">Return To Home</a>
 </div>
