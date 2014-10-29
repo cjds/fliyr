@@ -43,7 +43,12 @@
 				font-size:1.6rem;
 			}
 		}
-		@media only screen and (min-width:63em){
+		@media only screen and (min-width:63em and max-width:90em){
+			.venturetext{
+				font-size:1.9rem;
+			}
+		}
+		@media only screen and (min-width:90em){
 			.black,.green{
 				margin-right: 0px;
 				float: right;

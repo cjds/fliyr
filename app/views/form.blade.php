@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Fliyr</title>
+	<title>fliyr - Early Access</title>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="http://fliyr.com/img/icon.ico">
@@ -19,7 +19,7 @@
 
 	<style type="text/css">
 	input{
-		height: 30px;
+		height: 27px;
 	}
 		::-webkit-input-placeholder{  
    			font-family: 'Oswald', sans-serif;
@@ -54,7 +54,7 @@
 		   color:#aaa; 
 		   line-height: 1.6;
 		   border: 1px solid #aaa;
-		   height: 30px;
+		   height: 27px;
 		   -webkit-appearance: none;
    		}
 
@@ -78,6 +78,12 @@
 			background:#58d946;
 		}   
 
+
+		@media only screen and (max-width:69em){
+			.body{
+				margin-top:180px;
+			}
+		}
 	</style>
 <script>
 		$(document).ready(function() { 
@@ -107,7 +113,7 @@
 </head>
 <body>
 	<div class="magic" style="">
-		<div class="column large-2 small-12" >
+		<div class="column large-2 small-12" style="position:fixed" >
 			<a href="http://fliyr.com" style=""><img src="http://fliyr.com/img/logo2.png" style="width:123px;height:77px;margin:auto;margin-top:15px;display:block" alt="Fliyr"></a>
 			
 			<p style="text-transform:uppercase;color:#969696;margin:auto;display:block;width:95px;font-weight:300"> Georgia Tech</p>
@@ -122,7 +128,7 @@
 	</div>
 	</div>
 
-	<div class="large-4 large-offset-0 small-12 columns">
+	<div class="large-4 large-offset-2 small-12 columns body">
 	<div class="row" style="margin-top:56px">
 		<div style="text-transform:uppercase;color:#58b946;font-size:1.2rem">
 		Sign up for early access!<img src="http://fliyr.com/img/icon.png" style="display:inline-block;width:40px;margin-left:20px;height:auto" alt="Fliyr">
@@ -381,7 +387,7 @@
 <div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#888;background:#fff;height:40%;position:absolute;top:30%;font-size:20px;padding:10px;margin:auto">
 <p style="font-size:1.2em;text-align:center;margin-top:21px">Thank You. We will contact you as soon as the launch is ready</p>
 <br>
-<a href="http://fliyr.com" class="button green" style="text-transform:uppercase;display:block;margin:auto;width:80%;">Thank You</a>
+<a href="http://fliyr.com" class="button green" style="text-transform:uppercase;display:block;margin:auto;width:80%;">Return To Home</a>
 </div>
 </div>
 </body>
