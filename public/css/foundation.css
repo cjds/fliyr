@@ -1178,10 +1178,10 @@ button, .button {
     padding-left: 1.75rem;
     font-size: 0.8125rem; }
   button.tiny, .button.tiny {
-    padding-top: 0.10rem;
-    padding-right: 0.25rem;
-    padding-bottom: 0.15rem;
-    padding-left: 0.10rem;
+    padding-top: 0.30rem;
+    padding-right: 0.35rem;
+    padding-bottom: 0.35rem;
+    padding-left: 0.30rem;
      }
   button.expand, .button.expand {
     padding-right: 0;

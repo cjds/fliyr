@@ -377,7 +377,7 @@
 	<div class="column">
 	</div>
 
-<div id="five" style="display:block;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
+<div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
 <div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#888;background:#fff;height:40%;position:absolute;top:30%;font-size:20px;padding:10px;margin:auto">
 <p style="font-size:1.2em;text-align:center;margin-top:21px">Thank You. We will contact you as soon as the launch is ready</p>
 <br>

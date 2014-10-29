@@ -121,6 +121,27 @@
 		About Us<img src="http://fliyr.com/img/icon.png" style="display:inline-block;width:40px;margin-left:20px;height:auto" alt="Fliyr">
 		</div>
 	</div>
+	<div class='row'>
+		<p>
+		Fliyr: Start up your team!
+
+Our goal is to create a free service that will connect future Georgia Tech entrepreneurs to other students on campus who possess the necessary skills to develop their startup ideas.
+
+Our story
+There is no denying that Georgia Tech has an incredible entrepreneurial culture.  Here, students are imagining the solutions to some of the world’s toughest problems and dreaming of creating real value in wildly innovative ways. (Did you know Elmer’s Glue was dreamed up here?)  Many of these dreams, however, die shortly after conception. Why? Because the greatest obstacle when creating a startup often lies in finding a talented enough team to develop it.
+
+When we first identified this reality, we knew that there must still be a way to channel the campus’ talent. When our school contains the Business majors intelligent enough to develop the idea for a finance app and the Computer Science majors savvy enough to code it, we recognized that there must be a way to unite these two forces. It became clear that the untapped talent within our student body was the most valuable resource. 
+
+This was the startup to our startup.  We realized that if we could solve the problem of finding an adequate team, we could solve the problem of dying startup ideas. Through many weeks of networking (if only we had Fliyr!) we established our own team and began working to develop this student-to-student connector service. During the process we determined it crucial to provide this resource at no cost and without any advertising. Thus, Fliyr is a team builder that truly caters to any level of collegiate entrepreneurship. 
+
+What’s up with the name fliyr?
+Fliyr   \ˈflī(-ə)r\  (Pronounced as flier or flyer)
+
+When facing the difficulty of finding the right startup team, one of the only ways to search for on-campus talent is by creating and posting a paper flier (or flyer). How completely inefficient!
+
+This is unacceptable with the technology we have today. Our service, Fliyr, is the evolution of this method. It captures the fundamental notion of “spreading the word” in an advanced and modern way.
+		</p>
+	</div>
 	</div>
 	<div class="columns">
 	</div>

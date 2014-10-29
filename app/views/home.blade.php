@@ -36,27 +36,24 @@
 			width: 250px;
 		}
 
-		body{
-			background: url(img/fliyr_LandPage_Background.jpg) no-repeat;
-			background-size: cover;
-		}
+		
 
-		@media only screen and (min-width:63em){
-			.two{
-				margin-right: 10px;
-			
+		@media only screen and (max-width:63em){
+			.venturetext{
+				font-size:1.6rem;
 			}
 		}
 		@media only screen and (min-width:63em){
 			.black,.green{
-				margin-right: 50px;
+				margin-right: 0px;
 				float: right;
+			}
+				.venturetext{
+				font-size:2rem;
 			}
 
-			.two{
-				margin-right: 10px;
-				float: right;
-			}
+
+
 		}
 
 		.black{
@@ -67,7 +64,7 @@
 		}
 
 		.green{
-			background:#58b946;
+			background:#58b947;
 		}
 
 		.green:hover{
@@ -87,32 +84,66 @@
 	    <script> 
         // wait for the DOM to be loaded 
         $(document).ready(function() { 
-        	var person = prompt("Please Enter The Password", "");
-        	if(person!=""){//Hummingbird92614
+        	//var person = prompt("Please Enter The Password", "");
+        	if(false){//person!=""){//Hummingbird92614
 				$('.magic').text("Sorry! You're not authorized. Wait a week for the prelaunch");
         	}
         	$('.magic').css("display",'block');
+        	var images=[
+        	'<?php echo asset('img/b1.JPG')?>','<?php echo asset('img/b2.JPG')?>','<?php echo asset('img/b3.JPG')?>','<?php echo asset('img/b4.JPG')?>','<?php echo asset('img/b5.JPG')?>',]
+        	var count=0;
+        	var change_background = function() {
+        				
+  					
+  						
+  					$(".magic2").animate({'opacity':0},500,function(){
+  							$( ".magic2" ).attr('src',images[count]);			
+  							$( ".magic2" ).css('opacity',1.0);
+  							$( ".magic1" ).attr('src',images[(count+1>images.length-1?0:count+1)]);				
+  							
+  						});
+  					
+  					
+  					if(count<images.length-1)count++;
+  					else count=0;
+  					
+  					
+  					//$('body').slow({backgroundColor:'#fff'},2000);
+
+			};
+
+			var interval = 4000  ; // where X is your every X minutes
+
+			setInterval(change_background, interval);
         });
         </script>
      
 </head>
 <body>
-<div class="column large-12 magic" style="display:none">
-	<div class="small-12 medium-7 medium-offset-3 column large-4 large-offset-4" >
-			{{HTML::image('img/logo2.png', 'Fliyr',array('style'=>'width:50%;height:auto;margin-top:50px;margin-left:auto;margin-right: auto;display:block;'));}}
+<div class="column large-12 " style="display:block;width:100%;height:100%;z-index:-1;position:absolute;overflow:hidden;;margin:0;padding:0">
+<img class="magic1" src="<?php echo asset('img/b2.JPG')?>" style="min-width:908px;width:100%;overflow:hidden;z-index:0;top:0;left:0;position:absolute"/>
+<img class="magic2" src="<?php echo asset('img/b1.JPG')?>" style="min-width:908px;width:100%;overflow:hidden;z-index:1;top:0;left:0;position:absolute"/>
+
+</div>
+<div class="column large-12 " style="display:block;z-index:1">
+	<div class="small-12 medium-4 medium-offset-2 column large-2 large-offset-3" >
+			{{HTML::image('img/logo2.png', 'Fliyr',array('style'=>'width:auto;height:120px;margin-top:75px;margin-left:auto;margin-right: auto;display:block;'));}}
+	</div>
+	<div class="column small-12 medium-8 medium-offset-2 large-3 large-offset-0" >
 		<div class='row'>
-			<div class="column small-12 medium-8 medium-offset-2 large-10 large-offset-1" >
-				<p style="text-align:center;font-size:1.2rem">Uniting the expertise and inspiration of
-				the community to launch successful ideas</p>
+				<p class='venturetext' style="background-color:rgba(255,255,255,0.65);margin-top:120px;text-align:center">Build your venture team</p>
 			</div>
-			<div class="column large-12" style="font-size:1.1em">
+			<div class="row" style="font-size:1.1em">
 			<!--<a href="#" class="button tiny right black" style="background:#58b946;margin-right:13px;" >EARLY ACCESS</a></div>-->
-			<a href="<?php echo url('/earlyaccess');?>" class="button tiny green small-push-0 medium-push-0 large-push-0" style=";text-transform:uppercase;">georgia tech sign up</a>	
-				<a href="<?php echo url('/aboutus');?>" class="button tiny black two small-push-1 medium-push-0 large-push-0" style="text-transform:uppercase;">learn more</a>	
+			<a href="<?php echo url('/earlyaccess');?>" class="button tiny green right" style=";text-transform:uppercase;">ga tech sign up</a>	
+				<a href="<?php echo url('/aboutus');?>" class="button tiny black two right" style="text-transform:uppercase;">learn more</a>	
 
 			</div>
 		</div>
+	
+	<div class="column"></div>
 	</div>
+
 </div>
 </body>
 </html>

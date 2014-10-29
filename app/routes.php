@@ -29,8 +29,8 @@ Route::get('/aboutus', function()
 	return View::make('aboutus');
 });
 
-Route::post('/sendmail',function(){
-	Mail::later(5, 'emails.welcome', $data, function($message)
+Route::get('/sendmail',function(){
+	Mail::send('emails.welcome',array(), function($message)
 {
     $message->to('cjds@live.com', 'John Smith')->subject('Welcome!');
 });
