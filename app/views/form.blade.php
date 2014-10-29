@@ -79,10 +79,13 @@
 		}   
 
 
+	
+
 		@media only screen and (max-width:69em){
-			.body{
-				margin-top:180px;
-			}
+			 .menu{position:relative}
+		}
+		@media only screen and (min-width:68em){
+			.menu{position:fixed}
 		}
 	</style>
 <script>
@@ -113,7 +116,7 @@
 </head>
 <body>
 	<div class="magic" style="">
-		<div class="column large-2 small-12" style="position:fixed" >
+		<div class="column large-2 small-12" >
 			<a href="http://fliyr.com" style=""><img src="http://fliyr.com/img/logo2.png" style="width:123px;height:77px;margin:auto;margin-top:15px;display:block" alt="Fliyr"></a>
 			
 			<p style="text-transform:uppercase;color:#969696;margin:auto;display:block;width:95px;font-weight:300"> Georgia Tech</p>
@@ -363,7 +366,7 @@
 <option>--</option>
 <option>Yes</option>
 <option>No</option>
-<option>Only in the Shower</option>
+
 </select>
 </div>
 <br>

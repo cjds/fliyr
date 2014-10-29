@@ -44,18 +44,10 @@
 		}
 
 		@media only screen and (max-width:69em){
-			.body{
-				margin-top:180px;
-			}
+			 .menu{position:relative}
 		}
 		@media only screen and (min-width:68em){
-			
-				.venturetext{
-				font-size:2rem;
-			}
-
-
-
+			.menu{position:fixed}
 		}
 	</style>
 <script>
@@ -85,7 +77,7 @@
     </script> 
 </head>
 <body>
-	<div class="column large-2 small-12 menu" style="position:fixed" >
+	<div class="column large-2 small-12 menu" >
 			<a href="http://fliyr.com" style=""><img src="http://fliyr.com/img/logo2.png" style="width:123px;height:77px;margin:auto;margin-top:15px;display:block" alt="fliyr"></a>
 			
 			<p style="font-family:Oswald;text-transform:uppercase;color:#969696;margin:auto;display:block;width:95px;font-weight:300"> Georgia Tech</p>
@@ -116,7 +108,7 @@
 </p>
 
 <p>
-When facing the difficulty of finding the right startup team, one of the only ways to search for on-campus talent is by creating and posting a paper flier (or flyer). How completely inefficient! This is unacceptable with the technology we have today. Our service, fliyr, is the evolution of this method. It captures the fundamental notion of “spreading the word” in an advanced and modern way.
+When facing the difficulty of finding the right startup team, one of the only ways to search for on-campus talent is to create and post a paper flier (or flyer). This is completely inefficient with the technology that we have today. Our service, is the evolution of this method. It captures the fundamental notion of “spreading the word” in an advanced and modern way.
 		</p>
 
 
@@ -126,7 +118,7 @@ There is no denying that Georgia Tech has an incredible entrepreneurial culture.
 </p>
 
 <p>
-When we first identified this reality, we knew that there must still be a way to channel the campus’ talent. When our school contains the Business majors intelligent enough to develop the idea for a finance app and the Computer Science majors savvy enough to code it, we recognized that there must be a way to unite these two forces. It became clear that the untapped talent within our student body was the most valuable resource. 
+When we first identified this reality, we knew that there must be another way to channel our campus’ talent. When our school contains both the Business majors intelligent enough to develop a finance app idea and the Computer Science majors savvy enough to code it, we recognized that there must be a way to unite these two forces. It became clear that the untapped talent within our student body is the most valuable resource in itself.
 </p>
 <p>
 This was the startup to our startup.  We realized that if we could solve the problem of finding an adequate team, we could solve the problem of dying startup ideas. Through many weeks of networking (if only we had fliyr!) we established our own team and began working to develop this student-to-student connector service. During the process we determined it crucial to provide this resource at no cost and without any advertising. Thus, fliyr is a team builder that truly caters to any level of collegiate entrepreneurship. 
