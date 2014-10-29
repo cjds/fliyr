@@ -41,14 +41,6 @@
 			background-size: cover;
 		}
 
-		.black{
-			background:#000;
-		}
-
-		.black:hover{
-			background:#333;
-		}
-		
 		@media only screen and (min-width:63em){
 			.two{
 				margin-right: 10px;
@@ -56,7 +48,7 @@
 			}
 		}
 		@media only screen and (min-width:63em){
-			.black{
+			.black,.green{
 				margin-right: 50px;
 				float: right;
 			}
@@ -65,6 +57,21 @@
 				margin-right: 10px;
 				float: right;
 			}
+		}
+
+		.black{
+			background: #333;
+		}
+		.black:hover{
+			background: #666;
+		}
+
+		.green{
+			background:#58b946;
+		}
+
+		.green:hover{
+			background:#58d946;
 		}
 	</style>
 <script>
@@ -91,17 +98,17 @@
 </head>
 <body>
 <div class="column large-12 magic" style="display:none">
-	<div class="small-12 medium-12 column large-4 large-offset-4" >
+	<div class="small-12 medium-7 medium-offset-3 column large-4 large-offset-4" >
 			{{HTML::image('img/logo2.png', 'Fliyr',array('style'=>'width:50%;height:auto;margin-top:50px;margin-left:auto;margin-right: auto;display:block;'));}}
 		<div class='row'>
-			<div class="column small-12 medium-8 medium-offset-2 large-9 large-offset-2" >
-				<p style="text-align:center">Uniting the expertise and inspiration of
+			<div class="column small-12 medium-8 medium-offset-2 large-10 large-offset-1" >
+				<p style="text-align:center;font-size:1.2rem">Uniting the expertise and inspiration of
 				the community to launch successful ideas</p>
 			</div>
 			<div class="column large-12" style="font-size:1.1em">
 			<!--<a href="#" class="button tiny right black" style="background:#58b946;margin-right:13px;" >EARLY ACCESS</a></div>-->
-			<a href="<?php echo url('/earlyaccess');?>" class="button tiny black small-push-2 medium-push-4 large-push-0" style="background:#58b946;text-transform:uppercase;">georgia tech sign up</a>	
-				<a href="<?php echo url('/aboutus');?>" class="button tiny black two small-push-4 medium-push-4 large-push-0" style="text-transform:uppercase;">learn more</a>	
+			<a href="<?php echo url('/earlyaccess');?>" class="button tiny green small-push-0 medium-push-0 large-push-0" style=";text-transform:uppercase;">georgia tech sign up</a>	
+				<a href="<?php echo url('/aboutus');?>" class="button tiny black two small-push-1 medium-push-0 large-push-0" style="text-transform:uppercase;">learn more</a>	
 
 			</div>
 		</div>

@@ -52,7 +52,7 @@
 		   width: 285px;
 		   font-family: 'Oswald',sans-serif;
 		   color:#aaa; 
-		   line-height: 1;
+		   line-height: 1.6;
 		   border: 1px solid #aaa;
 		   height: 30px;
 		   -webkit-appearance: none;
@@ -371,10 +371,10 @@
 	</div>
 
 <div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
-<div style="color:#888;background:#fff;width:40%;height:40%;position:absolute;top:30%;left:30%;font-size:20px;padding:10px;margin:auto">
-<p style=";text-align:center;margin-top:21px">Thanks. Awesome dude. We'll contact you as soon as it is ready</p>
+<div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#888;background:#fff;height:40%;position:absolute;top:30%;font-size:20px;padding:10px;margin:auto">
+<p style=";text-align:center;margin-top:21px">Thank You. We will contact you as soon as the launch is ready</p>
 <br>
-<a href="http://fliyr.com" class="button" style="text-transform:uppercase;display:block;margin:auto;width:300px;margin-top:21px">Go Home, Bitch!</a>
+<a href="http://fliyr.com" class="button" style="text-transform:uppercase;display:block;margin:auto;width:80%;">Thank You</a>
 </div>
 </div>
 </body>
