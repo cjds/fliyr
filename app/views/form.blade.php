@@ -390,7 +390,7 @@
 
 
 <input type="hidden" name="fbzx" value="-9084912540050282737"><br>	
-<input type="submit" name="submit" value="SUBMIT" id="ss-submit" style="margin-top:21px;background:#58b946" class="jfk-button jfk-button-action button tiny ">
+<input type="submit" name="submit" value="SUBMIT" id="ss-submit" style="margin-top:21px;background:#58b946;padding-bottom:1.7rem" class="button tiny ">
 </form>
 	</div>
 
