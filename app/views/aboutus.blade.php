@@ -119,17 +119,17 @@
 </p>
 
 <p>
-When facing the difficulty of finding the right startup team, one of the only ways to search for on-campus talent is to create and post a paper flier (or flyer). This is completely inefficient with the technology that we have today. Our service, is the evolution of this method. It captures the fundamental notion of “spreading the word” in an advanced and modern way.
+When facing the difficulty of finding the right startup team, one of the only ways to search for on-campus talent is to create and post a paper flier (or flyer). This approach is completely inefficient with the technology that we have today. Our service is the evolution of this method. It captures the fundamental notion of “spreading the word” in an advanced and modern way.
 		</p>
 
 
 <div style="text-transform:uppercase;color:#58b946;font-size:1.2rem;margin-bottom:15px;margin-top:20px" >Our story</div>
 <p>
-There is no denying that Georgia Tech has an incredible entrepreneurial culture.  Here, students are imagining the solutions to some of the world’s toughest problems and dreaming of creating real value in wildly innovative ways. (Did you know Elmer’s Glue was dreamed up here?)  Many of these dreams, however, die shortly after conception. Why? Because the greatest obstacle when creating a startup often lies in finding a talented enough team to develop the startup ideas.
+There is no denying that Georgia Tech has an incredible entrepreneurial culture.  Here, students are imagining the solutions to some of the world’s toughest problems and dreaming of creating real value in wildly innovative ways. (Did you know Elmer’s Glue was dreamed up here?)  Many of these dreams, however, die shortly after conception. Why? Because the greatest obstacle in creating a startup often lies in finding a talented enough team to develop it.
 </p>
 
 <p>
-When we first identified this reality, we knew that there must be another way to channel our campus’ talent. When our school contains both the Business majors intelligent enough to develop a finance app idea and the Computer Science majors savvy enough to code it, we recognized that there must be a way to unite these two forces. It became clear that the untapped talent within our student body is the most valuable resource in itself.
+When we first identified this reality, we knew that there must be another way to channel our campus’ talent. With our school containing both the business majors intelligent enough to develop a finance app idea and the computer science majors savvy enough to code it, we recognized that there must be a way to unite these two forces. It became clear that the untapped talent within our student body was the most valuable resource.
 </p>
 <p>
 This was the startup to our startup.  We realized that if we could solve the problem of finding an adequate team, we could solve the problem of dying startup ideas. Through many weeks of networking (if only we had fliyr!) we established our own team and began working to develop this student-to-student connector service. During the process we determined it crucial to provide this resource at no cost and without any advertising. Thus, fliyr is a team builder that truly caters to any level of collegiate entrepreneurship. 
