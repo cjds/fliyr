@@ -101,10 +101,10 @@
         	var change_background = function() {
         				
   					
-  						
+  					$(".magic2").stop();	
   					$(".magic2").animate({'opacity':0},500,function(){
   							$( ".magic2" ).attr('src',images[count]);			
-  							$( ".magic2" ).css('opacity',1.0);
+	  							$( ".magic2" ).css('opacity',1.0);
   							$( ".magic1" ).attr('src',images[(count+1>images.length-1?0:count+1)]);				
   							
   						});

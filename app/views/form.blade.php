@@ -113,6 +113,16 @@
 				} 
         }); 
     </script> 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41260149-2', 'auto');
+  ga('send', 'pageview');
+
+</script>    
 </head>
 <body>
 	<div class="magic" style="">
@@ -148,7 +158,7 @@
 <input type="email" name="entry.868751442" value="" class="ss-q-short" id="entry_868751442" dir="auto" aria-label="GT E-mail address  Hey you have to enter a Georgia Tech E-mail address" aria-required="true" required="" title="Hey you have to enter a Georgia Tech E-mail ID" placeholder="GT email address" style="margin-top:7px;width:190px">
 <div class='styled-select'>
 <select name="entry.421333035"  id="group_421333035_1" placeholder="please select your major">
-<option>-- please select your major --</option>
+<option>-- select your major --</option>
 <option>Aerospace Engineering</option>
 <option>Applied Languages and Intercultural Studies</option>
 <option>Applied Mathematics</option>
@@ -217,6 +227,8 @@
 <option>-- Data Mining</option>
 <option>-- Security</option>
 <option>-- S.E.O.</option>
+<option>-- Hardware Design</option>
+<option>-- Product Engineer</option>
 <option>Creative</option>
 <option>-- Graphic Design</option>
 <option>-- Photographer</option>
@@ -231,10 +243,10 @@
 <option>-- Technical Writing</option>
 <option>-- Video Editing</option>
 <option>-- Advertising</option>
+<option>-- Product Design</option>
+
 <option>Business</option>
 <option>-- Networking</option>
-<option>-- Communication</option>
-<option>-- Leadership</option>
 <option>-- General Marketing</option>
 <option>-- Social Media Marketing</option>
 <option>-- Accounting</option>

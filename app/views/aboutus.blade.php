@@ -75,6 +75,17 @@
 				} 
         }); 
     </script> 
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-41260149-2', 'auto');
+  ga('send', 'pageview');
+
+</script>    
 </head>
 <body>
 	<div class="column large-2 small-12 menu" >
@@ -95,7 +106,7 @@
 	<div class="large-8 large-offset-2 small-12 columns body" >
 	<div class="row" style="margin-top:56px;margin-bottom:10px">
 		<div style="text-transform:uppercase;color:#58b946;font-size:1.2rem">
-		Build Your Venture team!<img src="http://fliyr.com/img/icon.png" style="display:inline-block;width:40px;margin-left:20px;margin-top:-10px;height:auto" alt="fliyr">
+		Build Your Venture team!<img src="http://fliyr.com/img/icon.png" style="display:inline-block;width:40px;margin-left:20px;margin-top:0px;height:auto" alt="fliyr">
 		</div>
 	</div>
 	
@@ -124,7 +135,7 @@ When we first identified this reality, we knew that there must be another way to
 This was the startup to our startup.  We realized that if we could solve the problem of finding an adequate team, we could solve the problem of dying startup ideas. Through many weeks of networking (if only we had fliyr!) we established our own team and began working to develop this student-to-student connector service. During the process we determined it crucial to provide this resource at no cost and without any advertising. Thus, fliyr is a team builder that truly caters to any level of collegiate entrepreneurship. 
 </p>
 <p>
-Feel free to contact our team at <a href="mailto:info@flyir.com">info@flyir.com</a>.
+Feel free to contact our team at <a href="mailto:info@fliyr.com">info@fliyr.com</a>.
 </p>
 <a href="<?php echo url('/earlyaccess');?>" class="button tiny green " style=";text-transform:uppercase;">ga tech sign up</a>	
 
