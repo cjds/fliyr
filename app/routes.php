@@ -29,6 +29,37 @@ Route::get('/aboutus', function()
 	return View::make('aboutus');
 });
 
+Route::post('/regtest', function()
+{
+	$input=Input::all();
+	if($input['reg_string']){
+		$regnos=Regnos::where('reg_string',$input['reg_string'])->find(1);
+		if($regnos->used){
+			return 'error';
+		}
+		else{
+			return 'ok';
+		}
+	}
+
+
+});
+
+Route::post('/regset', function()
+{
+	$input=Input::all();
+	if($input['reg_string']){
+		$regnos=Regnos::where('reg_string',$input['reg_string'])->find(1);
+		$regnos->used=true;
+		$regnos->save();
+		return 'ok';
+	}	
+	else{
+		return 'error';
+	}
+});
+
+
 Route::get('/sendmail',function(){
 	Mail::send('emails.welcome',array(), function($message)
 {

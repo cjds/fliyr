@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"opt",
+				"option	Tag"
+			],
+			[
 				"max",
 				"max-width"
 			],
@@ -510,10 +514,6 @@
 			[
 				"spik",
 				"spike_times"
-			],
-			[
-				"text",
-				"text-align"
 			]
 		]
 	},
@@ -539,7 +539,7 @@
 			"file": "app/views/aboutus.blade.php",
 			"settings":
 			{
-				"buffer_size": 5845,
+				"buffer_size": 6241,
 				"line_ending": "Windows"
 			}
 		},
@@ -555,7 +555,7 @@
 			"file": "app/views/form.blade.php",
 			"settings":
 			{
-				"buffer_size": 14557,
+				"buffer_size": 15000,
 				"line_ending": "Windows"
 			}
 		},
@@ -903,6 +903,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"app",
+			"Please",
+			"please",
+			"flyir",
 			"please",
 			"@media",
 			"and",
@@ -1026,11 +1030,7 @@
 			"editor",
 			"answers",
 			"getViewQuestion",
-			"sortQ",
-			"<?",
-			"add",
-			"tag",
-			"edit"
+			"sortQ"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1057,7 +1057,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1073,8 +1073,8 @@
 						"selection":
 						[
 							[
-								2880,
-								2880
+								1911,
+								1503
 							]
 						],
 						"settings":
@@ -1083,10 +1083,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 18866.0,
+						"translation.y": 772.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1114,7 +1114,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -1123,26 +1123,27 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5845,
+						"buffer_size": 6241,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4150,
-								4150
+								3694,
+								3696
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1586.0,
+						"translation.y": 1360.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -1180,15 +1181,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 14557,
+						"buffer_size": 15000,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8843,
-								8843
+								14250,
+								14250
 							]
 						],
 						"settings":
@@ -1196,10 +1197,10 @@
 							"syntax": "Packages/Laravel Blade Highlighter/laravel-blade.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 3308.0,
+						"translation.y": 4917.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
