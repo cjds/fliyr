@@ -17,6 +17,7 @@ class CreateRegnosTable extends Migration {
 			$table->string('reg_string');
 			$table->boolean('used')->default(false);
 			$table->string('user_email')->default('');
+			$table->timestamps();
 		});
 	}
 
