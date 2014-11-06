@@ -12,9 +12,12 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		// $this->call('UserTableSeeder');
-		for($i=0;$i<300;$i++)
+		for($i=0;$i<300;$i++){
 			Regnos::create(array('reg_id'=>$i,
-								 'reg_string'=>$this->generateRandomString(6)));
+								 'reg_string'=>$this->generateRandomString(6)
+								 )
+			);
+		}
 	}
 
 	function generateRandomString($length = 6) {
