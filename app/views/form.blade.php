@@ -78,10 +78,7 @@
 			background:#58d946;
 		}   
 
-
-	
-
-		@media only screen and (max-width:69em){
+				@media only screen and (max-width:69em){
 			 .menu{position:relative}
 		}
 		@media only screen and (min-width:68em){
@@ -106,6 +103,10 @@
                 	//}
             	//});
             }); 
+
+            $('.magic').blur(function() {
+  				alert( "Handler for .blur() called." );
+			});
             function validateEmail(email) { 
             	console.log(email);
     			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@gatech.edu/;
@@ -381,10 +382,11 @@
 
 </select>
 </div>
+<!--
 <br>
 <p  style="color:#888;margin-top:14px;display:inline-block">How did you hear about us?</p>
 <input style='margin-top:7px' name="entry.959435776" class="ss-q-long" id="entry_1201534306"/> 
-
+-->
 <input type="hidden" name="draftResponse" value="[,,&quot;-9084912540050282737&quot;]">
 <input type="hidden" name="pageHistory" value="0">
 

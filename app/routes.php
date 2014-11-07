@@ -31,7 +31,17 @@ Route::get('/aboutus', function()
 
 Route::post('/regtest', function()
 {
-	$input=Input::all();
+	/*$input=Input::all();
+	if($input['reg_string']){
+		$regnos=Regnos::where('reg_string',$input['reg_string'])->find(1);
+		if($regnos->used){
+			return 'error';
+		}
+		else{
+			return 'ok';
+		}
+	}*/
+	$array=["FliyrStartupExchange","Hummingbird902164"];	
 	if($input['reg_string']){
 		$regnos=Regnos::where('reg_string',$input['reg_string'])->find(1);
 		if($regnos->used){
