@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'smtpout.secureserver.net',
+	'host' => 'relay-hosting.secureserver.net',
 
 	/*
 	|--------------------------------------------------------------------------
