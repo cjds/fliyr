@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'host' => 'relay-hosting.secureserver.net',
+	'host' => 'smtpout.secureserver.net',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => 'info@flyir.com',
+	'username' => 'info@fliyr.com',
 
 	/*
 	|--------------------------------------------------------------------------

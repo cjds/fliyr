@@ -31,7 +31,7 @@ Route::get('/aboutus', function()
 
 Route::post('/regtest', function()
 {
-	/*$input=Input::all();
+	/*$iconv(in_charset, out_charset, str)nput=Input::all();
 	if($input['reg_string']){
 		$regnos=Regnos::where('reg_string',$input['reg_string'])->find(1);
 		if($regnos->used){
