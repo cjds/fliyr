@@ -102,8 +102,10 @@
             		data: {reg_string: 'hummingbird'},
             	})
             	.done(function(res) {
-            		$('.regtest').fadeOut(800);
-            		$(".magic").animate({'opacity':1.0},500,function(){});
+            		if(res=='ok'){
+            			$('.regtest').fadeOut(800);
+            			$(".magic").animate({'opacity':1.0},500,function(){});
+            		}
             	});
             	
             });

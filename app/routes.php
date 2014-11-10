@@ -53,11 +53,11 @@ Route::post('/regtest', function()
 	$array=["FliyrStartupExchange","Hummingbird902164"];	
 	if(in_array($input['reg_string'], $array)){
 		$regnos->save();
-		return 'error';
+		return 'ok';
 	}
 	else{
 		$regnos->save();
-		return 'ok';
+		return 'error';
 	}
 });
 
