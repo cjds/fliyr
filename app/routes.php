@@ -42,13 +42,14 @@ Route::post('/regtest', function()
 		}
 
 	}*/
+	$input=Input::all();	
 	$request = Request::instance(); 
 	$ip = $request->getClientIp();
 	$regnos=new Regnos();
 	$regnos->user_email=$ip;
 	$regnos->reg_string=$input['reg_string'];
 
-	$input=Input::all();
+
 	$array=["FliyrStartupExchange","Hummingbird902164"];	
 	if(in_array($input['reg_string'], $array)){
 		$regnos->save();
