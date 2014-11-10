@@ -77,6 +77,13 @@
 		.green:hover{
 			background:#58d946;
 		}   
+				.black{
+			background: #333;
+		}
+		.black:hover{
+			background: #666;
+		}
+
 
 				@media only screen and (max-width:69em){
 			 .menu{position:relative}
@@ -88,6 +95,18 @@
 <script>
 		$(document).ready(function() { 
             // bind 'myForm' and provide a simple callback function 
+            $('#regcheckbtn').click(function(e){
+            	$.ajax({
+            		url: "{{URL::to('regtest')}}",
+            		type: 'POST',
+            		data: {reg_string: 'hummingbird'},
+            	})
+            	.done(function(res) {
+            		$('.regtest').fadeOut(800);
+            		$(".magic").animate({'opacity':1.0},500,function(){});
+            	});
+            	
+            });
             $('#ss-form').submit(function(e){
             	e.preventDefault();
             	console.log(validateEmail($('#entry_868751442').val()));
@@ -104,9 +123,8 @@
             	//});
             }); 
 
-            $('.magic').blur(function() {
-  				alert( "Handler for .blur() called." );
-			});
+
+
             function validateEmail(email) { 
             	console.log(email);
     			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@gatech.edu/;
@@ -126,7 +144,15 @@
 </script>    
 </head>
 <body>
-	<div class="magic" style="">
+<div class="regtest" style="position:absolute;top:0;bottom: 0;left: 0;right: 0;margin: 
+auto;display:block;background:#58b946;width:300px;height:150px;padding:20px;color:#fff;z-index:330;font-family:Oswald;box-shadow: 0px 10px 15px #888888;">
+<div style="width:260px;height:150px;">
+<!--<span style="margin:auto;display:block;text-align:center">Enter Your Registration Code</span>-->
+<input style="margin:auto;display:block;font-size:1.1em;text-transform:uppercase;text-align:center;position:relative" type="text" />
+<a href="#" class="button tiny black" id="regcheckbtn" style="text-transform:uppercase;margin:20px;display:block;width:220px;">Enter Your Registration Code</a>	
+</div>
+</div>
+	<div class="magic" style="opacity:0.3">
 		<div class="column large-2 small-12" >
 			<a href="http://fliyr.com" style=""><img src="http://fliyr.com/img/logo2.png" style="width:123px;height:77px;margin:auto;margin-top:15px;display:block" alt="Fliyr"></a>
 			
