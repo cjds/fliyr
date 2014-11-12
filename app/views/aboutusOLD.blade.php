@@ -1,12 +1,11 @@
 
-
 <!doctype html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>fliyr - About</title>
+	<title>fliyr - About Us</title>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<link href='http://fonts.googleapis.com/css?family=Roboto:700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="http://fliyr.com/img/icon.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -37,16 +36,11 @@
 			font-family: 'Oswald',sans-serif;
 		   color:#888; 
 		}
-		.accordion > dt,dd{
+		p{
 			font-family:'Roboto',sans-serif;
 			font-weight: 300;
 			font-size: 0.95em;
-			margin-bottom: 26px;
-			color:#888;
-		}
-
-		dt a{
-			color:#888;
+			margin-bottom: 10px;
 		}
 
 		@media only screen and (max-width:69em){
@@ -79,31 +73,6 @@
     			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@gatech.edu/;
     			return re.test(email);
 				} 
-
-			function getParameterByName(name) {
-			    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-			    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)");
-			    var results = regex.exec(location.search);
-
-			    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-			}
-			$('.accordion > dd').hide();
-			var no = getParameterByName('question');
-			if(no!=null){
-
-    			$('.accordion > dt').eq(no-1).next().slideDown();
-				$('.accordion > dt').eq(no-1).animate({'margin-bottom':'5px'});
-			}
-	
-    		
-    		
-  			$('.accordion > dt > a').click(function() {
-    			$('.accordion > dd').hide();
-    			$('.accordion > dt').animate({'margin-bottom':'26px'});
-    			$(this).parent().next().slideDown();	
-    			$(this).parent().animate({'margin-bottom':'5px'});
-    			return false;
-  			});
         }); 
     </script> 
 
@@ -130,7 +99,7 @@
 	
 	<div class="large-12 columns ">
 	<a href="http://fliyr.com/earlyaccess" style="color:#888;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">Early Access</a>
-	<a href="http://fliyr.com/aboutus" style="color:#58b946;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">About </a>
+	<a href="http://fliyr.com/aboutus" style="color:#58b946;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">About Us</a>
 	</div>
 	</div>
 
@@ -141,41 +110,38 @@
 		</div>
 	</div>
 	
+<p>
+<b>Our goal</b> is to create a free service that will connect future Georgia Tech entrepreneurs to other students on campus who possess the necessary skills to develop their startup ideas.</p>
 
-<dl class="accordion">
+<p>
+<b>What’s up with the name fliyr?</b>
+<br><i>fliyr   \ˈflī(-ə)r\  (Pronounced as flier or flyer)</i>
+</p>
 
-<dt><a href="#"><b>What is Fliyr?</b></a></dt>
-<dd>Fliyr is the central hub for Georgia Tech’s entrepreneurial community.  Our free service connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.</dd>
+<p>
+When facing the difficulty of finding the right startup team, one of the only ways to search for on-campus talent is to create and post a paper flier (or flyer). This approach is completely inefficient with the technology that we have today. Our service is the evolution of this method. It captures the fundamental notion of “spreading the word” in an advanced and modern way.
+		</p>
 
-<dt><a href="#"><b>What am I signing up for?</b></a></dt>
 
-<dd>Signing up for Fliyr fully brings you into Georgia Tech’s entrepreneurial community. Fliyr features an online bulletin board promoting Georgia Tech startups, job/co-founder postings, and the current resources and competitions the GT community provides.</dd>
+<div style="text-transform:uppercase;color:#58b946;font-size:1.2rem;margin-bottom:15px;margin-top:20px" >Our story</div>
+<p>
+There is no denying that Georgia Tech has an incredible entrepreneurial culture.  Here, students are imagining the solutions to some of the world’s toughest problems and dreaming of creating real value in wildly innovative ways. (Did you know Elmer’s Glue was dreamed up here?)  Many of these dreams, however, die shortly after conception. Why? Because the greatest obstacle in creating a startup often lies in finding a talented enough team to develop it.
+</p>
 
-<dt><a href=""><b>How do I sign up if I don't have an invite?</b></a></dt>
-
-<dd>Well, the fastest way to get an invite is to ask your friend who’s already on Fliyr, or you could reach out to any of our affiliated entrepreneurial organizations on campus.</p>
-
-<dt><a href="#"><b>How did you come up with the name Fliyr?</b></a></dt>
-
-<dd>When facing the difficulty of finding the right startup team, one of the only ways to search for on-campus talent is to create and post a paper flier (or flyer). This approach is completely inefficient with the technology that we have today. Our service is the evolution of this method.</dd>
-
-<dt><a href="#"><b>Who is behind Fliyr?</b></b></a></dt>
-<dd>
-	Will Smith, Strategy, <i>Industrial Engineering Major</i><br>
-Mark Haddad, Creative, <i>Business Administration Major</i><br>
-Carl Saldanha, Technical, <i>Human Computer Interaction Major</i><br>
-Chase Roberts, Business, <i>Business Administration Major</i>
-</dd>
-<dt><a href="#"><b>Not found the answer you want?</b></a></dt>
-<dd>Feel free to contact our team at <a href="mailto:info@fliyr.com">info@fliyr.com</a>.</dd>
-<br>
+<p>
+When we first identified this reality, we knew that there must be another way to channel our campus’ talent. With our school containing both the business majors intelligent enough to develop a finance app idea and the computer science majors savvy enough to code it, we recognized that there must be a way to unite these two forces. It became clear that the untapped talent within our student body was the most valuable resource.
+</p>
+<p>
+This was the startup to our startup.  We realized that if we could solve the problem of finding an adequate team, we could solve the problem of dying startup ideas. Through many weeks of networking (if only we had fliyr!) we established our own team and began working to develop this student-to-student connector service. During the process we determined it crucial to provide this resource at no cost and without any advertising. Thus, fliyr is a team builder that truly caters to any level of collegiate entrepreneurship. 
+</p>
+<p>
+Feel free to contact our team at <a href="mailto:info@fliyr.com">info@fliyr.com</a>.
+</p>
 <a href="<?php echo url('/earlyaccess');?>" class="button tiny green " style=";text-transform:uppercase;">ga tech sign up</a>	
 
 	</div>
 	</div>
 	<div class="columns">
 	</div>
-
-
 </body>
 </html>

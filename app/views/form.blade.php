@@ -99,16 +99,20 @@
             	$.ajax({
             		url: "{{URL::to('regtest')}}",
             		type: 'POST',
-            		data: {reg_string: 'hummingbird'},
+            		data: {reg_string: $("#regtestid").val()},
             	})
             	.done(function(res) {
             		if(res=='ok'){
             			$('.regtest').fadeOut(800);
-            			$(".magic").animate({'opacity':1.0},500,function(){});
+            			//$(".magic").animate({'opacity':1.0},500,function(){});
             		}
+            		else
+            			shakeForm("#regtestid");
             	});
             	
             });
+
+            $(".regtest").height($( document ).height());
             $('#ss-form').submit(function(e){
             	e.preventDefault();
             	console.log(validateEmail($('#entry_868751442').val()));
@@ -126,6 +130,12 @@
             }); 
 
 
+			function shakeForm(form) {
+			   var l = 20;  
+			   for( var i = 0; i < 10; i++ )   
+			     $(form).animate( { 'margin-left': "+=" + ( l = -l ) + 'px' }, 50);  
+			 $(form).val('');
+			 }
 
             function validateEmail(email) { 
             	console.log(email);
@@ -146,15 +156,15 @@
 </script>    
 </head>
 <body>
-<div class="regtest" style="position:absolute;top:0;bottom: 0;left: 0;right: 0;margin: 
-auto;display:block;background:#58b946;width:300px;height:150px;padding:20px;color:#fff;z-index:330;font-family:Oswald;box-shadow: 0px 10px 15px #888888;">
-<div style="width:260px;height:150px;">
+<div class="regtest" style="display:block;background:#fff;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:1;position:absolute;color:#fff;font-size:40px;">
+<div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#888;background:#58b946;height:230px;position:absolute;top:30%;font-size:20px;padding:10px;margin:auto">
 <!--<span style="margin:auto;display:block;text-align:center">Enter Your Registration Code</span>-->
-<input style="margin:auto;display:block;font-size:1.1em;text-transform:uppercase;text-align:center;position:relative" type="text" />
-<a href="#" class="button tiny black" id="regcheckbtn" style="text-transform:uppercase;margin:20px;display:block;width:220px;">Enter Your Registration Code</a>	
+<input style="margin:auto;display:block;font-size:1.1em;text-transform:lowercase;text-align:center;position:relative;margin-top:40px" type="text" id='regtestid'/>
+<a href="#" class="button tiny black" id="regcheckbtn" style="text-transform:uppercase;margin:auto;display:block;width:220px;margin-top:20px">Enter Your Referral Code</a>	
+<a href="<?php echo url('/aboutus?question=3');?>" <span style='color:#fff;text-align:center;text-decoration:underline;display:block;margin-top:21px;font-size:0.8em'>Don't have an invite?</span></a>
 </div>
 </div>
-	<div class="magic" style="opacity:0.3">
+	<div class="magic" style="opacity:1.0">
 		<div class="column large-2 small-12" >
 			<a href="http://fliyr.com" style=""><img src="http://fliyr.com/img/logo2.png" style="width:123px;height:77px;margin:auto;margin-top:15px;display:block" alt="Fliyr"></a>
 			
@@ -166,7 +176,7 @@ auto;display:block;background:#58b946;width:300px;height:150px;padding:20px;colo
 	
 	<div class="large-12 columns">
 	<a href="http://fliyr.com/earlyaccess" style="color:#58b946;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">Early Access</a>
-	<a href="http://fliyr.com/aboutus" style="color:#888;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">About Us</a>
+	<a href="http://fliyr.com/aboutus" style="color:#888;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">About</a>
 	</div>
 	</div>
 
@@ -410,11 +420,11 @@ auto;display:block;background:#58b946;width:300px;height:150px;padding:20px;colo
 
 </select>
 </div>
-<!--
+
 <br>
 <p  style="color:#888;margin-top:14px;display:inline-block">How did you hear about us?</p>
 <input style='margin-top:7px' name="entry.959435776" class="ss-q-long" id="entry_1201534306"/> 
--->
+
 <input type="hidden" name="draftResponse" value="[,,&quot;-9084912540050282737&quot;]">
 <input type="hidden" name="pageHistory" value="0">
 
@@ -428,9 +438,9 @@ auto;display:block;background:#58b946;width:300px;height:150px;padding:20px;colo
 	<div class="column">
 	</div>
 
-<div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;position:absolute;color:#fff;font-size:40px;">
+<div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1;position:absolute;color:#fff;font-size:40px;">
 <div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#888;background:#fff;height:40%;position:absolute;top:30%;font-size:20px;padding:10px;margin:auto">
-<p style="font-size:1.2em;text-align:center;margin-top:21px;resize:none">Thank You. We will contact you as soon as the launch is ready</p>
+<p style="font-size:1.2em;text-align:center;margin-top:21px;resize:none">Thank You. We will build your profile out and allow you to network through Fliyr</p>
 <br>
 <a href="http://fliyr.com" class="button green" style="text-transform:uppercase;display:block;margin:auto;width:80%;">Return To Home</a>
 </div>

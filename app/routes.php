@@ -29,6 +29,10 @@ Route::get('/aboutus', function()
 	return View::make('aboutus');
 });
 
+Route::get('/hummingbirdadmin',function(){
+
+});
+
 Route::post('/regtest', function()
 {
 	/*$iconv(in_charset, out_charset, str)nput=Input::all();
@@ -41,7 +45,7 @@ Route::post('/regtest', function()
 			return 'ok';
 		}
 
-	}*/
+	}*/	
 	$input=Input::all();	
 	$request = Request::instance(); 
 	$ip = $request->getClientIp();
@@ -50,13 +54,13 @@ Route::post('/regtest', function()
 	$regnos->reg_string=$input['reg_string'];
 
 
-	$array=["FliyrStartupExchange","Hummingbird902164"];	
-	if(in_array($input['reg_string'], $array)){
-		$regnos->save();
+	$array=["FLIYRSTARTUPEXCHANGE","HUMMINGBIRD902164"];	
+	if(in_array(strtoupper($input['reg_string']), $array)){
+		//$regnos->save();
 		return 'ok';
 	}
 	else{
-		$regnos->save();
+		//$regnos->save();
 		return 'error';
 	}
 });
