@@ -145,7 +145,7 @@
 <dl class="accordion">
 
 <dt><a href="#"><b>What is Fliyr?</b></a></dt>
-<dd>Fliyr is the central hub for Georgia Tech’s entrepreneurial community.  Our free service connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.</dd>
+<dd>Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.</dd>
 
 <dt><a href="#"><b>What am I signing up for?</b></a></dt>
 

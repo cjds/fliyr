@@ -54,7 +54,7 @@ Route::post('/regtest', function()
 	$regnos->reg_string=$input['reg_string'];
 
 
-	$array=["FLIYRSTARTUPEXCHANGE","HUMMINGBIRD902164"];	
+	$array=["FLIYRSTARTUPEXCHANGE","HUMMINGBIRD092614","HUMMINGBIRD"];	
 	if(in_array(strtoupper($input['reg_string']), $array)){
 		//$regnos->save();
 		return 'ok';
