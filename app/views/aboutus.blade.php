@@ -156,7 +156,7 @@
 
 <dt><a href=""><b>How do I sign up if I don't have an invite?</b></a></dt>
 
-<dd>Well, the fastest way to get an invite is to ask your friend who’s already on Fliyr, or you could reach out to any of our affiliated entrepreneurial organizations on campus.</p>
+<dd>Well, the fastest way to get an invite is to ask a friend who’s already on Fliyr, or you could reach out to any of our affiliated entrepreneurial organizations on campus.</p>
 
 <dt><a href="#"><b>How did you come up with the name Fliyr?</b></a></dt>
 
