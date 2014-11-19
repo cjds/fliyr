@@ -5,6 +5,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>About us - Fliyr</title>
+	<meta name="description" content="Learn more about Fliyr. Connecting the ideas + experties within the community to launch
+	successful startups.">
+	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:700,300' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="http://fliyr.com/img/icon.ico">

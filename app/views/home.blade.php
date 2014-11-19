@@ -4,7 +4,10 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-	<title>Fliyr</title>
+	<title>Fliyr - Build your venture team and connect with Georgia Tech's entrepreneurial community</title>
+	<meta name="description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled 
+	students and on-campus resources to develop their startup ideas.">
+	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Nunito:700' rel='stylesheet' type='text/css'>
 <link rel="shortcut icon" href="<?php echo asset('img/icon.ico');?>">

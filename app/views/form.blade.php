@@ -3,7 +3,10 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>fliyr - Early Access</title>
+	<title>Sign up - Fliyr</title>
+	<meta name="description" content="Sign up now to find the talent you need to launch your startup, or to join an existing
+	venture that could use your expertise to reach the next level.">
+	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="http://fliyr.com/img/icon.ico">
