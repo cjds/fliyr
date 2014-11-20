@@ -306,6 +306,7 @@
 <option>-- S.E.O.</option>
 <option>-- Hardware Design</option>
 <option>-- Product Engineer</option>
+<option>-- WordPress</option>
 <option>Creative</option>
 <option>-- Graphic Design</option>
 <option>-- Photographer</option>
@@ -359,6 +360,8 @@
 <option>-- Data Mining</option>
 <option>-- Security</option>
 <option>-- S.E.O.</option>
+<option>-- Hardware Design</option>
+<option>-- Product Engineer</option>
 <option>-- WordPress</option>
 <option>Creative</option>
 <option>-- Graphic Design</option>
@@ -374,10 +377,10 @@
 <option>-- Technical Writing</option>
 <option>-- Video Editing</option>
 <option>-- Advertising</option>
+<option>-- Product Design</option>
+
 <option>Business</option>
 <option>-- Networking</option>
-<option>-- Communication</option>
-<option>-- Leadership</option>
 <option>-- General Marketing</option>
 <option>-- Social Media Marketing</option>
 <option>-- Accounting</option>
@@ -411,6 +414,9 @@
 <option>-- Data Mining</option>
 <option>-- Security</option>
 <option>-- S.E.O.</option>
+<option>-- Hardware Design</option>
+<option>-- Product Engineer</option>
+<option>-- WordPress</option>
 <option>Creative</option>
 <option>-- Graphic Design</option>
 <option>-- Photographer</option>
@@ -425,10 +431,10 @@
 <option>-- Technical Writing</option>
 <option>-- Video Editing</option>
 <option>-- Advertising</option>
+<option>-- Product Design</option>
+
 <option>Business</option>
 <option>-- Networking</option>
-<option>-- Communication</option>
-<option>-- Leadership</option>
 <option>-- General Marketing</option>
 <option>-- Social Media Marketing</option>
 <option>-- Accounting</option>
