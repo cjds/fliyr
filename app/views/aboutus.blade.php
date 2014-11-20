@@ -9,18 +9,18 @@
 	successful startups.">
 
 		<!-- Schema.org markup for Google+ -->
-<meta itemprop="name" content="Sign Up - Fliyr">
+<meta itemprop="name" content="About us - Fliyr">
 <meta itemprop="description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.">
 <meta itemprop="image" content="<?php echo asset('img/facebook3.jpg');?>">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fliyr">
-<meta name="twitter:title" content="Sign Up - Fliyr">
+<meta name="twitter:title" content="About us - Fliyr">
 <meta name="twitter:description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.">
 <meta name="twitter:creator" content="@fliyr">
 <meta name="twitter:image:src" content="<?php echo asset('img/logo2.png');?>">
 
-<meta property="og:title" content="Sign Up - Fliyr" />
+<meta property="og:title" content="About us - Fliyr" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://www.fliyr.com/about-us" />
 <meta property="og:image" content="<?php echo asset('img/facebook3.jpg');?>" />
