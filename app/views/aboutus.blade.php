@@ -132,8 +132,8 @@
 		</div>
 	
 	<div class="large-12 columns ">
-	<a href="http://fliyr.com/earlyaccess" style="color:#888;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">Early Access</a>
-	<a href="http://fliyr.com/aboutus" style="color:#58b946;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">About </a>
+	<a href="http://fliyr.com/sign-up" style="color:#888;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">Early Access</a>
+	<a href="http://fliyr.com/about-us" style="color:#58b946;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">About </a>
 	</div>
 	</div>
 

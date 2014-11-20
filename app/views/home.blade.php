@@ -144,8 +144,8 @@
 			</div>
 			<div class="row" style="font-size:1.1em">
 			<!--<a href="#" class="button tiny right black" style="background:#58b946;margin-right:13px;" >EARLY ACCESS</a></div>-->
-			<a href="<?php echo url('/earlyaccess');?>" class="button tiny green right" style=";text-transform:uppercase;">ga tech sign up</a>	
-				<a href="<?php echo url('/aboutus');?>" class="button tiny black two right" style="text-transform:uppercase;">learn more</a>	
+			<a href="<?php echo url('/sign-up');?>" class="button tiny green right" style=";text-transform:uppercase;">ga tech sign up</a>	
+				<a href="<?php echo url('/about-us');?>" class="button tiny black two right" style="text-transform:uppercase;">learn more</a>	
 
 			</div>
 		</div>

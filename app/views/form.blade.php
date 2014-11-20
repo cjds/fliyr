@@ -98,7 +98,15 @@
 <script>
 		$(document).ready(function() { 
             // bind 'myForm' and provide a simple callback function 
-            $('#regcheckbtn').click(function(e){
+            $('#regcheckbtn').click(submitregtest);
+
+            $('#referral-form').submit(function(e){
+            	e.preventDefault();
+            	submitregtest();
+            });
+
+
+           function submitregtest(){
             	$.ajax({
             		url: "{{URL::to('regtest')}}",
             		type: 'POST',
@@ -107,13 +115,14 @@
             	.done(function(res) {
             		if(res=='ok'){
             			$('.regtest').fadeOut(800);
+            			$('#referral-form').ajaxSubmit();
             			//$(".magic").animate({'opacity':1.0},500,function(){});
             		}
             		else
             			shakeForm("#regtestid");
             	});
             	
-            });
+            }
 
             $(".regtest").height($( document ).height());
             $('#ss-form').submit(function(e){
@@ -121,6 +130,7 @@
             	console.log(validateEmail($('#entry_868751442').val()));
             	if(validateEmail($('#entry_868751442').val())){
             		$('#ss-form').ajaxSubmit();
+            		$("#five").height($( document ).height());
 					$('#five').fadeIn(800);
 				}
 				else{
@@ -143,8 +153,9 @@
             function validateEmail(email) { 
             	console.log(email);
     			var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@gatech.edu/;
+    			
     			return re.test(email);
-				} 
+			} 
         }); 
     </script> 
 <script>
@@ -161,10 +172,13 @@
 <body>
 <div class="regtest" style="display:block;background:#fff;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:1;position:absolute;color:#fff;font-size:40px;">
 <div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#888;background:#58b946;height:230px;position:absolute;top:30%;font-size:20px;padding:10px;margin:auto">
+<form action="https://docs.google.com/forms/d/166jzC6H2KQo9nvhKdfDekYJs9VqOHWkhpQJJJOTJA3g/formResponse" method="POST" id="referral-form" target="_self" onsubmit="">
 <!--<span style="margin:auto;display:block;text-align:center">Enter Your Registration Code</span>-->
-<input style="margin:auto;display:block;font-size:1.1em;text-transform:lowercase;text-align:center;position:relative;margin-top:40px" type="text" id='regtestid'/>
+<input style="margin:auto;display:block;font-size:1.1em;text-transform:lowercase;text-align:center;position:relative;margin-top:40px" type="text" id='regtestid' name="entry.4995636"/>
 <a href="#" class="button tiny black" id="regcheckbtn" style="text-transform:uppercase;margin:auto;display:block;width:220px;margin-top:20px">Enter Your Referral Code</a>	
-<a href="<?php echo url('/aboutus?question=3');?>" <span style='color:#fff;text-align:center;text-decoration:underline;display:block;margin-top:21px;font-size:0.8em'>Don't have an invite?</span></a>
+</form>
+<a href="<?php echo url('/about-us?question=3');?>" <span style='color:#fff;text-align:center;text-decoration:underline;display:block;margin-top:21px;font-size:0.8em'>Don't have an invite?</span></a>
+
 </div>
 </div>
 	<div class="magic" style="opacity:1.0">
@@ -178,8 +192,8 @@
 		</div>
 	
 	<div class="large-12 columns">
-	<a href="http://fliyr.com/earlyaccess" style="color:#58b946;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">Early Access</a>
-	<a href="http://fliyr.com/aboutus" style="color:#888;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">About</a>
+	<a href="<?php echo url('/sign-up')?>" style="color:#58b946;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">Early Access</a>
+	<a href="<?php echo url('/about-us')?>" style="color:#888;font-weight:300;margin-left:auto;margin-right:auto;margin-top:2px;display:block;width:95px;text-transform:uppercase">About</a>
 	</div>
 	</div>
 
@@ -433,6 +447,8 @@
 
 
 <input type="hidden" name="fbzx" value="-9084912540050282737"><br>	
+
+
 <input type="submit" name="submit" value="SUBMIT" id="ss-submit" style="margin-top:21px;background:#58b946;padding-bottom:1.7rem" class="button tiny ">
 </form>
 	</div>
@@ -441,11 +457,11 @@
 	<div class="column">
 	</div>
 
-<div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1;position:absolute;color:#fff;font-size:40px;">
-<div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#888;background:#fff;height:40%;position:absolute;top:30%;font-size:20px;padding:10px;margin:auto">
-<p style="font-size:1.2em;text-align:center;margin-top:21px;resize:none">Thank You. We will build your profile out and allow you to network through Fliyr</p>
+<div id="five" style="display:block;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1;position:absolute;color:#fff;font-size:40px;">
+<div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#fff;background:#58b946;height:40%;position:absolute;top:30%;font-size:18px;padding:10px;margin:auto;">
+<p style="font-size:1.2em;text-align:center;margin-top:21px;resize:none">Thank You! We will notify you as soon as your profile is ready</p>
 <br>
-<a href="http://fliyr.com" class="button green" style="text-transform:uppercase;display:block;margin:auto;width:80%;">Return To Home</a>
+<a href="http://fliyr.com" class="button black" style="text-transform:uppercase;display:block;margin:auto;width:80%;">Return To Home</a>
 </div>
 </div>
 </body>

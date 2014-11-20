@@ -15,7 +15,7 @@ Route::get('/', function()
 {
 	return View::make('home');
 });
-Route::get('/signup', function()
+Route::get('/sign-up', function()
 {
 	return View::make('form');
 });
@@ -24,7 +24,7 @@ Route::get('/earlyaccess', function()
 	return View::make('form');
 });
 
-Route::get('/aboutus', function()
+Route::get('/about-us', function()
 {
 	return View::make('aboutus');
 });
@@ -54,7 +54,7 @@ Route::post('/regtest', function()
 	$regnos->reg_string=$input['reg_string'];
 
 
-	$array=["FLIYRSTARTUPEXCHANGE","HUMMINGBIRD092614","HUMMINGBIRD"];	
+	$array=["STARTUPX","HUMMINGBIRD"];	
 	if(in_array(strtoupper($input['reg_string']), $array)){
 		//$regnos->save();
 		return 'ok';
