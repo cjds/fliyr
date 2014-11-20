@@ -6,6 +6,13 @@
 	<title>Sign up - Fliyr</title>
 	<meta name="description" content="Sign up now to find the talent you need to launch your startup, or to join an existing
 	venture that could use your expertise to reach the next level.">
+
+	<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Sign Up - Fliyr">
+<meta itemprop="description" content="This is the page description">
+<meta itemprop="image" content="<?php echo asset('img/facebook3.jpg');?>">
+
+
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
@@ -457,7 +464,7 @@
 	<div class="column">
 	</div>
 
-<div id="five" style="display:block;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1;position:absolute;color:#fff;font-size:40px;">
+<div id="five" style="display:none;background:#fff;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1;position:absolute;color:#fff;font-size:40px;">
 <div class="large-4 large-offset-4 medium-offset-3 medium-6 small-12 small-offset-0" style="color:#fff;background:#58b946;height:40%;position:absolute;top:30%;font-size:18px;padding:10px;margin:auto;">
 <p style="font-size:1.2em;text-align:center;margin-top:21px;resize:none">Thank You! We will notify you as soon as your profile is ready</p>
 <br>
