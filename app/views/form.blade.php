@@ -4,13 +4,27 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Sign up - Fliyr</title>
-	<meta name="description" content="Sign up now to find the talent you need to launch your startup, or to join an existing
-	venture that could use your expertise to reach the next level.">
+	<meta name="description" content="Sign up now to find the talent you need to launch your startup, or to join an existing venture that could use your expertise to reach the next level.">
 
 	<!-- Schema.org markup for Google+ -->
 <meta itemprop="name" content="Sign Up - Fliyr">
-<meta itemprop="description" content="This is the page description">
+<meta itemprop="description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.">
 <meta itemprop="image" content="<?php echo asset('img/facebook3.jpg');?>">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fliyr">
+<meta name="twitter:title" content="Sign Up - Fliyr">
+<meta name="twitter:description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.">
+<meta name="twitter:creator" content="@fliyr">
+<meta name="twitter:image:src" content="<?php echo asset('img/logo2.png');?>">
+
+<meta property="og:title" content="Sign Up - Fliyr" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.fliyr.com/sign-up" />
+<meta property="og:image" content="<?php echo asset('img/facebook3.jpg');?>" />
+<meta property="og:description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas." />
+<meta property="og:site_name" content="Fliyr" />
+
 
 
 	

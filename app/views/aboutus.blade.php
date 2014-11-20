@@ -7,6 +7,25 @@
 	<title>About us - Fliyr</title>
 	<meta name="description" content="Learn more about Fliyr. Connecting the ideas + experties within the community to launch
 	successful startups.">
+
+		<!-- Schema.org markup for Google+ -->
+<meta itemprop="name" content="Sign Up - Fliyr">
+<meta itemprop="description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.">
+<meta itemprop="image" content="<?php echo asset('img/facebook3.jpg');?>">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@fliyr">
+<meta name="twitter:title" content="Sign Up - Fliyr">
+<meta name="twitter:description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.">
+<meta name="twitter:creator" content="@fliyr">
+<meta name="twitter:image:src" content="<?php echo asset('img/logo2.png');?>">
+
+<meta property="og:title" content="Sign Up - Fliyr" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://www.fliyr.com/about-us" />
+<meta property="og:image" content="<?php echo asset('img/facebook3.jpg');?>" />
+<meta property="og:description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas." />
+<meta property="og:site_name" content="Fliyr" />
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:700,300' rel='stylesheet' type='text/css'>
@@ -172,7 +191,7 @@ Chase Roberts, Business, <i>Business Administration Major</i>
 <dt><a href="#"><b>Not found the answer you want?</b></a></dt>
 <dd>Feel free to contact our team at <a href="mailto:info@fliyr.com">info@fliyr.com</a>.</dd>
 <br>
-<a href="<?php echo url('/earlyaccess');?>" class="button tiny green " style=";text-transform:uppercase;">ga tech sign up</a>	
+<a href="<?php echo url('/sign-up');?>" class="button tiny green " style=";text-transform:uppercase;">ga tech sign up</a>	
 
 	</div>
 	</div>

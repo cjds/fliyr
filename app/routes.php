@@ -19,11 +19,6 @@ Route::get('/sign-up', function()
 {
 	return View::make('form');
 });
-Route::get('/earlyaccess', function()
-{
-	return View::make('form');
-});
-
 Route::get('/about-us', function()
 {
 	return View::make('aboutus');
