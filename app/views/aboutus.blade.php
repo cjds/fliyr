@@ -171,7 +171,9 @@
 
 <dt><a href="#"><b>What am I signing up for?</b></a></dt>
 
-<dd>Signing up for Fliyr fully brings you into Georgia Tech’s entrepreneurial community. Fliyr features an online bulletin board promoting Georgia Tech startups, job/co-founder postings, and the current resources and competitions the GT community provides.</dd>
+<dd>Signing up for Fliyr fully brings you into Georgia Tech’s entrepreneurial community. Right now, we are building a database of both future entrepreneurs and talented individuals with specific expertise.  
+
+<br><br>Moving forward, Fliyr will feature an online bulletin board promoting Georgia Tech startups, job/co-founder postings, and the current resources and competitions the GT community provides.  Members will be able to view and contact the current startups being developed at Tech as well as reach out to other students that have the specialties needed to take their venture to next level.</dd>
 
 <dt><a href=""><b>How do I sign up if I don't have an invite?</b></a></dt>
 
