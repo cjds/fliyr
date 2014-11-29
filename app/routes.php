@@ -49,7 +49,7 @@ Route::post('/regtest', function()
 	$regnos->reg_string=$input['reg_string'];
 
 
-	$array=["STARTUPX","HUMMINGBIRD"];	
+	$array=["STARTUPX","HUMMINGBIRD","EN2EM"];	
 	if(in_array(strtoupper($input['reg_string']), $array)){
 		//$regnos->save();
 		return 'ok';
