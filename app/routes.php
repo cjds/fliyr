@@ -25,6 +25,10 @@ Route::get('/myexpertise','HomeController@my_expertise');
 Route::get('/myventures','HomeController@my_ventures');
 Route::get('/inbox','HomeController@inbox');
 Route::get('/signout','HomeController@signout');
+Route::get('/signupsuccess', function()
+{
+	return View::make('signupsuccess');
+});
 
 //Route for User
 Route::post('ajax/sign-up','UserController@sign_up');

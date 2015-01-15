@@ -76,10 +76,6 @@
 			}
 		}
 		@media only screen and (min-width:85em){
-			.black,.green{
-				margin-right: 0px;
-				float: right;
-			}
 				.venturetext{
 				font-size:2rem;
 			}
@@ -95,6 +91,13 @@
 			background: #666;
 		}
 
+		.green,.black{
+			
+			margin: auto;
+			display: inline-block;
+			margin-bottom: 10px
+		}
+
 		.green{
 			background:#58b947;
 		}
@@ -102,17 +105,44 @@
 		.green:hover{
 			background:#58d946;
 		}
+
+		.biginput{
+			line-height: 1.5em;
+			height: 40px;
+			width:280px;
+			font-size: 20px;
+			display: block;
+			border: 1px solid #888;
+			font-family: 'Oswald','Helvetica',Arial,sans-serif;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			padding: 5px;
+			border-radius: 5px;
+			margin: auto;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.biginput::-webkit-input-placeholder {
+   			text-align: center;
+   			font-family: 'Oswald','Helvetica',Arial,sans-serif;
+		}
+
+		.biginput:-moz-placeholder { /* Firefox 18- */
+   			text-align: center;  
+   			font-family: 'Oswald','Helvetica',Arial,sans-serif;
+		}
+
+		.biginput::-moz-placeholder {  /* Firefox 19+ */
+   			text-align: center;  
+   			font-family: 'Oswald','Helvetica',Arial,sans-serif;
+		}
+
+		.biginput:-ms-input-placeholder {  
+   			text-align: center; 
+   			font-family: 'Oswald','Helvetica',Arial,sans-serif;
+		}
 	</style>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-41260149-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
 	    <script> 
         // wait for the DOM to be loaded 
         $(document).ready(function() { 
@@ -179,14 +209,19 @@
 				  type: "POST",
 				  data: { user_name:name, user_email:email,user_password:password, user_confirmpassword:confirmpassword  },
 				  success: function(data, textStatus) {
-				        if (data.redirect) {
-				            // data.redirect contains the string URL to redirect to
-				            window.location.href = data.redirect;
+				  		result=JSON.parse(data);
+				        if (result.result=='ok'){
+				        	 window.location.href = result.redirect;
 				        }
 					}				  
 				});
 			});
-			
+
+			$('.changebutton').click(function(e){
+				e.preventDefault();
+				$('#loginform').toggle();
+				$('#signupform').toggle();
+			})			
         });
         </script> 	
      
@@ -197,48 +232,52 @@
 <img class="magic2" src="<?php echo asset('img/b1.JPG')?>" style="min-width:908px;width:100%;overflow:hidden;z-index:1;top:0;left:0;position:absolute"/>
 
 </div>
-<div class="column large-12 " style="display:block;z-index:1;background-color:rgba(255,255,255,0.6);margin-top:80px;margin-bottom:30px">
-	<div class="small-12 medium-4 medium-offset-2 column large-2 large-offset-3" >
-			<%HTML::image('img/logo2.png', 'Fliyr',array('style'=>'width:auto;height:120px;margin-top:75px;margin-left:auto;margin-right: auto;display:block;'));%>
+<div class="column large-4 large-offset-4 medium-6 medium-offset-3 small-12 " style="display:block;z-index:1;background-color:rgba(255,255,255,0.8);border:1px solid #ccc;margin-top:8%;">
+	<div class="row" >
+			<%HTML::image('img/logo2.png', 'Fliyr',array('style'=>'width:auto;height:120px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%>
 	</div>
-	<div class="column small-12 medium-8 medium-offset-2 large-3 large-offset-0" >
-		<div class='row'>
-				<p class='venturetext' style="background-color:rgba(255,255,255,0.65);margin-top:120px;text-align:center">Build your venture team</p>
-			</div>
-			<div class="row" style="font-size:1.1em">
-			<!--<a href="#" class="button tiny right black" style="background:#58b946;margin-right:13px;" >EARLY ACCESS</a></div>-->
-			<a href="<?php echo url('/sign-up');?>" class="button tiny green right" style=";text-transform:uppercase;">ga tech sign up</a>	
-				<a href="<?php echo url('/about-us');?>" class="button tiny black two right" style="text-transform:uppercase;">learn more</a>	
-			</div>
-
-		</div>
 	
-	<div class="column"></div>
+		<div class='row'>
+				<p class='venturetext' style="background-color:rgba(255,255,255,0.65);text-align:center">Build your venture team</p>
+			</div>
+		<form id="loginform">
 
-	<div class='row' style=''>
-		<div class='large-3 small-12 medium-4 medium-offset-2 large-offset-3 columns'>
-			<form id="loginform">
-				<span>Login</span><br />
-				<input type='text' name="email" placeholder="E-Mail"/>
-				<br>
-				<input type='password' name="password" placeholder="Password"/>
-				<input type='submit' value="Login" class='button small green' style="float:left" />				
-			</form>
+		<div class='row' style='margin:auto'>	
+				<input type='text' class='biginput' name="email" placeholder="E-Mail"/>
 		</div>
-		<div class='large-6 small-12 medium-6 columns'>
-				<form id='signupform'>
-				<span>Signup</span><br />
-				<input type='text' name='name' placeholder="First Name, Last Name"/>
-				<br>
-				<input type='text' name='email' placeholder="E-Mail"/>
-				<br>
-				<input type='password' name='password' placeholder="Password"/>
-				<br>
-				<input type='password' name='confirmpassword' placeholder="Confirm Password"/>
-				<br>
-				<input type='submit' value="Sign Up" class='button small green' style="float:left" />
+		<div class='row' style='margin:auto'>	
+				<input type='password' class='biginput' name="password" placeholder="Password"/>
+		</div>
+		<div class='row' style='margin:auto;text-align:center'>	
+				<input type='submit' value="LOGIN" class=' button small-centered small green' style=/>	
+		</div>
+		<div class='row' style="margin:auto;text-align:center">
+			<p>Haven't got an account? <a href="#" class='changebutton' >Sign Up</a></p>
+		</div>
+			</form>
+				<form id='signupform' style="display:none">
+				<div class='row'>
+					<input type='text' class='biginput' name='name' placeholder="First Name, Last Name"/>
+				</div>
+				<div class='row'>
+				<input type='text' class='biginput' name='email' placeholder="E-Mail"/>
+				</div>
+				<div class='row'>
+				<input type='password' class='biginput' name='password' placeholder="Password"/>
+				</div>
+				<div class='row'>
+				<input type='password' class='biginput' name='confirmpassword' placeholder="Confirm Password"/>
+				</div>
+				<div class='row' style='text-align:center'>
+				<input type='submit' value="Sign Up" class='button small green'  />
+				</div>
+				<div class='row' style="margin:auto;text-align:center">
+				<p>Already have an account? <a href="#" class='changebutton' >Log In</a></p>
+			</div>
 				</form>
 		</div>
+</div>
+		
 	</div>
 </div>
 

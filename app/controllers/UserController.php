@@ -17,9 +17,21 @@ class UserController extends Controller {
 
 		$pdo=DB::connection()->getPdo();
 
-		$sql="INSERT INTO user (user_name,user_email,user_password) VALUES ('".$user_name."','".$user_email."','".$user_password."')";
-		$pdo->exec( $sql );
-		return 'ok';
+		$query = $pdo->prepare("SELECT  * FROM user WHERE user_email = :user_email");
+		$query->bindParam(':user_email', $user_email);
+		$query->execute();
+		$row=$query->fetchAll();	
+		if(!$row){
+			$query=$pdo->prepare("INSERT INTO user (user_name,user_email,user_password) VALUES (:user_name,:user_email,:user_password)");
+			$query->bindParam('user_name', $user_name);
+			$query->bindParam('user_email', $user_email);
+			$query->bindParam('user_password', $user_password);
+			$query->execute();		
+			return '{"result": "ok","redirect":"signupsuccess"}';;
+		}
+		else{
+			return '{"result": "fail","message":"This e-mail already exists"}';;		
+		}
 	}
 
 	protected function login(){
@@ -30,10 +42,10 @@ class UserController extends Controller {
 		$user_password=$input['password'];	
 		$query = $pdo->prepare("SELECT  * FROM user WHERE user_email = :user_email");
 		$query->bindParam(':user_email', $user_email);
-		
 		$query->execute();
 		$row=$query->fetchAll();	
 		if($row){
+
 			if(password_verify($user_password,$row[0]['user_password'])){
 				Session::put('user_name', $row[0]['user_name']);
 				Session::put('user_id', $row[0]['user_id']);

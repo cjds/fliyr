@@ -300,14 +300,30 @@
 			<div class='row'>
 				<div class='right user-menu'>
 				<div class='column' style="width:200px;margin-top:30px;margin-bottom:30px">
-					<div class="arrow-down right"></div><span class='right'><?php print_r($user_name)?></span>
+					<div class="arrow-down right">
+						
+					</div>
+					
+					<span class='right'>
+						@if (isset($user_name))
+							<% $user_name %>
+						@else
+							Not logged In?
+						@endif
+					</span>
+					
 					<br>
 					<div class='user-menu-items right' style="">
 					<ul>
-						<li><a href="<% URL::to('myexpertise')%>">My Expertise</a></li>
-						<li><a href="<% URL::to('myventures')%>"><li>My Ventures</a></li> 
-						<li><a href="<% URL::to('inbox')%>">Message Inbox</a></li>
-						<li><a href="<% URL::to('signout')%>">Sign out</a></li>
+						@if (isset($user_name))
+							<li><a href="<% URL::to('myexpertise')%>">My Expertise</a></li>
+							<li><a href="<% URL::to('myventures')%>"><li>My Ventures</a></li> 
+							<li><a href="<% URL::to('inbox')%>">Message Inbox</a></li>
+							<li><a href="<% URL::to('signout')%>">Sign out</a></li>
+						@else
+							<li><a href="<% URL::to('/')%>">Log In</a></li>
+							<li><a href="<% URL::to('/')%>"><li>Sign Up</a></li> 
+						@endif
 					</ul>
 					</div>
 				</div>

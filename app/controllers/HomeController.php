@@ -53,12 +53,6 @@ class HomeController extends BaseController {
 			$row[$key]['tags']=$query->fetchAll();			
 		}
 
-		if(!isset($user_id)){
-			return Redirect::to('/');
-		}
-		if($user_id==''){
-			return Redirect::to('/');
-		}
 		return View::make('newhome', array('user_name' => $user_name,'user_id'=>$user_id,'ventures'=>$row));
 	}
 
@@ -158,6 +152,7 @@ class HomeController extends BaseController {
 	}
 
 	protected function signout(){
-
+		Session::flush();
+		return Redirect::to('/');
 	}
 }

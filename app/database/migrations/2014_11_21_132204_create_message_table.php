@@ -18,10 +18,14 @@ class CreateMessageTable extends Migration {
 			$table->integer('sender_id')->unsigned();
 			$table->foreign('sender_id')->references('user_id')->on('user');
 
-			$table->integer('position_id')->unsigned();
-			$table->foreign('position_id')->references('position_id')->on('position');
+			$table->integer('receiver_id')->unsigned();
+			$table->foreign('receiver_id')->references('user_id')->on('user');
 			
 			$table->string('message_type');
+
+			$table->integer('table_id');
+
+			$table->integer('reference_message_id')->unsigned()->nullable();
 			$table->text('message');
 			$table->boolean('flag')->default(false);
 			$table->timestamps();
