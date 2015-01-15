@@ -77,8 +77,10 @@
 		</div>
     </div>
     <div class='row' data-equalizer>
-    	@foreach ($ventures as $venture)
-    	<div class='columns large-3-5 large-offset-half medium-5  small-12  panel venturebox' data-equalizer-watch>
+    	<?php $count=0;?>
+    	@foreach ($ventures as $key => $venture)
+    	<?php $count++;?>
+    	<div class='columns large-3 large-offset-1 medium-5  small-12  panel venturebox' data-equalizer-watch>
     		<div class='venture' style="display:block">
 				<span class='title' ><%$venture['venture_name']%></span>
 
@@ -116,26 +118,13 @@
 			</div>
 			@endforeach
     	</div>
+
+    	<?php if($count%3==0):?>
+    		</div>
+    		<div class='row' data-equalizer>
+    	<?php endif;?>
     	@endforeach
-
-    	<div class='columns large-3-5 large-offset-half medium-5  small-12 panel venturebox' data-equalizer-watch>
-			<span class='title'>Carl</span>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit enim id metus posuere bibendum. Mauris a semper elit. Praesent nec cursus quam. Vestibulum ut libero urna. Phasellus consectetur metus a eros laoreet iaculis. Aliquam erat volutpat. Morbi facilisis metus.
-			</p>
-			<span>Expertise</span>
-			<p> <a href="#">#Loroin</a> <a href="#">#fiosenfo</a> <a href=#>#fiosenfosoifenosn</a> <a href="#">#nnsonf</a> #fosjfojg #fontjbi</p>
     	</div>
-    	
-    	<div class='columns large-3-5 large-offset-half medium-5 small-12  panel venturebox' data-equalizer-watch >
-			<span class='title'>Carl</span>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit enim id metus posuere bibendum. Mauris a semper elit. Praesent nec cursus quam. Vestibulum ut libero urna. Phasellus consectetur metus a eros laoreet iaculis. Aliquam erat volutpat. Morbi facilisis metus.
-			</p>
-			<span>Expertise</span>
-			<p> #Loroin #fiosenfo #insoifenosn #nnsonf #fosjfojg #fontjbi</p>
-    	</div>
-
     	<div class='columns'>
     	</div>
     </div>

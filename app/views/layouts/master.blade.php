@@ -50,7 +50,8 @@
 	input{
 		height: 30px;
 	}
-		.venturebox{
+	.venturebox{
+		overflow-x:hidden;
 		border: 1px solid #999;
 	}
 	.title{

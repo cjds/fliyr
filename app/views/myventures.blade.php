@@ -71,7 +71,6 @@
 				<textarea rows="4" cols="35" name='description' placeholder="Enter a description"></textarea>
 			</p>
 			<p> 
-				<span class='taglistinput'></span>
 				<input type='text' placeholder='#' name='taginput' class='taginput'/>
 			</p>
 		</form>
@@ -114,7 +113,23 @@ $(document).ready(function() {
 	$('.finishbtn').click(function(e){
 		console.log($('#ventureform .taginput').val());
 		if(venturestate){
-
+			$.ajax({
+				url: "ajax/add-venture",
+				type: "POST",
+				data: { 
+				  	user_id:<% $user_id %>,
+				  	name: $('#ventureform input[name=venture]').val(),
+					tags:$('#ventureform input[name=taginput]').val(),
+					description:$('#ventureform textarea[name=description]').val(),
+					positions:positions
+				},
+				success: function(data, textStatus) {
+				        if (data.redirect) {
+				            // data.redirect contains the string URL to redirect to
+				            window.location.href = data.redirect;
+				        }
+					}				  
+				});
 		}
 		else{
 			$('.finishbtn').attr('value','DONE');
@@ -123,13 +138,13 @@ $(document).ready(function() {
 			var position = {
 			    name:$('#positionform input[name=position]').val(),
 			    description:$('#positionform textarea[name=description]').val(),
-			    tags:$('#positionform input[name=tags]').val()
+			    tags:$('#positionform input[name=taginput]').val() 
 			};
 			$('.positionlist').append('<span class="title">'+position.name+' <a href="#" data-id='+positions.length+' class="cancelbtn">Cancel</a></span><br><p>'+position.tags+'</p>');			
 			positions.push(position);
 			$('#positionform input[name=position]').val('');
-			$('#positionform textarea[name=description]').val('');
-			$('#positionform input[name=taginput]').val('');
+			$('#positionform textarea[name=description]').val('');			
+			$('#positionform input[name=taginput]').tagit('removeAll');
 			$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )')
 		}
 		venturestate=true;
@@ -151,7 +166,7 @@ $(document).ready(function() {
 		else{
 			$('#positionform input[name=position]').val('');
 			$('#positionform textarea[name=description]').val('');
-			$('#positionform input[name=tags]').val('');
+			$('#positionform input[name=taginput]').tagit('removeAll');
 			$('.finishbtn').attr('value','DONE');
 			$('.addpositionbox').hide();
 			$('.addventurebox').show();				

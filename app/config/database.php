@@ -54,7 +54,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => isset($_SERVER['DB1_HOST']) ? $_ENV['DB_HOST'] : 'localhost',
+			'host'      => isset($_SERVER['DB1_HOST']) ? $_ENV['DB1_HOST'] : 'localhost',
 			'database'  => isset($_SERVER['DB1_NAME']) ? $_SERVER['DB1_NAME'] : 'fliyr',
 			'username'  => isset($_SERVER['DB1_USER']) ? $_SERVER['DB1_USER'] : 'root',
 			'password'  => isset($_SERVER['DB1_PASS']) ? $_SERVER['DB1_PASS'] : '',

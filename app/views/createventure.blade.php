@@ -94,7 +94,23 @@ $(document).ready(function() {
 	$('.finishbtn').click(function(e){
 		
 		if(venturestate){
-
+			$.ajax({
+				url: "ajax/sign-up",
+				type: "POST",
+				data: { 
+				  	user_id:<% $user_id %>,
+				  	name: $('#ventureform input[name=venture]').val(),
+					tags:$('#ventureform input[name=tag]').val();
+					description:$('#ventureform textarea[name=description]').val();
+					positions:positions
+				},
+				success: function(data, textStatus) {
+				        if (data.redirect) {
+				            // data.redirect contains the string URL to redirect to
+				            window.location.href = data.redirect;
+				        }
+					}				  
+				});
 		}
 		else{
 			$('.finishbtn').attr('value','DONE');
@@ -110,9 +126,10 @@ $(document).ready(function() {
 			$('#positionform input[name=position]').val('');
 			$('#positionform textarea[name=description]').val('');
 			$('#positionform input[name=tags]').val('');
-			$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )')
+			$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
+			venturestate=true;
 		}
-		venturestate=true;
+		
 		
 	});
 
