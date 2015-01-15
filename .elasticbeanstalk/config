@@ -1,0 +1,15 @@
+[global]
+ApplicationName=fliyr
+ApplicationVersionName=git-acea0318edb216a13a1fd12911fa49a5fe1e1c78-1421066714158
+AwsCredentialFile=C:\Users\Carl Saldanha\.elasticbeanstalk\aws_credential_file
+DevToolsEndpoint=git.elasticbeanstalk.us-east-1.amazonaws.com
+EnvironmentName=fliyr-env
+EnvironmentTier=WebServer::Standard::1.0
+EnvironmentType=SingleInstance
+InstanceProfileName=aws-elasticbeanstalk-ec2-role
+OptionSettingFile=C:\xampp\htdocs\campusventure\.elasticbeanstalk\optionsettings.fliyr-env
+RdsEnabled=No
+Region=us-east-1
+ServiceEndpoint=https://elasticbeanstalk.us-east-1.amazonaws.com
+SolutionStack=64bit Amazon Linux 2014.09 v1.0.9 running PHP 5.5
+

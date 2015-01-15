@@ -11,14 +11,52 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home');
-});
+
+
+Blade::setContentTags('<%', '%>');        // for variables and all things Blade
+Blade::setEscapedContentTags('<%%', '%%>');   // for escaped data
+
+Route::get('/','HomeController@login');
+
+Route::get('/login','HomeController@login');
+Route::get('/createventure','HomeController@createventure');
+Route::get('/expertise','HomeController@get_expertise');
+Route::get('/myexpertise','HomeController@my_expertise');
+Route::get('/myventures','HomeController@my_ventures');
+Route::get('/inbox','HomeController@inbox');
+Route::get('/signout','HomeController@signout');
+
+//Route for User
+Route::post('ajax/sign-up','UserController@sign_up');
+Route::post('ajax/login','UserController@login');
+
+Route::get('ajax/user-data','UserController@user_data');
+
+//Add experience
+Route::post('ajax/add-experience','UserController@add_experience');
+//Edit User experiences
+Route::post('ajax/edit-experience','UserController@edit_experience');
+
+//Create a Venture
+Route::post('ajax/add-venture','VentureController@add_venture');
+
+Route::post('ajax/add-position','VentureController@add_position');
+
+Route::get('ajax/get-ventures','VentureController@get_ventures');
+
+Route::get('ajax/get-my-experience','UserController@get_my_experiene');
+
+/*********************\
+/******ADMIN**********\
+/*********************/
+Route::get('/add-tags','VentureController@get_tags');
+Route::get('/ventures','HomeController@get_ventures');
+
 Route::get('/sign-up', function()
 {
 	return View::make('form');
 });
+
 Route::get('/about-us', function()
 {
 	return View::make('aboutus');
@@ -27,6 +65,8 @@ Route::get('/about-us', function()
 Route::get('/hummingbirdadmin',function(){
 
 });
+
+
 
 Route::post('/regtest', function()
 {
