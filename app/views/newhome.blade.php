@@ -72,10 +72,17 @@
 @section('content')
     <div class='row'>
     	<div class='createventure large-offset-half'>
-			<a href="#">Create Venture</a>
+			<a href="#" data-reveal-id="create-venture-modal">Create Venture</a>
 			<span>+</span>
 		</div>
     </div>
+<div id="create-venture-modal" class="reveal-modal" data-reveal>
+  <h2>Awesome. I have it.</h2>
+  <p class="lead">Your couch.  It is mine.</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+
     <div class='row' data-equalizer>
     	<?php $count=0;?>
     	@foreach ($ventures as $key => $venture)
