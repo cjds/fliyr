@@ -32,7 +32,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
-
+    <script type='text/javascript' src="<%URL::asset('js/handlebars.js')%>" ></script>
 
 	<script src="<% URL::asset('js/tag-it.js')%>"></script>
 
@@ -44,9 +44,11 @@
 	<link media="all" type="text/css" rel="stylesheet" href="http://fliyr.com/css/foundation.css">
 	    <link href="<% URL::asset('css/jquery.tagit.css')%>" rel="stylesheet" type="text/css">
     <link href="<% URL::asset('css/tagit.ui-zendesk.css')%>" rel="stylesheet" type="text/css">
+<script src="<% URL::asset('js/library.js')%>"></script>    
 
 
 	<style type="text/css">
+
 	input{
 		height: 30px;
 	}

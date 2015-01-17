@@ -95,12 +95,12 @@ $(document).ready(function() {
 		
 		if(venturestate){
 			$.ajax({
-				url: "ajax/sign-up",
+				url: "ajax/add-venture",
 				type: "POST",
 				data: { 
 				  	user_id:<% $user_id %>,
 				  	name: $('#ventureform input[name=venture]').val(),
-					tags:$('#ventureform input[name=tag]').val();
+					tags:$('#ventureform input[name=tag]').val(),
 					description:$('#ventureform textarea[name=description]').val();
 					positions:positions
 				},

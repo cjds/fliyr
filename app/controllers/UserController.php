@@ -50,8 +50,6 @@ class UserController extends Controller {
 				Session::put('user_name', $row[0]['user_name']);
 				Session::put('user_id', $row[0]['user_id']);
 				return '{"result": "ok"}';
-
-//				return '{"user":'.json_encode($row[0]).'}';
 			}
 			else
 				return '{"result": "fail"}';

@@ -18,12 +18,24 @@ Blade::setEscapedContentTags('<%%', '%%>');   // for escaped data
 
 Route::get('/','HomeController@login');
 
+
+
+Route::get('/venturelist',function(){
+	return View::make('venturelist');
+});
+
+
+
+Route::get('/inbox',function(){
+	return View::make('inbox');
+});
+
 Route::get('/login','HomeController@login');
 Route::get('/createventure','HomeController@createventure');
 Route::get('/expertise','HomeController@get_expertise');
 Route::get('/myexpertise','HomeController@my_expertise');
 Route::get('/myventures','HomeController@my_ventures');
-Route::get('/inbox','HomeController@inbox');
+//Route::get('/inbox','HomeController@inbox');
 Route::get('/signout','HomeController@signout');
 Route::get('/signupsuccess', function()
 {
@@ -48,7 +60,15 @@ Route::post('ajax/add-position','VentureController@add_position');
 
 Route::get('ajax/get-ventures','VentureController@get_ventures');
 
-Route::get('ajax/get-my-experience','UserController@get_my_experiene');
+Route::get('ajax/get-position-data','VentureController@get_position_data');
+
+Route::get('ajax/get-my-experience','UserController@get_my_experience');
+
+Route::post('ajax/post-message','MessageController@send_message');
+Route::post('ajax/post-position-message','MessageController@post_position_message');
+Route::get('ajax/get-inbox','MessageController@get_inbox');
+
+Route::post('ajax/get-message-thread','MessageController@get_message_thread');
 
 /*********************\
 /******ADMIN**********\

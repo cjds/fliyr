@@ -79,21 +79,21 @@ class VentureController extends Controller {
 	}
 
 	protected function get_ventures(){
-		$pdo=DB::connection()->getPdo();		
-		$query = $pdo->prepare("SELECT  * FROM venture ORDER BY created_at DESC");
+		$ventures=new Ventures;
+		return $ventures->get_all();
+
+	}
+
+	protected function get_position_data(){
+		$pdo=DB::connection()->getPdo();
+		$input=Input::all();
+		$position_id=$input['position_id'];
+		$sql="SELECT u.*,v.*,p.* FROM position p,user u,venture v WHERE p.position_id=:position_id AND v.venture_id=p.venture_id AND v.creator_id=u.user_id" ;
+		$query=$pdo->prepare($sql);
+		$query->bindParam('position_id',$position_id);
 		$query->execute();
-		$row=$query->fetchAll();
-		foreach ($row as $key => $value) {
-			$query = $pdo->prepare("SELECT  * FROM position WHERE venture_id=:venture_id ORDER BY created_at DESC");
-			$query->bindParam(':venture_id', $value['venture_id']);
-			$query->execute();
-			$row[$key]['positions']=$query->fetchAll();
-			$query = $pdo->prepare("SELECT  tag_name FROM venture_tag,tag WHERE venture_id=:venture_id AND venture_tag.tag_id=tag.tag_id ORDER BY venture_tag.created_at DESC");
-			$query->bindParam(':venture_id', $value['venture_id']);
-			$query->execute();
-			$row[$key]['tags']=$query->fetchAll();			
-		}
-		return  json_encode($row);
+		$row = $query->fetch();
+		return json_encode($row);
 	}
 
 	protected function add_position()
@@ -112,7 +112,7 @@ class VentureController extends Controller {
 
 		foreach ($position_tags as $tag) {
 			$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
-			$query->bindParam(':tag', $tag);
+			$query->bindParam('tag', $tag);
 			$query->execute();
 			$row=$query->fetchAll();
 			$tag_id=-1;

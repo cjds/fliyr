@@ -52,7 +52,7 @@
 				<textarea rows="4" cols="35" name="description" placeholder="Enter a description"></textarea>
 			</p>
 			<p> 
-				<input type='text' placeholder='#' name='taginput' class='taginput'/>
+				<input type='text' placeholder='#' name='taginput' class='taginput' autocomplete="on"/>
 			</p>
 			<div class='positionlist'>
 			</div>
@@ -155,7 +155,11 @@ $(document).ready(function() {
 		"preprocessTag":function(val) {
   			if (!val) { return ''; }
   			return '#'+val;
-		}
+		},
+		"allowSpaces":true,
+		"availableTags": ["c++", "java", "php", "javascript", "ruby", "python", "c"],
+
+
 	});
 
 	$('.cancelbtn').click(function(e){
