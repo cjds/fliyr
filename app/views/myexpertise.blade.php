@@ -50,12 +50,7 @@
 		});
 
 		var user_id=<% $user_id %>;
-		$('.taginput').tagit({
-		"preprocessTag":function(val) {
-  			if (!val) { return ''; }
-  			return '#'+val;
-		}
-		});
+		$('.taginput').tagit();
 
 		$.ajax({
 			url: "<% URL::to('ajax/get-my-experience')%>",
@@ -65,19 +60,18 @@
   			var data=jQuery.parseJSON(msg);
   			var tags="";
   			console.log(data.tags)
-  			$('.venturebox textarea[name=description]').val(data.description);
   			for(var i=0;i<data.tags.length;i++){
-  				console.log(data.tags[i]);
-  				tags+='#'+data.tags[i].tag_name+',';
+  				$('.venturebox input[name=taginput]').tagit('createTag', data.tags[i]['tag_name']);
   			}
-  			tags=tags.slice(0,-1);
-  			$('.venturebox textarea[name=taginput]').val(tags);
+  			$('.venturebox textarea[name=description]').val(data.description);
+  			//$('.venturebox textarea[name=taginput]').val(tags);
   		});
 
   		$('#experienceform').submit(function(e){
   			e.preventDefault();
+
   			var description=$('.venturebox textarea[name=description]').val();
-  			var tags=$('.venturebox textarea[name=taginput]').val();
+  			var tags=$('.venturebox input[name=taginput]').val();
 	  		$.ajax({
 				url: "<% URL::to('ajax/add-experience')%>",
 	  			type: "POST",

@@ -1,8 +1,82 @@
-//VENTURES
+//**************************************************************LIBRAR
+//**************************************************************LIBRA
+
+	function routingFunction(){
+		var currentURL=window.location.href;
+		var routingArray=currentURL.split('/');
+		var routingString=routingArray[routingArray.length-1];
+		while(routingString[routingString.length-1]=='#')
+			routingString=routingString.substring(0,routingString.length,-1)
+		return routingString;
+	}
+
+	function routingUpdate(){
+		currentURL=routingFunction();
+		if(currentURL=='ventures'){
+			$.ajax({
+				url: 'ajax/get-ventures',
+				type: "GET",
+				data: { 
+				},
+				success: function(result, textStatus) {
+					data=JSON.parse(result);
+					ventures=data;
+					var Source = $("#venture-Template").html();
+					Handlebars.registerPartial("position", $("#position-partial").html());
+			        var Template = Handlebars.compile(Source);
+			        var HTML = Template({ ventures : ventures });
+			        $('#content').html(HTML);
+				}			
+			 	
+			 });
+
+		}
+		else if(currentURL=='expertise'){
+						$.ajax({
+				url: 'ajax/get-ventures',
+				type: "GET",
+				data: { 
+				},
+				success: function(result, textStatus) {
+					data=JSON.parse(result);
+					ventures=data;
+					var Source = $("#venture-Template").html();
+					Handlebars.registerPartial("position", $("#position-partial").html());
+			        var Template = Handlebars.compile(Source);
+			        var HTML = Template({ ventures : ventures });
+			        $('#content').html(HTML);
+				}			
+			 	
+			 });
+
+		}
+	}
+
+//**************************************************************EXPERTISE
+//**************************************************************EXPERTISE
+//**************************************************************EXPERTISE
+//**************************************************************EXPERTISE
+//**************************************************************EXPERTISE
+
+
+
+
+
+//**************************************************************VENTURES
+//**************************************************************VENTURES
+//**************************************************************VENTURES
+//**************************************************************VENTURES
+//**************************************************************VENTURES
+//**************************************************************VENTURES
+
+
 $(document).ready(function(){
- $('#content').on('click','.position-link',function(){
+ $('#content').on('click','.position-link',function(e){
+ 		e.preventDefault();
  		$(".position[data-position-id="+$(this).attr('data-position-id')+"]").show();
  		$(this).parent().hide();
+ 		
+ 		
  });
 
 
@@ -120,14 +194,11 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				},
 				success: function(data, textStatus) {
 						if(data=='ok'){
-							$('#create-venture-modal').foundation({
-								'reveal':'close',
-								'close_on_background_click':true
-							})
+							$('#dialog').foundation('reveal','close');
+							routingUpdate();
 						}
 				        if (data.redirect) {
-				            // data.redirect contains the string URL to redirect to
-				            window.location.href = data.redirect;
+				            
 				        }
 					}				  
 				});

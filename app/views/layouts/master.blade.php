@@ -44,8 +44,6 @@
 	<link media="all" type="text/css" rel="stylesheet" href="http://fliyr.com/css/foundation.css">
 	    <link href="<% URL::asset('css/jquery.tagit.css')%>" rel="stylesheet" type="text/css">
     <link href="<% URL::asset('css/tagit.ui-zendesk.css')%>" rel="stylesheet" type="text/css">
-<script src="<% URL::asset('js/library.js')%>"></script>    
-
 
 	<style type="text/css">
 
@@ -349,4 +347,8 @@
 		});
 	})
 	</script>
+	<script src="<% URL::asset('js/library.js')%>"></script>    
+
+
 </html>
+

@@ -88,9 +88,11 @@ class UserController extends Controller {
 		$input=Input::all();
 		//input
 		$user_id=$input['user_id'];
-		$experience_tags=explode(',', $input['experience_tags']);
-		foreach ($experience_tags as $key => $value)
-			$experience_tags[$key]=substr($value, 1);
+		
+		if(isset($input['experience_tags']))
+			$experience_tags=explode(',', $input['experience_tags']);
+		else
+			$experience_tags=array();
 
 		$user_description=$input['user_description'];
 		$pdo=DB::connection()->getPdo();
@@ -182,7 +184,7 @@ class UserController extends Controller {
 
 	}
 
-	protected function get_my_experiene(){
+	protected function get_my_experience(){
 		$input=Input::all();
 		$user_id=$input['user_id'];
 		$pdo=DB::connection()->getPdo();		
@@ -200,7 +202,7 @@ class UserController extends Controller {
 	}
 	/**
 	*
-	*
 	*/
+	
 }
 ?>

@@ -13,9 +13,17 @@ class VentureController extends Controller {
 		//input
 		$creator_id=$input['user_id'];
 		$venture_name=$input['name'];
-		$venture_tags=explode(',', $input['tags']);
+		if(isset($input['tags']))
+			$venture_tags=explode(',', $input['tags']);
+		else
+			$venture_tags=array();
+
 		$venture_description=$input['description'];
-		$venture_positions=$input['positions'];
+
+		if(isset($input['positions']))
+			$venture_positions=$input['positions'];
+		else
+			$venture_positions=array();
 		$pdo=DB::connection()->getPdo();
 
 		$sql=$pdo->prepare("INSERT INTO venture (venture_name,venture_description,creator_id,created_at) VALUES (:venture_name,:venture_description,:creator_id,NOW())");
