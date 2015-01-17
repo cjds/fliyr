@@ -38,7 +38,13 @@ class HomeController extends BaseController {
 	protected function get_expertise(){
 		$user_name=Session::get('user_name');
 		$user_id=Session::get('user_id');
-
+		if(!isset($user_id)){
+				return Redirect::to('/');
+			}
+			if($user_id==''){
+				return Redirect::to('/');
+			}
+	
 
 		$pdo=DB::connection()->getPdo();		
 		$query = $pdo->prepare("SELECT  * FROM experience ORDER BY created_at DESC");

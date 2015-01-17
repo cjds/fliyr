@@ -11,7 +11,9 @@ class VentureController extends Controller {
 	{
 		$input=Input::all();
 		//input
-		$creator_id=$input['user_id'];
+		$user_name=Session::get('user_name');
+		$creator_id=Session::get('user_id');
+
 		$venture_name=$input['name'];
 		if(isset($input['tags']))
 			$venture_tags=explode(',', $input['tags']);
