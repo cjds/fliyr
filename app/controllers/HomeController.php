@@ -31,7 +31,7 @@ class HomeController extends BaseController {
 	public function get_ventures(){
 		$user_name=Session::get('user_name');
 		$user_id=Session::get('user_id');
-
+//		return View::make('test');
 		return View::make('magic',array('user_name' => $user_name, 'user_id'=>$user_id ));
 	}
 

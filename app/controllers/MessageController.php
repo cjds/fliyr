@@ -13,10 +13,10 @@ class MessageController extends Controller {
 		$input=Input::all();
 		
 		//TO BE REPLACED BY THIS LAtER
-		//$user_name=Session::get('user_name');
-		//$user_id=Session::get('user_id');	
+		$user_name=Session::get('user_name');
+		$user_id=Session::get('user_id');	
 
-		$user_id=5;
+//		$user_id=5;
 		return	 $this->send_message($user_id,$input['receiver_id'], 'position', $input['message'],$input['position_id'],null);
 
 

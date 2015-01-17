@@ -38,10 +38,11 @@
 
 	<script src="<% URL::asset('js/foundation.min.js')%>"></script>
 	<script src="<% URL::asset('js/foundation/foundation.equalizer.js')%>"></script>
+  <script src="<% URL::asset('js/foundation/foundation.topbar.js')%>"></script>
 
 	<script src="<% URL::asset('js/jquery.form.min.js')%>"></script>
 
-	<link media="all" type="text/css" rel="stylesheet" href="http://fliyr.com/css/foundation.css">
+<link media="all" type="text/css" rel="stylesheet" href="<%URL::asset('css/foundation.css')%>">
 	    <link href="<% URL::asset('css/jquery.tagit.css')%>" rel="stylesheet" type="text/css">
     <link href="<% URL::asset('css/tagit.ui-zendesk.css')%>" rel="stylesheet" type="text/css">
 
@@ -53,63 +54,6 @@
 	.venturebox{
 		overflow-x:hidden;
 		border: 1px solid #999;
-	}
-	.title{
-		color:#58b947;
-	}
-
-	.title input{
-		color:#58b947;
-		font-family: 'Oswald',Helvetica,sans-serif;
-		border: none ;
-		padding:0px;
-		border-bottom:1px solid #58b947;
-	}
-
-	ul.taglist{
-		color:#222;
-			border-width:0px;
-	}
-
-	input.tag {
-		color:#bbb;
-		font-family: 'Oswald',Helvetica,sans-serif;
-		border: none ;
-		border-bottom:1px solid #bbb;	
-	}
-
-	.title input::-webkit-input-placeholder {
-   		color: #58b947;
-	}
-	.title input::-moz-placeholder {  /* Firefox 19+ */
-   		color: #58b947;  
-	}
-	.title input:-ms-input-placeholder {  
-   		color: #58b947;  
-	}
-
-	.venturebox p{
-		font-size: 0.8em;
-		color:#555;
-		text-align: justify;
-	}
-
-	.venturebox p textarea{
-		font-family: 'Oswald',Helvetica,sans-serif;
-		resize:none;
-	}
-
-	.large-offset-half{
-		margin-left:4.15% !important;
-	}
-
-	.large-3-5{
-		width:29.1667% !important;
-	}
-
-	.submitdiv{
-		background-color:#58b947; 
-
 	}
 	.black{
 		background: #333;
@@ -137,32 +81,6 @@
 		.green:hover{
 			background:#58d946;
 		}
-		select{
-			width: 250px;
-		}
-		.ss-q-short{
-			font-family: 'Oswald',sans-serif;
-		   color:#888; 
-		}
-		.accordion > dt,dd{
-			font-family:'Roboto',sans-serif;
-			font-weight: 300;
-			font-size: 0.95em;
-			margin-bottom: 26px;
-			color:#888;
-		}
-
-		dt a{
-			color:#888;
-		}
-
-		@media only screen and (max-width:69em){
-			 .menu{position:relative}
-		}
-		@media only screen and (min-width:68em){
-			.menu{position:fixed}
-		}
-
 		.grey-sidebar{
 			color:#888;
 			font-weight:300;
@@ -275,8 +193,49 @@
 		});
 	})
 	</script>
+
+	<script>
+
+    $(document).foundation();
+	  </script>
 </head>
 <body>
+
+
+
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+    
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="has-dropdown">
+        <a href="#">
+			@if (isset($user_name))
+							<% $user_name %>
+						@else
+							Not logged In?
+						@endif
+			
+        </a>
+        <ul class="dropdown">
+						@if (isset($user_name))
+							<li><a href="<% URL::to('myexpertise')%>">My Expertise</a></li>
+							<li><a href="<% URL::to('myventures')%>"><li>My Ventures</a></li> 
+							<li><a href="<% URL::to('inbox')%>">Message Inbox</a></li>
+							<li><a href="<% URL::to('signout')%>">Sign out</a></li>
+						@else
+							<li><a href="<% URL::to('/')%>">Log In</a></li>
+							<li><a href="<% URL::to('/')%>"><li>Sign Up</a></li> 
+						@endif
+        </ul>
+      </li>
+    </ul>
+    </section>
+  </nav>
+</div>
+
+
 @section('sidebar')
 <div class="column large-2 small-12 menu" >
 			<a href="<% URL::to('/') %>" style=""><img src="http://fliyr.com/img/logo2.png" style="width:123px;height:77px;margin:auto;margin-top:15px;display:block" alt="fliyr"></a>
@@ -297,39 +256,7 @@
      @show
 
 	<div class="large-8 large-offset-2 small-12 columns body" >
-			<div class='row'>
-				<div class='right user-menu'>
-				<div class='column' style="width:200px;margin-top:30px;margin-bottom:30px">
-					<div class="arrow-down right">
-						
-					</div>
-					
-					<span class='right'>
-						@if (isset($user_name))
-							<% $user_name %>
-						@else
-							Not logged In?
-						@endif
-					</span>
-					
-					<br>
-					<div class='user-menu-items right' style="">
-					<ul>
-						@if (isset($user_name))
-							<li><a href="<% URL::to('myexpertise')%>">My Expertise</a></li>
-							<li><a href="<% URL::to('myventures')%>"><li>My Ventures</a></li> 
-							<li><a href="<% URL::to('inbox')%>">Message Inbox</a></li>
-							<li><a href="<% URL::to('signout')%>">Sign out</a></li>
-						@else
-							<li><a href="<% URL::to('/')%>">Log In</a></li>
-							<li><a href="<% URL::to('/')%>"><li>Sign Up</a></li> 
-						@endif
-					</ul>
-					</div>
-				</div>
-				</div>
-				
-			</div>
+	
 			<div class='row'>
             	@yield('content')
             </div>
