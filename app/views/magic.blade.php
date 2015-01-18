@@ -17,4 +17,5 @@
 
 @stop
 
-@include('templates.ventures ')
+@include('templates.ventures')
+@include('templates.messages')

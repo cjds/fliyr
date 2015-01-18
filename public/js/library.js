@@ -1,6 +1,11 @@
 //**************************************************************LIBRAR
 //**************************************************************LIBRA
 
+	var DateFormats = {
+       short: "DD MMMM - YYYY",
+       long: "dddd DD.MM.YYYY HH:mm"	
+	};
+
 	function routingFunction(){
 		var currentURL=window.location.href;
 		var routingArray=currentURL.split('/');
@@ -32,7 +37,7 @@
 
 		}
 		else if(currentURL=='expertise'){
-						$.ajax({
+			$.ajax({
 				url: 'ajax/get-ventures',
 				type: "GET",
 				data: { 
@@ -45,21 +50,128 @@
 			        var Template = Handlebars.compile(Source);
 			        var HTML = Template({ ventures : ventures });
 			        $('#content').html(HTML);
-				}			
-			 	
+				}
 			 });
 
 		}
+		else if(currentURL=='myventures'){
+			$.ajax({
+				url: 'ajax/get-my-ventures',
+				type: "GET",
+				data: { 
+				},
+				success: function(result, textStatus) {
+					data=JSON.parse(result);
+					ventures=data;
+					var Source = $("#venture-Template").html();
+					Handlebars.registerPartial("position", $("#position-partial").html());
+			        var Template = Handlebars.compile(Source);
+			        var HTML = Template({ ventures : ventures });
+			        $('#content').html(HTML);
+				}
+			 });
+		}
+		else if(currentURL=='inbox'){
+			$.ajax({
+				url: 'ajax/get-inbox',
+				type: "GET",
+				data: { 
+
+				},
+				success: function(result, textStatus) {
+					data=JSON.parse(result);
+					console.log(data);
+					var Source = $("#inbox-template").html();
+			        var Template = Handlebars.compile(Source);
+			        var HTML = Template({ thread : data });
+			        $('#content').html(HTML);
+				}
+			});
+		}
+
+		else if(currentURL.substring(0,6)=="thread"){
+			var urlSplit=currentURL.split('#');
+			$.ajax({
+				url: 'ajax/get-message-thread',
+				type: "GET",
+				data: { 
+					message_id:urlSplit[1],
+				},
+				success: function(result, textStatus) {
+					var data=JSON.parse(result);
+					var Source = $("#thread-template").html();
+			        var Template = Handlebars.compile(Source);
+					Handlebars.registerHelper("formatDate", function(datetime, format) {
+					  if (moment) {
+					    var f = DateFormats[format];
+					    return moment(datetime).format(f);
+					  }
+					  else {
+					    return datetime;
+					  }
+					});
+			        var HTML = Template(data);
+			        $('#content').html(HTML);
+				}
+			});
+		}
 	}
 
-//**************************************************************EXPERTISE
-//**************************************************************EXPERTISE
-//**************************************************************EXPERTISE
-//**************************************************************EXPERTISE
-//**************************************************************EXPERTISE
+//**************************************************************TOP BAR
+//**************************************************************TOP BAR
+//**************************************************************TOP BAR
+//**************************************************************TOP BAR
+//**************************************************************TOP BAR
+//**************************************************************TOP BAR
+
+    $(document).foundation('topbar',{ sticky_class : 'sticky', is_hover: true});
+    $('.top-bar ul li a').click(function(e){
+   		if($(this).html()=='My Ventures'){
+    		e.preventDefault();
+    		window.history.pushState("", "My Ventures", "myventures");
+    		routingUpdate();
+   		}
+   		else if($(this).html()=='Message Inbox'){
+   			e.preventDefault();
+    		window.history.pushState("", "My Inbox", "inbox");
+    		routingUpdate();	
+   		}
+
+    })
 
 
+//**************************************************************INBOX
+//**************************************************************INBOX
+//**************************************************************INBOX
+//**************************************************************INBOX
+//**************************************************************INBOX
+$('#content').on('click','.messagethread',function(e){
+	e.preventDefault();
+	var message_id=$(this).parent().attr('data-message-id');
+	window.history.pushState("", "Inbox", "thread#"+message_id);
+    routingUpdate();
+});
+//messagethread
 
+//**************************************************************MESSAGE THREAD
+$('#content').on('click','.replybutton',function(e){
+	e.preventDefault();
+	 $.ajax({
+			url: 'ajax/post-reply',
+			type: "POST",
+			data: { 
+				'receiver_id':$(this).parent().attr('data-receiver-id'),
+				'message_type':$(this).parent().attr('data-message-type'),
+				'message':$(this).parent().find('textarea[name=replytext]').val(),
+				'table_id':$(this).parent().attr('data-table-id'),
+				'reference_message_id':$(this).parent().attr('data-reference-id')
+			},
+			success: function(result, textStatus) {
+				
+				routingUpdate();
+			}	
+	});
+});
 
 
 //**************************************************************VENTURES
@@ -101,7 +213,8 @@ $('#content').on('click','.position-message-btn',function(e){
 		 });
  });
 
- $('#content').on('click','.position-back-btn',function(){
+ $('#content').on('click','.position-back-btn',function(e){
+ 		e.preventDefault();
  		$(this).parent().hide()
  		console.log($(this).parent().attr('class'));
  		$(this).parent().parent().find('.venturedetails').show();
@@ -111,6 +224,7 @@ $('#content').on('click','.create-venture-button',function(){
 		position=data;
 				var Source = $("#create-venture-template").html();
 		        var Template = Handlebars.compile(Source);
+
 		        var HTML = Template(position);
 		        $('#dialog').html(HTML);
 		        $('#dialog').addClass("small");

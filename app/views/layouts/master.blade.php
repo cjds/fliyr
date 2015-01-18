@@ -33,6 +33,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
     <script type='text/javascript' src="<%URL::asset('js/handlebars.js')%>" ></script>
+    <script type='text/javascript' src="<%URL::asset('js/moment.js')%>" ></script>
 
 	<script src="<% URL::asset('js/tag-it.js')%>"></script>
 
@@ -108,7 +109,7 @@
 
 
 <div class=" sticky">
-  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
     
   <section class="top-bar-section">
     <!-- Right Nav Section -->
@@ -159,7 +160,7 @@
 	</div>        
      @show
 
-	<div class="large-8 large-offset-2 small-12 columns body" >
+	<div class="large-8 large-offset-1 small-12 columns body" >
 	
 			<div class='row'>
             	@yield('content')

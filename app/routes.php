@@ -24,10 +24,14 @@ Route::get('/venturelist',function(){
 	return View::make('venturelist');
 });
 
+Route::get('/thread',function(){
+	return View::make('magic');
+});
+
 
 
 Route::get('/inbox',function(){
-	return View::make('inbox');
+	return View::make('magic');
 });
 
 Route::get('/login','HomeController@login');
@@ -58,6 +62,7 @@ Route::post('ajax/add-venture','VentureController@add_venture');
 Route::post('ajax/add-position','VentureController@add_position');
 
 Route::get('ajax/get-ventures','VentureController@get_ventures');
+Route::get('ajax/get-my-ventures','VentureController@get_my_ventures');
 
 Route::get('ajax/get-position-data','VentureController@get_position_data');
 
@@ -65,9 +70,10 @@ Route::get('ajax/get-my-experience','UserController@get_my_experience');
 
 Route::post('ajax/post-message','MessageController@send_message');
 Route::post('ajax/post-position-message','MessageController@post_position_message');
+Route::post('ajax/post-reply','MessageController@post_reply');
 Route::get('ajax/get-inbox','MessageController@get_inbox');
 
-Route::post('ajax/get-message-thread','MessageController@get_message_thread');
+Route::get('ajax/get-message-thread','MessageController@get_message_thread');
 
 /*********************\
 /******ADMIN**********\

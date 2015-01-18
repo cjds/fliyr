@@ -35,21 +35,22 @@ class MessageController extends Controller {
 		$query->bindParam('message', $message);
 		$query->execute();
 		$message_id=$pdo->lastInsertId();
-		$query=$pdo->prepare("UPDATE message SET reference_message_id=:message_id1 WHERE message_id=:message_id");
-		$query->bindParam('message_id', $message_id);
-		$query->bindParam('message_id1', $message_id);
-		$query->execute();
-		
-		
+
+		if($reference_message_id==null){
+			$query=$pdo->prepare("UPDATE message SET reference_message_id=:message_id1 WHERE message_id=:message_id");
+			$query->bindParam('message_id', $message_id);
+			$query->bindParam('message_id1', $message_id);
+			$query->execute();
+		}
 		return "{'result':'ok','data':'".$message_id."'}";
 
 	}
 
 	protected function get_inbox(){
 		$input=Input::all();		
-		$user_id=5;//given by the session
+		$user_id=Session::get('user_id');	
 		$pdo=DB::connection()->getPdo();		
-		$sql= "SELECT m1.*,m4.count
+		$sql= "SELECT m1.*,m4.count, u.*
 			FROM message m1 LEFT JOIN 
 			(SELECT MAX(created_at) as timestamp , reference_message_id  
 			FROM message GROUP BY reference_message_id) m2
@@ -57,11 +58,12 @@ class MessageController extends Controller {
 			LEFT JOIN
 			(SELECT COUNT(message_id) as count , reference_message_id  
 			FROM message WHERE flag=0 GROUP BY reference_message_id ) m4
-			ON m1.message_id=m4.reference_message_id 
+			ON m1.message_id=m4.reference_message_id ,
+			user u 
 			WHERE
-			m1.message_id=m1.reference_message_id
-			ORDER BY timestamp
-			   ";
+			m1.message_id=m1.reference_message_id AND 
+			((u.user_id=m1.sender_id AND u.user_id=:user_id) OR (u.user_id=m1.receiver_id AND u.user_id=:user_id1))
+			ORDER BY timestamp";
 
 		$query=$pdo->prepare($sql);
 		$query->bindParam('user_id',$user_id);
@@ -90,26 +92,44 @@ class MessageController extends Controller {
 
 	protected function get_message_thread(){
 		$input=Input::all();
-		$user_id=1;
-		$other_id=$input['other_id']; 	
+		$user_id=Session::get('user_id');	
+		$message_id=$input['message_id']; 	
 		$pdo=DB::connection()->getPdo();
-		$sql= "SELECT * 
-			   FROM message,user
-			   WHERE (sender_id = :user_id AND receiver_id=:other_id) AND  OR  (sender_id = :other_id1 AND receiver_id=:user_id1) 
-			   ORDER BY created_at";
+		$sql= "SELECT message.*,u.user_id,u.user_name 
+			   FROM message, user u
+			   WHERE reference_message_id=:message_id AND (sender_id=:user_id OR receiver_id=:user_id1)
+			   AND user_id=sender_id
+			   ORDER BY message.created_at";
 		$query=$pdo->prepare($sql);
 		$query->bindParam('user_id',$user_id);
-		$query->bindParam('other_id',$other_id);
 		$query->bindParam('user_id1',$user_id);
-		$query->bindParam('other_id1',$other_id);		
+		$query->bindParam('message_id',$message_id);		
 		$query->execute();
+		$data['thread']=($query->fetchAll());
 		
-		return json_encode($query->fetchAll());	
+		$sql= "SELECT * 
+			   FROM message
+			   WHERE reference_message_id=:message_id
+			   ORDER BY created_at";
+		$query=$pdo->prepare($sql);
+		$query->bindParam('message_id',$message_id);		
+		$query->execute();
+
+		$data['data']=($query->fetchAll());
+		return json_encode($data);
 	}
 
 	protected function flag_message(){
 		$input=Input::all();
 		$user_id=$input['message_id'];
 	}
+
+	protected function post_reply(){
+		$input=Input::all();
+		$user_id=Session::get('user_id');
+		$receiver_id=$input['receiver_id'];
+		$this->send_message($user_id,$receiver_id,$input['message_type'], $input['message'],$input['table_id'],$input['reference_message_id']);
+	}
+
 }
 ?>

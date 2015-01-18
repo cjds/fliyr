@@ -94,6 +94,19 @@ class VentureController extends Controller {
 
 	}
 
+	protected function get_my_ventures(){
+		$session =new SessionModel;
+		$redirection=$session->handle_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
+		
+		$ventures=new Ventures;
+
+		return $ventures->get_mine($session->get_user_id());
+
+	}
+
 	protected function get_position_data(){
 		$pdo=DB::connection()->getPdo();
 		$input=Input::all();
