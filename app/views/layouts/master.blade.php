@@ -37,8 +37,6 @@
 	<script src="<% URL::asset('js/tag-it.js')%>"></script>
 
 	<script src="<% URL::asset('js/foundation.min.js')%>"></script>
-	<script src="<% URL::asset('js/foundation/foundation.equalizer.js')%>"></script>
-  <script src="<% URL::asset('js/foundation/foundation.topbar.js')%>"></script>
 
 	<script src="<% URL::asset('js/jquery.form.min.js')%>"></script>
 
@@ -103,108 +101,14 @@
 			text-transform:uppercase
 		}
 
-		.ng-modal-overlay {
-  /* A dark translucent div that covers the whole screen */
-  position:absolute;
-  z-index:9999;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background-color:#000000;
-  opacity: 0.8;
-}
-.ng-modal-dialog {
-  /* A centered div above the overlay with a box shadow. */
-  z-index:10000;
-  position: absolute;
-  width: 50%; /* Default */
-
-  /* Center the dialog */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-
-  background-color: #fff;
-  box-shadow: 4px 4px 80px #000;
-}
-.ng-modal-dialog-content {
-  padding:10px;
-  text-align: left;
-}
-.ng-modal-close {
-  position: absolute;
-  top: 3px;
-  right: 5px;
-  padding: 5px;
-  cursor: pointer;
-  font-size: 120%;
-  display: inline-block;
-  font-weight: bold;
-  font-family: 'arial', 'sans-serif';
-}
-
-
-	.arrow-down {
-		width: 0; 
-		height: 0; 
-		border-left: 7px solid transparent;
-		border-right: 7px solid transparent;
-		border-top: 12px solid #58b946;
-		display: inline-block;
-		margin-top: 7px;
-		margin-left: 3px;
-	}
-
-	.user-menu:hover{
-		cursor: pointer;
-	}
-
-	.user-menu-items ul{
-		list-style: none;
-		font-size: 0.8em;
-		margin: 0px;
-	}
-	.user-menu-items ul li a{
-		color: #58b946;
-	}
-	.user-menu-items ul li :hover{
-		color: #78d966;
-	}	
-	.user-menu-items{
-		display:none;
-		z-index:2;
-		position:absolute;
-		padding: 6px;
-		width: 150px;
-		margin-left: 20px;
-		border: 1px solid #555;
-		border-radius: 8px;
-		background-color:#fff;
-	}
 	</style>
-
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$('.user-menu').hover(function(){
-			$('.user-menu-items').toggle();
-		});
-	})
-	</script>
-
-	<script>
-
-    $(document).foundation();
-	  </script>
 </head>
 <body>
 
 
 
-<div class="contain-to-grid sticky">
-  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+<div class=" sticky">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on">
     
   <section class="top-bar-section">
     <!-- Right Nav Section -->
@@ -221,12 +125,12 @@
         <ul class="dropdown">
 						@if (isset($user_name))
 							<li><a href="<% URL::to('myexpertise')%>">My Expertise</a></li>
-							<li><a href="<% URL::to('myventures')%>"><li>My Ventures</a></li> 
+							<li><a href="<% URL::to('myventures')%>">My Ventures</a></li> 
 							<li><a href="<% URL::to('inbox')%>">Message Inbox</a></li>
 							<li><a href="<% URL::to('signout')%>">Sign out</a></li>
 						@else
 							<li><a href="<% URL::to('/')%>">Log In</a></li>
-							<li><a href="<% URL::to('/')%>"><li>Sign Up</a></li> 
+							<li><a href="<% URL::to('/')%>">Sign Up</a></li> 
 						@endif
         </ul>
       </li>
@@ -263,19 +167,10 @@
     </div>
 
 </body>
-
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$('.user-menu').mouseover(function(){
-			$('.user-menu-items').show();
-		});
-		$('.user-menu').mouseout(function(){
-			$('.user-menu-items').hide();
-		});
-	})
-	</script>
 	<script src="<% URL::asset('js/library.js')%>"></script>    
-
+<script type="text/javascript">
+	$(document).foundation();
+</script>
 
 </html>
 

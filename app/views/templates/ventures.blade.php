@@ -3,6 +3,7 @@
     <br>
 	{{#each ventures}}
     <div class='large-3 small-12 venturebox' data-venture-id={{venture_id}}>
+    <div class='venturedetails'>
     	NAME:{{venture_name}}<br />
     	DESC: {{venture_description}}<br />
     	    	<h2>Positions</h2>
@@ -14,12 +15,14 @@
     		{{/each}}
     		</ul>
     	{{/each}}
-    	
-    </div>
+    </div>	
     {{#each positions}}
     		    {{> position}}
     	{{/each}}
+    </div>
+
     {{/each}}
+
 </script>
 
 <script id="create-venture-template" type="text/x-handlebars-template">

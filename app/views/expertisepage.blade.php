@@ -26,9 +26,9 @@
 @section('content')
     <div class='row' data-equalizer>
         	@foreach ($experience as $expert)
-
-    	<div class='columns large-3-5 large-offset-half medium-5  small-12  panel venturebox' data-equalizer-watch>
-					<span class='title' ><%expert['</span>
+        	<?php $name=explode(';',$expert['user_name'])?>
+    	<div class='columns large-3 medium-5  small-12  venturebox' data-equalizer-watch>
+					<span class='title' ><% $name[0] %> </span>
 					<a href='#'><img src="<% URL::asset('img/email.svg')%>" style='width:20px;height:auto;margin-right:10px' class='right'/></a>
 			<p>
 				<%$expert['description']%>

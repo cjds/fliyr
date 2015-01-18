@@ -192,7 +192,9 @@
 				            // data.redirect contains the string URL to redirect to
 				            window.location.href = "ventures";
 				        }
-
+				        else{
+				        	$('#loginerrortext').html(result.message);
+				        }
 					}
 				});
 					
@@ -203,7 +205,7 @@
 				var email=$(this).find('input[name=email]').val();
 				var password=$(this).find('input[name=password]').val();
 				var confirmpassword=$(this).find('input[name=confirmpassword]').val();
-				var name=$(this).find('input[name=name]').val();
+				var name=$(this).find('input[name=name]').val()+';'+$(this).find('input[name=lastname]').val();
 				var request = $.ajax({
 				  url: "ajax/sign-up",
 				  type: "POST",
@@ -212,6 +214,9 @@
 				  		result=JSON.parse(data);
 				        if (result.result=='ok'){
 				        	 window.location.href = result.redirect;
+				        }
+				        else{
+				        	$('#signuperrortext').html(result.message);
 				        }
 					}				  
 				});
@@ -241,7 +246,7 @@
 				<p class='venturetext' style="background-color:rgba(255,255,255,0.65);text-align:center">Build your venture team</p>
 			</div>
 		<form id="loginform">
-
+			<span class='errortext' id='loginerrortext'></span>
 		<div class='row' style='margin:auto'>	
 				<input type='text' class='biginput' name="email" placeholder="E-Mail"/>
 		</div>
@@ -256,9 +261,13 @@
 		</div>
 			</form>
 				<form id='signupform' style="display:none">
+				<span class='errortext' id='signuperrortext'></span>
 				<div class='row'>
-					<input type='text' class='biginput' name='name' placeholder="First Name, Last Name"/>
+					<input type='text' class='biginput' name='name' placeholder="First Name"/>
 				</div>
+				<div class='row'>
+					<input type='text' class='biginput' name='lastname' placeholder="Last Name"/>
+				</div>				
 				<div class='row'>
 				<input type='text' class='biginput' name='email' placeholder="E-Mail"/>
 				</div>

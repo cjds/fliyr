@@ -24,7 +24,9 @@
 </style>
 
 @section('content')
-
+<div class='row notenteredtext' style="display:none"> 
+Hi, please update your own experience before you can see the rest of the site
+</div>
 <div class='row'>
 		<div class='columns large-3-5 large-offset-half medium-5  small-12  panel venturebox' data-equalizer-watch>
 		<form id='experienceform'>
@@ -53,19 +55,23 @@
 		$('.taginput').tagit();
 
 		$.ajax({
-			url: "<% URL::to('ajax/get-my-experience')%>",
-  			type: "GET",
-  			data: { user_id :user_id }
-  		}).done(function(msg){
-  			var data=jQuery.parseJSON(msg);
-  			var tags="";
-  			console.log(data.tags)
-  			for(var i=0;i<data.tags.length;i++){
-  				$('.venturebox input[name=taginput]').tagit('createTag', data.tags[i]['tag_name']);
-  			}
-  			$('.venturebox textarea[name=description]').val(data.description);
-  			//$('.venturebox textarea[name=taginput]').val(tags);
-  		});
+				url: "<% URL::to('ajax/get-my-experience')%>",
+	  			type: "GET",
+	  			data: { user_id :user_id }
+  			})
+		 .done(function(msg){
+		  			var data=jQuery.parseJSON(msg);
+		  			var tags="";
+		  			console.log(data.tags)
+		  			for(var i=0;i<data.tags.length;i++){
+		  				$('.venturebox input[name=taginput]').tagit('createTag', data.tags[i]['tag_name']);
+		  			}
+		  			$('.venturebox textarea[name=description]').val(data.description);
+		  			//$('.venturebox textarea[name=taginput]').val(tags);
+  			})
+		 .fail(function(msg){
+		 			$('.notenteredtext').show();
+		 	});
 
   		$('#experienceform').submit(function(e){
   			e.preventDefault();
@@ -80,6 +86,8 @@
 	  			alert('Awesome! Updated');
 	  		});
   		});
+
+
 
 	});
 	$(document).foundation();

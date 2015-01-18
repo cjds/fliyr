@@ -29,25 +29,24 @@ class HomeController extends BaseController {
 	}
 
 	public function get_ventures(){
-		$user_name=Session::get('user_name');
-		$user_id=Session::get('user_id');
+		$session =new SessionModel;
+		$redirection=$session->handle_redirection();
+		if($redirection!=null)
+			return $redirection;
+	
 //		return View::make('test');
-		return View::make('magic',array('user_name' => $user_name, 'user_id'=>$user_id ));
+		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
 	}
 
 	protected function get_expertise(){
-		$user_name=Session::get('user_name');
-		$user_id=Session::get('user_id');
-		if(!isset($user_id)){
-				return Redirect::to('/');
-			}
-			if($user_id==''){
-				return Redirect::to('/');
-			}
+		$session =new SessionModel;
+		$redirection=$session->handle_redirection();
+		if($redirection!=null)
+			return $redirection;
 	
 
 		$pdo=DB::connection()->getPdo();		
-		$query = $pdo->prepare("SELECT  * FROM experience ORDER BY created_at DESC");
+		$query = $pdo->prepare("SELECT  experience.*,user.user_name FROM experience,user WHERE user.user_id=experience.user_id ORDER BY created_at DESC");
 		$query->execute();
 		$row=$query->fetchAll();
 		foreach ($row as $key => $value) {
@@ -57,27 +56,9 @@ class HomeController extends BaseController {
 			$row[$key]['tags']=$query->fetchAll();			
 		}
 
-
-		if(!isset($user_id)){
-			return Redirect::to('/');
-		}
-		if($user_id==''){
-			return Redirect::to('/');
-		}
-		return View::make('expertisepage', array('user_name' => $user_name,'user_id'=>$user_id,'experience'=>$row));	
+		return View::make('expertisepage', array('user_name' => $session->get_user_name(),'user_id'=>$session->get_user_id(),'experience'=>$row));	
 	}
 
-	public function createventure(){
-		$user_name=Session::get('user_name');
-		$user_id=Session::get('user_id');
-		if(!isset($user_id)){
-			return Redirect::to('/');
-		}
-		if($user_id==''){
-			return Redirect::to('/');
-		}
-		return View::make('createventure', array('user_name' => $user_name));
-	}
 
 	protected function my_expertise(){
 		$user_name=Session::get('user_name');
@@ -98,12 +79,10 @@ class HomeController extends BaseController {
 		$user_name=Session::get('user_name');
 		$user_id=Session::get('user_id');
 
-		if(!isset($user_id)){
-			return Redirect::to('/');
-		}
-		if($user_id==''){
-			return Redirect::to('/');
-		}
+		$session =new SessionModel;
+		$redirection=$session->handle_redirection();
+		if($redirection!=null)
+			return $redirection;
 
 		$pdo=DB::connection()->getPdo();		
 		$query = $pdo->prepare("SELECT  * FROM venture where creator_id=:user_id ORDER BY created_at DESC");
@@ -132,10 +111,6 @@ class HomeController extends BaseController {
 		return View::make('myventures', array('user_name' => $user_name,'user_id'=>$user_id,'ventures'=>$row));
 	}
 	
-	protected function inbox(){
-
-	}
-
 	protected function signout(){
 		Session::flush();
 		return Redirect::to('/');

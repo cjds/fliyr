@@ -81,7 +81,6 @@ $(document).ready(function(){
 
 
 $('#content').on('click','.position-message-btn',function(e){
-		console.log("SD");
  		var position_id=$(this).parent().attr('data-position-id');
  		 $.ajax({
 			url: 'ajax/get-position-data',
@@ -103,8 +102,9 @@ $('#content').on('click','.position-message-btn',function(e){
  });
 
  $('#content').on('click','.position-back-btn',function(){
- 		$(".position[data-position-id="+$(this).attr('data-position-id')+"]").show();
- 		$(this).parent().hide();
+ 		$(this).parent().hide()
+ 		console.log($(this).parent().attr('class'));
+ 		$(this).parent().parent().find('.venturedetails').show();
  });
 
 $('#content').on('click','.create-venture-button',function(){

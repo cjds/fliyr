@@ -17,20 +17,24 @@ class UserController extends Controller {
 
 		$pdo=DB::connection()->getPdo();
 
-		$query = $pdo->prepare("SELECT  * FROM user WHERE user_email = :user_email");
-		$query->bindParam(':user_email', $user_email);
-		$query->execute();
-		$row=$query->fetchAll();	
-		if(!$row){
-			$query=$pdo->prepare("INSERT INTO user (user_name,user_email,user_password) VALUES (:user_name,:user_email,:user_password)");
-			$query->bindParam('user_name', $user_name);
-			$query->bindParam('user_email', $user_email);
-			$query->bindParam('user_password', $user_password);
-			$query->execute();		
+		$user_model=new User();
+
+		$user=$user_model->find_user_by_email($user_email);
+		if($user){
+			return '{"result": "fail","message":"This e-mail already exists"}';
+		}
+		
+		$user=$user_model->find_user_by_username($user_name);
+		if($user){
+			return '{"result": "fail","message":"This username already exists"}';;		
+		}
+		
+		$user=$user_model->add_user($user_name,$user_email,$user_password);
+		if($user){
 			return '{"result": "ok","redirect":"signupsuccess"}';;
 		}
 		else{
-			return '{"result": "fail","message":"This e-mail already exists"}';;		
+			return '{"result": "fail","message":"There was an unknown error"}';;		
 		}
 	}
 
@@ -39,23 +43,21 @@ class UserController extends Controller {
 		$pdo=DB::connection()->getPdo();		
 		$input=Input::all();
 		$user_email=$input['user_email'];
-		$user_password=$input['password'];	
-		$query = $pdo->prepare("SELECT  * FROM user WHERE user_email = :user_email");
-		$query->bindParam(':user_email', $user_email);
-		$query->execute();
-		$row=$query->fetchAll();	
-		if($row){
+		$user_password=$input['password'];
+		$user_model=new User();
+		$user=$user_model->find_user_by_email($user_email);		
+		if($user){
 
-			if(password_verify($user_password,$row[0]['user_password'])){
-				Session::put('user_name', $row[0]['user_name']);
-				Session::put('user_id', $row[0]['user_id']);
-				return '{"result": "ok"}';
+			if(password_verify($user_password,$user['user_password'])){
+				Session::put('user_name', $user['user_name']);
+				Session::put('user_id', $user['user_id']);
+				return '{"result": "ok","redirect":"ventures"}';
 			}
 			else
-				return '{"result": "fail"}';
+				return '{"result": "fail","message":"The username or password was incorrect"}';
 		}
 		else{
-			return '{"result": "fail"}';
+			return '{"result": "fail","message":"The username or password was incorrect"}';
 		}
 	}
 
@@ -158,16 +160,6 @@ class UserController extends Controller {
 		return 'ok';
 
 	}
-
-	/**
-	 * Edits the current experience of the user
-	 *
-	 * @return void
-	 */
-	protected function edit_experience(){
-
-	}
-
 
 	protected function get_experience(){
 		$pdo=DB::connection()->getPdo();		

@@ -31,7 +31,6 @@ Route::get('/inbox',function(){
 });
 
 Route::get('/login','HomeController@login');
-Route::get('/createventure','HomeController@createventure');
 Route::get('/expertise','HomeController@get_expertise');
 Route::get('/myexpertise','HomeController@my_expertise');
 Route::get('/myventures','HomeController@my_ventures');
