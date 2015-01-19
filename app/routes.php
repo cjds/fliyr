@@ -24,15 +24,11 @@ Route::get('/venturelist',function(){
 	return View::make('venturelist');
 });
 
-Route::get('/thread',function(){
-	return View::make('magic');
-});
+Route::get('/thread','HomeController@thread');
 
 
 
-Route::get('/inbox',function(){
-	return View::make('magic');
-});
+Route::get('/inbox','HomeController@inbox');
 
 Route::get('/login','HomeController@login');
 Route::get('/expertise','HomeController@get_expertise');

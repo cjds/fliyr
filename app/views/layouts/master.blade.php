@@ -113,6 +113,7 @@
     
   <section class="top-bar-section">
     <!-- Right Nav Section -->
+    <img src="<%URL::asset('img/fliyr_logo_Dev.jpg')%>" style="height:40px;width:auto" />
     <ul class="right">
       <li class="has-dropdown">
         <a href="#">
@@ -143,10 +144,9 @@
 
 @section('sidebar')
 <div class="column large-2 small-12 menu" >
-			<a href="<% URL::to('/') %>" style=""><img src="http://fliyr.com/img/logo2.png" style="width:123px;height:77px;margin:auto;margin-top:15px;display:block" alt="fliyr"></a>
-			
-			<p style="font-family:Oswald;text-transform:uppercase;color:#969696;margin:auto;display:block;width:95px;font-weight:300;font-size:1rem"> Georgia Tech</p>
-		
+		<a href="<% URL::to('/') %>" style="">
+			<img src="<%URL::asset('img/fliyr_logo_Dev2.jpg')%>" style="width:140px;height:auto;margin:auto;margin-top:15px;display:block" alt="fliyr">
+		</a>		
 		<div class="large-12 columns">
 		<hr style='margin-left:-30px'>
 		</div>
@@ -155,7 +155,10 @@
 	<div class="large-12 columns ">
 	<a href="<% URL::to('ventures') %>" class="grey-sidebar">Ventures</a>
 	<a href="<% URL::to('expertise') %>" class="green-sidebar">Expertise </a>
-	<a href="<% URL::to('about-us') %>" class="grey-sidebar">Our Service </a>
+	<hr />
+	<a href="<% URL::to('about-us') %>" class="grey-sidebar">About </a>
+	<a href="<% URL::to('about-us') %>" class="grey-sidebar">Contact </a>
+	
 	</div>
 	</div>        
      @show

@@ -63,7 +63,7 @@ class MessageController extends Controller {
 			WHERE
 			m1.message_id=m1.reference_message_id AND 
 			((u.user_id=m1.sender_id AND u.user_id=:user_id) OR (u.user_id=m1.receiver_id AND u.user_id=:user_id1))
-			ORDER BY timestamp";
+			ORDER BY timestamp DESC";
 
 		$query=$pdo->prepare($sql);
 		$query->bindParam('user_id',$user_id);
@@ -115,7 +115,12 @@ class MessageController extends Controller {
 		$query->bindParam('message_id',$message_id);		
 		$query->execute();
 
-		$data['data']=($query->fetchAll());
+		$data['data']=($query->fetch());
+		if($data['data']['sender_id']==$user_id)
+			$data['data']['receiver']=$data['data']['receiver_id'];
+		else
+			$data['data']['receiver']=$data['data']['sender_id'];
+		
 		return json_encode($data);
 	}
 

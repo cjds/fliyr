@@ -36,7 +36,7 @@
     {{#data}}
     
     <div class='row' >
-        <form id='replyform' data-receiver-id={{receiver_id}} data-message-type={{message_type}} data-table-id={{table_id}} data-reference-id={{reference_message_id}}>
+        <form id='replyform' data-receiver-id={{receiver}} data-message-type={{message_type}} data-table-id={{table_id}} data-reference-id={{reference_message_id}}>
             <textarea name='replytext'></textarea>
             <button class='replybutton'>Reply</button>
         </form>
