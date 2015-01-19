@@ -55,7 +55,7 @@ Hi, please update your own experience before you can see the rest of the site
 		$('.taginput').tagit();
 
 		$.ajax({
-				url: "<% URL::to('ajax/get-my-experience')%>",
+				url: "<% URL::to('ajax/get-my-expertise')%>",
 	  			type: "GET",
 	  			data: { user_id :user_id }
   			})

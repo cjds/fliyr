@@ -59,20 +59,7 @@ class HomeController extends BaseController {
 		$redirection=$session->handle_redirection();
 		if($redirection!=null)
 			return $redirection;
-	
-
-		$pdo=DB::connection()->getPdo();		
-		$query = $pdo->prepare("SELECT  experience.*,user.user_name FROM experience,user WHERE user.user_id=experience.user_id ORDER BY created_at DESC");
-		$query->execute();
-		$row=$query->fetchAll();
-		foreach ($row as $key => $value) {
-			$query = $pdo->prepare("SELECT  tag_name FROM experience_tag,tag WHERE experience_id=:experience_id AND experience_tag.tag_id=tag.tag_id ORDER BY experience_tag.created_at DESC");
-			$query->bindParam(':experience_id', $value['experience_id']);
-			$query->execute();
-			$row[$key]['tags']=$query->fetchAll();			
-		}
-
-		return View::make('expertisepage', array('user_name' => $session->get_user_name(),'user_id'=>$session->get_user_id(),'experience'=>$row));	
+		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
 	}
 
 

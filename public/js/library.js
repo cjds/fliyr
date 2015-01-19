@@ -38,17 +38,15 @@
 		}
 		else if(currentURL=='expertise'){
 			$.ajax({
-				url: 'ajax/get-ventures',
+				url: 'ajax/get-expertise',
 				type: "GET",
 				data: { 
 				},
 				success: function(result, textStatus) {
 					data=JSON.parse(result);
-					ventures=data;
-					var Source = $("#venture-Template").html();
-					Handlebars.registerPartial("position", $("#position-partial").html());
+					var Source = $("#expertise-template").html();
 			        var Template = Handlebars.compile(Source);
-			        var HTML = Template({ ventures : ventures });
+			        var HTML = Template({ expertise : data });
 			        $('#content').html(HTML);
 				}
 			 });
@@ -167,7 +165,7 @@ $('#content').on('click','.replybutton',function(e){
 				'reference_message_id':$(this).parent().attr('data-reference-id')
 			},
 			success: function(result, textStatus) {
-				
+
 				routingUpdate();
 			}	
 	});
@@ -186,14 +184,15 @@ $(document).ready(function(){
  $('#content').on('click','.position-link',function(e){
  		e.preventDefault();
  		$(".position[data-position-id="+$(this).attr('data-position-id')+"]").show();
- 		$(this).parent().hide();
+ 		$(this).parent().parent().parent().toggleClass('flip');
+ 		$(this).parent().parent().hide(500);
  		
  		
  });
 
 
 $('#content').on('click','.position-message-btn',function(e){
- 		var position_id=$(this).parent().attr('data-position-id');
+ 		var position_id=$(this).parent().parent().attr('data-position-id');
  		 $.ajax({
 			url: 'ajax/get-position-data',
 			type: "GET",
@@ -215,9 +214,9 @@ $('#content').on('click','.position-message-btn',function(e){
 
  $('#content').on('click','.position-back-btn',function(e){
  		e.preventDefault();
- 		$(this).parent().hide()
- 		console.log($(this).parent().attr('class'));
- 		$(this).parent().parent().find('.venturedetails').show();
+ 		$(this).parent().parent().hide();
+ 		$(this).parent().parent().parent().toggleClass('flip');
+ 		$(this).parent().parent().parent().find('.venturedetails').show(500);
  });
 
 $('#content').on('click','.create-venture-button',function(){

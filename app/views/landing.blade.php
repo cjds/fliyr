@@ -146,37 +146,6 @@
 	    <script> 
         // wait for the DOM to be loaded 
         $(document).ready(function() { 
-        	//var person = prompt("Please Enter The Password", "");
-        	if(false){//person!=""){//Hummingbird92614
-				$('.magic').text("Sorry! You're not authorized. Wait a week for the prelaunch");
-        	}
-        	$('.magic').css("display",'block');
-        	var images=[
-        	'<?php echo asset('img/b1.JPG')?>','<?php echo asset('img/b2.JPG')?>','<?php echo asset('img/b3.JPG')?>','<?php echo asset('img/b4.JPG')?>','<?php echo asset('img/b5.JPG')?>',]
-        	var count=0;
-        	var change_background = function() {
-        				
-  					
-  					$(".magic2").stop();	
-  					$(".magic2").animate({'opacity':0},500,function(){
-  							$( ".magic2" ).attr('src',images[count]);			
-	  							$( ".magic2" ).css('opacity',1.0);
-  							$( ".magic1" ).attr('src',images[(count+1>images.length-1?0:count+1)]);				
-  							
-  						});
-  					
-  					
-  					if(count<images.length-1)count++;
-  					else count=0;
-  					
-  					
-  					//$('body').slow({backgroundColor:'#fff'},2000);
-
-			};
-
-			var interval = 4000  ; // where X is your every X minutes
-
-			setInterval(change_background, interval);
 
 			$("#loginform").submit(function(e){
 				e.preventDefault();
@@ -232,14 +201,10 @@
      
 </head>
 <body>
-<div class="column large-12 " style="display:block;width:100%;height:100%;z-index:-1;position:absolute;overflow:hidden;;margin:0;padding:0">
-<img class="magic1" src="<?php echo asset('img/b2.JPG')?>" style="min-width:908px;width:100%;overflow:hidden;z-index:0;top:0;left:0;position:absolute"/>
-<img class="magic2" src="<?php echo asset('img/b1.JPG')?>" style="min-width:908px;width:100%;overflow:hidden;z-index:1;top:0;left:0;position:absolute"/>
 
-</div>
 <div class="column large-4 large-offset-4 medium-6 medium-offset-3 small-12 " style="display:block;z-index:1;background-color:rgba(255,255,255,0.8);border:1px solid #ccc;margin-top:8%;">
 	<div class="row" >
-			<%HTML::image('img/logo2.png', 'Fliyr',array('style'=>'width:auto;height:120px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%>
+			<%HTML::image('img/fliyr_logo_Dev2.jpg', 'Fliyr',array('style'=>'width:auto;height:120px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%>
 	</div>
 	
 		<div class='row'>

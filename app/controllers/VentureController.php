@@ -36,7 +36,6 @@ class VentureController extends Controller {
 		$venture_id=$pdo->lastInsertId();
 
 		foreach ($venture_tags as $tag) {
-			$tag=substr($tag, 0, -1);
 			$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 			$query->bindParam(':tag', $tag);
 			$query->execute();

@@ -102,6 +102,35 @@
 			text-transform:uppercase
 		}
 
+		.venturebox{
+			padding-left: 10px;
+			padding-right: 10px;
+			min-height: 300px;
+			-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
+			-mozilla-transition: all 0.5s;
+    		transition: all 0.5s;
+
+		}
+
+		.flip
+		{
+		transform: rotateY(180deg);
+		}
+
+		.venturebox .row{
+			margin-left: 0em;
+			margin-right: 0em;
+		}
+
+		.taglist{
+			list-style: none;
+
+		}
+
+		.taglist li{
+				display: inline-block;
+		}
+
 	</style>
 </head>
 <body>

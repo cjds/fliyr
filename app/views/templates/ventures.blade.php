@@ -2,18 +2,29 @@
     <button class='create-venture-button'>Create Venture</button>
     <br>
 	{{#each ventures}}
-    <div class='large-3 small-12 venturebox' data-venture-id={{venture_id}}>
+    <div class='large-4 columns small-12 venturebox' data-venture-id={{venture_id}}>
     <div class='venturedetails'>
-    	NAME:{{venture_name}}<br />
-    	DESC: {{venture_description}}<br />
-    	    	<h2>Positions</h2>
+        <div class='row'  style='text-align:center'>
+    	{{venture_name}}
+        </div>
+    	<div class='row'>
+            {{venture_description}}
+        </div>
+        <div class='row' style='text-align:center'>
+            Positions
+        </div>
+
     	{{#each positions}}
-    		<a href="#" class='position-link' data-position-id={{position_id}}>{{position_name}}</a>
-    		<ul style='display:inline-block'>
-    		{{#each tags}}
-    			<li>{{tag_name}}</li>
-    		{{/each}}
-    		</ul>
+            <div class='row'>
+        		<a href="#" class='position-link' data-position-id={{position_id}}>{{position_name}} > </a>
+            </div>
+            <div class='row'>
+        		<ul class='taglist'>
+        		{{#each tags}}
+        			<li>#{{tag_name}}</li>
+        		{{/each}}
+        		</ul>
+            </div>
     	{{/each}}
     </div>	
     {{#each positions}}
@@ -22,7 +33,7 @@
     </div>
 
     {{/each}}
-
+    <div class='column' />
 </script>
 
 <script id="create-venture-template" type="text/x-handlebars-template">
@@ -83,16 +94,23 @@
 </script>
 
 <script id="position-partial" type="text/x-handlebars-template">
-  <div class="position" data-position-id={{position_id}} style='display:none'>
-    <h2>{{position_name}}</h2>
-    		{{position_name}}<br/>
+  <div class="position row flip" data-position-id={{position_id}} style='display:none'>
+    
+            <div class='row'  style='text-align:center'>
+               <a href="#" class='position-back-btn'><  {{position_name}}</a>
+            </div>
+            <div class='row'>
     		{{position_description}}
-    		<ul>
-    		{{#each tags}}
-    			<li>{{tag_name}}</li>
-    		{{/each}}
-    		</ul>
-    	<a href="#" class='position-back-btn'>Back</a>
-    	<a href="#" class='position-message-btn'>Message</a>
+    		</div>
+            <div class='row'>
+                <ul class='taglist'>
+                {{#each tags}}
+                    <li>#{{tag_name}}</li>
+                {{/each}}
+                </ul>
+            </div>
+    	<div class='row'>
+    	<button class='position-message-btn'>Message</button>
+        </div>
   </div>
 </script>

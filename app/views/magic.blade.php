@@ -18,4 +18,5 @@
 @stop
 
 @include('templates.ventures')
+@include('templates.expertise')
 @include('templates.messages')

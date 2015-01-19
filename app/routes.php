@@ -47,6 +47,7 @@ Route::post('ajax/login','UserController@login');
 
 Route::get('ajax/user-data','UserController@user_data');
 
+
 //Add experience
 Route::post('ajax/add-experience','UserController@add_experience');
 //Edit User experiences
@@ -62,7 +63,8 @@ Route::get('ajax/get-my-ventures','VentureController@get_my_ventures');
 
 Route::get('ajax/get-position-data','VentureController@get_position_data');
 
-Route::get('ajax/get-my-experience','UserController@get_my_experience');
+Route::get('ajax/get-my-expertise','UserController@get_my_experience');
+Route::get('ajax/get-expertise','ExpertController@get_expertise');
 
 Route::post('ajax/post-message','MessageController@send_message');
 Route::post('ajax/post-position-message','MessageController@post_position_message');
