@@ -74,6 +74,7 @@ Route::get('ajax/get-inbox','MessageController@get_inbox');
 Route::get('ajax/get-user-data','UserController@get_user_data');
 Route::get('ajax/get-message-thread','MessageController@get_message_thread');
 
+Route::post('ajax/post-experience-message','MessageController@post_experience_message');
 /*********************\
 /******ADMIN**********\
 /*********************/

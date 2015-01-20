@@ -1,11 +1,16 @@
 <script id="venture-Template" type="text/x-handlebars-template">
 
     <div class='row'>
-        <button class='create-venture-button' style='margin-top:30px'>Create Venture</button>
+        <div class='columns'>
+        <button class='light-green-button create-venture-button' style='margin-top:30px;margin-left:12px'>Create Venture</button>
+        </div>
+    </div>
+    <div class='create-venture-div large-4 columns small-12 medium-6'>
+
     </div>
 	{{#each ventures}}
 
-    <div class='large-4 columns small-12 '  style='padding-left:12px;padding-right:12px;padding-bottom:24px;'>
+    <div class='large-4 columns small-12 medium-6'  style='padding-left:12px;padding-right:12px;padding-bottom:24px;'>
 
     <div class='venturebox' data-venture-id={{venture_id}}>
      {{#if creator}}
@@ -52,7 +57,7 @@
 
 <script id="create-venture-template" type="text/x-handlebars-template">
     
-   <div class='columns  small-12  panel venturebox ' data-equalizer-watch>
+   <div class='columns  small-12  venturebox ' data-equalizer-watch>
     <div class='addventurebox' >
         <form id='ventureform'>
             <span class='title' >
@@ -64,7 +69,7 @@
             <div class='positionlist'>
             </div>
             <p class='addposition'>
-                <a href="#">Add Position (3 Remaining)</a>
+                <a href="#">Create Position (3 Remaining)</a>
             </p>
         </form>
     </div>
@@ -83,11 +88,8 @@
         </form>
     </div>
     
-<div class='row'>
-    <div class='submitdiv columns small-12'>
-        <input class='right  tiny finishbtn black button' value='DONE' type='submit' />
-        <input class='right  tiny cancelbtn red button' value='CANCEL' type='submit' />
-    </div>
+<div class='small-12 columns submitdiv'>
+        <input class='right  tiny button finishbtn light-green-button' value='Post Fliyr' type='submit' />
 </div>
 </div>
 

@@ -30,14 +30,13 @@
 <script id="send-expertise-message-template" type="text/x-handlebars-template">
 <div class='row' data-user-id={{user_id}}>
 <span>{{user_name}}</span>
-</div>
 <hr>
 <div class='row'>
 <input type='text' name='subject' placeholder='Subject'/>
 </div>
 <input type='hidden' name='user-id' value={{user_id}} />
 <textarea name='message' placeholder='Message'></textarea><br>
-<button class='submit-expertise-message' >Submit</button>
+<button class='submit-expertise-message'>Submit</button>
 </div>
 <a class='close-reveal-modal'>&#215;</a>
 </script>

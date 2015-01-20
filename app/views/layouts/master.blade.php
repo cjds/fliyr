@@ -73,6 +73,14 @@
  		background-color:#a00 !important;
 	}	
 
+
+	.light-green-button{
+		padding: 5px;
+		font-size: 12px;
+		padding-right: 15px;
+		padding-left: 15px;
+
+	}
 		.green{
 			background:#2AD6AF;
 		}
@@ -81,28 +89,31 @@
 			background:#4AF6CE;
 		}
 		.grey-sidebar{
-			color:#888;
+			color:#7d7d7d;
 			font-family: 'Roboto','Helvetica',sans-serif;
 			font-weight:300;
+			font-size: 12px;
 			margin-left:auto;
 			margin-right:auto;
 			margin-top:2px;
 			display:block;
 			width:95px;
-			text-transform:uppercase
+			text-transform:uppercase;
+			text-align: center;
 		}
 
 		.green-sidebar{
 			color:#2AD6AE;
-			font-weight:400;
+			font-weight:500;
 			font-family: 'Roboto','Helvetica',sans-serif;
-
+			font-size: 12px;
 			margin-left:auto;
 			margin-right:auto;
 			margin-top:2px;
 			display:block;
 			width:95px;
-			text-transform:uppercase
+			text-transform:uppercase;
+			text-align: center;
 		}
 
 		.venturebox{
@@ -170,6 +181,45 @@
 				display: inline-block;
 		}
 
+		.left-menu a{
+			margin-top: 8px;
+
+		}
+
+		.addposition a{
+			font-size: 12px;
+			font-weight: 400;
+			color: #2AD6AF;
+		}
+
+		.create-venture-div .submitdiv{
+			position: absolute;
+			top: -12px;
+			right: 12px;
+			padding: 0px;
+		}
+		.create-venture-div .venturebox{
+			padding: 5px;
+			padding-left: 20px;
+			padding-right: 20px;
+			padding-top: 16px;
+		}
+
+		#ventureform input[name=venture]{
+			font-weight: 400;
+			color:#888;
+			font-size: 16px;
+			text-align: center;
+			height: 22px;
+			margin-bottom: 7px;
+		}
+
+		#ventureform textarea{
+			font-weight: 300;
+			font-style: italic;
+			font-size: 12px;
+
+		}
 	</style>
 </head>
 <body>
@@ -182,7 +232,7 @@
 	    <li class="name">
 	      <h1>
 	      	<a href="<% URL::to('/')%>">
-	      		<img src="<%URL::asset('img/fliyr_logo.png')%>" style="height:30px;margin-top:6px;margin-left:10px;width:auto" />
+	      		<img src="<%URL::asset('img/fliyr_logo.png')%>" style="height:30px;margin-top:6px;margin-left:75px;width:auto" />
 	      	</a>
 	      </h1>
 	     </li>
@@ -228,19 +278,16 @@
 
 
 @section('sidebar')
-<div class="column large-2 small-12 menu" >
-		<a href="<% URL::to('/') %>" style="">
-			<img src="<%URL::asset('img/fliyr_logo2.png')%>" style="width:140px;height:auto;margin:auto;margin-top:15px;display:block" alt="fliyr">
-		</a>		
-		<div class="large-12 columns">
-		<hr style='margin-left:-30px'>
-		</div>
+	<div class="column large-2 small-12 menu" >
+			<a href="<% URL::to('/') %>" style="">
+				<img src="<%URL::asset('img/fliyr_logo2.png')%>" style="width:55px;height:auto;margin:auto;margin-top:15px;display:block;margin-bottom:10px" alt="fliyr">
+			</a>		
 	
 	
 	<div class="large-12 columns left-menu hide-for-small">
 	<a href="<% URL::to('ventures') %>" class="venturelink grey-sidebar">Ventures</a>
 	<a href="<% URL::to('expertise') %>" class="expertiselink green-sidebar">Expertise</a>
-	<hr style='margin-left:-30px'>
+	<hr style='padding-left:20px;padding-right:20px;'>
 	<a href="<% URL::to('about-us') %>" class=" grey-sidebar">About </a>
 	
 	</div>

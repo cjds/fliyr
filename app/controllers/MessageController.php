@@ -16,15 +16,30 @@ class MessageController extends Controller {
 		$user_name=Session::get('user_name');
 		$user_id=Session::get('user_id');	
 
-//		$user_id=5;
 		return	 $this->send_message($user_id,$input['receiver_id'], 'position', $input['message'],$input['position_id'],null);
-
-
 	}
+
+
+	protected function post_experience_message(){
+			$pdo=DB::connection()->getPdo();		
+		$input=Input::all();
+		
+		$user_name=Session::get('user_name');
+		$user_id=Session::get('user_id');	
+
+		$message=$input['subject'].';'.$input['message'];
+
+		return	 $this->send_message($user_id,$input['user_id'], 'experience',$message,$input['user_id'],null);
+	}
+
+
 	protected function send_message($sender_id,$receiver_id, $message_type, $message,$table_id,$reference_message_id=null)
 	{
 		$pdo=DB::connection()->getPdo();		
 		$input=Input::all();
+
+		$subject='';
+
 		$query=$pdo->prepare("INSERT INTO message (sender_id,receiver_id,message_type,table_id,reference_message_id,message,created_at) 
 				VALUES (:sender_id,:receiver_id,:message_type,:table_id,:reference_message_id,:message,NOW())");
 		$query->bindParam('sender_id', $sender_id);
@@ -50,27 +65,41 @@ class MessageController extends Controller {
 		$input=Input::all();		
 		$user_id=Session::get('user_id');	
 		$pdo=DB::connection()->getPdo();		
-		$sql= "SELECT m1.*,m4.count, u.*
+		$sql= "SELECT m1.sender_id,m1.receiver_id,m1.message_id AS message_id,m1.message_type,m1.table_id,m2.message,m2.timestamp,m4.count, u1.user_name as sender_name,u2.user_name as receiver_name
 			FROM message m1 LEFT JOIN 
-			(SELECT MAX(created_at) as timestamp , reference_message_id  
-			FROM message GROUP BY reference_message_id) m2
+			(SELECT timestamp,message,mo.message_id, mm.reference_message_id
+			FROM (SELECT MAX(created_at) as timestamp, reference_message_id  
+			FROM message  GROUP BY reference_message_id) mm
+            JOIN message mo ON mo.created_at=mm.timestamp) m2
 			ON m1.message_id=m2.reference_message_id
 			LEFT JOIN
 			(SELECT COUNT(message_id) as count , reference_message_id  
-			FROM message WHERE flag=0 GROUP BY reference_message_id ) m4
+			FROM message WHERE flag=0 AND receiver_id=:user_id GROUP BY reference_message_id ) m4
 			ON m1.message_id=m4.reference_message_id ,
-			user u 
+			user u1,user u2 
 			WHERE
 			m1.message_id=m1.reference_message_id AND 
-			((u.user_id=m1.sender_id AND u.user_id=:user_id) OR (u.user_id=m1.receiver_id AND u.user_id=:user_id1))
+			(m1.sender_id=:user_id1 OR m1.receiver_id=:user_id2) AND
+			(u1.user_id=m1.sender_id) AND (u2.user_id=m1.receiver_id)
 			ORDER BY timestamp DESC";
 
 		$query=$pdo->prepare($sql);
 		$query->bindParam('user_id',$user_id);
 		$query->bindParam('user_id1',$user_id);
+		$query->bindParam('user_id2',$user_id);
 		$query->execute();
 		$row=$query->fetchAll();
 		foreach ($row as $key => $value) {
+
+		
+		if($row[$key]['sender_id']==$user_id){
+			$name=explode(';',$row[$key]['receiver_name']);
+			$row[$key]['user_name']=$name[0];
+		}
+		else{
+			$name=explode(';',$row[$key]['sender_name']);
+			$row[$key]['user_name']=$name[0];
+		}
 			if($value['message_type']=='position'){
 				$sql= "SELECT position_name,venture_name
 				   FROM position p,venture v
@@ -82,7 +111,7 @@ class MessageController extends Controller {
 				$row[$key]['subject']=$row2['position_name']." : ".$row2['venture_name'];
 			}
 			else{
-				$array = explode('~', $row[$key]['message'], 2); //will break if ~ is used in title cancel
+				$array = explode(';', $row[$key]['message'], 2); //will break if ~ is used in title cancel
 				$row[$key]['message']=$array[1];
 				$row[$key]['subject']=$array[0];
 			}

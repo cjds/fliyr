@@ -6,6 +6,7 @@
        long: "dddd DD.MM.YYYY HH:mm"	
 	};
 
+	var created_venture=false;
 
 	function menuHandler(e){
    		if($(this).html()=='My Ventures'){
@@ -168,7 +169,7 @@
 //**************************************************************INBOX
 $('#content').on('click','.messagethread',function(e){
 	e.preventDefault();
-	var message_id=$(this).parent().attr('data-message-id');
+	var message_id=$(this).parent().parent().attr('data-message-id');
 	window.history.pushState("", "Inbox", "thread#"+message_id);
     routingUpdate();
 });
@@ -224,16 +225,16 @@ $('#content').on('click','.replybutton',function(e){
 		 });
  });
 
- $('#content').on('click','.submit-expertise-message',function(){
-
+ $('#dialog').on('click','.submit-expertise-message',function(){
+ 	console.log('sd');
  		var user_id=$(this).parent().attr('data-user-id');
  		 $.ajax({
-			url: 'ajax/post-position-message',
+			url: 'ajax/post-experience-message',
 			type: "POST",
 			data: { 
-				position_id:$(this).parent().find('input[name=position-id]').val(),
+				subject:$(this).parent().find('input[name=subject]').val(),
 				message : $(this).parent().find('textarea[name=message]').val(),
-				receiver_id:$(this).parent().find('input[name=receiver-id]').val()
+				user_id:user_id
 			},
 			success: function(result, textStatus) {
 		        $('#dialog').foundation('reveal','close');
@@ -290,42 +291,34 @@ $('#content').on('click','.position-message-btn',function(e){
  });
 
 $('#content').on('click','.create-venture-button',function(){
+	if(!created_venture){
 		position=data;
-				var Source = $("#create-venture-template").html();
-		        var Template = Handlebars.compile(Source);
+		var Source = $("#create-venture-template").html();
+        var Template = Handlebars.compile(Source);
+        created_venture=true;
+        var HTML = Template(position);
+        $('#content').find('div').eq(2).prepend(HTML);
+        $('.create-venture-button').html('Cancel');
+        //$('#dialog').html(HTML);
+        //$('#dialog').addClass("small");
+        //$('#dialog').foundation('reveal','open');        
+		$('.taginput').tagit({
+			"preprocessTag":function(val) {
+	  			if (!val) { return ''; }
+	  			return '#'+val;
 
-		        var HTML = Template(position);
-		        $('#dialog').html(HTML);
-		        $('#dialog').addClass("small");
-		        $('#dialog').foundation('reveal','open');        
-				$('.taginput').tagit({
-					"preprocessTag":function(val) {
-			  			if (!val) { return ''; }
-			  			return '#'+val;
-
-					}
-				});
+			}
+		});
+	}
+	else{
+		$('#content').find('div').eq(2).html('');
+		created_venture=false;
+		$('.create-venture-button').html('Create Venture');
+	}
 });
 
 
 
-$('#content').on('click','.create-venture-button',function(){
-		position=data;
-				var Source = $("#create-venture-template").html();
-		        var Template = Handlebars.compile(Source);
-
-		        var HTML = Template(position);
-		        $('#dialog').html(HTML);
-		        $('#dialog').addClass("small");
-		        $('#dialog').foundation('reveal','open');        
-				$('.taginput').tagit({
-					"preprocessTag":function(val) {
-			  			if (!val) { return ''; }
-			  			return '#'+val;
-
-					}
-				});
-});
 
 
 $('#dialog').on('click','.close-reveal-modal',function(){	
@@ -365,7 +358,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 	var positions=[];
 	var venture={};
 	var venturestate=true;
-	$('#dialog').on('click','.addposition a',function(e){
+	$('#content').on('click','.addposition a',function(e){
 		e.preventDefault();
 		$('.addpositionbox').show();
 		$('.addventurebox').hide();
@@ -373,7 +366,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 		venturestate=false;
 	});
 
-	$('#dialog').on('click','#ventureform .cancelbtn',function(e){
+	$('#content').on('click','#ventureform .cancelbtn',function(e){
 		e.preventDefault();
 	    positions.splice($(this).attr('data-id'), 1);
 	    $('.positionlist').html('');
@@ -383,7 +376,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 		$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
 	});
 
-	$('#dialog').on('click','.finishbtn',function(e){
+	$('#content').on('click','.finishbtn',function(e){
 		console.log($('#ventureform .taginput').val());
 		if(venturestate){
 			$.ajax({
@@ -428,7 +421,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 	});
 
 
-	$('#dialog').on('click','.cancelbtn',function(e){
+	$('#content').on('click','.cancelbtn',function(e){
 		e.preventDefault();
 
 		if(venturestate){

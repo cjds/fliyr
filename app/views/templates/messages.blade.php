@@ -1,22 +1,20 @@
 
 <script id="inbox-template" type="text/x-handlebars-template">
 	<h1>Inbox</h1>
-	{{#each thread}}
-
-    <div class='large-6 small-12' data-sender-id={{sender_id}} data-receiver-id={{receiver_id}} data-message-id={{message_id}} >
-	    <div class='row'>
-	    <b>{{subject}}</b>
-	    </div>
-	    <div class='row'>
-    		{{user_name}}
-    	</div>
-    	<a href="#" class='messagethread'>Thread </a>
-
+	
+    <div class='large-19 small-12' >
+    <table role="grid" >
+    {{#each thread}}
+    <tr data-sender-id={{sender_id}} data-receiver-id={{receiver_id}} data-message-id={{message_id}} >
+    <td>{{user_name}}</td>
+    <td>{{subject}}</td>
+    <td><a href="#" class='messagethread'>{{message}}</a></td>
+    <tr>
+    {{/each}}
+    </table>
     </div>
 
     <hr>
-    	
-    {{/each}}
 </script>
 
 
