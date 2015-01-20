@@ -305,6 +305,8 @@ $('#content').on('click','.create-venture-button',function(){
 		$('.taginput').tagit({
 			"preprocessTag":function(val) {
 	  			if (!val) { return ''; }
+	  			if(val.charAt(0)=='#')
+	  				return val;
 	  			return '#'+val;
 
 			}

@@ -205,7 +205,7 @@
 			padding-top: 16px;
 		}
 
-		#ventureform input[name=venture]{
+		#ventureform input[name=venture],#positionform input[name=position]{
 			font-weight: 400;
 			color:#888;
 			font-size: 16px;
@@ -214,7 +214,7 @@
 			margin-bottom: 7px;
 		}
 
-		#ventureform textarea{
+		#ventureform textarea,#positionform textarea{
 			font-weight: 300;
 			font-style: italic;
 			font-size: 12px;

@@ -135,7 +135,11 @@ class MessageController extends Controller {
 		$query->bindParam('message_id',$message_id);		
 		$query->execute();
 		$data['thread']=($query->fetchAll());
-		
+		foreach ($data['thread'] as $key => $value) {
+			if($value['user_id']==$user_id)
+				$data['thread'][$key]['user_name']='me';
+		}
+
 		$sql= "SELECT * 
 			   FROM message
 			   WHERE reference_message_id=:message_id
