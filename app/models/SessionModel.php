@@ -25,14 +25,17 @@ class SessionModel {
 	}
 
 	function get_session_data(){
-		$user_name=Session::get('user_name');
+		$user_name=explode(';',Session::get('user_name'));
+		$user_name=$user_name[0];
 		$user_id=Session::get('user_id');
 		
 		return ['user_name'=>$user_name,'user_id'=>$user_id];
 	}
 
 	function get_user_name(){
-		return Session::get('user_name');
+		$user_name=explode(';',Session::get('user_name'));
+		$user_name=$user_name[0];
+		return $user_name;
 	}
 
 	function get_user_id(){

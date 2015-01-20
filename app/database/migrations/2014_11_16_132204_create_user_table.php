@@ -19,6 +19,7 @@ class CreateUserTable extends Migration {
 			$table->string('user_password');
 			$table->boolean('confirmed')->default(false);
 			$table->boolean('banned')->default(false);			
+			$table->integer('admin');			
 			$table->timestamps();
 		});
 	}

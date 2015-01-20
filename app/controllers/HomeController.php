@@ -25,6 +25,11 @@ class HomeController extends BaseController {
 	}
 
 	public function login(){
+		$user_id=Session::get('user_id');
+		
+		if(isset($user_id)){
+				return Redirect::to('/ventures');
+		}
 		return View::make('landing');
 	}
 

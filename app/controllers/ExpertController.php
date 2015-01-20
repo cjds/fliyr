@@ -10,6 +10,8 @@ class ExpertController extends BaseController{
 		$query->execute();
 		$row=$query->fetchAll();
 		foreach ($row as $key => $value) {
+			$name=explode(';', $row[$key]['user_name']);
+			$row[$key]['user_name']=$name[0];
 			$query = $pdo->prepare("SELECT  tag_name FROM experience_tag,tag WHERE experience_id=:experience_id AND experience_tag.tag_id=tag.tag_id ORDER BY experience_tag.created_at DESC");
 			$query->bindParam(':experience_id', $value['experience_id']);
 			$query->execute();

@@ -26,7 +26,7 @@
 	<meta property="og:site_name" content="Fliyr" />
 		
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<link href='http://fonts.googleapis.com/css?family=Roboto:700,300' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:500,300,300italic,400' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="http://fliyr.com/img/icon.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
@@ -52,7 +52,7 @@
 	}
 	.venturebox{
 		overflow-x:hidden;
-		border: 1px solid #999;
+		border: 1px solid #7d7d7d;
 	}
 	.black{
 		background: #333;
@@ -74,7 +74,7 @@
 	}	
 
 		.green{
-			background:#2AD6AE;
+			background:#2AD6AF;
 		}
 
 		.green:hover{
@@ -94,8 +94,9 @@
 
 		.green-sidebar{
 			color:#2AD6AE;
-			font-weight:300;
+			font-weight:400;
 			font-family: 'Roboto','Helvetica',sans-serif;
+
 			margin-left:auto;
 			margin-right:auto;
 			margin-top:2px;
@@ -105,26 +106,50 @@
 		}
 
 		.venturebox{
-			padding-left: 2px;
-			padding-right: 2px;
-			margin-bottom: 10px;
+			padding-left: 24px;
+			padding-top: 16px;
+			padding-right: 24px;
 			min-height: 280px;
+			overflow: hidden;
 			-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
 			-mozilla-transition: all 0.5s;
     		transition: all 0.5s;
 		}
 
 		.venturedetails .title,.expertisetitle .title{
-			font-weight: 700;
-			font-size: 1.2em;
+			font-weight: 400;
+			font-size: 16px;
 			text-align: center;
+			margin-bottom: 6px;
+			color:#7d7d7d;
 		}
 
+		.card-description{
+			font-style: italic;
+			font-weight: 300;
+			font-size: 12px;
+			line-height: 15px;
+			color:#7d7d7d;
+		}
+
+		.position-title a{
+			color:#2AD6AF;
+			font-weight: 400;
+			font-size: 12px;	
+		}
+
+		.taglist{
+			font-size: 12px;
+			font-weight: 300;
+			color:#7d7d7d;
+		}
 
 		.venturedetails .positiontitle,.expertisetitle .positiontitle{
-			font-weight: 300;
-			font-size: 1.1em;
+			font-weight: 400;
+			font-size: 14px;
 			text-align: center;
+			margin-top: 6px;
+			color:#7d7d7d;
 		}
 
 		.flip{
@@ -213,17 +238,16 @@
 	
 	
 	<div class="large-12 columns left-menu hide-for-small">
-	<a href="<% URL::to('ventures') %>" class="grey-sidebar">Ventures</a>
-	<a href="<% URL::to('expertise') %>" class="green-sidebar">Expertise</a>
+	<a href="<% URL::to('ventures') %>" class="venturelink grey-sidebar">Ventures</a>
+	<a href="<% URL::to('expertise') %>" class="expertiselink green-sidebar">Expertise</a>
 	<hr style='margin-left:-30px'>
-	<a href="<% URL::to('about-us') %>" class="grey-sidebar">About </a>
-	<a href="<% URL::to('about-us') %>" class="grey-sidebar">Contact </a>
+	<a href="<% URL::to('about-us') %>" class=" grey-sidebar">About </a>
 	
 	</div>
 	</div>        
      @show
 
-	<div class="large-8 large-offset-1 small-12 columns body" >
+	<div class="large-10 small-12 columns body" >
 	
 			<div class='row'>
             	@yield('content')

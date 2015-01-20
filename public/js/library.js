@@ -56,6 +56,11 @@
 			        var Template = Handlebars.compile(Source);
 			        var HTML = Template({ ventures : ventures });
 			        $('#content').html(HTML);
+			        $('.expertiselink').addClass('grey-sidebar');
+			        $('.expertiselink').removeClass('green-sidebar');
+			        $('.venturelink').removeClass('grey-sidebar');
+			        $('.venturelink').addClass('green-sidebar');
+					$('.venturebox').height($('.venturebox').width());
 				}			
 			 	
 			 });
@@ -73,6 +78,10 @@
 			        var Template = Handlebars.compile(Source);
 			        var HTML = Template({ expertise : data });
 			        $('#content').html(HTML);
+			        $('.expertiselink').addClass('green-sidebar');
+			        $('.expertiselink').removeClass('grey-sidebar');
+			        $('.venturelink').removeClass('green-sidebar');
+			        $('.venturelink').addClass('grey-sidebar');
 				}
 			 });
 
@@ -186,6 +195,53 @@ $('#content').on('click','.replybutton',function(e){
 });
 
 
+//**************************************************************EXPERTISE
+//**************************************************************EXPERTISE
+//**************************************************************EXPERTISE
+//**************************************************************EXPERTISE
+//**************************************************************EXPERTISE
+//**************************************************************EXPERTISE
+
+
+ $('#content').on('click','.expert-message-btn',function(){
+ 		var user_id=$(this).parent().parent().attr('data-user-id');
+ 		 $.ajax({
+			url: 'ajax/get-user-data',
+			type: "GET",
+			data: { 
+				user_id:user_id
+			},
+			success: function(result, textStatus) {
+				data=JSON.parse(result);
+				console.log(data);
+				position=data;
+				var Source = $("#send-expertise-message-template").html();
+		        var Template = Handlebars.compile(Source);
+		        var HTML = Template(position);
+		        $('#dialog').html(HTML);
+		        $('#dialog').foundation('reveal','open');
+			}	
+		 });
+ });
+
+ $('#content').on('click','.submit-expertise-message',function(){
+
+ 		var user_id=$(this).parent().attr('data-user-id');
+ 		 $.ajax({
+			url: 'ajax/post-position-message',
+			type: "POST",
+			data: { 
+				position_id:$(this).parent().find('input[name=position-id]').val(),
+				message : $(this).parent().find('textarea[name=message]').val(),
+				receiver_id:$(this).parent().find('input[name=receiver-id]').val()
+			},
+			success: function(result, textStatus) {
+		        $('#dialog').foundation('reveal','close');
+			}	
+		 });
+ });
+
+
 //**************************************************************VENTURES
 //**************************************************************VENTURES
 //**************************************************************VENTURES
@@ -250,6 +306,27 @@ $('#content').on('click','.create-venture-button',function(){
 					}
 				});
 });
+
+
+
+$('#content').on('click','.create-venture-button',function(){
+		position=data;
+				var Source = $("#create-venture-template").html();
+		        var Template = Handlebars.compile(Source);
+
+		        var HTML = Template(position);
+		        $('#dialog').html(HTML);
+		        $('#dialog').addClass("small");
+		        $('#dialog').foundation('reveal','open');        
+				$('.taginput').tagit({
+					"preprocessTag":function(val) {
+			  			if (!val) { return ''; }
+			  			return '#'+val;
+
+					}
+				});
+});
+
 
 $('#dialog').on('click','.close-reveal-modal',function(){	
 	$('#dialog').foundation('reveal','close');

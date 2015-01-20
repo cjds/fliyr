@@ -4,12 +4,19 @@ class Ventures{
 
 	public function get_all(){
 		
+		$session = new SessionModel;
 		$pdo=DB::connection()->getPdo();		
 		$query = $pdo->prepare("SELECT  * FROM venture ORDER BY created_at DESC");
 		$query->execute();
 		$row=$query->fetchAll();
 		foreach ($row as $key => $value) {
-			$query = $pdo->prepare("SELECT  * FROM position WHERE venture_id=:venture_id ORDER BY created_at DESC");
+			//check for owner
+			if($value['creator_id']==$session->get_user_id()){
+				$row[$key]['creator']=true;
+			}
+			else
+				$row[$key]['creator']=false;	
+			$query = $pdo->prepare("SELECT  * FROM position WHERE venture_id=:venture_id AND (deleted_at IS NULL) ORDER BY created_at DESC");
 			$query->bindParam(':venture_id', $value['venture_id']);
 			$query->execute();
 			$row[$key]['positions']=$query->fetchAll();

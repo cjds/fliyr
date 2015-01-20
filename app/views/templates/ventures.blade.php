@@ -4,21 +4,30 @@
         <button class='create-venture-button' style='margin-top:30px'>Create Venture</button>
     </div>
 	{{#each ventures}}
-    <div class='large-4 columns small-12 ' >
+
+    <div class='large-4 columns small-12 '  style='padding-left:12px;padding-right:12px;padding-bottom:24px;'>
+
     <div class='venturebox' data-venture-id={{venture_id}}>
+     {{#if creator}}
+        <div class='row'>
+            <a href="#" class='venture-edit-button'>
+                <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto'/>
+            </a>
+        </div>
+        {{/if}}
+    
     <div class='venturedetails'>
         <div class='row title' style='text-align:center'>
     	{{venture_name}}
         </div>
-    	<div class='row'>
+    	<div class='row card-description'>
             {{venture_description}}
         </div>
         <div class='row positiontitle' style='text-align:center'>
-            Positions
+            Positions Needed
         </div>
-
     	{{#each positions}}
-            <div class='row'>
+            <div class='row position-title'>
         		<a href="#" class='position-link' data-position-id={{position_id}}>{{position_name}} > </a>
             </div>
             <div class='row'>
@@ -28,9 +37,9 @@
         		{{/each}}
         		</ul>
             </div>
-        
+        {{/each}}
 
-    	{{/each}}
+        
     </div>	
     {{#each positions}}
     		    {{> position}}

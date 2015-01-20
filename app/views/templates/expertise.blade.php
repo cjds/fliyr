@@ -2,7 +2,7 @@
 <script id="expertise-template" type="text/x-handlebars-template">
 <div class='row' style='margin-top:20px'>
           {{#each expertise}}
-        <div class='columns large-4 medium-5  small-12 expertisetitle' >
+        <div class='columns large-4 medium-5  small-12 expertisetitle' data-user-id='{{user_id}}' >
             <div class='venturebox'>
                 <div class='row title'>{{user_name}}</div>
                 <div class='row'>
@@ -16,7 +16,9 @@
                         <a href="#">{{tag_name}}</a>
                     {{/each}}
                 </div>
+                <button class='expert-message-btn'>Message</button>
             </div>
+
         </div>
     {{/each}}
     <div class='column' />
@@ -24,6 +26,21 @@
 
 </script>
 
+
+<script id="send-expertise-message-template" type="text/x-handlebars-template">
+<div class='row' data-user-id={{user_id}}>
+<span>{{user_name}}</span>
+</div>
+<hr>
+<div class='row'>
+<input type='text' name='subject' placeholder='Subject'/>
+</div>
+<input type='hidden' name='user-id' value={{user_id}} />
+<textarea name='message' placeholder='Message'></textarea><br>
+<button class='submit-expertise-message' >Submit</button>
+</div>
+<a class='close-reveal-modal'>&#215;</a>
+</script>
 
 <script id="my-expertise-template" type="text/x-handlebars-template">
 	<h1>Inbox</h1>
@@ -46,6 +63,7 @@
             <button class='replybutton'>Reply</button>
         </form>
     </div>
+
     {{/data}}
     
 </script>

@@ -28,60 +28,124 @@ class VentureController extends Controller {
 			$venture_positions=array();
 		$pdo=DB::connection()->getPdo();
 
-		$sql=$pdo->prepare("INSERT INTO venture (venture_name,venture_description,creator_id,created_at) VALUES (:venture_name,:venture_description,:creator_id,NOW())");
-		$sql->bindParam(':venture_name', $venture_name);
-		$sql->bindParam(':venture_description', $venture_description);
-		$sql->bindParam(':creator_id', $creator_id);
-		$sql->execute();
-		$venture_id=$pdo->lastInsertId();
-
-		foreach ($venture_tags as $tag) {
-			$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
-			$query->bindParam(':tag', $tag);
-			$query->execute();
-			$row=$query->fetchAll();
-			$tag_id=-1;
-			if(!$row){
-				$sql="INSERT INTO tag (tag_name,tag_description) VALUES ('".$tag."','')";
-				$pdo->exec( $sql );
-				$tag_id=$pdo->lastInsertId();	
-			}
-			else{
-				$tag_id=$row[0]['tag_id'];
-			}
-			$sql="INSERT INTO venture_tag (venture_id,tag_id) VALUES ('".$venture_id."','".$tag_id."')";
+		if(isset($input['venture_id'])){
+			$venture_id=$input['venture_id'];
+			$sql=$pdo->prepare("UPDATE venture SET venture_name=:venture_name,venture_description=:venture_description,creator_id=:creator_id,updated_at=NOW() WHERE venture_id=:venture_id");			
+			$sql->bindParam(':venture_name', $venture_name);
+			$sql->bindParam(':venture_description', $venture_description);
+			$sql->bindParam(':creator_id', $creator_id);
+			$sql->bindParam(':venture_id', $venture_id);
+			$sql->execute();
+			$sql="DELETE FROM venture_tag WHERE venture_id=".$venture_id;
 			$pdo->exec( $sql );
-		}
-
-		foreach ($venture_positions as $position) {
-			$query = $pdo->prepare("INSERT INTO position (position_name,position_description,venture_id,created_at) VALUES (:position_name,:position_description,:venture_id,NOW())");
-			$query->bindParam(':position_name', $position['name']);
-			$query->bindParam(':position_description', $position['description']);
-			$query->bindParam(':venture_id', $venture_id);
-			$query->execute();
-			$position_id=$pdo->lastInsertId();
-			
-			foreach (explode(',',$position['tags']) as $tag) {
-				$tag=substr($tag, 0, -1);
+			foreach ($venture_tags as $tag) {
 				$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 				$query->bindParam(':tag', $tag);
 				$query->execute();
 				$row=$query->fetchAll();
 				$tag_id=-1;
 				if(!$row){
-					$query = $pdo->prepare("INSERT INTO tag (tag_name,tag_description) VALUES (:tag,'')");
-					$query->bindParam(':tag', $tag);
-					$query->execute();
+					$sql="INSERT INTO tag (tag_name,tag_description) VALUES ('".$tag."','')";
+					$pdo->exec( $sql );
 					$tag_id=$pdo->lastInsertId();	
 				}
 				else{
 					$tag_id=$row[0]['tag_id'];
 				}
-				$query = $pdo->prepare("INSERT INTO position_tag (position_id,tag_id) VALUES (:position_id,:tag_id)");
-				$query->bindParam(':position_id', $position_id);
-				$query->bindParam(':tag_id', $tag_id);
+				$sql="INSERT INTO venture_tag (experience_id,tag_id) VALUES ('".$experience_id."','".$tag_id."')";
+				$pdo->exec( $sql );
+			}
+
+
+			$sql="UPDATE position SET deleted_at=NOW() WHERE venture_id=".$venture_id;
+			$pdo->exec( $sql );
+			foreach ($venture_positions as $position) {
+				$query = $pdo->prepare("INSERT INTO position (position_name,position_description,venture_id,created_at) VALUES (:position_name,:position_description,:venture_id,NOW())");
+				$query->bindParam(':position_name', $position['name']);
+				$query->bindParam(':position_description', $position['description']);
+				$query->bindParam(':venture_id', $venture_id);
 				$query->execute();
+				$position_id=$pdo->lastInsertId();
+				
+				foreach (explode(',',$position['tags']) as $tag) {
+					$tag=substr($tag, 0, -1);
+					$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
+					$query->bindParam(':tag', $tag);
+					$query->execute();
+					$row=$query->fetchAll();
+					$tag_id=-1;
+					if(!$row){
+						$query = $pdo->prepare("INSERT INTO tag (tag_name,tag_description) VALUES (:tag,'')");
+						$query->bindParam(':tag', $tag);
+						$query->execute();
+						$tag_id=$pdo->lastInsertId();	
+					}
+					else{
+						$tag_id=$row[0]['tag_id'];
+					}
+					$query = $pdo->prepare("INSERT INTO position_tag (position_id,tag_id) VALUES (:position_id,:tag_id)");
+					$query->bindParam(':position_id', $position_id);
+					$query->bindParam(':tag_id', $tag_id);
+					$query->execute();
+					}
+			}
+		}
+		else{
+			$sql=$pdo->prepare("INSERT INTO venture (venture_name,venture_description,creator_id,created_at) VALUES (:venture_name,:venture_description,:creator_id,NOW())");
+			$sql->bindParam(':venture_name', $venture_name);
+			$sql->bindParam(':venture_description', $venture_description);
+			$sql->bindParam(':creator_id', $creator_id);
+			$sql->execute();
+			$venture_id=$pdo->lastInsertId();
+
+			foreach ($venture_tags as $tag) {
+				$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
+				$query->bindParam(':tag', $tag);
+				$query->execute();
+				$row=$query->fetchAll();
+				$tag_id=-1;
+				if(!$row){
+					$sql="INSERT INTO tag (tag_name,tag_description) VALUES ('".$tag."','')";
+					$pdo->exec( $sql );
+					$tag_id=$pdo->lastInsertId();	
 				}
+				else{
+					$tag_id=$row[0]['tag_id'];
+				}
+				$sql="INSERT INTO venture_tag (venture_id,tag_id) VALUES ('".$venture_id."','".$tag_id."')";
+				$pdo->exec( $sql );
+			}
+
+			foreach ($venture_positions as $position) {
+				$query = $pdo->prepare("INSERT INTO position (position_name,position_description,venture_id,created_at) VALUES (:position_name,:position_description,:venture_id,NOW())");
+				$query->bindParam(':position_name', $position['name']);
+				$query->bindParam(':position_description', $position['description']);
+				$query->bindParam(':venture_id', $venture_id);
+				$query->execute();
+				$position_id=$pdo->lastInsertId();
+				
+				foreach (explode(',',$position['tags']) as $tag) {
+					$tag=substr($tag, 0, -1);
+					$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
+					$query->bindParam(':tag', $tag);
+					$query->execute();
+					$row=$query->fetchAll();
+					$tag_id=-1;
+					if(!$row){
+						$query = $pdo->prepare("INSERT INTO tag (tag_name,tag_description) VALUES (:tag,'')");
+						$query->bindParam(':tag', $tag);
+						$query->execute();
+						$tag_id=$pdo->lastInsertId();	
+					}
+					else{
+						$tag_id=$row[0]['tag_id'];
+					}
+					$query = $pdo->prepare("INSERT INTO position_tag (position_id,tag_id) VALUES (:position_id,:tag_id)");
+					$query->bindParam(':position_id', $position_id);
+					$query->bindParam(':tag_id', $tag_id);
+					$query->execute();
+					}
+			}
 		}
 
 		return 'ok';
