@@ -65,7 +65,7 @@ class MessageController extends Controller {
 		$input=Input::all();		
 		$user_id=Session::get('user_id');	
 		$pdo=DB::connection()->getPdo();		
-		$sql= "SELECT m1.sender_id,m1.receiver_id,m1.message_id AS message_id,m1.message_type,m1.table_id,m2.message,m2.timestamp,m4.count, u1.user_name as sender_name,u2.user_name as receiver_name
+		$sql= "SELECT m1.sender_id,m1.receiver_id,m1.message as ref_message, m1.message_id AS message_id,m1.message_type,m1.table_id,m2.message,m2.timestamp,m4.count, u1.user_name as sender_name,u2.user_name as receiver_name
 			FROM message m1 LEFT JOIN 
 			(SELECT timestamp,message,mo.message_id, mm.reference_message_id
 			FROM (SELECT MAX(created_at) as timestamp, reference_message_id  
@@ -111,8 +111,8 @@ class MessageController extends Controller {
 				$row[$key]['subject']=$row2['position_name']." : ".$row2['venture_name'];
 			}
 			else{
-				$array = explode(';', $row[$key]['message'], 2); //will break if ~ is used in title cancel
-				$row[$key]['message']=$array[1];
+				$array = explode(';', $row[$key]['ref_message'], 2); //will break if ~ is used in title cancel
+//				$row[$key]['message']=$row[$key]['message'];
 				$row[$key]['subject']=$array[0];
 			}
 		}
