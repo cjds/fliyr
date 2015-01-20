@@ -1,16 +1,19 @@
 <script id="venture-Template" type="text/x-handlebars-template">
-    <button class='create-venture-button'>Create Venture</button>
-    <br>
+
+    <div class='row'>
+        <button class='create-venture-button' style='margin-top:30px'>Create Venture</button>
+    </div>
 	{{#each ventures}}
-    <div class='large-4 columns small-12 venturebox' data-venture-id={{venture_id}}>
+    <div class='large-4 columns small-12 ' >
+    <div class='venturebox' data-venture-id={{venture_id}}>
     <div class='venturedetails'>
-        <div class='row'  style='text-align:center'>
+        <div class='row title' style='text-align:center'>
     	{{venture_name}}
         </div>
     	<div class='row'>
             {{venture_description}}
         </div>
-        <div class='row' style='text-align:center'>
+        <div class='row positiontitle' style='text-align:center'>
             Positions
         </div>
 
@@ -25,13 +28,15 @@
         		{{/each}}
         		</ul>
             </div>
+        
+
     	{{/each}}
     </div>	
     {{#each positions}}
     		    {{> position}}
     	{{/each}}
     </div>
-
+    </div>
     {{/each}}
     <div class='column' />
 </script>
@@ -105,7 +110,7 @@
             <div class='row'>
                 <ul class='taglist'>
                 {{#each tags}}
-                    <li>#{{tag_name}}</li>
+                    <li>{{tag_name}}</li>
                 {{/each}}
                 </ul>
             </div>

@@ -74,14 +74,15 @@
 	}	
 
 		.green{
-			background:#58b947;
+			background:#2AD6AE;
 		}
 
 		.green:hover{
-			background:#58d946;
+			background:#4AF6CE;
 		}
 		.grey-sidebar{
 			color:#888;
+			font-family: 'Roboto','Helvetica',sans-serif;
 			font-weight:300;
 			margin-left:auto;
 			margin-right:auto;
@@ -92,8 +93,9 @@
 		}
 
 		.green-sidebar{
-			color:#58b946;
+			color:#2AD6AE;
 			font-weight:300;
+			font-family: 'Roboto','Helvetica',sans-serif;
 			margin-left:auto;
 			margin-right:auto;
 			margin-top:2px;
@@ -103,17 +105,29 @@
 		}
 
 		.venturebox{
-			padding-left: 10px;
-			padding-right: 10px;
-			min-height: 300px;
+			padding-left: 2px;
+			padding-right: 2px;
+			margin-bottom: 10px;
+			min-height: 280px;
 			-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
 			-mozilla-transition: all 0.5s;
     		transition: all 0.5s;
-
 		}
 
-		.flip
-		{
+		.venturedetails .title,.expertisetitle .title{
+			font-weight: 700;
+			font-size: 1.2em;
+			text-align: center;
+		}
+
+
+		.venturedetails .positiontitle,.expertisetitle .positiontitle{
+			font-weight: 300;
+			font-size: 1.1em;
+			text-align: center;
+		}
+
+		.flip{
 		transform: rotateY(180deg);
 		}
 
@@ -139,11 +153,22 @@
 
 <div class=" sticky">
   <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
-    
+    <ul class="title-area">
+	    <li class="name">
+	      <h1>
+	      	<a href="<% URL::to('/')%>">
+	      		<img src="<%URL::asset('img/fliyr_logo.png')%>" style="height:30px;margin-top:6px;margin-left:10px;width:auto" />
+	      	</a>
+	      </h1>
+	     </li>
+	     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+     </ul>
+
   <section class="top-bar-section">
     <!-- Right Nav Section -->
-    <img src="<%URL::asset('img/fliyr_logo_Dev.jpg')%>" style="height:40px;width:auto" />
+    
     <ul class="right">
+
       <li class="has-dropdown">
         <a href="#">
 			@if (isset($user_name))
@@ -165,6 +190,12 @@
 						@endif
         </ul>
       </li>
+      <li class='show-for-small'><a href="<% URL::to('ventures') %>" >Ventures</a></li>
+	  <li class='show-for-small'><a href="<% URL::to('expertise') %>" class="green-sidebar">Expertise</a></li>
+		<li class='show-for-small'><a href="<% URL::to('about-us') %>" class="grey-sidebar">About </a></li>
+		<li class='show-for-small'><a href="<% URL::to('about-us') %>" class="grey-sidebar">Contact </a></li>
+      <li>
+      <a href="#">Georgia Tech</a></li>
     </ul>
     </section>
   </nav>
@@ -174,17 +205,17 @@
 @section('sidebar')
 <div class="column large-2 small-12 menu" >
 		<a href="<% URL::to('/') %>" style="">
-			<img src="<%URL::asset('img/fliyr_logo_Dev2.jpg')%>" style="width:140px;height:auto;margin:auto;margin-top:15px;display:block" alt="fliyr">
+			<img src="<%URL::asset('img/fliyr_logo2.png')%>" style="width:140px;height:auto;margin:auto;margin-top:15px;display:block" alt="fliyr">
 		</a>		
 		<div class="large-12 columns">
 		<hr style='margin-left:-30px'>
 		</div>
 	
 	
-	<div class="large-12 columns ">
+	<div class="large-12 columns left-menu hide-for-small">
 	<a href="<% URL::to('ventures') %>" class="grey-sidebar">Ventures</a>
-	<a href="<% URL::to('expertise') %>" class="green-sidebar">Expertise </a>
-	<hr />
+	<a href="<% URL::to('expertise') %>" class="green-sidebar">Expertise</a>
+	<hr style='margin-left:-30px'>
 	<a href="<% URL::to('about-us') %>" class="grey-sidebar">About </a>
 	<a href="<% URL::to('about-us') %>" class="grey-sidebar">Contact </a>
 	

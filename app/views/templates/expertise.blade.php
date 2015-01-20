@@ -1,23 +1,27 @@
 
 <script id="expertise-template" type="text/x-handlebars-template">
-<div class='row' data-equalizer>
+<div class='row' style='margin-top:20px'>
           {{#each expertise}}
-        <div class='columns large-3 medium-5  small-12  venturebox' data-equalizer-watch>
-                    <span class='title' >{{user_name}}</span>
-                    <a href='#'><img src="<% URL::asset('img/email.svg')%>" style='width:20px;height:auto;margin-right:10px' class='right'/></a>
-            <p>
-                {{description}}
-            </p>
-            <span>Expertise</span>
-            <p>
-            {{#each tags}}
-                            <a href="#">{{tag_name}}</a>
-            {{/each}}
-            </p>
-            
+        <div class='columns large-4 medium-5  small-12 expertisetitle' >
+            <div class='venturebox'>
+                <div class='row title'>{{user_name}}</div>
+                <div class='row'>
+                    {{description}}
+                </div>
+                <div class='row positiontitle'>
+                    Expertise
+                </div>
+                <div class='row'>
+                    {{#each tags}}
+                        <a href="#">{{tag_name}}</a>
+                    {{/each}}
+                </div>
+            </div>
         </div>
-        {{/each}}
-    </div>
+    {{/each}}
+    <div class='column' />
+</div>
+
 </script>
 
 

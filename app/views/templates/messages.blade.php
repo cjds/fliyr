@@ -30,7 +30,7 @@
     <div class='row'>
     	<i>{{message}}</i>-{{formatDate created_at "short"}} 
     </div>
-    
+    </div>
     <hr>
     {{/each}}
     {{#data}}

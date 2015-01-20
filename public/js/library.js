@@ -6,6 +6,31 @@
        long: "dddd DD.MM.YYYY HH:mm"	
 	};
 
+
+	function menuHandler(e){
+   		if($(this).html()=='My Ventures'){
+    		e.preventDefault();
+    		window.history.pushState("", "My Ventures", "myventures");
+    		routingUpdate();
+   		}
+   		else if($(this).html()=='Message Inbox'){
+   			e.preventDefault();
+    		window.history.pushState("", "My Inbox", "inbox");
+    		routingUpdate();	
+   		}
+   		else if($(this).html()=='Ventures'){
+   			e.preventDefault();
+    		window.history.pushState("", "Ventures", "ventures");
+    		routingUpdate();	
+   		}
+   		else if($(this).html()=='Expertise'){
+   			e.preventDefault();
+    		window.history.pushState("", "Expertise", "expertise");
+    		routingUpdate();	
+   		}
+
+    }
+
 	function routingFunction(){
 		var currentURL=window.location.href;
 		var routingArray=currentURL.split('/');
@@ -123,19 +148,8 @@
 //**************************************************************TOP BAR
 
     $(document).foundation('topbar',{ sticky_class : 'sticky', is_hover: true});
-    $('.top-bar ul li a').click(function(e){
-   		if($(this).html()=='My Ventures'){
-    		e.preventDefault();
-    		window.history.pushState("", "My Ventures", "myventures");
-    		routingUpdate();
-   		}
-   		else if($(this).html()=='Message Inbox'){
-   			e.preventDefault();
-    		window.history.pushState("", "My Inbox", "inbox");
-    		routingUpdate();	
-   		}
-
-    })
+    $('.top-bar ul li a').click(menuHandler);
+    $('.left-menu a').click(menuHandler);
 
 
 //**************************************************************INBOX
