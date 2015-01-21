@@ -27,8 +27,9 @@ class VentureController extends Controller {
 		else
 			$venture_positions=array();
 		$pdo=DB::connection()->getPdo();
-
-		if(isset($input['venture_id'])){
+		if(!isset($input['venture_id']))
+			$input['venture_id']='';
+		if($input['venture_id']!=''){
 			$venture_id=$input['venture_id'];
 			$sql=$pdo->prepare("UPDATE venture SET venture_name=:venture_name,venture_description=:venture_description,creator_id=:creator_id,updated_at=NOW() WHERE venture_id=:venture_id");			
 			$sql->bindParam(':venture_name', $venture_name);
