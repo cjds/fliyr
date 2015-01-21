@@ -13,14 +13,7 @@
     <div class='large-4 columns small-12 medium-6'  style='padding-left:12px;padding-right:12px;padding-bottom:24px;'>
 
     <div class='venturebox' data-venture-id={{venture_id}}>
-     {{#if creator}}
-        <div class='row'>
-            <a href="#" class='venture-edit-button'>
-                <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto'/>
-            </a>
-        </div>
-        {{/if}}
-    
+     
     <div class='venturedetails'>
         <div class='row title' style='text-align:center'>
     	{{venture_name}}
@@ -43,14 +36,24 @@
         		</ul>
             </div>
         {{/each}}
-
         
+    {{#if creator}}
+        <div class='small-12 columns editdiv'>
+            <a href="#" class='venture-edit-button'>
+                <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto'/>
+            </a>
+        </div>
+        {{/if}}
+            
     </div>	
+    
     {{#each positions}}
     		    {{> position}}
     	{{/each}}
     </div>
+
     </div>
+
     {{/each}}
     <div class='column' />
 </script>
@@ -59,14 +62,27 @@
     
    <div class='columns  small-12  venturebox ' data-equalizer-watch>
     <div class='addventurebox' >
-        <form id='ventureform'>
+        <form id='ventureform' data-venture-id='{{venture_id}}'>
             <span class='title' >
-                <input type='text' name='venture' placeholder='VentureName'/>
+                <input type='text' name='venture' placeholder='VentureName' value='{{venture_name}}'/>
             </span>
             <p>
-                <textarea rows="4" cols="35" name="description" placeholder="Enter a description"></textarea>
+                <textarea rows="4" cols="35" name="description" placeholder="Enter a description">{{venture_description}}</textarea>
             </p>
+
             <div class='positionlist'>
+                {{#each positions}}
+                <div class='position-edit-item'>
+                    <div class='row position-title'>
+                        <a href="#" class='position-edit-button'>{{position_name}} > </a>
+                    </div>
+                    <a href="#" data-id='+positions.length+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>
+                    <ul class='taglist'>{{#each tag}}
+                                <li>{{tag_name}}</li>
+                        {{/each}}
+                    </ul>
+                </div>
+                {{/each}}
             </div>
             <p class='addposition'>
                 <a href="#">Create Position (3 Remaining)</a>
@@ -89,7 +105,12 @@
     </div>
     
 <div class='small-12 columns submitdiv'>
-        <input class='right  tiny button finishbtn light-green-button' value='Post Fliyr' type='submit' />
+        <a href="#" class='finishbtn'>
+            <img src="../img/fliyr_Icon_Check.png" style="width:16px;height:auto"/>
+        </a>
+        <a href="#" class='cancelbtn'>
+            <img src="../img/fliyr_Icon_Cancel.png" style="width:16px;height:auto"/>
+        </a>
 </div>
 </div>
 

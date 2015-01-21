@@ -47,6 +47,19 @@
 
 	<style type="text/css">
 
+
+
+	.logo-img{
+		height:30px;margin-top:6px;margin-left:75px;width:auto;
+	}
+
+	@media only screen and (max-width: 40em) {
+		.logo-img{
+			margin-left: 0px;
+		}
+	}
+
+
 	input{
 		height: 30px;
 	}
@@ -60,7 +73,7 @@
 	.black:hover{
 		background: #666;
 	}
-	.submitdiv input{
+	.submitdiv a{
 		margin: 5px;
 	}
 
@@ -127,7 +140,7 @@
     		transition: all 0.5s;
 		}
 
-		.venturedetails .title,.expertisetitle .title{
+		.venturebox .title{
 			font-weight: 400;
 			font-size: 16px;
 			text-align: center;
@@ -155,7 +168,7 @@
 			color:#7d7d7d;
 		}
 
-		.venturedetails .positiontitle,.expertisetitle .positiontitle{
+		.venturebox .positiontitle,.expertisetitle .positiontitle{
 			font-weight: 400;
 			font-size: 14px;
 			text-align: center;
@@ -192,12 +205,30 @@
 			color: #2AD6AF;
 		}
 
-		.create-venture-div .submitdiv{
+		.submitdiv{
 			position: absolute;
-			top: -12px;
+			bottom: 12px;
 			right: 12px;
+			float: right;
 			padding: 0px;
 		}
+
+		.submitdiv a{
+			float: right;
+
+		}
+
+		.editdiv{
+			position: absolute;
+			bottom: 42px;
+			right: 32px;
+			padding: 0px;
+		}
+
+		.editdiv a{
+			float: right;
+		}
+
 		.create-venture-div .venturebox{
 			padding: 5px;
 			padding-left: 20px;
@@ -205,20 +236,50 @@
 			padding-top: 16px;
 		}
 
-		#ventureform input[name=venture],#positionform input[name=position]{
+		.venturebox input[name=venture],.venturebox input[name=position]{
 			font-weight: 400;
 			color:#888;
 			font-size: 16px;
 			text-align: center;
 			height: 22px;
-			margin-bottom: 7px;
+			margin-bottom: 6px;
 		}
 
-		#ventureform textarea,#positionform textarea{
+		.venturebox textarea,.venturebox textarea{
 			font-weight: 300;
 			font-style: italic;
 			font-size: 12px;
+			margin-bottom: 3px;
+		}
 
+		.venturebox p{
+			margin-bottom: 6px;
+		}
+
+		.position-edit-item{
+			margin: 2px;
+		}
+
+		.position-edit-item hr{
+			margin: 2px;
+		}
+
+		.position-edit-item ul{
+			margin-bottom: 0px;
+		}
+
+		.position-edit-item .position-title,.position-edit-item .position-title img{
+			display: inline-block;
+		}
+
+		.messagetable tr td{
+			border-bottom:1px solid #ddd;
+			overflow-x:hidden; 
+		}
+
+		.messagetable tr:hover{
+			background: #f7f7f7;
+			cursor: pointer;
 		}
 	</style>
 </head>
@@ -232,7 +293,7 @@
 	    <li class="name">
 	      <h1>
 	      	<a href="<% URL::to('/')%>">
-	      		<img src="<%URL::asset('img/fliyr_logo.png')%>" style="height:30px;margin-top:6px;margin-left:75px;width:auto" />
+	      		<img src="<%URL::asset('img/fliyr_logo.png')%>" class='logo-img' style="" />
 	      	</a>
 	      </h1>
 	     </li>

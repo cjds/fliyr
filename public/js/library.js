@@ -30,6 +30,11 @@
     		routingUpdate();	
    		}
 
+   		else if($(this).html()=='My Expertise'){
+   			e.preventDefault();
+    		window.history.pushState("", "My Expertise", "myexpertise");
+    		routingUpdate();	
+   		}
     }
 
 	function routingFunction(){
@@ -83,6 +88,7 @@
 			        $('.expertiselink').removeClass('grey-sidebar');
 			        $('.venturelink').removeClass('green-sidebar');
 			        $('.venturelink').addClass('grey-sidebar');
+			        $('.venturebox').height($('.venturebox').outerWidth());
 				}
 			 });
 
@@ -116,12 +122,48 @@
 					console.log(data);
 					var Source = $("#inbox-template").html();
 			        var Template = Handlebars.compile(Source);
+			        Handlebars.registerHelper("formatDate", function(datetime, format) {
+					  if (moment) {
+					    var f = DateFormats[format];
+					    return moment(datetime).format(f);
+					  }
+					  else {
+					    return datetime;
+					  }
+					});
 			        var HTML = Template({ thread : data });
 			        $('#content').html(HTML);
 				}
 			});
 		}
+		else if(currentURL=='myexpertise'){
 
+				$.ajax({
+						url: "ajax/get-my-expertise",
+			  			type: "GET",
+			  			
+		  			})
+				 .done(function(msg){
+				  			var tags="";
+				  			var data=JSON.parse(msg);
+				  			console.log(data);
+				  			console.log(data.user_name);
+							var Source = $("#my-expertise-template").html();
+					        var Template = Handlebars.compile(Source);
+					        var HTML = Template({user_name:data.user_name,user_id:data.user_id});
+					        $('#content').html(HTML);
+				  			$('.taginput').tagit();
+				  			for(var i=0;i<data.tags.length;i++){
+				  				$('.venturebox input[name=taginput]').tagit('createTag', data.tags[i]['tag_name']);
+				  			}
+				  			$('.venturebox textarea[name=description]').val(data.description);
+				  			//$('.venturebox textarea[name=taginput]').val(tags);
+		  			})
+				 .fail(function(msg){
+				 			$('.notenteredtext').show();
+				 	});
+			
+		}
 		else if(currentURL.substring(0,6)=="thread"){
 			var urlSplit=currentURL.split('#');
 			$.ajax({
@@ -242,6 +284,22 @@ $('#content').on('click','.replybutton',function(e){
 		 });
  });
 
+$('#content').on('click','.expertise-button-submit', function(e){
+  			e.preventDefault();
+
+  			var description=$('.venturebox textarea[name=description]').val();
+  			var tags=$('.venturebox input[name=taginput]').val();
+	  		$.ajax({
+				url: 'ajax/add-experience',
+	  			type: "POST",
+	  			data: { user_id : $(this).parent().parent().attr('user-id'),user_description:description,experience_tags:tags}
+	  		}).done(function(msg){
+	  			window.history.pushState("", "My Expertise", "expertise");
+    			routingUpdate();
+   	
+	  		});
+  		});
+
 
 //**************************************************************VENTURES
 //**************************************************************VENTURES
@@ -283,6 +341,8 @@ $('#content').on('click','.position-message-btn',function(e){
 		 });
  });
 
+
+
  $('#content').on('click','.position-back-btn',function(e){
  		e.preventDefault();
  		$(this).parent().parent().hide();
@@ -320,9 +380,6 @@ $('#content').on('click','.create-venture-button',function(){
 });
 
 
-
-
-
 $('#dialog').on('click','.close-reveal-modal',function(){	
 	$('#dialog').foundation('reveal','close');
 });
@@ -358,28 +415,101 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 
 
 	var positions=[];
-	var venture={};
 	var venturestate=true;
 	$('#content').on('click','.addposition a',function(e){
 		e.preventDefault();
 		$('.addpositionbox').show();
 		$('.addventurebox').hide();
-		$('.finishbtn').attr('value','ADD POSITION');
 		venturestate=false;
 	});
 
-	$('#content').on('click','#ventureform .cancelbtn',function(e){
+
+	$('#content').on('click','.venture-edit-button',function(e){
+		e.preventDefault();
+		if(!created_venture){
+			
+	        $.ajax({
+				url: "ajax/get-venture-data",
+				type: "GET",
+				data: { 
+				  	venture_id:$(this).parent().parent().parent().attr('data-venture-id')
+				},
+				success: function(data, textStatus) {
+					venture=JSON.parse(data);
+					positions=venture.positions;
+					venturestate=true;
+					console.log(positions);
+					for (var i = 0; i < positions.length; i++) {
+						var tagarray='';	
+						positions[i].tag=positions[i].tags;
+						positions[i].name=positions[i].position_name;
+						for (var j = 0; j < positions[i].tags.length; j++) {
+							tagarray+=positions[i].tags[j].tag_name+',';
+						}
+					 	if (tagarray.length > 0) {
+     						 tagarray = tagarray.substring(0, tagarray.length-1);
+    					}
+						positions[i].tags=tagarray;
+						positions[i].description=positions[i].position_description;
+    				}
+					var Source = $("#create-venture-template").html();
+			        var Template = Handlebars.compile(Source);
+			        created_venture=true;
+			        var HTML = Template(venture);
+			        $('#content').find('div').eq(2).prepend(HTML);
+			        $('.create-venture-button').html('Cancel');
+	        		$('.taginput').tagit({
+						"preprocessTag":function(val) {
+							if (!val) { return ''; }
+							if(val.charAt(0)=='#')
+								return val;
+							return '#'+val;
+
+						}
+					});
+			        if((3-positions.length)>0)
+						$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )')
+					else
+						$('.addposition a').html('');
+				}				  
+			});
+	        
+	        $('.taginput').tagit({
+				"preprocessTag":function(val) {
+		  			if (!val) { return ''; }
+		  			if(val.charAt(0)=='#')
+		  				return val;
+		  			return '#'+val;
+
+				}
+			});
+		}
+		else{
+			$('#content').find('div').eq(2).html('');
+			created_venture=false;
+			position={};
+			$('.create-venture-button').html('Create Venture');
+
+		}
+	});
+
+	$('#content').on('click','#ventureform .position-cancel-btn',function(e){
 		e.preventDefault();
 	    positions.splice($(this).attr('data-id'), 1);
 	    $('.positionlist').html('');
 	    for (var i = 0; i < positions.length; i++) {
-	    	$('.positionlist').append('<span class="title">'+positions[i].name+' <a href="#" data-id='+positions.length+' class="cancelbtn">Cancel</a></span><br><p>'+positions[i].tags+'</p>');
-	    };
+	    	var tagarray=positions[i].tags.split(',');
+			var taglist='';
+			for (index = 0; index < tagarray.length; ++index) {
+ 			   taglist+="<li>"+tagarray[index]+"</li>";
+			}
+	    	$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button">'+positions[i].name+'</a></div> <a href="#" data-id='+i+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a><ul class="taglist">'+taglist+'</ul></div<');
+	    }
 		$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
 	});
 
 	$('#content').on('click','.finishbtn',function(e){
-		console.log($('#ventureform .taginput').val());
+		e.preventDefault();
 		if(venturestate){
 			$.ajax({
 				url: "ajax/add-venture",
@@ -389,21 +519,17 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				  	name: $('#ventureform input[name=venture]').val(),
 					tags:[],
 					description:$('#ventureform textarea[name=description]').val(),
+					venture_id:$('#ventureform').attr('data-venture-id'),
 					positions:positions
 				},
 				success: function(data, textStatus) {
-						if(data=='ok'){
-							$('#dialog').foundation('reveal','close');
+					if(data=='ok'){
 							routingUpdate();
 						}
-				        if (data.redirect) {
-				            
-				        }
 					}				  
 				});
 		}
 		else{
-			$('.finishbtn').attr('value','DONE');
 			$('.addpositionbox').hide();
 			$('.addventurebox').show();		    
 			var position = {
@@ -411,12 +537,22 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 			    description:$('#positionform textarea[name=description]').val(),
 			    tags:$('#positionform input[name=taginput]').val() 
 			};
-			$('.positionlist').append('<span class="title">'+position.name+' <a href="#" data-id='+positions.length+' class="cancelbtn">Cancel</a></span><br><p>'+position.tags+'</p>');			
+			var tagarray=position.tags.split(',');
+			var taglist='';
+			for (index = 0; index < tagarray.length; ++index) {
+ 			   taglist+="<li>"+tagarray[index]+"</li>";
+						}
+			$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button">'+position.name+'</a></div><a href="#" data-id='+positions.length+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>  <ul class="taglist">'+taglist+'</ul></div>');
 			positions.push(position);
 			$('#positionform input[name=position]').val('');
 			$('#positionform textarea[name=description]').val('');			
 			$('#positionform input[name=taginput]').tagit('removeAll');
-			$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )')
+			if(3-positions.length>0){
+				$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
+			}
+			else{
+				$('.addposition a').html('');	
+			}
 		}
 		venturestate=true;
 		
@@ -427,14 +563,17 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 		e.preventDefault();
 
 		if(venturestate){
-			$('#dialog').foundation('reveal','close');
+			$('#content').find('div').eq(2).html('');
+			created_venture=false;
+			position={};
+			$('.create-venture-button').html('Create Venture');
+
 		}
 		else{
-			console.log('sd');
 			$('#positionform input[name=position]').val('');
 			$('#positionform textarea[name=description]').val('');
 			$('#positionform input[name=taginput]').tagit('removeAll');
-			$('.finishbtn').attr('value','DONE');
+			venturestate=true;
 			$('.addpositionbox').hide();
 			$('.addventurebox').show();				
 		}

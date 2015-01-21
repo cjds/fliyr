@@ -33,6 +33,18 @@ class MessageController extends Controller {
 	}
 
 
+	protected function get_notifications(){
+		$input=Input::all();
+		$pdo=DB::connection()->getPdo();		
+		$query=$pdo->prepare("SELECT COUNT(message_id) as count , reference_message_id  
+			FROM message WHERE flag=0 AND receiver_id=:user_id GROUP BY reference_message_id ");
+		$query->bindParam('user_id',$input['user_id']);
+		$row=$query->fetch();
+		return $row['count'];
+
+	}
+
+
 	protected function send_message($sender_id,$receiver_id, $message_type, $message,$table_id,$reference_message_id=null)
 	{
 		$pdo=DB::connection()->getPdo();		

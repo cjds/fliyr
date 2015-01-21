@@ -188,13 +188,15 @@ class UserController extends Controller {
 
 	protected function get_my_experience(){
 		$input=Input::all();
-		$user_id=$input['user_id'];
+		$session =new SessionModel;
+		$user_id=$session->get_user_id();
 		$pdo=DB::connection()->getPdo();		
-		$query = $pdo->prepare("SELECT  * FROM experience WHERE user_id=:user_id ORDER BY created_at DESC");
+		$query = $pdo->prepare("SELECT  * FROM experience,user WHERE experience.user_id=:user_id AND user.user_id=experience.user_id");
 		$query->bindParam(':user_id', $user_id);
 		$query->execute();
-		$row=$query->fetchAll();
-		$row=$row[0];
+		$row=$query->fetch();
+		$name=explode(';', $row['user_name']);
+		$row['user_name']=$name[0];
 		$query = $pdo->prepare("SELECT  tag_name FROM experience_tag e,tag t WHERE experience_id=:experience_id AND e.tag_id = t.tag_id ORDER BY e.created_at DESC");
 		$query->bindParam(':experience_id', $row['experience_id']);
 		$query->execute();

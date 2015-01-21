@@ -32,7 +32,7 @@ Route::get('/inbox','HomeController@inbox');
 
 Route::get('/login','HomeController@login');
 Route::get('/expertise','HomeController@get_expertise');
-Route::get('/myexpertise','HomeController@my_expertise');
+Route::get('/myexpertise','HomeController@inbox');
 Route::get('/myventures','HomeController@my_ventures');
 //Route::get('/inbox','HomeController@inbox');
 Route::get('/signout','HomeController@signout');
@@ -59,6 +59,7 @@ Route::post('ajax/add-venture','VentureController@add_venture');
 Route::post('ajax/add-position','VentureController@add_position');
 
 Route::get('ajax/get-ventures','VentureController@get_ventures');
+Route::get('ajax/get-venture-data','VentureController@get_venture_data');
 Route::get('ajax/get-my-ventures','VentureController@get_my_ventures');
 
 Route::get('ajax/get-position-data','VentureController@get_position_data');

@@ -82,6 +82,8 @@ class HomeController extends BaseController {
 		return View::make('myexpertise', array('user_name' => $user_name,'user_id'=>$user_id));
 	}
 
+
+	
 	protected function my_ventures(){
 		$session =new SessionModel;
 		$redirection=$session->handle_redirection();

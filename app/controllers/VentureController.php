@@ -66,8 +66,8 @@ class VentureController extends Controller {
 				$query->bindParam(':venture_id', $venture_id);
 				$query->execute();
 				$position_id=$pdo->lastInsertId();
-				
-				foreach (explode(',',$position['tags']) as $tag) {
+				$position_tags=explode(',',$position['tags']);
+				foreach ($position_tags as $tag) {
 					$tag=substr($tag, 0, -1);
 					$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 					$query->bindParam(':tag', $tag);
@@ -157,6 +157,18 @@ class VentureController extends Controller {
 
 	}
 
+	protected function get_venture_data(){
+		$input=Input::all();
+		$session =new SessionModel;
+		$redirection=$session->handle_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
+		
+		$ventures=new ventures;
+		return $ventures->get($input['venture_id']);
+	}
+
 	protected function get_my_ventures(){
 		$session =new SessionModel;
 		$redirection=$session->handle_redirection();
@@ -180,6 +192,14 @@ class VentureController extends Controller {
 		$query->execute();
 		$row = $query->fetch();
 		return json_encode($row);
+	}
+
+	protected function delete_venture(){
+		$pdo=DB::connection()->getPdo();
+		$input=Input::all();
+		$ventures=new Ventures;
+		$ventures->delete($input['venture_id']);
+		return '{result:success}';
 	}
 
 	protected function add_position()
