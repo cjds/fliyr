@@ -5,11 +5,12 @@
     <div class='large-19 small-12' >
     <table role="grid" class='messagetable large-12'>
     {{#each thread}}
-    <tr data-sender-id={{sender_id}} data-receiver-id={{receiver_id}} data-message-id={{message_id}} >
-    <td class='large-2 columns'>{{user_name}}</td>
-    <td class='large-9 columns'>{{subject}} - <a href="#" class='messagethread'>{{message}}</a></td>
-    <td class='large-1 columns'>{{formatDate created_at "short"}} </a></td>
-    <tr>
+     
+        <tr data-sender-id={{sender_id}} data-receiver-id={{receiver_id}} data-message-id={{message_id}}  class='messagethread'>
+        <td class='large-2 columns'>{{user_name}}</td>
+        <td class='large-9 columns'>{{#if count}}<b>{{/if}}{{subject}}{{#if count}}</b>{{/if}} - <a href="#">{{message}}</a></td>
+        <td class='large-1 columns'>{{formatDate created_at "short"}} </a></td>
+        </tr>
     {{/each}}
     </table>
     </div>
@@ -19,7 +20,7 @@
 
 
 <script id="thread-template" type="text/x-handlebars-template">
-	<h1>Inbox</h1>
+	<h2>Message</h2>
 	{{#each thread}}
 	<div class='row'>
     {{user_name}}

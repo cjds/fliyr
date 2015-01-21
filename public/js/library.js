@@ -1,8 +1,14 @@
+History.Adapter.bind(window, 'statechange', function() {
+	
+  routingUpdate();
+});
+
+
 //**************************************************************LIBRAR
 //**************************************************************LIBRA
 
 	var DateFormats = {
-       short: "DD MMMM - YYYY",
+       short: "DD MMM",
        long: "dddd DD.MM.YYYY HH:mm"	
 	};
 
@@ -48,6 +54,8 @@
 
 	function routingUpdate(){
 		currentURL=routingFunction();
+	  History.pushState({}, currentURL, currentURL);
+
 		if(currentURL=='ventures'){
 			$.ajax({
 				url: 'ajax/get-ventures',
@@ -204,6 +212,8 @@
     $('.left-menu a').click(menuHandler);
 
 
+
+
 //**************************************************************INBOX
 //**************************************************************INBOX
 //**************************************************************INBOX
@@ -211,7 +221,7 @@
 //**************************************************************INBOX
 $('#content').on('click','.messagethread',function(e){
 	e.preventDefault();
-	var message_id=$(this).parent().parent().attr('data-message-id');
+	var message_id=$(this).attr('data-message-id');
 	window.history.pushState("", "Inbox", "thread#"+message_id);
     routingUpdate();
 });
