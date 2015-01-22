@@ -166,7 +166,7 @@ class VentureController extends Controller {
 		if($redirection!=null)
 			return $redirection;
 		
-		$ventures=new ventures;
+		$ventures=new Ventures;
 		return $ventures->get($input['venture_id']);
 	}
 

@@ -204,7 +204,8 @@
 
 <div class="column large-4 large-offset-4 medium-6 medium-offset-3 small-12 " style="display:block;z-index:1;background-color:rgba(255,255,255,0.8);border:1px solid #ccc;margin-top:8%;">
 	<div class="row" >
-			<%HTML::image('img/logo2.png', 'Fliyr',array('style'=>'width:auto;height:120px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%>
+			<%HTML::image('img/fliyr_logo.png', 'Fliyr',array('style'=>'width:auto;height:40px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%><br />
+			<%HTML::image('img/fliyr_logo2.png', 'Fliyr',array('style'=>'width:auto;height:40px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%>		
 	</div>
 	
 		<div class='row'>

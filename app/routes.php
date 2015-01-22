@@ -18,7 +18,12 @@ Blade::setEscapedContentTags('<%%', '%%>');   // for escaped data
 
 Route::get('/','HomeController@login');
 
-
+Route::get('/mailtest',function()
+{
+	Mail::send('folder.view', $data, function($message) {
+    	$message->to('cjds@live.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
+	});
+});
 
 Route::get('/venturelist',function(){
 	return View::make('venturelist');

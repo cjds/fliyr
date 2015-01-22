@@ -328,9 +328,9 @@
         </ul>
       </li>
       <li class='show-for-small'><a href="<% URL::to('ventures') %>" >Ventures</a></li>
-	  <li class='show-for-small'><a href="<% URL::to('expertise') %>" class="green-sidebar">Expertise</a></li>
-		<li class='show-for-small'><a href="<% URL::to('about-us') %>" class="grey-sidebar">About </a></li>
-		<li class='show-for-small'><a href="<% URL::to('about-us') %>" class="grey-sidebar">Contact </a></li>
+	  <li class='show-for-small'><a href="<% URL::to('expertise') %>" >Expertise</a></li>
+		<li class='show-for-small'><a href="<% URL::to('about-us') %>">About </a></li>
+		<li class='show-for-small'><a href="<% URL::to('about-us') %>">Contact </a></li>
       <li>
       <a href="#">Georgia Tech</a></li>
     </ul>
