@@ -20,7 +20,8 @@ Route::get('/','HomeController@login');
 
 Route::get('/mailtest',function()
 {
-	Mail::send('folder.view', $data, function($message) {
+	$data={'user':"Carl"};
+	Mail::send('emails.welcome', $data, function($message) {
     	$message->to('cjds@live.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
 	});
 });
