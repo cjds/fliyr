@@ -72,7 +72,7 @@ History.Adapter.bind(window, 'statechange', function() {
 	}
 
 	function routingUpdate(){
-		checkForNotifications();
+		
 		currentURL=routingFunction();
 		if(currentURL=='ventures'){
 			var success=function(result, textStatus) {
@@ -178,6 +178,8 @@ History.Adapter.bind(window, 'statechange', function() {
 	        var Template = Handlebars.compile(Source);
 	        var HTML = Template({});
 	        $('#content').html(HTML);
+	        $(document).foundation('accordion', 'reflow');
+
 		}
 		else if(currentURL=='confirmuser'){
 			var Source = $("#confirmuser-template").html();
@@ -206,6 +208,7 @@ History.Adapter.bind(window, 'statechange', function() {
 				};
 				ajaxCallHandler('ajax/get-message-thread',"GET",{message_id:urlSplit[1]},success);
 		}
+		checkForNotifications();
 	}
 
 //**************************************************************TOP BAR
@@ -248,7 +251,7 @@ History.Adapter.bind(window, 'statechange', function() {
 
 	$('body').on('click','.notification',function(e){
 		e.preventDefault();
-    	History.pushState(null, "Message Inbox", "inbox");
+    	History.pushState(null, "My Inbox", "inbox");
 
 	});
 

@@ -188,6 +188,13 @@ class MessageController extends Controller {
 		foreach ($data['thread'] as $key => $value) {
 			if($value['user_id']==$user_id)
 				$data['thread'][$key]['user_name']='me';
+				$messagedata=explode(';',$data['thread'][$key]['message']);
+				if(count($messagedata)!=1){
+					for($i=1;$i<count($messagedata);$i++)
+					$data['thread'][$key]['message'].=$messagedata[$i];
+				}
+				else
+					$data['thread'][$key]['message']=$messagedata[0];
 		}
 
 		$sql= "SELECT * 
@@ -199,6 +206,10 @@ class MessageController extends Controller {
 		$query->execute();
 
 		$data['data']=($query->fetch());
+		$messagedata=explode(';',$data['data']['message']);
+			$data['data']['message']=$messagedata[0];
+
+
 		if($data['data']['sender_id']==$user_id)
 			$data['data']['receiver']=$data['data']['receiver_id'];
 		else

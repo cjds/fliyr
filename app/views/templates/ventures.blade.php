@@ -1,10 +1,10 @@
 <script id="venture-Template" type="text/x-handlebars-template">
 
-    <div class='row'>
-        <div class='columns'>
-        <button class='light-green-button create-venture-button' style='margin-top:30px;margin-left:12px'>Create Venture</button>
-        </div>
+<div class='row'>
+    <div class='columns'>
+    <button class='light-green-button create-venture-button' style='margin-top:30px;margin-left:12px'>Create Venture</button>
     </div>
+</div>
     <div class='create-venture-div large-4 columns small-12 medium-6'>
 
     </div>
@@ -146,8 +146,8 @@
                 {{/each}}
                 </ul>
             </div>
-    	<div class='row'>
-    	<button class='position-message-btn'>Message</button>
+    	<div class='row position-message-div'>
+    	<button class='light-green-button position-message-btn'>Message</button>
         </div>
   </div>
 </script>

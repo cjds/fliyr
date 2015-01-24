@@ -206,8 +206,11 @@ class UserController extends Controller {
 		$pdo=DB::connection()->getPdo();		
 		$query = $pdo->prepare("SELECT  * FROM user WHERE user_id=:user_id");
 		$query->bindParam('user_id',$input['user_id']);
+
 		$query->execute();
 		$row=$query->fetch();
+		$username=explode(';', $row['user_name']);
+		$row['user_name']=$username[0];
 		return  json_encode($row);		
 	}
 

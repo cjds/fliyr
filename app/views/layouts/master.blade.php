@@ -26,7 +26,7 @@
 	<meta property="og:site_name" content="Fliyr" />
 		
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<link href='http://fonts.googleapis.com/css?family=Roboto:500,300,300italic,400' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto:500,300,300italic,400,100' rel='stylesheet' type='text/css'>
 	<link rel="shortcut icon" href="<?php echo asset('img/icon.ico');?>">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -298,6 +298,66 @@
 
 		.notification:hoVer{
 			cursor: pointer;
+		}
+
+		.aboutus{
+			
+		}
+
+		.aboutus dd{
+			font-size: 14px;
+			font-weight: 300;
+			font-style: normal;
+			line-height: 16px;
+			margin-bottom: 12px !important;
+		}
+
+		.aboutus dt{
+			margin-bottom: 4px;
+		}
+		.aboutus dt a{
+			font-weight: 500;
+
+			color: #7d7d7d;
+			font-size: 14px;
+		}
+
+		.messagetitle h2{
+			font-size: 16px;
+			font-weight: 400;
+			color: #7d7d7d;
+		}
+
+		.threadtable{
+			border: none;
+
+		}
+
+		.threadtable .datetext{
+			color:#7d7d7d;
+			font-size: 11px;
+			font-style: italic;
+			font-weight: 300;
+			vertical-align: top;			
+		}
+
+		.threadtable .nametext{
+			color: #7d7d7d;
+			font-size: 14px;
+			font-weight: 500;
+			vertical-align: top;
+			
+		}
+
+		.threadtable .messagetext{
+			color: #7d7d7d;
+			font-size: 13px;
+		}
+
+		.position-message-div{
+			position: absolute;
+			bottom: 0;
+			right: 0;
 		}
 	</style>
 </head>
