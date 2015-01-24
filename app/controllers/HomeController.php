@@ -19,18 +19,32 @@ class HomeController extends BaseController {
 		return View::make('newhome');
 	}
 
-	public function showWelcome()
-	{
-		return View::make('hello');
-	}
-
 	public function login(){
 		$user_id=Session::get('user_id');
 		
 		if(isset($user_id)){
-				return Redirect::to('/ventures');
+			return Redirect::to('/ventures');
 		}
 		return View::make('landing');
+	}
+
+	public function about(){
+		$session =new SessionModel;
+		
+		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
+	}
+
+	public function signupsuccess(){
+		$session =new SessionModel;
+			return $redirection;
+	
+		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
+	}
+
+	public function confirmuser(){
+		$session =new SessionModel;
+		
+		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
 	}
 
 	public function inbox(){
@@ -69,6 +83,7 @@ class HomeController extends BaseController {
 
 
 	protected function my_expertise(){
+		$session =new SessionModel;
 		$user_name=Session::get('user_name');
 		$user_id=Session::get('user_id');
 
@@ -79,7 +94,7 @@ class HomeController extends BaseController {
 			return Redirect::to('/');
 		}
 
-		return View::make('myexpertise', array('user_name' => $user_name,'user_id'=>$user_id));
+		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
 	}
 
 

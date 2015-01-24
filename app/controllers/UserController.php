@@ -22,18 +22,25 @@ class UserController extends Controller {
 		$user=$user_model->find_user_by_email($user_email);
 		if($user){
 			return '{"result": "fail","message":"This e-mail already exists"}';
-		}
-		
+		}		
 		$user=$user_model->find_user_by_username($user_name);
 		if($user){
 			return '{"result": "fail","message":"This username already exists"}';;		
 		}
 		
 		$user=$user_model->add_user($user_name,$user_email,$user_password);
-		if($user){
+		if($user!=false){
+			$name=explode(';',$user_name);
+			
+			$data=['full_name'=>$name[0].' '.$name[1],'user_email'=>$user_email,'username'=>$name[0],'confirmationstring'=>$user];
+			//random_string
+			Mail::send('emails.register', $data, function($message) use ($data) {
+		    	$message->to($data['user_email'], $data['full_name'])->subject('Welcome to Fliyr');
+			});
 			return '{"result": "ok","redirect":"signupsuccess"}';;
 		}
 		else{
+			echo $user;
 			return '{"result": "fail","message":"There was an unknown error"}';;		
 		}
 	}
@@ -161,7 +168,25 @@ class UserController extends Controller {
 
 	}
 
+
+	protected function confirm_user()
+	{
+		$input=Input::all();
+		$user=new User();
+		$message=$user->confirm_user($input['confirmationstring'],$input['user_id']);
+		if($message){
+			return '{"result": "ok","message":"This user is confirmed"}';
+		}
+		else
+			return '{"result": "fail","message":"This user failed to confirm"}';
+	}
+
 	protected function get_experience(){
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
 		$pdo=DB::connection()->getPdo();		
 		$query = $pdo->prepare("SELECT  * FROM experience ORDER BY created_at DESC");
 		$query->execute();
@@ -190,13 +215,16 @@ class UserController extends Controller {
 		$input=Input::all();
 		$session =new SessionModel;
 		$user_id=$session->get_user_id();
+		if($user_id==null){
+			return ['response'=>'fail','redirect'=>'/'];
+		}
 		$pdo=DB::connection()->getPdo();		
-		$query = $pdo->prepare("SELECT  * FROM experience,user WHERE experience.user_id=:user_id AND user.user_id=experience.user_id");
-		$query->bindParam(':user_id', $user_id);
+		$query = $pdo->prepare("SELECT  * FROM experience WHERE user_id=:user_id");
+		$query->bindParam('user_id', $user_id);
 		$query->execute();
 		$row=$query->fetch();
-		$name=explode(';', $row['user_name']);
-		$row['user_name']=$name[0];
+		$row['user_name']=$session->get_user_name();
+		$row['user_id']=$user_id;
 		$query = $pdo->prepare("SELECT  tag_name FROM experience_tag e,tag t WHERE experience_id=:experience_id AND e.tag_id = t.tag_id ORDER BY e.created_at DESC");
 		$query->bindParam(':experience_id', $row['experience_id']);
 		$query->execute();

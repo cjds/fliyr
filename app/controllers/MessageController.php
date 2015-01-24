@@ -9,6 +9,13 @@ class MessageController extends Controller {
 	 */
 	
 	protected function post_position_message(){
+
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
+
 		$pdo=DB::connection()->getPdo();		
 		$input=Input::all();
 		
@@ -21,6 +28,12 @@ class MessageController extends Controller {
 
 
 	protected function post_experience_message(){
+
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
 			$pdo=DB::connection()->getPdo();		
 		$input=Input::all();
 		
@@ -34,12 +47,22 @@ class MessageController extends Controller {
 
 
 	protected function get_notifications(){
-		$input=Input::all();
+
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
+
+		$user_id=Session::get('user_id');
 		$pdo=DB::connection()->getPdo();		
 		$query=$pdo->prepare("SELECT COUNT(message_id) as count , reference_message_id  
 			FROM message WHERE flag=0 AND receiver_id=:user_id GROUP BY reference_message_id ");
-		$query->bindParam('user_id',$input['user_id']);
+		$query->bindParam(':user_id',$user_id);
+
+		$query->execute();
 		$row=$query->fetch();
+
 		return $row['count'];
 
 	}
@@ -47,6 +70,11 @@ class MessageController extends Controller {
 
 	protected function send_message($sender_id,$receiver_id, $message_type, $message,$table_id,$reference_message_id=null)
 	{
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
 		$pdo=DB::connection()->getPdo();		
 		$input=Input::all();
 
@@ -74,6 +102,11 @@ class MessageController extends Controller {
 	}
 
 	protected function get_inbox(){
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
 		$input=Input::all();		
 		$user_id=Session::get('user_id');	
 		$pdo=DB::connection()->getPdo();		
@@ -132,6 +165,11 @@ class MessageController extends Controller {
 	}
 
 	protected function get_message_thread(){
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
 		$input=Input::all();
 		$user_id=Session::get('user_id');	
 		$message_id=$input['message_id']; 	
@@ -170,11 +208,23 @@ class MessageController extends Controller {
 	}
 
 	protected function flag_message(){
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
 		$input=Input::all();
-		$user_id=$input['message_id'];
+		$message_id=$input['message_id'];
+		$sender_id=$session->get_user_id();
+
 	}
 
 	protected function post_reply(){
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
 		$input=Input::all();
 		$user_id=Session::get('user_id');
 		$receiver_id=$input['receiver_id'];

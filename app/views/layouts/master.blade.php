@@ -282,6 +282,18 @@
 			background: #f7f7f7;
 			cursor: pointer;
 		}
+
+		.notification{
+			width:20px !important;
+			font-size:10px !important;
+			color:#fff !important;
+			margin-top:10px;
+			line-height:20px !important;
+			vertical-align: middle;
+			text-align:center;
+			background:#e00 !important;
+
+		}
 	</style>
 </head>
 <body>
@@ -305,7 +317,6 @@
     <!-- Right Nav Section -->
     
     <ul class="right">
-
       <li class="has-dropdown">
         <a href="#">
 			@if (isset($user_name))
@@ -327,6 +338,9 @@
 						@endif
         </ul>
       </li>
+
+    <li class="notification-menu-item">
+    </li>
       <li class='show-for-small'><a href="<% URL::to('ventures') %>" >Ventures</a></li>
 	  <li class='show-for-small'><a href="<% URL::to('expertise') %>" >Expertise</a></li>
 		<li class='show-for-small'><a href="<% URL::to('about-us') %>">About </a></li>

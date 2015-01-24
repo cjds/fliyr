@@ -2,7 +2,7 @@
 <script id="inbox-template" type="text/x-handlebars-template">
 	<h1>Inbox</h1>
 
-    <div class='large-19 small-12' >
+    <div class='large-9 small-12' >
     <table role="grid" class='messagetable large-12'>
     {{#each thread}}
      

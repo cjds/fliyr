@@ -159,9 +159,8 @@ class VentureController extends Controller {
 	}
 
 	protected function get_venture_data(){
-		$input=Input::all();
 		$session =new SessionModel;
-		$redirection=$session->handle_redirection();
+		$redirection=$session->handle_json_redirection();
 		
 		if($redirection!=null)
 			return $redirection;
@@ -172,7 +171,7 @@ class VentureController extends Controller {
 
 	protected function get_my_ventures(){
 		$session =new SessionModel;
-		$redirection=$session->handle_redirection();
+		$redirection=$session->handle_json_redirection();
 		
 		if($redirection!=null)
 			return $redirection;
@@ -184,6 +183,11 @@ class VentureController extends Controller {
 	}
 
 	protected function get_position_data(){
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
 		$pdo=DB::connection()->getPdo();
 		$input=Input::all();
 		$position_id=$input['position_id'];

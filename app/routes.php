@@ -18,13 +18,7 @@ Blade::setEscapedContentTags('<%%', '%%>');   // for escaped data
 
 Route::get('/','HomeController@login');
 
-Route::get('/mailtest',function()
-{
-	$data={'user':"Carl"};
-	Mail::send('emails.welcome', $data, function($message) {
-    	$message->to('cjds@live.com', 'Jon Doe')->subject('Welcome to the Laravel 4 Auth App!');
-	});
-});
+Route::get('ajax/confirm',"UserController@confirm_user");
 
 Route::get('/venturelist',function(){
 	return View::make('venturelist');
@@ -38,7 +32,7 @@ Route::get('/inbox','HomeController@inbox');
 
 Route::get('/login','HomeController@login');
 Route::get('/expertise','HomeController@get_expertise');
-Route::get('/myexpertise','HomeController@inbox');
+Route::get('/myexpertise','HomeController@my_expertise');
 Route::get('/myventures','HomeController@my_ventures');
 //Route::get('/inbox','HomeController@inbox');
 Route::get('/signout','HomeController@signout');
@@ -80,7 +74,7 @@ Route::get('ajax/get-inbox','MessageController@get_inbox');
 
 Route::get('ajax/get-user-data','UserController@get_user_data');
 Route::get('ajax/get-message-thread','MessageController@get_message_thread');
-
+Route::get('ajax/get-notifications','MessageController@get_notifications');
 Route::post('ajax/post-experience-message','MessageController@post_experience_message');
 /*********************\
 /******ADMIN**********\

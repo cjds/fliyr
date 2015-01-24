@@ -24,6 +24,22 @@ class SessionModel {
 			return Redirect::to('myexpertise');;
 	}
 
+	function handle_json_redirection(){
+		$user_name=Session::get('user_name');
+		$user_id=Session::get('user_id');
+		
+		if(!isset($user_id)){
+				return ['response'=>'fail','redirect'=>'/'];
+		}
+		if($user_id==''){
+				return ['response'=>'fail','redirect'=>'/'];
+		}
+		$user=new User;
+		if($user->has_experience($user_id))
+			return null;
+		else
+			return ['response'=>'fail','redirect'=>'myexpertise'];
+	}
 	function get_session_data(){
 		$user_name=explode(';',Session::get('user_name'));
 		$user_name=$user_name[0];

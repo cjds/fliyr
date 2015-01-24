@@ -20,3 +20,4 @@
 @include('templates.ventures')
 @include('templates.expertise')
 @include('templates.messages')
+@include('templates.others')
