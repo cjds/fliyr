@@ -32,7 +32,7 @@ class UserController extends Controller {
 		if($user!=false){
 			$name=explode(';',$user_name);
 			
-			$data=['full_name'=>$name[0].' '.$name[1],'user_email'=>$user_email,'username'=>$name[0],'confirmationstring'=>$user];
+			$data=['full_name'=>$name[0].' '.$name[1],'user_email'=>$user_email,'username'=>$name[0],'confirmationstring'=>$user['randomstring'],'user_id'=>$user['user_id']];
 			//random_string
 			Mail::send('emails.register', $data, function($message) use ($data) {
 		    	$message->to($data['user_email'], $data['full_name'])->subject('Welcome to Fliyr');

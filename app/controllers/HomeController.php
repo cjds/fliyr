@@ -28,15 +28,9 @@ class HomeController extends BaseController {
 		return View::make('landing');
 	}
 
-	public function about(){
-		$session =new SessionModel;
-		
-		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
-	}
 
 	public function signupsuccess(){
 		$session =new SessionModel;
-			return $redirection;
 	
 		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
 	}
@@ -78,6 +72,12 @@ class HomeController extends BaseController {
 		$redirection=$session->handle_redirection();
 		if($redirection!=null)
 			return $redirection;
+		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
+	}
+
+	protected function about()
+	{
+		$session =new SessionModel;
 		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
 	}
 

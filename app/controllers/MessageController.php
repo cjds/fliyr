@@ -204,18 +204,23 @@ class MessageController extends Controller {
 		else
 			$data['data']['receiver']=$data['data']['sender_id'];
 		
+		$this->flag_message($message_id);
 		return json_encode($data);
 	}
 
-	protected function flag_message(){
+	protected function flag_message($message_id){
+		$pdo=DB::connection()->getPdo();
 		$session =new SessionModel;
 		$redirection=$session->handle_json_redirection();
-		
+		$user_id=$session->get_user_id();
 		if($redirection!=null)
 			return $redirection;
-		$input=Input::all();
-		$message_id=$input['message_id'];
-		$sender_id=$session->get_user_id();
+
+		$sql= "UPDATE message SET flag =1 WHERE reference_message_id=:message_id AND (sender_id!=:user_id)";
+		$query=$pdo->prepare($sql);
+		$query->bindParam('message_id',$message_id);
+		$query->bindParam('user_id',$user_id);
+		$query->execute();
 
 	}
 

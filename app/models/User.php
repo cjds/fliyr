@@ -62,7 +62,9 @@ class User{
 			$query->bindParam('user_id', $user_id);
 			$query->bindParam('confirmationstring', $random_string);
 			$query->execute();		
-			$message=$random_string;
+			$message=array();
+			$message['randomstring']=$random_string;
+			$message['user_id']=$random_string;
 		} 
 		catch (PDOException $e) {
 

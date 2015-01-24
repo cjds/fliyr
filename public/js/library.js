@@ -36,6 +36,10 @@ History.Adapter.bind(window, 'statechange', function() {
    			e.preventDefault();
     		History.pushState(null,"My Expertise", "myexpertise");
    		}
+   		else if($(this).html()=='About'){
+			e.preventDefault();
+    		History.pushState(null,"About", "about");   			
+   		}
     }
 
     function ajaxCallHandler(url,type,data,successfunction){
@@ -48,7 +52,6 @@ History.Adapter.bind(window, 'statechange', function() {
 					data=result;
 
 					if(data.response=='fail'){
-						console.log("SD");
 			        	 window.location.href = data.redirect;
 					}	
 					successfunction(result,textStatus);
@@ -106,7 +109,7 @@ History.Adapter.bind(window, 'statechange', function() {
 		}
 		else if(currentURL=='myventures'){
 			var success= function(result, textStatus) {
-				ventures=result;
+				ventures=JSON.parse(result);
 				var Source = $("#venture-Template").html();
 				Handlebars.registerPartial("position", $("#position-partial").html());
 		        var Template = Handlebars.compile(Source);
@@ -164,13 +167,23 @@ History.Adapter.bind(window, 'statechange', function() {
 			
 		}
 		else if(currentURL=='signupsuccesss'){
-			ajaxCallHandler('ajax/get-inbox',"GET",{},success);
+			var Source = $("#signupsuccesss-template").html();
+	        var Template = Handlebars.compile(Source);
+	        var HTML = Template({});
+	        $('#content').html(HTML);
+
 		}
 		else if(currentURL=='about'){
-			ajaxCallHandler('ajax/get-inbox',"GET",{},success);
+			var Source = $("#aboutus-template").html();
+	        var Template = Handlebars.compile(Source);
+	        var HTML = Template({});
+	        $('#content').html(HTML);
 		}
 		else if(currentURL=='confirmuser'){
-			ajaxCallHandler('ajax/get-inbox',"GET",{},success);
+			var Source = $("#confirmuser-template").html();
+	        var Template = Handlebars.compile(Source);
+	        var HTML = Template({});
+	        $('#content').html(HTML);
 		}
 		else if(currentURL.substring(0,6)=="thread"){
 
@@ -223,6 +236,8 @@ History.Adapter.bind(window, 'statechange', function() {
 					if(data!=0){
 						$('.notification-menu-item').html('<div href="#" class="notification"><span>'+data+'</span></div>')
 					}
+					else
+						$('.notification-menu-item').html('')
 				},
 				fail:function(){
 					
@@ -231,6 +246,11 @@ History.Adapter.bind(window, 'statechange', function() {
 		 });
 	}
 
+	$('body').on('click','.notification',function(e){
+		e.preventDefault();
+    	History.pushState(null, "Message Inbox", "inbox");
+
+	});
 
 
 

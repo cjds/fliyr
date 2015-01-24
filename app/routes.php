@@ -26,7 +26,7 @@ Route::get('/venturelist',function(){
 
 Route::get('/thread','HomeController@thread');
 
-
+Route::get('/about','HomeController@about');
 
 Route::get('/inbox','HomeController@inbox');
 
@@ -38,7 +38,7 @@ Route::get('/myventures','HomeController@my_ventures');
 Route::get('/signout','HomeController@signout');
 Route::get('/signupsuccess', function()
 {
-	return View::make('signupsuccess');
+	return View::make('magic');
 });
 
 //Route for User

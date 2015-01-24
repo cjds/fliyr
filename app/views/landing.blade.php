@@ -182,7 +182,7 @@
 				  success: function(data, textStatus) {
 				  		result=JSON.parse(data);
 				        if (result.result=='ok'){
-				        	 window.location.href = result.redirect;
+				        	 $('#signupmodal').foundation('reveal', 'open');
 				        }
 				        else{
 				        	$('#signuperrortext').html(result.message);
@@ -203,6 +203,10 @@
 <body>
 
 <div class="column large-4 large-offset-4 medium-6 medium-offset-3 small-12 " style="display:block;z-index:1;background-color:rgba(255,255,255,0.8);border:1px solid #ccc;margin-top:8%;">
+<div id="signupmodal" class="reveal-modal small" data-reveal>
+		<p>Welcome to Fliy! To complete your registration please confirm your account by clicking the link in our e-mail that we supplied.</p>
+		</div>
+
 	<div class="row" >
 			<%HTML::image('img/fliyr_logo.png', 'Fliyr',array('style'=>'width:auto;height:40px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%><br />
 			<%HTML::image('img/fliyr_logo2.png', 'Fliyr',array('style'=>'width:auto;height:40px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%>		
@@ -222,6 +226,7 @@
 		<div class='row' style='margin:auto;text-align:center'>	
 				<input type='submit' value="LOGIN" class=' button small-centered small green' style=/>	
 		</div>
+
 		<div class='row' style="margin:auto;text-align:center">
 			<p>Haven't got an account? <a href="#" class='changebutton' >Sign Up</a></p>
 		</div>

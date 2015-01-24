@@ -69,7 +69,6 @@ class VentureController extends Controller {
 				$position_id=$pdo->lastInsertId();
 				$position_tags=explode(',',$position['tags']);
 				foreach ($position_tags as $tag) {
-					$tag=substr($tag, 0, -1);
 					$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 					$query->bindParam(':tag', $tag);
 					$query->execute();
@@ -159,6 +158,7 @@ class VentureController extends Controller {
 	}
 
 	protected function get_venture_data(){
+		$input=Input::all();
 		$session =new SessionModel;
 		$redirection=$session->handle_json_redirection();
 		

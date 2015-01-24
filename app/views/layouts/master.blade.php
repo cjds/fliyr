@@ -27,7 +27,8 @@
 		
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Roboto:500,300,300italic,400' rel='stylesheet' type='text/css'>
-	<link rel="shortcut icon" href="http://fliyr.com/img/icon.ico">
+	<link rel="shortcut icon" href="<?php echo asset('img/icon.ico');?>">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 
@@ -35,7 +36,7 @@
     <script type='text/javascript' src="<%URL::asset('js/handlebars.js')%>" ></script>
     <script type='text/javascript' src="<%URL::asset('js/moment.js')%>" ></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/history.js/1.8/bundled-uncompressed/html4+html5/dojo.history.js"></script>
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 	<script src="<% URL::asset('js/tag-it.js')%>"></script>
 
 	<script src="<% URL::asset('js/foundation.min.js')%>"></script>
@@ -294,13 +295,17 @@
 			background:#e00 !important;
 
 		}
+
+		.notification:hoVer{
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
 
 
 
-<div class=" sticky">
+<div class="sticky">
   <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
     <ul class="title-area">
 	    <li class="name">
@@ -343,8 +348,7 @@
     </li>
       <li class='show-for-small'><a href="<% URL::to('ventures') %>" >Ventures</a></li>
 	  <li class='show-for-small'><a href="<% URL::to('expertise') %>" >Expertise</a></li>
-		<li class='show-for-small'><a href="<% URL::to('about-us') %>">About </a></li>
-		<li class='show-for-small'><a href="<% URL::to('about-us') %>">Contact </a></li>
+		<li class='show-for-small'><a href="<% URL::to('about-us') %>">About</a></li>
       <li>
       <a href="#">Georgia Tech</a></li>
     </ul>
@@ -364,7 +368,7 @@
 	<a href="<% URL::to('ventures') %>" class="venturelink grey-sidebar">Ventures</a>
 	<a href="<% URL::to('expertise') %>" class="expertiselink green-sidebar">Expertise</a>
 	<hr style='padding-left:20px;padding-right:20px;'>
-	<a href="<% URL::to('about-us') %>" class=" grey-sidebar">About </a>
+	<a href="<% URL::to('about-us') %>" class=" grey-sidebar">About</a>
 	
 	</div>
 	</div>        
