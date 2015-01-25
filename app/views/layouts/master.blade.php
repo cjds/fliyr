@@ -552,9 +552,9 @@ background-color: transparent;}
 	</div>
 	
 	</div>
-		<a href="facebook.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_facebook.png')%> class='socialmediaicons facebook' /></a>
-		<a href="facebook.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_twitter.png')%> class='socialmediaicons twitter' /></a>
-		<a href="facebook.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_instagram.png')%> class='socialmediaicons instagram' /></a>
+		<a href="https://facebook.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_facebook.png')%> class='socialmediaicons facebook' /></a>
+		<a href="https://twitter.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_twitter.png')%> class='socialmediaicons twitter' /></a>
+		<a href="http://instagram.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_instagram.png')%> class='socialmediaicons instagram' /></a>
 
 	</div>        
      @show
