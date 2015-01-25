@@ -16,6 +16,7 @@ class CreateExperienceTable extends Migration {
 			$table->increments('experience_id');
 			$table->integer('user_id')->unsigned();
 			$table->foreign('user_id')->references('user_id')->on('user');
+			$table->boolean('experience_added_manually')->default(false);
 			$table->text('description');
 			$table->timestamps();
 			$table->softDeletes();

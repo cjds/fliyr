@@ -471,6 +471,8 @@ $('#content').on('click','.create-venture-button',function(){
         var HTML = Template(position);
         $('#content').find('div').eq(2).prepend(HTML);
         $('.create-venture-button').html('Cancel');
+		tagit('.taginput');
+
         //$('#dialog').html(HTML);
         //$('#dialog').addClass("small");
         //$('#dialog').foundation('reveal','open');        
@@ -618,8 +620,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				$.ajax({
 					url: "ajax/add-venture",
 					type: "POST",
-					data: { 
-					  	user_id:5, // to be changed later
+					data: {  // to be changed later
 					  	name: $('#ventureform input[name=venture]').val(),
 						tags:[],
 						description:$('#ventureform textarea[name=description]').val(),
@@ -668,9 +669,10 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				else{
 					$('.addposition a').html('');	
 				}
+				venturestate=true;
+
 			}
 		}
-		venturestate=true;
 		
 	});
 
