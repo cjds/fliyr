@@ -201,7 +201,13 @@ class UserController extends Controller {
 			$query = $pdo->prepare("SELECT  * FROM experience_tag WHERE experience_id=:experience_id ORDER BY created_at DESC");
 			$query->bindParam(':experience_id', $value['experience_id']);
 			$query->execute();
-			$row[$key]['tags']=$query->fetchAll();		
+			$row[$key]['tags']=$query->fetchAll();
+			if ($row[$key]['user_id']==$session->get_user_id()) {
+				$row[$key]['creator']=true;
+			}			
+			else{
+				$row[$key]['creator']=false;
+			}
 		}
 		return  json_encode($row);
 

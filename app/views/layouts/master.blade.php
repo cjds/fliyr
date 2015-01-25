@@ -119,7 +119,11 @@
 		.green:hover{
 			background:#2AD6AF;
 		}
-		.grey-sidebar,.grey-sidebar:active{
+
+		.grey-sidebar:active{
+			color:#7d7d7d;
+		}
+		.grey-sidebar{
 			color:#7d7d7d;
 			font-family: 'Roboto','Helvetica',sans-serif;
 			font-weight:300;
@@ -308,6 +312,12 @@
 			cursor: pointer;
 		}
 
+		.circle:before {
+		    content: ' \25CF';
+		    font-size: 10;
+		    color:#dc0066;
+		}
+
 		.notification{
 			width:15px !important;
 			font-size:10px !important;
@@ -321,7 +331,9 @@
 
 		}
 
-		.notification:hoVer{
+
+
+		.notification:hover{
 			cursor: pointer;
 		}
 
@@ -461,6 +473,10 @@
 		.instagram{
 			margin-left:130px;
 		}
+
+		.reveal-modal-bg {
+background-color: transparent;}
+
 	</style>
 </head>
 <body>

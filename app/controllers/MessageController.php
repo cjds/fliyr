@@ -72,9 +72,9 @@ class MessageController extends Controller {
 		$query->bindParam(':user_id',$user_id);
 
 		$query->execute();
-		$row=$query->fetch();
+		$row=$query->fetchAll();
 
-		return $row['count'];
+		return count($row);
 
 	}
 
@@ -193,6 +193,10 @@ class MessageController extends Controller {
 		foreach ($data['thread'] as $key => $value) {
 			if($value['user_id']==$user_id)
 				$data['thread'][$key]['user_name']='me';
+			else{
+				$name=explode(';',$data['thread'][$key]['user_name']);
+				$data['thread'][$key]['user_name']=$name[0];
+			}
 				$messagedata=explode(';',$data['thread'][$key]['message']);
 				$data['thread'][$key]['message']='';
 				if(count($messagedata)!=1){
@@ -202,6 +206,7 @@ class MessageController extends Controller {
 				}
 				else
 					$data['thread'][$key]['message']=$messagedata[0];
+				$data['thread'][$key]['message']=nl2br($data['thread'][$key]['message']);
 		}
 
 		$sql= "SELECT * 
@@ -234,7 +239,7 @@ class MessageController extends Controller {
 		if($redirection!=null)
 			return $redirection;
 
-		$sql= "UPDATE message SET flag =1 WHERE reference_message_id=:message_id AND (sender_id!=:user_id)";
+		$sql= "UPDATE message SET flag=1 WHERE reference_message_id=:message_id AND (sender_id!=:user_id)";
 		$query=$pdo->prepare($sql);
 		$query->bindParam('message_id',$message_id);
 		$query->bindParam('user_id',$user_id);

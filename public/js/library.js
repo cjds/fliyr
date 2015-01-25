@@ -321,6 +321,27 @@ $('#content').on('click','.replybutton',function(e){
 
 
 //**************************************************************EXPERTISE
+
+function tagit(div){
+	$.ajax({
+	 		url:'ajax/get-tags',
+	 		type:"GET"
+	 		}).done(function(msg){
+				$(div).tagit({
+					"preprocessTag":function(val) {
+			  			if (!val) { return ''; }
+			  			if(val.charAt(0)=='#')
+			  				return val;
+			  			return '#'+val;
+
+					},
+					"availableTags":JSON.parse(msg),
+					maxTags:10
+				});
+		});
+}
+
+
 //**************************************************************EXPERTISE
 //**************************************************************EXPERTISE
 //**************************************************************EXPERTISE
@@ -453,23 +474,7 @@ $('#content').on('click','.create-venture-button',function(){
         //$('#dialog').html(HTML);
         //$('#dialog').addClass("small");
         //$('#dialog').foundation('reveal','open');        
-        $.ajax({
-	 		url:'ajax/get-tags',
-	 		type:"GET"
-	 		}).done(function(msg){
-	 			cosnole.log(msg);
-				$('.taginput').tagit({
-					"preprocessTag":function(val) {
-			  			if (!val) { return ''; }
-			  			if(val.charAt(0)=='#')
-			  				return val;
-			  			return '#'+val;
-
-					},
-					"availableTags":msg,
-					maxTags:10
-				});
-			});
+        
 		
 	}
 	else{
@@ -558,15 +563,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 			        var HTML = Template(venture);
 			        $('#content').find('div').eq(2).prepend(HTML);
 			        $('.create-venture-button').html('Cancel');
-	        		$('.taginput').tagit({
-						"preprocessTag":function(val) {
-							if (!val) { return ''; }
-							if(val.charAt(0)=='#')
-								return val;
-							return '#'+val;
-
-						}
-					});
+	        		tagit('.taginput');
 			        if((4-positions.length)>0)
 						$('.addposition a').html('Add Position ('+(4-positions.length)+' remaining )')
 					else
@@ -576,15 +573,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				}				  
 			});
 	        
-	        $('.taginput').tagit({
-				"preprocessTag":function(val) {
-		  			if (!val) { return ''; }
-		  			if(val.charAt(0)=='#')
-		  				return val;
-		  			return '#'+val;
-
-				}
-			});
+	        tagit('.taginput');
 		}
 		else{
 			$('#content').find('div').eq(2).html('');
