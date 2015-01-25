@@ -4,22 +4,22 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-	<title>Fliyr - Build your venture team</title>
+	<title>Fliyr - Find your venture team</title>
 	<meta name="description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.">
 	
 	<!-- Schema.org markup for Google+ -->
-<meta itemprop="name" content="Fliyr - Build your venture team">
+<meta itemprop="name" content="Fliyr - Find your venture team">
 <meta itemprop="description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.">
 <meta itemprop="image" content="<?php echo asset('img/facebook3.jpg');?>">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@fliyr">
-<meta name="twitter:title" content="Fliyr - Build your venture team">
+<meta name="twitter:title" content="Fliyr - Find your venture team">
 <meta name="twitter:description" content="Fliyr is a free service that connects GT entrepreneurs with the skilled students and on-campus resources to develop their startup ideas.">
 <meta name="twitter:creator" content="@fliyr">
 <meta name="twitter:image:src" content="<?php echo asset('img/logo2.png');?>">
 
-<meta property="og:title" content="Fliyr - Build your venture team" />
+<meta property="og:title" content="Fliyr - Find your venture team" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://www.fliyr.com/" />
 <meta property="og:image" content="<?php echo asset('img/facebook3.jpg');?>" />
@@ -63,26 +63,13 @@
 		}
 
 		
-
-		@media only screen and (max-width:63em){
-			.venturetext{
-				font-size:1.6rem;
-			}
+		.venturetext{
+			font-size:18px;
+			text-transform:lowercase;
+			font-weight:300;
 		}
 
-		@media only screen and (min-width:63em) and (max-width: 86em){
-			.venturetext{
-				font-size:1.8rem;
-			}
-		}
-		@media only screen and (min-width:85em){
-				.venturetext{
-				font-size:2rem;
-			}
 
-
-
-		}
 
 		.black{
 			background: #333;
@@ -142,6 +129,20 @@
    			text-align: center; 
    			font-family: 'Oswald','Helvetica',Arial,sans-serif;
 		}
+
+
+	.light-green-button{
+		padding: 5px;
+		font-size: 12px;
+		padding-right: 8px;
+		padding-left: 8px;
+		background:#fff;
+		border:1px #2AD6AE solid;
+		color:#2AD6AE;
+		text-transform:uppercase;
+
+	}
+
 	</style>
 	    <script> 
         // wait for the DOM to be loaded 
@@ -204,7 +205,7 @@
 
 <div class="column large-4 large-offset-4 medium-6 medium-offset-3 small-12 " style="display:block;z-index:1;background-color:rgba(255,255,255,0.8);border:1px solid #ccc;margin-top:8%;">
 <div id="signupmodal" class="reveal-modal small" data-reveal>
-		<p>Welcome to Fliy! To complete your registration please confirm your account by clicking the link in our e-mail that we supplied.</p>
+		<p>Welcome to Fliyr! Please check your registration please confirm your account by clicking the link in our e-mail that we supplied.</p>
 		</div>
 
 	<div class="row" >
@@ -213,7 +214,7 @@
 	</div>
 	
 		<div class='row'>
-				<p class='venturetext' style="background-color:rgba(255,255,255,0.65);text-align:center">Build your venture team</p>
+				<p class='venturetext' style="background-color:rgba(255,255,255,0.65);text-align:center">Find your venture team</p>
 			</div>
 		<form id="loginform">
 			<span class='errortext' id='loginerrortext'></span>
@@ -224,7 +225,7 @@
 				<input type='password' class='biginput' name="password" placeholder="Password"/>
 		</div>
 		<div class='row' style='margin:auto;text-align:center'>	
-				<input type='submit' value="LOGIN" class=' button small-centered small green' style=/>	
+				<input type='submit' value="LOGIN" class=' button small-centered light-green-button' style=/>	
 		</div>
 
 		<div class='row' style="margin:auto;text-align:center">
@@ -249,7 +250,7 @@
 				<input type='password' class='biginput' name='confirmpassword' placeholder="Confirm Password"/>
 				</div>
 				<div class='row' style='text-align:center'>
-				<input type='submit' value="Sign Up" class='button small green'  />
+				<input type='submit' value="Sign Up" class='button light-green-button'  />
 				</div>
 				<div class='row' style="margin:auto;text-align:center">
 				<p>Already have an account? <a href="#" class='changebutton' >Log In</a></p>

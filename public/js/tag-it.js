@@ -35,6 +35,8 @@
             readOnly          : false,  // Disables editing.
             removeConfirmation: false,  // Require confirmation to remove tags.
             tagLimit          : null,   // Max number of tags allowed (null for unlimited).
+            maxTags           : 9999,//maximum tags allowed default almost unlimited
+            onlyAvailableTags : false,//boolean, allows tags that are in availableTags or not 
 
             // Used for autocomplete, unless you override `autocomplete.source`.
             availableTags     : [],
@@ -421,8 +423,24 @@
             return tag;
         },
 
-        _isNew: function(name) {
-            return !this._findTagByLabel(name);
+        _isNew: function(value) {
+            var that = this;
+            var isNew = true;
+            var count = 0;
+            this.tagList.children('.tagit-choice').each(function(i) {
+                count++;
+
+                if (that._formatStr(value) == that._formatStr(that.tagLabel(this))|| count >= that.options.maxTags) {
+                    isNew = false;
+                    return false;
+                }
+                if (that.options.onlyAvailableTags && $.inArray(that._formatStr(value),that.options.availableTags)==-1) {
+                    isNew = false;
+                    return false;
+                }
+
+            });
+            return isNew;
         },
 
         _formatStr: function(str) {

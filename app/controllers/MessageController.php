@@ -63,7 +63,7 @@ class MessageController extends Controller {
 		$redirection=$session->handle_json_redirection();
 		
 		if($redirection!=null)
-			return $redirection;
+			return 0;
 
 		$user_id=Session::get('user_id');
 		$pdo=DB::connection()->getPdo();		
@@ -158,9 +158,11 @@ class MessageController extends Controller {
 			}
 				$array = explode(';', $row[$key]['ref_message']); //will break if ~ is used in title cancel
 				$message='';
-				for($i=1;$i<count($array);$i++)
-					$message.=$array[$i];
-				$row[$key]['message']=$message;
+				//for($i=1;$i<count($array);$i++)
+				//	$message.=$array[$i];
+				if(strlen($row[$key]['message'])>80)
+					$row[$key]['message']=substr($row[$key]['message'],0,80).'...';
+
 				$row[$key]['subject']=$array[0];
 			
 		}

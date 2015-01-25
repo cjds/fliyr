@@ -91,7 +91,7 @@ class VentureController extends Controller {
 			}
 		}
 		else{
-			$sql=$pdo->prepare("INSERT INTO venture (venture_name,venture_description,creator_id,created_at) VALUES (:venture_name,:venture_description,:creator_id,NOW())");
+			$sql=$pdo->prepare("INSERT INTO venture (venture_name,venture_description,creator_id,created_at,updated_at) VALUES (:venture_name,:venture_description,:creator_id,NOW(),NOW())");
 			$sql->bindParam(':venture_name', $venture_name);
 			$sql->bindParam(':venture_description', $venture_description);
 			$sql->bindParam(':creator_id', $creator_id);
@@ -125,7 +125,6 @@ class VentureController extends Controller {
 				$position_id=$pdo->lastInsertId();
 				
 				foreach (explode(',',$position['tags']) as $tag) {
-					$tag=substr($tag, 0, -1);
 					$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 					$query->bindParam(':tag', $tag);
 					$query->execute();
@@ -207,6 +206,22 @@ class VentureController extends Controller {
 		$ventures=new Ventures;
 		$ventures->delete($input['venture_id']);
 		return '{result:success}';
+	}
+
+	protected function get_tags()
+	{
+		//get_tags
+		$pdo=DB::connection()->getPdo();
+		$input=Input::all();
+		$query=$pdo->prepare("SELECT * FROM tag");
+	
+		$query->execute();
+		$result=$query->fetchAll();
+		$data=array();
+		foreach ($result as $key => $value) {
+			$data[]=$result[$key]['tag_name'];
+		}
+		return json_encode($data);
 	}
 
 	protected function add_position()

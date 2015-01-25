@@ -42,6 +42,8 @@ Route::get('/signupsuccess', function()
 	return View::make('magic');
 });
 
+Route::get('ajax/get-tags','VentureController@get_tags');
+
 //Route for User
 Route::post('ajax/sign-up','UserController@sign_up');
 Route::post('ajax/login','UserController@login');

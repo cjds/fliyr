@@ -76,6 +76,27 @@ History.Adapter.bind(window, 'statechange', function() {
 		return routingString;
 	}
 
+	function checkForSideBar(url){
+        
+        $('.venturelink').removeClass('green-sidebar');		
+    	
+		$('.expertiselink').removeClass('green-sidebar');
+		$('.venturelink').addClass('grey-sidebar');
+		$('.expertiselink').addClass('grey-sidebar');
+		if(currentURL=='ventures'){
+				        $('.expertiselink').addClass('grey-sidebar');
+	        $('.expertiselink').removeClass('green-sidebar');
+	        $('.venturelink').removeClass('grey-sidebar');
+	        $('.venturelink').addClass('green-sidebar');
+		}
+		else if(currentURL=='expertise'){
+			$('.expertiselink').addClass('green-sidebar');
+			        $('.expertiselink').removeClass('grey-sidebar');
+			        $('.venturelink').removeClass('green-sidebar');
+			        $('.venturelink').addClass('grey-sidebar');
+
+		}		
+	}
 	function routingUpdate(){
 		
 		currentURL=routingFunction();
@@ -88,10 +109,7 @@ History.Adapter.bind(window, 'statechange', function() {
 			        var Template = Handlebars.compile(Source);
 			        var HTML = Template({ ventures : ventures });
 			        $('#content').html(HTML);
-			        $('.expertiselink').addClass('grey-sidebar');
-			        $('.expertiselink').removeClass('green-sidebar');
-			        $('.venturelink').removeClass('grey-sidebar');
-			        $('.venturelink').addClass('green-sidebar');
+
 					$('.venturebox').height($('.venturebox').width());
 				};
 			ajaxCallHandler('ajax/get-ventures',"GET",{},success);
@@ -103,10 +121,7 @@ History.Adapter.bind(window, 'statechange', function() {
 			        var Template = Handlebars.compile(Source);
 			        var HTML = Template({ expertise : data });
 			        $('#content').html(HTML);
-			        $('.expertiselink').addClass('green-sidebar');
-			        $('.expertiselink').removeClass('grey-sidebar');
-			        $('.venturelink').removeClass('green-sidebar');
-			        $('.venturelink').addClass('grey-sidebar');
+			        
 			        $('.venturebox').height($('.venturebox').width());
 				};
 			ajaxCallHandler('ajax/get-expertise',"GET",{},success);
@@ -217,6 +232,7 @@ History.Adapter.bind(window, 'statechange', function() {
 			}
 		}
 		checkForNotifications();
+		checkForSideBar(currentURL);
 	}
 
 //**************************************************************TOP BAR
@@ -437,15 +453,24 @@ $('#content').on('click','.create-venture-button',function(){
         //$('#dialog').html(HTML);
         //$('#dialog').addClass("small");
         //$('#dialog').foundation('reveal','open');        
-		$('.taginput').tagit({
-			"preprocessTag":function(val) {
-	  			if (!val) { return ''; }
-	  			if(val.charAt(0)=='#')
-	  				return val;
-	  			return '#'+val;
+        $.ajax({
+	 		url:'ajax/get-tags',
+	 		type:"GET"
+	 		}).done(function(msg){
+	 			cosnole.log(msg);
+				$('.taginput').tagit({
+					"preprocessTag":function(val) {
+			  			if (!val) { return ''; }
+			  			if(val.charAt(0)=='#')
+			  				return val;
+			  			return '#'+val;
 
-			}
-		});
+					},
+					"availableTags":msg,
+					maxTags:10
+				});
+			});
+		
 	}
 	else{
 		$('#content').find('div').eq(2).html('');
@@ -542,10 +567,12 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 
 						}
 					});
-			        if((3-positions.length)>0)
-						$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )')
+			        if((4-positions.length)>0)
+						$('.addposition a').html('Add Position ('+(4-positions.length)+' remaining )')
 					else
 						$('.addposition a').html('');
+					$('html, body').animate({scrollTop: '0px'}, 0);
+
 				}				  
 			});
 	        
@@ -580,53 +607,78 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 			}
 	    	$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button">'+positions[i].name+'</a></div> <a href="#" data-id='+i+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a><ul class="taglist">'+taglist+'</ul></div<');
 	    }
-		$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
+		$('.addposition a').html('Add Position ('+(4-positions.length)+' remaining )');
 	});
 
 	$('#content').on('click','.finishbtn',function(e){
 		e.preventDefault();
 		if(venturestate){
-			$.ajax({
-				url: "ajax/add-venture",
-				type: "POST",
-				data: { 
-				  	user_id:5, // to be changed later
-				  	name: $('#ventureform input[name=venture]').val(),
-					tags:[],
-					description:$('#ventureform textarea[name=description]').val(),
-					venture_id:$('#ventureform').attr('data-venture-id'),
-					positions:positions
-				},
-				success: function(data, textStatus) {
-					if(data=='ok'){
-							routingUpdate();
-						}
-					}				  
-				});
-		}
-		else{
-			$('.addpositionbox').hide();
-			$('.addventurebox').show();		    
-			var position = {
-			    name:$('#positionform input[name=position]').val(),
-			    description:$('#positionform textarea[name=description]').val(),
-			    tags:$('#positionform input[name=taginput]').val() 
-			};
-			var tagarray=position.tags.split(',');
-			var taglist='';
-			for (index = 0; index < tagarray.length; ++index) {
- 			   taglist+="<li>"+tagarray[index]+"</li>";
-						}
-			$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button">'+position.name+'</a></div><a href="#" data-id='+positions.length+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>  <ul class="taglist">'+taglist+'</ul></div>');
-			positions.push(position);
-			$('#positionform input[name=position]').val('');
-			$('#positionform textarea[name=description]').val('');			
-			$('#positionform input[name=taginput]').tagit('removeAll');
-			if(3-positions.length>0){
-				$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
+			var name=$('#ventureform input[name=venture]').val();
+			var description=$('#ventureform textarea[name=description]').val();
+			var venture_id=$('#ventureform').attr('data-venture-id');
+			if(name.length==0){
+				alert("You can't have an empty name");
+			}
+			else if(description.length==0){
+				alert("You can't have an empty description");
+			}
+			else if(positions.length==0){
+				alert("You must have at least one position");
 			}
 			else{
-				$('.addposition a').html('');	
+				$.ajax({
+					url: "ajax/add-venture",
+					type: "POST",
+					data: { 
+					  	user_id:5, // to be changed later
+					  	name: $('#ventureform input[name=venture]').val(),
+						tags:[],
+						description:$('#ventureform textarea[name=description]').val(),
+						venture_id:$('#ventureform').attr('data-venture-id'),
+						positions:positions
+					},
+					success: function(data, textStatus) {
+						if(data=='ok'){
+								routingUpdate();
+							}
+						}				  
+					});
+			}
+		}
+		else{
+			if($('#positionform input[name=position]').val().length==0){
+				alert("You can't have an empty name");
+			}
+			else if($('#positionform textarea[name=description]').val().length==0){
+				alert("You can't have an empty description");
+			}
+			else if($('#positionform input[name=taginput]').val().length==0){
+				alert("You must have at least one tag");
+			}
+			else{
+				$('.addpositionbox').hide();
+				$('.addventurebox').show();		    
+				var position = {
+				    name:$('#positionform input[name=position]').val(),
+				    description:$('#positionform textarea[name=description]').val(),
+				    tags:$('#positionform input[name=taginput]').val() 
+				};
+				var tagarray=position.tags.split(',');
+				var taglist='';
+				for (index = 0; index < tagarray.length; ++index) {
+	 			   taglist+="<li>"+tagarray[index]+"</li>";
+							}
+				$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button">'+position.name+'</a></div><a href="#" data-id='+positions.length+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>  <ul class="taglist">'+taglist+'</ul></div>');
+				positions.push(position);
+				$('#positionform input[name=position]').val('');
+				$('#positionform textarea[name=description]').val('');			
+				$('#positionform input[name=taginput]').tagit('removeAll');
+				if(4-positions.length>0){
+					$('.addposition a').html('Add Position ('+(4-positions.length)+' remaining )');
+				}
+				else{
+					$('.addposition a').html('');	
+				}
 			}
 		}
 		venturestate=true;

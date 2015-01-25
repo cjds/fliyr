@@ -64,17 +64,17 @@
     <div class='addventurebox' >
         <form id='ventureform' data-venture-id='{{venture_id}}'>
             <span class='title' >
-                <input type='text' name='venture' placeholder='VentureName' value='{{venture_name}}'/>
+                <input type='text' name='venture' placeholder='VentureName' value='{{venture_name}}' maxlength="30"/>
             </span>
             <p>
-                <textarea rows="4" cols="35" name="description" placeholder="Enter a description">{{venture_description}}</textarea>
+                <textarea rows="4" cols="35" name="description" placeholder="Enter a description" maxlength="160">{{venture_description}}</textarea>
             </p>
 
             <div class='positionlist'>
                 {{#each positions}}
                 <div class='position-edit-item'>
                     <div class='row position-title'>
-                        <a href="#" class='position-edit-button'>{{position_name}} > </a>
+                        <span href="#" class='position-edit-button'>{{position_name}} > </span>
                     </div>
                     <a href="#" data-id='+positions.length+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>
                     <ul class='taglist'>{{#each tag}}
@@ -85,7 +85,7 @@
                 {{/each}}
             </div>
             <p class='addposition'>
-                <a href="#">Create Position (3 Remaining)</a>
+                <a href="#">Create Position (4 Remaining)</a>
             </p>
         </form>
     </div>
@@ -93,10 +93,10 @@
     <div class='addpositionbox' style="display:none">
         <form id='positionform'>
             <span class='title' >
-                <input type='text' name='position' placeholder='PositionName'/>
+                <input type='text' name='position' placeholder='PositionName' maxlength="30"/>
             </span>
             <p>
-                <textarea rows="4" cols="35" name='description' placeholder="Enter a description"></textarea>
+                <textarea rows="4" cols="35" name='description' placeholder="Enter a description" maxlength="400"></textarea>
             </p>
             <p> 
                 <input type='text' placeholder='#' name='taginput' class='taginput'/>
@@ -143,7 +143,7 @@
             <div class='row'  style='text-align:center'>
                <a href="#" class='position-back-btn'><  {{position_name}}</a>
             </div>
-            <div class='row'>
+            <div class='row' style='font-size:12px;font-style:italic;color:#7d7d7d'>
     		{{position_description}}
     		</div>
             <div class='row'>

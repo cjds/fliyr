@@ -102,10 +102,10 @@
 
 
 	.light-green-button{
-		padding: 5px;
+		padding: 3px;
 		font-size: 12px;
-		padding-right: 8px;
-		padding-left: 8px;
+		padding-right: 7px;
+		padding-left: 7px;
 		background:#fff;
 		border:1px #2AD6AE solid;
 		color:#2AD6AE;
@@ -149,7 +149,7 @@
 
 		.venturebox{
 			padding-left: 24px;
-			padding-top: 16px;
+			padding-top: 10px;
 			padding-right: 24px;
 			min-height: 280px;
 			overflow: hidden;
@@ -184,6 +184,7 @@
 			font-size: 12px;
 			font-weight: 300;
 			color:#7d7d7d;
+			margin-bottom:0px;
 		}
 
 		.venturebox .positiontitle,.expertisetitle .positiontitle{
@@ -261,6 +262,7 @@
 			text-align: center;
 			height: 22px;
 			margin-bottom: 6px;
+			padding:0px;
 		}
 
 		.venturebox textarea,.venturebox textarea{
@@ -286,6 +288,12 @@
 			margin-bottom: 0px;
 		}
 
+		.position-edit-button {
+			color:#2AD6AE;	
+			font-size:12px;
+
+		}
+
 		.position-edit-item .position-title,.position-edit-item .position-title img{
 			display: inline-block;
 		}
@@ -301,14 +309,15 @@
 		}
 
 		.notification{
-			width:20px !important;
+			width:15px !important;
 			font-size:10px !important;
 			color:#fff !important;
-			margin-top:10px;
-			line-height:20px !important;
+			margin-top:1px;
+			line-height:15px !important;
 			vertical-align: middle;
 			text-align:center;
-			background:#e00 !important;
+			background:#dc0066 !important;
+			margin-top:15px;
 
 		}
 
@@ -433,7 +442,7 @@
 
 		.socialmediaicons{
 			width:20px;height:auto;display:inline-block;margin:auto;margin-top:14px;
-			position:absolute;bottom:60px;
+			position:absolute;bottom:70px;
 			left:0px;
 		}
 
@@ -527,9 +536,9 @@
 	</div>
 	
 	</div>
-	<img src=<%URL::asset('img/fliyr_icons_facebook.png')%> class='socialmediaicons facebook' />
-	<img src=<%URL::asset('img/fliyr_icons_twitter.png')%> class='socialmediaicons twitter' />
-	<img src=<%URL::asset('img/fliyr_icons_instagram.png')%> class='socialmediaicons instagram' />
+		<a href="facebook.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_facebook.png')%> class='socialmediaicons facebook' /></a>
+		<a href="facebook.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_twitter.png')%> class='socialmediaicons twitter' /></a>
+		<a href="facebook.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_instagram.png')%> class='socialmediaicons instagram' /></a>
 
 	</div>        
      @show

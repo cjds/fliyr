@@ -40,7 +40,7 @@ class Ventures{
 	public function get($id){
 		$session = new SessionModel;
 		$pdo=DB::connection()->getPdo();		
-		$query = $pdo->prepare("SELECT  * FROM venture WHERE venture_id=:venture_id ORDER BY created_at DESC");
+		$query = $pdo->prepare("SELECT  * FROM venture WHERE venture_id=:venture_id ORDER BY updated_at DESC");
 		$query->bindParam('venture_id',$id);
 		$query->execute();
 		$row=$query->fetch();

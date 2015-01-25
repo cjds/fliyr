@@ -14,19 +14,19 @@ class UserController extends Controller {
 		$user_name=$input['user_name'];
 		$user_email=$input['user_email'];
 		$user_password=password_hash($input['user_password'],PASSWORD_DEFAULT);
-
+		$user_confirmpassword=$input['user_confirmpassword'];
 		$pdo=DB::connection()->getPdo();
 
 		$user_model=new User();
 
+		if($user_confirmpassword!=$input['user_password'])
+			return '{"result": "fail","message":"Passwords do not match"}'; 
+
 		$user=$user_model->find_user_by_email($user_email);
 		if($user){
 			return '{"result": "fail","message":"This e-mail already exists"}';
-		}		
-		$user=$user_model->find_user_by_username($user_name);
-		if($user){
-			return '{"result": "fail","message":"This username already exists"}';;		
 		}
+
 		
 		$user=$user_model->add_user($user_name,$user_email,$user_password);
 		if($user!=false){

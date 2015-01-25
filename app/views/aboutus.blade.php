@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -127,16 +128,6 @@
         }); 
     </script> 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-41260149-2', 'auto');
-  ga('send', 'pageview');
-
-</script>    
 </head>
 <body>
 	<div class="column large-2 small-12 menu" >
@@ -191,7 +182,7 @@ Chase Roberts, Business, <i>Business Administration Major</i>
 <dt><a href="#"><b>Not found the answer you want?</b></a></dt>
 <dd>Feel free to contact our team at <a href="mailto:info@fliyr.com">info@fliyr.com</a>.</dd>
 <br>
-<a href="<?php echo url('/sign-up');?>" class="button tiny green " style=";text-transform:uppercase;">ga tech sign up</a>	
+<a href="<?php echo url('/');?>" class="button tiny green " style=";text-transform:uppercase;">sign up</a>	
 
 	</div>
 	</div>
