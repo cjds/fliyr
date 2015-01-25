@@ -18,7 +18,7 @@ Blade::setEscapedContentTags('<%%', '%%>');   // for escaped data
 
 Route::get('/','HomeController@login');
 
-Route::get('ajax/confirm',"UserController@confirm_user");
+Route::get('/confirm',"UserController@confirm_user");
 
 Route::get('/venturelist',function(){
 	return View::make('venturelist');
@@ -34,6 +34,7 @@ Route::get('/login','HomeController@login');
 Route::get('/expertise','HomeController@get_expertise');
 Route::get('/myexpertise','HomeController@my_expertise');
 Route::get('/myventures','HomeController@my_ventures');
+Route::get('/confirmed','HomeController@confirm');
 //Route::get('/inbox','HomeController@inbox');
 Route::get('/signout','HomeController@signout');
 Route::get('/signupsuccess', function()

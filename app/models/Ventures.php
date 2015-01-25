@@ -30,7 +30,10 @@ class Ventures{
 			$query->bindParam(':venture_id', $value['venture_id']);
 			$query->execute();
 			$row[$key]['tags']=$query->fetchAll();			
+
+
 		}
+
 		return  json_encode($row);
 	}	
 
@@ -94,7 +97,8 @@ class Ventures{
 			$query = $pdo->prepare("SELECT  tag_name FROM venture_tag,tag WHERE venture_id=:venture_id AND venture_tag.tag_id=tag.tag_id ORDER BY venture_tag.created_at DESC");
 			$query->bindParam(':venture_id', $value['venture_id']);
 			$query->execute();
-			$row[$key]['tags']=$query->fetchAll();			
+			$row[$key]['tags']=$query->fetchAll();		
+			$row[$key]['creator']=true;	
 		}
 		return  json_encode($row);
 	}	

@@ -173,12 +173,18 @@ class UserController extends Controller {
 	{
 		$input=Input::all();
 		$user=new User();
+
+		if(!isset($input['confirmationstring']))
+			return Redirect::to('/');
+		else if(!isset($input['user_id']))
+			return Redirect::to('/');
 		$message=$user->confirm_user($input['confirmationstring'],$input['user_id']);
+
 		if($message){
-			return '{"result": "ok","message":"This user is confirmed"}';
+			return Redirect::to('/confirmed');
 		}
 		else
-			return '{"result": "fail","message":"This user failed to confirm"}';
+			return Redirect::to('/');
 	}
 
 	protected function get_experience(){

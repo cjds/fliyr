@@ -117,21 +117,28 @@
 </script>
 
 <script id="send-message-template" type="text/x-handlebars-template">
-<div class='large-3 columns'>
-<span>{{user_name}}</span>
-<hr>
-<span>{{venture_name}} - {{position_name}}</span><br>
-
-<input type='hidden' name='position-id' value={{position_id}} /><br>
-<input type='hidden' name='receiver-id' value={{user_id}} /><br>
-<textarea name='message'></textarea><br>
-<button class='submit-message' >Submit</button>
+<div class='row'>
+<div class='row' style='margin-top:-17px;'>
+<span>To: {{user_name}}</span>
 </div>
-<a class='close-reveal-modal'>&#215;</a>
+<div class='row' style='margin-top:6px;'>
+<span>{{venture_name}} - {{position_name}}</span>
+</div>
+
+<input type='hidden' name='position-id' value={{position_id}} />
+<input type='hidden' name='receiver-id' value={{user_id}} />
+<div class='row' style='margin-top:6px;'>
+<textarea name='message' rows=4></textarea>
+</div>
+<div class='row' style='margin-top:6px;'>
+<button class='right submit-message light-green-button' style='margin-bottom:0px' >Send</button>
+</div>
+<a class='close-reveal-modal'><img src="../img/fliyr_Icon_Cancel.png" style="width:19px;height:auto;margin-top:3px;margin-right:-6px"/></a>
+</div>
 </script>
 
 <script id="position-partial" type="text/x-handlebars-template">
-  <div class="position row flip" data-position-id={{position_id}} style='display:none'>
+  <div class="position row flip" data-position-id={{position_id}} style='display:none;height:100%'>
     
             <div class='row'  style='text-align:center'>
                <a href="#" class='position-back-btn'><  {{position_name}}</a>

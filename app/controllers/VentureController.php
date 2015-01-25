@@ -196,6 +196,8 @@ class VentureController extends Controller {
 		$query->bindParam('position_id',$position_id);
 		$query->execute();
 		$row = $query->fetch();
+		$name=explode(';',$row['user_name']);
+		$row['user_name']=$name[0];
 		return json_encode($row);
 	}
 

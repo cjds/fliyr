@@ -28,6 +28,11 @@ class HomeController extends BaseController {
 		return View::make('landing');
 	}
 
+	public function confirm(){
+		$session =new SessionModel;
+		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
+	}
+
 
 	public function signupsuccess(){
 		$session =new SessionModel;

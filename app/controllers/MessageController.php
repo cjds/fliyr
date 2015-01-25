@@ -19,11 +19,22 @@ class MessageController extends Controller {
 		$pdo=DB::connection()->getPdo();		
 		$input=Input::all();
 		
-		//TO BE REPLACED BY THIS LAtER
 		$user_name=Session::get('user_name');
 		$user_id=Session::get('user_id');	
 
-		return	 $this->send_message($user_id,$input['receiver_id'], 'position', $input['message'],$input['position_id'],null);
+		$pdo=DB::connection()->getPdo();
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		$user_id=$session->get_user_id();
+
+		$sql= "SELECT * FROM position p,venture v WHERE position_id=:position_id AND v.venture_id=p.venture_id ";
+		$query=$pdo->prepare($sql);
+		$query->bindParam('position_id',$input['position_id']);
+		$query->execute();
+		$row=$query->fetch();
+		$message=$row['venture_name'].' - '. $row['position_name'].';'.$input['message'];		
+
+		return	 $this->send_message($user_id,$input['receiver_id'], 'position', $message,$input['position_id'],null);
 	}
 
 
@@ -136,30 +147,22 @@ class MessageController extends Controller {
 		$row=$query->fetchAll();
 		foreach ($row as $key => $value) {
 
-		
-		if($row[$key]['sender_id']==$user_id){
-			$name=explode(';',$row[$key]['receiver_name']);
-			$row[$key]['user_name']=$name[0];
-		}
-		else{
-			$name=explode(';',$row[$key]['sender_name']);
-			$row[$key]['user_name']=$name[0];
-		}
-			if($value['message_type']=='position'){
-				$sql= "SELECT position_name,venture_name
-				   FROM position p,venture v
-				   WHERE (p.venture_id=v.venture_id) AND p.position_id=:position_id";
-				$query2=$pdo->prepare($sql);
-				$query2->bindParam('position_id',$value['table_id']);
-				$query2->execute();	
-				$row2=$query2->fetch();
-				$row[$key]['subject']=$row2['position_name']." : ".$row2['venture_name'];
+			
+			if($row[$key]['sender_id']==$user_id){
+				$name=explode(';',$row[$key]['receiver_name']);
+				$row[$key]['user_name']=$name[0];
 			}
 			else{
-				$array = explode(';', $row[$key]['ref_message'], 2); //will break if ~ is used in title cancel
-//				$row[$key]['message']=$row[$key]['message'];
-				$row[$key]['subject']=$array[0];
+				$name=explode(';',$row[$key]['sender_name']);
+				$row[$key]['user_name']=$name[0];
 			}
+				$array = explode(';', $row[$key]['ref_message']); //will break if ~ is used in title cancel
+				$message='';
+				for($i=1;$i<count($array);$i++)
+					$message.=$array[$i];
+				$row[$key]['message']=$message;
+				$row[$key]['subject']=$array[0];
+			
 		}
 		return json_encode($row);
 	}
@@ -189,9 +192,11 @@ class MessageController extends Controller {
 			if($value['user_id']==$user_id)
 				$data['thread'][$key]['user_name']='me';
 				$messagedata=explode(';',$data['thread'][$key]['message']);
+				$data['thread'][$key]['message']='';
 				if(count($messagedata)!=1){
 					for($i=1;$i<count($messagedata);$i++)
-					$data['thread'][$key]['message'].=$messagedata[$i];
+						$data['thread'][$key]['message'].=$messagedata[$i];
+					
 				}
 				else
 					$data['thread'][$key]['message']=$messagedata[0];

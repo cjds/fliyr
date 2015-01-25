@@ -58,7 +58,19 @@
 	@media only screen and (max-width: 40em) {
 		.logo-img{
 			margin-left: 0px;
+			margin-top:-5px;
+			display:inline-block;
 		}
+
+		.logo-img2{
+			display:inline-block !important
+		}
+	}
+
+	@media only screen and (min-width: 40em){
+			.body{
+				 margin-left:16.67%
+			}
 	}
 
 
@@ -92,8 +104,12 @@
 	.light-green-button{
 		padding: 5px;
 		font-size: 12px;
-		padding-right: 15px;
-		padding-left: 15px;
+		padding-right: 8px;
+		padding-left: 8px;
+		background:#fff;
+		border:1px #2AD6AE solid;
+		color:#2AD6AE;
+		text-transform:uppercase;
 
 	}
 		.green{
@@ -101,9 +117,9 @@
 		}
 
 		.green:hover{
-			background:#4AF6CE;
+			background:#2AD6AF;
 		}
-		.grey-sidebar{
+		.grey-sidebar,.grey-sidebar:active{
 			color:#7d7d7d;
 			font-family: 'Roboto','Helvetica',sans-serif;
 			font-weight:300;
@@ -325,6 +341,7 @@
 		.messagetitle h2{
 			font-size: 16px;
 			font-weight: 400;
+			display:block;
 			color: #7d7d7d;
 		}
 
@@ -356,8 +373,84 @@
 
 		.position-message-div{
 			position: absolute;
-			bottom: 0;
-			right: 0;
+			bottom: -6px;
+			right: -6px;
+		}
+
+		.inboxdiv  h1{
+			font-size:12px;
+			color:#7d7d7d;
+			text-transform:uppercase;
+			font-weight:300;
+			padding-bottom:15px;
+		}
+
+		.inboxdiv .messagetable td{
+			padding:7px;
+		}
+
+		.inboxdiv .datetext{
+			font-style:italic;
+			font-size:12px;
+			font-weight:300;
+			color:#7d7d7d;
+		}
+
+		.inboxdiv .usertext {
+			font-size:14px;
+			font-weight:500;
+			color:#7d7d7d;
+		}
+		
+
+		.titletext .subjecttext{
+			font-size:14px;
+			font-weight:500;
+			color:#7d7d7d;
+		}
+
+		.titletext .messagetext{
+			font-size:14px;
+			font-weight:400;
+			color:#7d7d7d;
+		}		
+
+		.messagetable{
+			border:none;
+		}
+
+		.return-to-inbox{
+			font-weight:300;
+			text-transform:uppercase;
+			color:#2AD6AE;	
+		}
+
+		.socialdiv{
+			text-align:center;
+			margin:auto;
+			margin-top:20px;
+		}
+
+		.socialmediaicons{
+			width:20px;height:auto;display:inline-block;margin:auto;margin-top:14px;
+			position:absolute;bottom:60px;
+			left:0px;
+		}
+
+		.socialmediaicons:hover{
+			cursor:pointer;
+		}
+
+		.facebook{
+			margin-left:70px;
+		}
+
+		.twitter{
+			margin-left:100px;
+		}
+
+		.instagram{
+			margin-left:130px;
 		}
 	</style>
 </head>
@@ -366,12 +459,13 @@
 
 
 <div class="sticky">
-  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+  <nav class="top-bar sticky" data-topbar role="navigation" data-options=>
     <ul class="title-area">
 	    <li class="name">
 	      <h1>
 	      	<a href="<% URL::to('/')%>">
-	      		<img src="<%URL::asset('img/fliyr_logo.png')%>" class='logo-img' style="" />
+	      		<img src="<%URL::asset('img/fliyr_logo.png')%>" class='logo-img' style="display:inline-block;" />
+	      		<img src="<%URL::asset('img/fliyr_logo2.png')%>" class='logo-img2 show-for-small-only' style="width:50px;margin-top:7px;height:auto;margin-bottom:10px;margin-left:7px" alt="fliyr" >
 	      	</a>
 	      </h1>
 	     </li>
@@ -418,23 +512,29 @@
 
 
 @section('sidebar')
-	<div class="column large-2 small-12 menu" >
+	<div class="column large-2 small-12 menu hide-for-small hide-for-medium" style='position:fixed;height:100%' >
 			<a href="<% URL::to('/') %>" style="">
 				<img src="<%URL::asset('img/fliyr_logo2.png')%>" style="width:55px;height:auto;margin:auto;margin-top:15px;display:block;margin-bottom:10px" alt="fliyr">
 			</a>		
 	
 	
 	<div class="large-12 columns left-menu hide-for-small">
+	<div class='row'>
 	<a href="<% URL::to('ventures') %>" class="venturelink grey-sidebar">Ventures</a>
 	<a href="<% URL::to('expertise') %>" class="expertiselink green-sidebar">Expertise</a>
 	<hr style='padding-left:20px;padding-right:20px;'>
 	<a href="<% URL::to('about-us') %>" class=" grey-sidebar">About</a>
+	</div>
 	
 	</div>
+	<img src=<%URL::asset('img/fliyr_icons_facebook.png')%> class='socialmediaicons facebook' />
+	<img src=<%URL::asset('img/fliyr_icons_twitter.png')%> class='socialmediaicons twitter' />
+	<img src=<%URL::asset('img/fliyr_icons_instagram.png')%> class='socialmediaicons instagram' />
+
 	</div>        
      @show
 
-	<div class="large-10 small-12 columns body" >
+	<div class="large-10 medium-12 small-12 columns body" >
 	
 			<div class='row'>
             	@yield('content')

@@ -27,14 +27,14 @@ Chase Roberts, Business, <i>Business Administration Major</i>
 <dt><a href="#">Not found the answer you want?</a></dt>
 <dd>Feel free to contact our team at <a href="mailto:info@fliyr.com">info@fliyr.com</a>.</dd>
 <br>
-<a href="http://fliyr.com" class="button tiny green " style=";text-transform:uppercase;">ga tech sign up</a>	
+<a href="http://fliyr.com" class="button light-green-button" style=";text-transform:uppercase;">ga tech sign up</a>	
+
 
 	</div>
 	</div>
 	<div class="columns">
 	</div>
 
-'
 
 
 </script>

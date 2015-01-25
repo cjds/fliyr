@@ -2,8 +2,8 @@
 <script id="expertise-template" type="text/x-handlebars-template">
 <div class='row' style='margin-top:20px'>
           {{#each expertise}}
-        <div class='columns large-4 medium-6  small-12 expertisetitle' data-user-id='{{user_id}}' style='padding-left:12px;padding-right:12px;padding-bottom:24px;'>
-            <div class='venturebox expertisebox'>
+        <div class='columns large-4 medium-6  small-12 expertisetitle' data-user-id='{{user_id}}' style='padding-left:12px;padding-right:12px;padding-bottom:24px;min-height:300px'>
+            <div class='venturebox expertisebox' style="100%">
                 <div class='row title'>{{user_name}}</div>
                 <div class='row card-description'>
                     {{description}}
@@ -16,7 +16,7 @@
                         <li>#{{tag_name}}</li>
                     {{/each}}
                 </ul>
-                <button class='light-green-button expert-message-btn'>Message</button>
+                <button class='light-green-button expert-message-btn' style='position:absolute; right:30px;bottom:20px;;'>Message</button>
             </div>
 
         </div>
@@ -54,17 +54,22 @@
 
 
 <script id="send-expertise-message-template" type="text/x-handlebars-template">
-<div class='row' data-user-id={{user_id}}>
-<span>{{user_name}}</span>
-<hr>
-<div class='row'>
+<div class='row' data-user-id={{user_id}} >
+<div class='row' style='margin-top:-16px;'>
+<span class='usertext'>To: {{user_name}}</span>
+</div>
+<div class='row'  style='margin-top:6px;'>
 <input type='text' name='subject' placeholder='Subject'/>
 </div>
+
 <input type='hidden' name='user-id' value={{user_id}} />
-<textarea name='message' placeholder='Message'></textarea><br>
-<button class='submit-expertise-message'>Submit</button>
+<div class='row'>
+<textarea name='message' rows=4 placeholder='Message'></textarea>
 </div>
-<a class='close-reveal-modal'>&#215;</a>
+<div class='row'>
+<button class='submit-expertise-message light-green-button right' style='margin-bottom:0px'>Send</button>
+</div>
+<a class='close-reveal-modal' ><img src="../img/fliyr_Icon_Cancel.png" style="width:19px;height:auto;margin-top:3px;margin-right:-6px"/></a>
 </script>
 
 <script id="my-expertise-template" type="text/x-handlebars-template">
