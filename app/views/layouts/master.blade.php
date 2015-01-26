@@ -364,8 +364,6 @@
 
 		.aboutus dt{
 			margin-bottom: 4px;
-		}
-		.aboutus dt a{
 			font-weight: 500;
 
 			color: #7d7d7d;
@@ -493,6 +491,10 @@ background-color: transparent;}
 .special:hover{
 cursor:default !important;
 color:#7d7d7d !important;
+}
+
+.position-edit-button:hover{
+	cursor:default !important;
 }
 
 	</style>
