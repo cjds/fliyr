@@ -24,7 +24,7 @@ Route::get('/venturelist',function(){
 	return View::make('venturelist');
 });
 
-Route::get('/thread','HomeController@thread');
+Route::get('/thread-{id}','HomeController@thread');
 
 Route::get('/about','HomeController@about');
 

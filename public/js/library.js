@@ -1,5 +1,5 @@
 History.Adapter.bind(window, 'statechange', function() {
-	
+	console.log("SD");
   routingUpdate();
 });
 
@@ -15,7 +15,7 @@ History.Adapter.bind(window, 'statechange', function() {
 	var created_venture=false;
 
 	function menuHandler(e){
-		console.log('sds');
+		
    		if($(this).html()=='My Ventures'){
     		e.preventDefault();
     		History.pushState(null, "My Ventures", "myventures");
@@ -42,7 +42,6 @@ History.Adapter.bind(window, 'statechange', function() {
     		History.pushState(null,"About", "about");   			
    		}
    		else if($(this).html().trim().toLowerCase()=='sign out'){
-   			console.log('sds');
    			window.location.href="signout";
    		}
     }
@@ -53,7 +52,6 @@ History.Adapter.bind(window, 'statechange', function() {
 				type: type,
 				data: data,
 				success: function(result, textStatus) {
-					console.log(result);
 					data=result;
 
 					if(data.response=='fail'){
@@ -140,6 +138,7 @@ History.Adapter.bind(window, 'statechange', function() {
 			ajaxCallHandler('ajax/get-my-ventures',"GET",{},success);
 		}
 		else if(currentURL=='inbox'){
+			console.log("SD");
 				var success= function(result, textStatus) {
 					data=JSON.parse(result);;
 					var Source = $("#inbox-template").html();
@@ -210,7 +209,7 @@ History.Adapter.bind(window, 'statechange', function() {
 		}
 		else if(currentURL.substring(0,6)=="thread"){
 
-			var urlSplit=currentURL.split('#');
+			var urlSplit=currentURL.split('-');
 			if(urlSplit.count!=1){
 				var success= function(result, textStatus) {
 					var data=JSON.parse(result);
@@ -227,6 +226,7 @@ History.Adapter.bind(window, 'statechange', function() {
 					});
 			        var HTML = Template(data);
 			        $('#content').html(HTML);
+			        checkForNotifications();
 				};
 				ajaxCallHandler('ajax/get-message-thread',"GET",{message_id:urlSplit[1]},success);
 			}
@@ -293,7 +293,7 @@ History.Adapter.bind(window, 'statechange', function() {
 $('#content').on('click','.messagethread',function(e){
 	e.preventDefault();
 	var message_id=$(this).attr('data-message-id');
-	History.pushState("", "Thread", "thread#"+message_id);
+	History.pushState(null, "Thread", "thread-"+message_id);
 	routingUpdate();
 
 });

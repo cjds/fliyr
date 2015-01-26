@@ -64,7 +64,7 @@ class User{
 			$query->execute();		
 			$message=array();
 			$message['randomstring']=$random_string;
-			$message['user_id']=$random_string;
+			$message['user_id']=$user_id;
 		} 
 		catch (PDOException $e) {
 
