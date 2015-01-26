@@ -30,15 +30,10 @@ class HomeController extends BaseController {
 
 	public function confirm(){
 		$session =new SessionModel;
-		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
+		return View::make('magic');
 	}
 
 
-	public function signupsuccess(){
-		$session =new SessionModel;
-	
-		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
-	}
 
 	public function confirmuser(){
 		$session =new SessionModel;
@@ -83,7 +78,7 @@ class HomeController extends BaseController {
 	protected function about()
 	{
 		$session =new SessionModel;
-		return View::make('magic',array('user_name' => $session->get_user_name(), 'user_id'=>$session->get_user_id() ));
+		return View::make('magic');
 	}
 
 

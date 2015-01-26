@@ -37,10 +37,6 @@ Route::get('/myventures','HomeController@my_ventures');
 Route::get('/confirmed','HomeController@confirm');
 //Route::get('/inbox','HomeController@inbox');
 Route::get('/signout','HomeController@signout');
-Route::get('/signupsuccess', function()
-{
-	return View::make('magic');
-});
 
 Route::get('ajax/get-tags','VentureController@get_tags');
 

@@ -11,7 +11,7 @@
                 <div class='row positiontitle' style='text-align:center'>
                     Expertise
                 </div>
-                <ul class='taglist'>
+                <ul class='taglist2'>
                     {{#each tags}}
                         <li>#{{tag_name}}</li>
                     {{/each}}
@@ -20,6 +20,7 @@
 		        <div class='small-12 columns editdiv'>
 		            <a href="myexpertise" class='edit-button'>
 		                <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto'/>
+
 		            </a>
 		        </div>
 		        {{else}}

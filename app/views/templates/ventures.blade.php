@@ -85,7 +85,7 @@
                 {{/each}}
             </div>
             <p class='addposition'>
-                <a href="#">Create Position (4 Remaining)</a>
+                <a href="#">Create Position (3 Remaining)</a>
             </p>
         </form>
     </div>
@@ -147,14 +147,22 @@
     		{{position_description}}
     		</div>
             <div class='row'>
-                <ul class='taglist'>
+                <ul class='taglist2'>
                 {{#each tags}}
-                    <li>{{tag_name}}</li>
+                    <li>#{{tag_name}}</li>
                 {{/each}}
                 </ul>
             </div>
     	<div class='row position-message-div'>
-    	<button class='light-green-button position-message-btn'>Message</button>
+    	{{#if creator}}
+        <div class='small-12 columns editdiv'>
+            <a href="#" class='venture-edit-button'>
+                <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto'/>
+            </a>
+        </div>
+    	{{else}}
+    		<button class='light-green-button position-message-btn'>Message</button>
+    	{{/if}}
         </div>
   </div>
 </script>

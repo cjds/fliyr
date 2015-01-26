@@ -246,7 +246,7 @@
 					<input type='text' class='biginput' name='lastname' placeholder="Last Name"/>
 				</div>				
 				<div class='row'>
-				<input type='text' class='biginput' name='email' placeholder="E-Mail"/>
+				<input type='text' class='biginput' name='email' placeholder="GATech E-Mail"/>
 				</div>
 				<div class='row'>
 				<input type='password' class='biginput' name='password' placeholder="Password"/>

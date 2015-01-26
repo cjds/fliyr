@@ -106,7 +106,7 @@
 		font-size: 12px;
 		padding-right: 7px;
 		padding-left: 7px;
-		background:#fff;
+		background:rgba(255,255,255,0);
 		border:1px #2AD6AE solid;
 		color:#2AD6AE;
 		text-transform:uppercase;
@@ -189,7 +189,28 @@
 			font-weight: 300;
 			color:#7d7d7d;
 			margin-bottom:0px;
+			list-style: none;
+			overflow-x: auto;  
+			overflow-y:hidden;
+			height:14px;
 		}
+
+		.taglist2{
+			font-size: 12px;
+			font-weight: 300;
+			color:#7d7d7d;
+			margin-bottom:0px;
+			list-style: none;
+			height:14px;
+		}
+
+
+		.taglist li,.taglist2 li{
+			margin-right:2px;
+			display: inline-block;
+			white-space: nowrap; // stop the wrapping in the first place
+		}
+				
 
 		.venturebox .positiontitle,.expertisetitle .positiontitle{
 			font-weight: 400;
@@ -208,14 +229,6 @@
 			margin-right: 0em;
 		}
 
-		.taglist{
-			list-style: none;
-
-		}
-
-		.taglist li{
-				display: inline-block;
-		}
 
 		.left-menu a{
 			margin-top: 8px;
@@ -477,6 +490,11 @@
 		.reveal-modal-bg {
 background-color: transparent;}
 
+.special:hover{
+cursor:default !important;
+color:#7d7d7d !important;
+}
+
 	</style>
 </head>
 <body>
@@ -501,26 +519,26 @@ background-color: transparent;}
     <!-- Right Nav Section -->
     
     <ul class="right">
-      <li class="has-dropdown">
-        <a href="#">
+      <li class="<?php if (isset($user_name))echo 'has-dropdown'; else echo 'override-not-click';?>">
+        <a href="<?php if (!isset($user_name)){echo URL::to('/');} else echo '#'?>">
 			@if (isset($user_name))
 							<% $user_name %>
-						@else
-							Not logged In?
-						@endif
+			@else
+				Log In
+			@endif
 			
         </a>
+        @if (isset($user_name))
         <ul class="dropdown">
-						@if (isset($user_name))
+						
 							<li><a href="<% URL::to('myexpertise')%>">My Expertise</a></li>
 							<li><a href="<% URL::to('myventures')%>">My Ventures</a></li> 
 							<li><a href="<% URL::to('inbox')%>">Message Inbox</a></li>
 							<li><a href="<% URL::to('signout')%>">Sign out</a></li>
-						@else
-							<li><a href="<% URL::to('/')%>">Log In</a></li>
-							<li><a href="<% URL::to('/')%>">Sign Up</a></li> 
-						@endif
+						
+						
         </ul>
+        @endif
       </li>
 
     <li class="notification-menu-item">
@@ -529,7 +547,7 @@ background-color: transparent;}
 	  <li class='show-for-small'><a href="<% URL::to('expertise') %>" >Expertise</a></li>
 		<li class='show-for-small'><a href="<% URL::to('about-us') %>">About</a></li>
       <li>
-      <a href="#">Georgia Tech</a></li>
+      <a href="#" class='special'>Georgia Tech</a></li>
     </ul>
     </section>
   </nav>

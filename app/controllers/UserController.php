@@ -19,6 +19,17 @@ class UserController extends Controller {
 
 		$user_model=new User();
 
+
+		$str =$pdo->prepare("INSERT into useremailsignup (email) VALUES (".$email.")");
+		$pdo->execute();
+
+		if(!filter_var($user_email, FILTER_VALIDATE_EMAIL))
+			return '{"result": "fail","message":"This is not a valid enail"}'; 
+
+		$split_mail=explode('@', $user_email);
+		if($split_mail[1]!='gatech.edu')	
+			return '{"result": "fail","message":"Georgia Tech E-mail Required"}'; 
+
 		if($user_confirmpassword!=$input['user_password'])
 			return '{"result": "fail","message":"Passwords do not match"}'; 
 

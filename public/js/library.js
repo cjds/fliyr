@@ -44,6 +44,9 @@ History.Adapter.bind(window, 'statechange', function() {
    		else if($(this).html().trim().toLowerCase()=='sign out'){
    			window.location.href="signout";
    		}
+   		else{
+   				
+   		}
     }
 
     function ajaxCallHandler(url,type,data,successfunction){
@@ -571,8 +574,8 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 			        $('#content').find('div').eq(2).prepend(HTML);
 			        $('.create-venture-button').html('Cancel');
 	        		tagit('.taginput',null);
-			        if((4-positions.length)>0)
-						$('.addposition a').html('Add Position ('+(4-positions.length)+' remaining )')
+			        if((3-positions.length)>0)
+						$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )')
 					else
 						$('.addposition a').html('');
 					$('html, body').animate({scrollTop: '0px'}, 0);
@@ -603,7 +606,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 			}
 	    	$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button">'+positions[i].name+'</a></div> <a href="#" data-id='+i+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a><ul class="taglist">'+taglist+'</ul></div<');
 	    }
-		$('.addposition a').html('Add Position ('+(4-positions.length)+' remaining )');
+		$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
 	});
 
 	$('#content').on('click','.finishbtn',function(e){
@@ -668,8 +671,8 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				$('#positionform input[name=position]').val('');
 				$('#positionform textarea[name=description]').val('');			
 				$('#positionform input[name=taginput]').tagit('removeAll');
-				if(4-positions.length>0){
-					$('.addposition a').html('Add Position ('+(4-positions.length)+' remaining )');
+				if(3-positions.length>0){
+					$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
 				}
 				else{
 					$('.addposition a').html('');	

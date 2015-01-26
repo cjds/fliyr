@@ -40,9 +40,9 @@ Chase Roberts, Business, <i>Business Administration Major</i>
 </script>
 
 <script id="signupsuccess-template" type="text/x-handlebars-template">
-Hey you have succesfully signed up. CHecck your damn email
+
 </script>
 
 <script id="confirmuser-template" type="text/x-handlebars-template">
-Now we got you. Bitch!
+Your account has been activated. You can now log in.
 </script>

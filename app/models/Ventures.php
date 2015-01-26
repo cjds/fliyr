@@ -25,6 +25,12 @@ class Ventures{
 				$query->bindParam(':position_id', $row[$key]['positions'][$key2]['position_id']);
 				$query->execute();
 				$row[$key]['positions'][$key2]['tags']=$query->fetchAll();
+				if($row[$key]['creator_id']==$session->get_user_id()){
+					$row[$key]['positions'][$key2]['creator']=true;
+				}
+				else{
+					$row[$key]['positions'][$key2]['creator']=false;
+				}
 			}
 			$query = $pdo->prepare("SELECT  tag_name FROM venture_tag,tag WHERE venture_id=:venture_id AND venture_tag.tag_id=tag.tag_id ORDER BY venture_tag.created_at DESC");
 			$query->bindParam(':venture_id', $value['venture_id']);
