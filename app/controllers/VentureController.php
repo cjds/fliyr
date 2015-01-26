@@ -151,6 +151,13 @@ class VentureController extends Controller {
 	}
 
 	protected function get_ventures(){
+		$input=Input::all();
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+		
+		if($redirection!=null)
+			return $redirection;
+		
 		$ventures=new Ventures;
 		return $ventures->get_all();
 

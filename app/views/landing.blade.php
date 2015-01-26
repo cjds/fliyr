@@ -185,6 +185,9 @@
 				        if (result.result=='ok'){
 				        	 $('#signupmodal').foundation('reveal', 'open');
 				        	 $('.otherdiv').html('');
+				        	 $('body').click(function(){
+				            	window.location.href = "/";
+				        	 });
 				        }
 				        else{
 				        	$('#signuperrortext').html(result.message);
@@ -198,14 +201,14 @@
 				e.preventDefault();
 				$('#loginform').toggle();
 				$('#signupform').toggle();
-			})			
+			})
         });
         </script> 	
      
 </head>
 <body>
 <div id="signupmodal" class="reveal-modal small" data-reveal>
-		<p>Welcome to Fliyr! Please check your registration please confirm your account by clicking the link in our e-mail that we supplied.</p>
+		<p>Welcome to Fliyr! Please check your e-mail to confirm your registration.</p>
 		</div>
 
 <div class="column otherdiv large-4 large-offset-4 medium-6 medium-offset-3 small-12 " style="display:block;z-index:1;background-color:rgba(255,255,255,0.8);border:1px solid #ccc;margin-top:8%;">

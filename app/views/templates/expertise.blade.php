@@ -45,7 +45,7 @@
             <form id='experienceform' user-id={{user_id}}>
                 <div class='title' >{{user_name}}</div>
                 <p>
-                    <textarea rows="4" cols="35" name='description' placeholder="Please describe yourself"></textarea>
+                    <textarea rows="4" cols="35" name='description' placeholder="Please tell the Fliyr community about yourself &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (max 400 characters)" maxLength=400></textarea>
                 </p>
                 <span>Expertise</span>
                 <p> 
