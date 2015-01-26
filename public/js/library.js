@@ -174,10 +174,13 @@ History.Adapter.bind(window, 'statechange', function() {
 					        var Template = Handlebars.compile(Source);
 					        var HTML = Template({user_name:data.user_name,user_id:data.user_id});
 					        $('#content').html(HTML);
-				  			$('.taginput').tagit();
-				  			for(var i=0;i<data.tags.length;i++){
-				  				$('.venturebox input[name=taginput]').tagit('createTag', data.tags[i]['tag_name']);
-				  			}
+					        var success=function success(data){
+					        	for(var i=0;i<data.tags.length;i++){
+				  					$('.venturebox input[name=taginput]').tagit('createTag', data.tags[i]['tag_name']);
+				  				}
+					        }
+				  			tagit('.taginput',success,data);
+				  			
 				  			$('.venturebox textarea[name=description]').val(data.description);
 				  			//$('.venturebox textarea[name=taginput]').val(tags);
 		  			})
@@ -322,7 +325,7 @@ $('#content').on('click','.replybutton',function(e){
 
 //**************************************************************EXPERTISE
 
-function tagit(div){
+function tagit(div,successfunction,data){
 	$.ajax({
 	 		url:'ajax/get-tags',
 	 		type:"GET"
@@ -338,6 +341,9 @@ function tagit(div){
 					"availableTags":JSON.parse(msg),
 					maxTags:10
 				});
+				console.log(data);
+				if(data!=null)
+					successfunction(data);
 		});
 }
 
@@ -389,8 +395,7 @@ function tagit(div){
 
 $('#content').on('click','.expertise-button-submit', function(e){
   			e.preventDefault();
-
-  			var description=$('.venturebox textarea[name=description]').val();
+			var description=$('.venturebox textarea[name=description]').val();
   			var tags=$('.venturebox input[name=taginput]').val();
 	  		$.ajax({
 				url: 'ajax/add-experience',
@@ -471,7 +476,7 @@ $('#content').on('click','.create-venture-button',function(){
         var HTML = Template(position);
         $('#content').find('div').eq(2).prepend(HTML);
         $('.create-venture-button').html('Cancel');
-		tagit('.taginput');
+		tagit('.taginput',null);
 
         //$('#dialog').html(HTML);
         //$('#dialog').addClass("small");
@@ -565,7 +570,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 			        var HTML = Template(venture);
 			        $('#content').find('div').eq(2).prepend(HTML);
 			        $('.create-venture-button').html('Cancel');
-	        		tagit('.taginput');
+	        		tagit('.taginput',null);
 			        if((4-positions.length)>0)
 						$('.addposition a').html('Add Position ('+(4-positions.length)+' remaining )')
 					else
@@ -575,7 +580,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				}				  
 			});
 	        
-	        tagit('.taginput');
+	        tagit('.taginput',null);
 		}
 		else{
 			$('#content').find('div').eq(2).html('');

@@ -118,6 +118,7 @@ class UserController extends Controller {
 			$experience_id=$pdo->lastInsertId();
 
 			foreach ($experience_tags as $tag) {
+				$tag=substr($tag, 1);
 				$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 				$query->bindParam(':tag', $tag);
 				$query->execute();
@@ -147,6 +148,7 @@ class UserController extends Controller {
 			$sql="DELETE FROM experience_tag WHERE experience_id=".$experience_id;
 			$pdo->exec( $sql );
 			foreach ($experience_tags as $tag) {
+				$tag=substr($tag, 1);
 				$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 				$query->bindParam(':tag', $tag);
 				$query->execute();

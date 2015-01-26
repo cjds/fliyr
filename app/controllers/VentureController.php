@@ -40,6 +40,7 @@ class VentureController extends Controller {
 			$sql="DELETE FROM venture_tag WHERE venture_id=".$venture_id;
 			$pdo->exec( $sql );
 			foreach ($venture_tags as $tag) {
+				$tag=substr($tag, 1);
 				$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 				$query->bindParam(':tag', $tag);
 				$query->execute();
@@ -69,6 +70,7 @@ class VentureController extends Controller {
 				$position_id=$pdo->lastInsertId();
 				$position_tags=explode(',',$position['tags']);
 				foreach ($position_tags as $tag) {
+					$tag=substr($tag, 1);					
 					$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 					$query->bindParam(':tag', $tag);
 					$query->execute();
@@ -99,6 +101,7 @@ class VentureController extends Controller {
 			$venture_id=$pdo->lastInsertId();
 
 			foreach ($venture_tags as $tag) {
+				$tag=substr($tag, 1);					
 				$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 				$query->bindParam(':tag', $tag);
 				$query->execute();
@@ -117,6 +120,7 @@ class VentureController extends Controller {
 			}
 
 			foreach ($venture_positions as $position) {
+				
 				$query = $pdo->prepare("INSERT INTO position (position_name,position_description,venture_id,created_at) VALUES (:position_name,:position_description,:venture_id,NOW())");
 				$query->bindParam(':position_name', $position['name']);
 				$query->bindParam(':position_description', $position['description']);
@@ -125,6 +129,7 @@ class VentureController extends Controller {
 				$position_id=$pdo->lastInsertId();
 				
 				foreach (explode(',',$position['tags']) as $tag) {
+					$tag=substr($tag, 1);					
 					$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 					$query->bindParam(':tag', $tag);
 					$query->execute();
@@ -157,7 +162,7 @@ class VentureController extends Controller {
 		
 		if($redirection!=null)
 			return $redirection;
-		
+
 		$ventures=new Ventures;
 		return $ventures->get_all();
 

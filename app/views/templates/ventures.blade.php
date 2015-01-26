@@ -31,7 +31,7 @@
             <div class='row'>
         		<ul class='taglist'>
         		{{#each tags}}
-        			<li>{{tag_name}}</li>
+        			<li>#{{tag_name}}</li>
         		{{/each}}
         		</ul>
             </div>
