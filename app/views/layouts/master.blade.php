@@ -48,9 +48,6 @@
     <link href="<% URL::asset('css/tagit.ui-zendesk.css')%>" rel="stylesheet" type="text/css">
 
 	<style type="text/css">
-
-
-
 	.logo-img{
 		height:30px;margin-top:6px;margin-left:79px;width:auto;
 	}
@@ -65,7 +62,12 @@
 		.logo-img2{
 			display:inline-block !important
 		}
+
+		.name-person{
+			border:1px solid #7d7d7d;
+		}
 	}
+
 
 	@media only screen and (min-width: 40em){
 			.body{
@@ -341,7 +343,7 @@
 			vertical-align: middle;
 			text-align:center;
 			background:#dc0066 !important;
-			margin-top:15px;
+			margin-top:1px;
 
 		}
 
@@ -497,6 +499,16 @@ color:#7d7d7d !important;
 .position-edit-button:hover{
 	cursor:default !important;
 }
+.top-bar-section li:not(.has-form) a:not(.button){
+	line-height:2.3125rem;
+	margin-top:-1px;
+}
+
+.notificaition-mobile{
+	right:50px !important;
+	position:absolute !important;
+	top:14px !important;
+}
 
 	</style>
 </head>
@@ -515,14 +527,16 @@ color:#7d7d7d !important;
 	      	</a>
 	      </h1>
 	     </li>
-	     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+	     <li class="toggle-topbar notification-menu-item notificaition-mobile"></li>
+	     <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+
      </ul>
 
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     
     <ul class="right">
-      <li class="<?php if (isset($user_name))echo 'has-dropdown'; else echo 'override-not-click';?>">
+      <li class="name-person <?php if (isset($user_name))echo 'has-dropdown'; else echo 'override-not-click';?>">
         <a href="<?php if (!isset($user_name)){echo URL::to('/');} else echo '#'?>">
 			@if (isset($user_name))
 							<% $user_name %>
@@ -544,11 +558,11 @@ color:#7d7d7d !important;
         @endif
       </li>
 
-    <li class="notification-menu-item">
+    <li class="notification-menu-item hide-for-small">
     </li>
-      <li class='show-for-small'><a href="<% URL::to('ventures') %>" >Ventures</a></li>
-	  <li class='show-for-small'><a href="<% URL::to('expertise') %>" >Expertise</a></li>
-		<li class='show-for-small'><a href="<% URL::to('about-us') %>">About</a></li>
+      <li class='show-for-small' style='border:1px solid #7d7d7d;margin-top:-1px'><a href="<% URL::to('ventures') %>" >Ventures</a></li>
+	  <li class='show-for-small' style='border:1px solid #7d7d7d;margin-top:-1px'><a href="<% URL::to('expertise') %>" >Expertise</a></li>
+		<li class='show-for-small' style='border:1px solid #7d7d7d;margin-top:-1px'><a href="<% URL::to('about-us') %>">About</a></li>
       <li>
       <a href="#" class='special'>Georgia Tech</a></li>
     </ul>

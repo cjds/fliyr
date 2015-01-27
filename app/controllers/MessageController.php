@@ -172,6 +172,10 @@ class MessageController extends Controller {
 			}
 				$array = explode(';', $row[$key]['ref_message']); //will break if ~ is used in title cancel
 				$message='';
+
+				$messagetest=explode(';',$row[$key]['message']);
+				for($i=1;$i<count($messagetest);$i++)
+					$row[$key]['message']=$messagetest[$i];
 				//for($i=1;$i<count($array);$i++)
 				//	$message.=$array[$i];
 				if(strlen($row[$key]['message'])>80)

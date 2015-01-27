@@ -2073,7 +2073,7 @@ meta.foundation-mq-topbar {
         border: inset 5px;
         border-color: rgba(0,0,0, 0.4) transparent transparent transparent;
         border-top-style: solid;
-        margin-top: -2.5px;
+        margin-top: -6.5px;
         top: 1.40625rem; }
     .top-bar-section .has-dropdown.moved {
       position: relative; }

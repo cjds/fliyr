@@ -38,6 +38,23 @@
 	<% HTML::style('css/foundation.css'); %>
 
 	<style type="text/css">
+
+
+	@media only screen and (max-width: 40em) {
+		.logo-img{
+			margin-left: 0px;
+			margin-top:-20px;
+			display:inline-block !important;
+		}
+
+		.logo-img2{
+			display:inline-block !important
+		}
+
+		.loginboxdiv{
+			margin-top:0%!important;
+		}
+	}
 		::-webkit-input-placeholder{  
    			font-family: 'Nunito', sans-serif;
    			 padding-top: -3px;
@@ -163,10 +180,9 @@
         // wait for the DOM to be loaded 
         $(document).ready(function() { 
 
-	        var random=Math.floor((Math.random() * 100) + 1);
-	        var array=[];
+	        var random=Math.floor((Math.random() * 11) );
+	        var array=['“The best way to predict the future is to create it.”- Peter Drucker', '“As long as you’re going to be thinking anyway, think big.”- Donald Trump','“To win without risk is to triumph without glory.”- Corneille','"Failure is an option here. If things are not failing, you are not innovating enough." Elon Musk','"It\'s fine to celebrate success, but it is more important to heed the lessons of failure." Bill Gates','"We led with our conviction rather than rational, because rational said it was impossible." Daniel Ek, Spotify','"The most difficult thing is the decision to act, the rest is merely tenacity." Amelia Earhart','"The best time to plant a tree was 20 years ago. The second best time is now." Chinese proverb','"Build your own dreams, or someone else will hire you to build theirs." Farrah Gray','"You can\'t use up creativity. The more you use, the more you have." Maya Angelou','"The question isn\'t who is going to let me; it\'s who is going to stop me." Ayn Rand'];
 	        $('#loginerrortext').html(array[random]);
-
 			$("#loginform").submit(function(e){
 				e.preventDefault();
 				var email=$(this).find('input[name=email]').val();
@@ -204,7 +220,7 @@
 				        if (result.result=='ok'){
 				        	 $('#signupmodal').foundation('reveal', 'open');
 				        	 $('.otherdiv').html('');
-				        	 $('body').click(function(){
+					        	 $('body').click(function(){
 				            	window.location.href = "/";
 				        	 });
 				        }
@@ -239,23 +255,27 @@
 			<p>Welcome to Fliyr! Please check your e-mail to confirm your registration.</p>
 	</div>
 
-<div class=" otherdiv" style='margin-top:6%;height:100px;padding:0px;margin:0'>
+<div class=" otherdiv" style='margin-top:4%;height:100px;padding:0px;margin:0'>
 
-	<div class="large-7 columns hide-for-small" style='padding:0px'>
-					<%HTML::image('img/fliyr_landing1.jpg', 'Fliyr',array('style'=>'width:100%;height:auto;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%><br />
+	<div class="large-6 columns hide-for-small" style='padding:0px;margin-top:14.5%'>
+					<%HTML::image('img/fliyr_landing4.jpg', 'Fliyr',array('style'=>'margin-left:auto;margin-top:-30px;float:right;margin-right:50px;display:block;width:65%'));%><br />
 			
 	</div>
 	
-	<div class='large-3 small-12 columns' style='padding:25px;margin-top:11%'>		
+	<div class='large-3 small-12 columns loginboxdiv' style='padding:25px;margin-top:7%'>		
+			<%HTML::image('img/fliyr_logo.png', 'Fliyr',array('style'=>'margin-left:auto;margin-top:-30px;margin-right:10px;width:50px','class'=>'show-for-small-only logo-img'));%>
+			<%HTML::image('img/fliyr_logo2.png', 'Fliyr',array('style'=>'margin-left:auto;margin-top:-30px;margin-right:2px;width:50px','class'=>'show-for-small-only logo-img2'));%>
+			<br />
 	<div class='small-12 columns formbox' style='border:1px solid #7d7d7d;padding:25px'>		
 		<form id="loginform">
-			<span class='errortext' id='loginerrortext' style='color:#7d7d7d;font-size:12px;font-style:italic'>
+
+			<p class='errortext' id='loginerrortext' style='color:#7d7d7d;font-size:12px;font-style:italic;line-height:16px'>
 				"Winners never quit and quitters never win." -Vince Lombardi
-			</span>
+			</p>
 			<div class='row' style='margin:auto;'>	
 					<input type='text' class='biginput' name="email" placeholder="E-Mail"/>
 			</div>
-			<div class='row' style='margin:auto;height:80px'>	
+			<div class='row' style='margin:auto;height:75px'>	
 					<input type='password' class='biginput' name="password" placeholder="Password"/>
 			</div>
 			<div class='row' style='margin:auto;text-align:center'>	
@@ -263,7 +283,7 @@
 			</div>
 
 			<div class='row' style="margin:auto;text-align:center">
-				<p>or <a href="#" class='changebutton' >Sign Up</a></p>
+				<p>or <a href="#" class='changebutton'  style='font-weight:400'>sign up</a></p>
 			</div>
 		</form>
 		<form id='signupform' class='flip' style="display:none">
@@ -285,10 +305,12 @@
 			<input type='submit' value="Sign Up" class='button light-green-button'  />
 			</div>
 			<div class='row' style="margin:auto;text-align:center">
-			<p>or <a href="#" class='changebutton' >Sign In</a></p>
+			<p>or <a href="#" class='changebutton' >sign in</a></p>
 			</div>
 		</form>
+
 	</div>
+	<div class='small-12 columns' style='text-align:center;margin-top:10px'><a href='about' style='font-size:14px;font-weight:300;color:#7d7d7d !important'>learn more</a></div>
 	</div>
 	<div class='column'/>
 </div>
