@@ -94,8 +94,8 @@
 
 		.biginput{
 			line-height: 1.5em;
-			height: 40px;
-			width:49% !important;
+			height: 30px !important;
+			width:98% !important;
 			font-size: 20px;
 			display: inline-block !important;
 			border: 1px solid #888;
@@ -107,6 +107,10 @@
 			margin: auto;
 			margin-top: 10px;
 			margin-bottom: 10px;
+		}
+
+		.short{
+			width:48%!important;
 		}
 
 		.biginput::-webkit-input-placeholder {
@@ -252,11 +256,11 @@
 					<input type='password' class='biginput' name="password" placeholder="Password"/>
 			</div>
 			<div class='row' style='margin:auto;text-align:center'>	
-					<input type='submit' value="LOGIN" class=' button small-centered light-green-button' style=/>	
+					<input type='submit' value="Sign In" class=' button small-centered light-green-button' style=/>	
 			</div>
 
 			<div class='row' style="margin:auto;text-align:center">
-				<p>Haven't got an account? <a href="#" class='changebutton' >Sign Up</a></p>
+				<p>or <a href="#" class='changebutton' >Sign Up</a></p>
 			</div>
 		</form>
 		<form id='signupform' class='flip' style="display:none">
@@ -278,7 +282,7 @@
 			<input type='submit' value="Sign Up" class='button light-green-button'  />
 			</div>
 			<div class='row' style="margin:auto;text-align:center">
-			<p>Already have an account? <a href="#" class='changebutton' >Log In</a></p>
+			<p>or <a href="#" class='changebutton' >Sign In</a></p>
 			</div>
 		</form>
 	</div>
