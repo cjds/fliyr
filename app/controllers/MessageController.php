@@ -106,12 +106,13 @@ class MessageController extends Controller {
 		$query=$pdo->prepare("SELECT * FROM user WHERE user_id=:receiver_id");
 
 		$query->bindParam('receiver_id', $receiver_id);
-		$userstuff=$query->execute();
-		$name=explode(',',$userstuff['user_name']);
-		$data['user_name']=$name[0];
+		$query->execute();
 		$data=$query->fetch();
-		Mail::send('emails.message', $userstuff, function($message) use ($userstuff) {
-		    	$message->to($userstuff['user_email'], $userstuff['user_name'])->subject('New Message on Fliyr!');
+		$name=explode(',',$data['user_name']);
+		$data['user_name']=$name[0];
+		
+		Mail::send('emails.message', $data, function($message) use ($userstuff) {
+		    	$message->to($data['user_email'], $data['user_name'])->subject('New Message on Fliyr!');
 		});
 		
 

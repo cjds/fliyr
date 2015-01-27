@@ -237,22 +237,21 @@
 
 <div class=" otherdiv" style='margin-top:6%;height:100px;padding:0px;margin:0'>
 
-	<div class="large-8 columns hide-for-small" style='padding:0px'>
+	<div class="large-7 columns hide-for-small" style='padding:0px'>
 		
 		<span style='margin-top:20px'>find your venture team</span>
 			<%HTML::image('img/fliyr_landing1.jpg', 'Fliyr',array('style'=>'width:100%;height:auto;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%><br />
 			
 	</div>
 	
-	<div class='large-3 small-12 columns' style='padding:25px'>		
-	<%HTML::image('img/fliyr_logo2.png', 'Fliyr',array('style'=>'margin:auto;width:auto;height:90px;;margin-top:10px;display:block;'));%>
+	<div class='large-3 small-12 columns' style='padding:25px;margin-top:11%'>		
 	<div class='small-12 columns formbox' style='border:1px solid #7d7d7d;padding:25px'>		
 		<form id="loginform">
 			<span class='errortext' id='loginerrortext'></span>
-			<div class='row' style='margin:auto'>	
+			<div class='row' style='margin:auto;height:80px'>	
 					<input type='text' class='biginput' name="email" placeholder="E-Mail"/>
 			</div>
-			<div class='row' style='margin:auto'>	
+			<div class='row' style='margin:auto;height:80px'>	
 					<input type='password' class='biginput' name="password" placeholder="Password"/>
 			</div>
 			<div class='row' style='margin:auto;text-align:center'>	
