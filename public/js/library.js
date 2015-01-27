@@ -343,7 +343,7 @@ function tagit(div,successfunction,data){
 
 					},
 					"availableTags":JSON.parse(msg),
-					placeholderText: 'enter tags - min 1, max 10',
+					placeholderText: 'enter tags',
 					maxTags:10
 				});
 				console.log(data);

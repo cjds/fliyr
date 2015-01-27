@@ -234,13 +234,15 @@
 <div class=" otherdiv" style='margin-top:6%;height:100px;padding:0px;margin:0'>
 
 	<div class="large-8 columns hide-for-small" style='padding:0px'>
-		<%HTML::image('img/fliyr_logo2.png', 'Fliyr',array('style'=>'width:auto;height:110px;;margin-top:10px;display:inline-block;'));%>
+		
 		<span style='margin-top:20px'>find your venture team</span>
 			<%HTML::image('img/fliyr_landing1.jpg', 'Fliyr',array('style'=>'width:100%;height:auto;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%><br />
 			
 	</div>
 	
-	<div class='large-3 small-12 columns formbox' style='border:1px solid #7d7d7d;padding:25px'>		
+	<div class='large-3 small-12 columns' style='padding:25px'>		
+	<%HTML::image('img/fliyr_logo2.png', 'Fliyr',array('style'=>'margin:auto;width:auto;height:90px;;margin-top:10px;display:block;'));%>
+	<div class='small-12 columns formbox' style='border:1px solid #7d7d7d;padding:25px'>		
 		<form id="loginform">
 			<span class='errortext' id='loginerrortext'></span>
 			<div class='row' style='margin:auto'>	
@@ -260,8 +262,8 @@
 		<form id='signupform' class='flip' style="display:none">
 			<span class='errortext' id='signuperrortext'></span>
 			<div class='row'>
-				<input type='text' class='biginput' name='name' placeholder="First"/>
-				<input type='text' class='biginput' name='lastname' placeholder="Last"/>
+				<input type='text' class='biginput short' name='name' placeholder="First"/>
+				<input type='text' class='biginput short' name='lastname' placeholder="Last"/>
 			</div>				
 			<div class='row'>
 			<input type='text' class='biginput' name='email' placeholder="GATech E-Mail"/>
@@ -279,6 +281,7 @@
 			<p>Already have an account? <a href="#" class='changebutton' >Log In</a></p>
 			</div>
 		</form>
+	</div>
 	</div>
 	<div class='column'/>
 </div>
