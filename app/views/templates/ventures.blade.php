@@ -64,7 +64,7 @@
     <div class='addventurebox' >
         <form id='ventureform' data-venture-id='{{venture_id}}'>
             <span class='title' >
-                <input type='text' name='venture' placeholder='VentureName' value='{{venture_name}}' maxlength="30"/>
+                <input type='text' name='venture' placeholder='Venture Name' value='{{venture_name}}' maxlength="30"/>
             </span>
             <p>
                 <textarea rows="4" cols="35" name="description" placeholder="Enter a description" maxlength="160">{{venture_description}}</textarea>
