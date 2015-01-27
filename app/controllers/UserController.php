@@ -20,8 +20,8 @@ class UserController extends Controller {
 		$user_model=new User();
 
 
-		$str =$pdo->prepare("INSERT into useremailsignup (email) VALUES ('".$user_email."')");
-		$pdo->execute();
+		//$str =$pdo->prepare("INSERT into useremailsignup (email) VALUES ('".$user_email."')");
+		//$pdo->execute();
 
 		if(!filter_var($user_email, FILTER_VALIDATE_EMAIL))
 			return '{"result": "fail","message":"This is not a valid enail"}'; 
