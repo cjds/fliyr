@@ -450,9 +450,9 @@ $('#content').on('click','.position-message-btn',function(e){
 				position_id:position_id
 			},
 			success: function(result, textStatus) {
-				data=JSON.parse(result);
+				var data=JSON.parse(result);
 
-				position=data;
+				var position=data;
 				var Source = $("#send-message-template").html();
 		        var Template = Handlebars.compile(Source);
 		        var HTML = Template(position);

@@ -43,8 +43,6 @@
                 <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto'/>
             </a>
         </div>
-    {{else}}
-    <button class='light-green-button expert-message-btn' style='position:absolute; right:30px;bottom:20px;;'>Message</button>
         {{/if}}
             
     </div>	

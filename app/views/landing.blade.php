@@ -163,6 +163,10 @@
         // wait for the DOM to be loaded 
         $(document).ready(function() { 
 
+	        var random=Math.floor((Math.random() * 100) + 1);
+	        var array=[];
+	        $('#loginerrortext').html(array[random]);
+
 			$("#loginform").submit(function(e){
 				e.preventDefault();
 				var email=$(this).find('input[name=email]').val();
@@ -238,9 +242,7 @@
 <div class=" otherdiv" style='margin-top:6%;height:100px;padding:0px;margin:0'>
 
 	<div class="large-7 columns hide-for-small" style='padding:0px'>
-		
-		<span style='margin-top:20px'>find your venture team</span>
-			<%HTML::image('img/fliyr_landing1.jpg', 'Fliyr',array('style'=>'width:100%;height:auto;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%><br />
+					<%HTML::image('img/fliyr_landing1.jpg', 'Fliyr',array('style'=>'width:100%;height:auto;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%><br />
 			
 	</div>
 	
@@ -248,7 +250,7 @@
 	<div class='small-12 columns formbox' style='border:1px solid #7d7d7d;padding:25px'>		
 		<form id="loginform">
 			<span class='errortext' id='loginerrortext' style='color:#7d7d7d;font-size:12px;font-style:italic'>
-				
+				"Winners never quit and quitters never win." -Vince Lombardi
 			</span>
 			<div class='row' style='margin:auto;'>	
 					<input type='text' class='biginput' name="email" placeholder="E-Mail"/>
