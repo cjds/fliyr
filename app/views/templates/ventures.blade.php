@@ -29,7 +29,7 @@
         		<a href="#" class='position-link' data-position-id={{position_id}}>{{position_name}} > </a>
             </div>
             <div class='row'>
-        		<ul class='taglist'>
+        		<ul class='taglist' style='margin-bottom:2px'>
         		{{#each tags}}
         			<li>#{{tag_name}}</li>
         		{{/each}}
@@ -76,9 +76,9 @@
                     <div class='row position-title'>
                         <span href="#" class='position-edit-button'>{{position_name}} > </span>
                     </div>
-                    <a href="#" data-id='+positions.length+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>
+                    <a href="#" data-id='{{@index}}' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>
                     <ul class='taglist'>{{#each tag}}
-                                <li>{{tag_name}}</li>
+                                <li>#{{tag_name}}</li>
                         {{/each}}
                     </ul>
                 </div>
@@ -93,10 +93,10 @@
     <div class='addpositionbox' style="display:none">
         <form id='positionform'>
             <span class='title' >
-                <input type='text' name='position' placeholder='PositionName' maxlength="30"/>
+                <input type='text' name='position' placeholder='Position Name' maxlength="30"/>
             </span>
             <p>
-                <textarea rows="4" cols="35" name='description' placeholder="Enter a description" maxlength="400"></textarea>
+                <textarea rows="4" cols="35" name='description' placeholder="Who are you looking for? (max 400 characters)" maxlength="400"></textarea>
             </p>
             <p> 
                 <input type='text' placeholder='#' name='taginput' class='taginput'/>

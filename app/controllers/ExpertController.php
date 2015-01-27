@@ -9,10 +9,12 @@ class ExpertController extends BaseController{
 		
 		if($redirection!=null)
 			return $redirection;
+		$user_id=$session->get_user_id();
 		$pdo=DB::connection()->getPdo();		
 		$query = $pdo->prepare("SELECT  experience.*,user.user_name FROM experience,user WHERE user.user_id=experience.user_id ORDER BY created_at DESC");
 		$query->execute();
 		$row=$query->fetchAll();
+
 		foreach ($row as $key => $value) {
 			$name=explode(';', $row[$key]['user_name']);
 			$row[$key]['user_name']=$name[0];
@@ -26,7 +28,7 @@ class ExpertController extends BaseController{
 			else{
 				$row[$key]['creator']=false;
 			}
-		
+			
 		}
 
 		return json_encode($row);

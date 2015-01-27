@@ -102,6 +102,19 @@ class MessageController extends Controller {
 		$query->execute();
 		$message_id=$pdo->lastInsertId();
 
+
+		$query=$pdo->prepare("SELECT * FROM user WHERE user_id=:receiver_id");
+
+		$query->bindParam('receiver_id', $receiver_id);
+		$query->execute();
+		$name=explode(',',$data['user_name']);
+		$data['user_name']=$name[0];
+		$data=$query->fetch();
+		Mail::send('emails.message', $data, function($message) use ($data) {
+		    	$message->to($data['user_email'], $data['user_name'])->subject('New Message on Fliyr!');
+		});
+		
+
 		if($reference_message_id==null){
 			$query=$pdo->prepare("UPDATE message SET reference_message_id=:message_id1 WHERE message_id=:message_id");
 			$query->bindParam('message_id', $message_id);

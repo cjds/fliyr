@@ -208,8 +208,16 @@ class UserController extends Controller {
 			return $redirection;
 		$pdo=DB::connection()->getPdo();		
 		$query = $pdo->prepare("SELECT  * FROM experience ORDER BY created_at DESC");
+
 		$query->execute();
 		$row=$query->fetchAll();
+		$query = $pdo->prepare("SELECT  * FROM venture WHERE creator_id=:user_id ORDER BY created_at DESC");
+		$query->bindParam('user_id',$session->get_user_id());
+		$query->execute();
+		$venturedata=$query->fetch();
+		$messagable=false;
+		if($venturedata!=null)
+			$messagable=true;
 		foreach ($row as $key => $value) {
 			$query = $pdo->prepare("SELECT  * FROM experience_tag WHERE experience_id=:experience_id ORDER BY created_at DESC");
 			$query->bindParam(':experience_id', $value['experience_id']);
@@ -221,13 +229,21 @@ class UserController extends Controller {
 			else{
 				$row[$key]['creator']=false;
 			}
+			$row[$key]['messagable']=$messagable;
 		}
 		return  json_encode($row);
 
 	}
 
 	protected function get_user_data(){
+		$session =new SessionModel;
+		$redirection=$session->handle_json_redirection();
+
+		if($redirection!=null)
+			return $redirection;
+
 		$input=Input::all();
+		$user_id=$session->get_user_id();
 		$pdo=DB::connection()->getPdo();		
 		$query = $pdo->prepare("SELECT  * FROM user WHERE user_id=:user_id");
 		$query->bindParam('user_id',$input['user_id']);
@@ -236,6 +252,17 @@ class UserController extends Controller {
 		$row=$query->fetch();
 		$username=explode(';', $row['user_name']);
 		$row['user_name']=$username[0];
+
+		$query = $pdo->prepare("SELECT  * FROM venture WHERE creator_id=:user_id ORDER BY created_at DESC");
+		$query->bindParam('user_id',$user_id);
+		$query->execute();
+		$venturedata=$query->fetch();
+		$messagable=false;
+		if($venturedata!=null)
+			$messagable=true;
+		
+		$row['messagable']=$messagable;
+
 		return  json_encode($row);		
 	}
 

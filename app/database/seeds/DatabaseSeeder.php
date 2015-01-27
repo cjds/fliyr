@@ -9,15 +9,16 @@ class DatabaseSeeder extends Seeder {
 	 */
 	public function run()
 	{
-		Eloquent::unguard();
+		//Eloquent::unguard();
 
 		// $this->call('UserTableSeeder');
-		for($i=0;$i<300;$i++){
-			Regnos::create(array('reg_id'=>$i,
-								 'reg_string'=>$this->generateRandomString(6)
-								 )
-			);
+		$pdo=DB::connection()->getPdo();		
+		$tagarray=array('Technical','Front End Development','Back End Development','Application Development','iOS Development','Android Development','Database Design','Coding','Information Architecture','Data Mining','Security','S.E.O.','Hardware Design','Product Engineer','WordPress','Creative','Graphic Design','Photographer','UX/UI','General Design','Industral Design','Website Design','Branding','Ideation','Content Management','Copywriting','Technical Writing','Video Editing','Advertising','Product Design','Business','Networking','General Marketing','Social Media Marketing','Accounting','Legal','Communication','Leadership','Negotiation','Business Development','Project Management','Fundraising','Content Management','Financial Management','Multilingual','Presenting','Operations','Customer Service');
+		foreach($tagarray as $tag){
+			DB::raw("INSERT INTO tag (tag_name,tag_description,official) VALUES (".$tag.",'',true)");
 		}
+
+
 	}
 
 	function generateRandomString($length = 6) {

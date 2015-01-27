@@ -9,5 +9,5 @@ http://fliyr.com/confirm?user_id=<%$user_id%>&confirmationstring=<%$confirmation
 
 <br/>
 <br/>
-Sincerely,<br/>
-Fliyr
+Best,<br />
+The Fliyr Team

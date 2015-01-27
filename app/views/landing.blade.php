@@ -35,7 +35,6 @@
 <link href='http://fonts.googleapis.com/css?family=Nunito:700' rel='stylesheet' type='text/css'>
 <link rel="shortcut icon" href="<?php echo asset('img/icon.ico');?>">
 	<%HTML::script('/js/foundation.min.js') %>
-	<%HTML::script('/js/jquery.form.min.js') %>
 	<% HTML::style('css/foundation.css'); %>
 
 	<style type="text/css">
@@ -96,9 +95,9 @@
 		.biginput{
 			line-height: 1.5em;
 			height: 40px;
-			width:280px;
+			width:49% !important;
 			font-size: 20px;
-			display: block;
+			display: inline-block !important;
 			border: 1px solid #888;
 			font-family: 'Oswald','Helvetica',Arial,sans-serif;
 			-webkit-border-radius: 5px;
@@ -143,6 +142,18 @@
 
 	}
 
+	.otherdiv{
+		margin-top:20%;
+	}
+	.flip{
+		transform: rotateY(180deg);
+		}
+
+	.formbox{
+			-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
+			-mozilla-transition: all 0.5s;
+    		transition: all 0.5s;
+		}
 	</style>
 	    <script> 
         // wait for the DOM to be loaded 
@@ -197,78 +208,79 @@
 				});
 			});
 
+			$('.formbox').height($('.formbox').width());
 			$('.changebutton').click(function(e){
 				e.preventDefault();
-				$('#loginform').toggle();
-				$('#signupform').toggle();
+
+				$('.formbox').toggleClass('flip');
+				if($('#loginform').is(':visible')){
+					$('#loginform').hide(500);
+					$('#signupform').show(500);
+				}
+				else if($('#signupform').is(':visible')){
+					$('#signupform').hide(500);
+					$('#loginform').show(500);
+				}
 			})
         });
         </script> 	
      
 </head>
 <body>
-<div id="signupmodal" class="reveal-modal small" data-reveal>
-		<p>Welcome to Fliyr! Please check your e-mail to confirm your registration.</p>
-		</div>
+	<div id="signupmodal" class="reveal-modal small" data-reveal>
+			<p>Welcome to Fliyr! Please check your e-mail to confirm your registration.</p>
+	</div>
 
-<div class="column otherdiv large-4 large-offset-4 medium-6 medium-offset-3 small-12 " style="display:block;z-index:1;background-color:rgba(255,255,255,0.8);border:1px solid #ccc;margin-top:8%;">
+<div class=" otherdiv" style='margin-top:6%;height:100px;padding:0px;margin:0'>
 
-	<div class="row" >
-			<%HTML::image('img/fliyr_logo.png', 'Fliyr',array('style'=>'width:auto;height:40px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%><br />
-			<%HTML::image('img/fliyr_logo2.png', 'Fliyr',array('style'=>'width:auto;height:40px;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%>		
+	<div class="large-8 columns hide-for-small" style='padding:0px'>
+		<%HTML::image('img/fliyr_logo2.png', 'Fliyr',array('style'=>'width:auto;height:110px;;margin-top:10px;display:inline-block;'));%>
+		<span style='margin-top:20px'>find your venture team</span>
+			<%HTML::image('img/fliyr_landing1.jpg', 'Fliyr',array('style'=>'width:100%;height:auto;;margin-left:auto;margin-top:10px;margin-right: auto;display:block;'));%><br />
+			
 	</div>
 	
-		<div class='row'>
-				<p class='venturetext' style="background-color:rgba(255,255,255,0.65);text-align:center">Find your venture team</p>
-			</div>
+	<div class='large-3 small-12 columns formbox' style='border:1px solid #7d7d7d;padding:25px'>		
 		<form id="loginform">
 			<span class='errortext' id='loginerrortext'></span>
-		<div class='row' style='margin:auto'>	
-				<input type='text' class='biginput' name="email" placeholder="E-Mail"/>
-		</div>
-		<div class='row' style='margin:auto'>	
-				<input type='password' class='biginput' name="password" placeholder="Password"/>
-		</div>
-		<div class='row' style='margin:auto;text-align:center'>	
-				<input type='submit' value="LOGIN" class=' button small-centered light-green-button' style=/>	
-		</div>
-
-		<div class='row' style="margin:auto;text-align:center">
-			<p>Haven't got an account? <a href="#" class='changebutton' >Sign Up</a></p>
-		</div>
-			</form>
-				<form id='signupform' style="display:none">
-				<span class='errortext' id='signuperrortext'></span>
-				<div class='row'>
-					<input type='text' class='biginput' name='name' placeholder="First Name"/>
-				</div>
-				<div class='row'>
-					<input type='text' class='biginput' name='lastname' placeholder="Last Name"/>
-				</div>				
-				<div class='row'>
-				<input type='text' class='biginput' name='email' placeholder="GATech E-Mail"/>
-				</div>
-				<div class='row'>
-				<input type='password' class='biginput' name='password' placeholder="Password"/>
-				</div>
-				<div class='row'>
-				<input type='password' class='biginput' name='confirmpassword' placeholder="Confirm Password"/>
-				</div>
-				<div class='row' style='text-align:center'>
-				<input type='submit' value="Sign Up" class='button light-green-button'  />
-				</div>
-				<div class='row' style="margin:auto;text-align:center">
-				<p>Already have an account? <a href="#" class='changebutton' >Log In</a></p>
+			<div class='row' style='margin:auto'>	
+					<input type='text' class='biginput' name="email" placeholder="E-Mail"/>
 			</div>
-				</form>
-		</div>
-</div>
-		
+			<div class='row' style='margin:auto'>	
+					<input type='password' class='biginput' name="password" placeholder="Password"/>
+			</div>
+			<div class='row' style='margin:auto;text-align:center'>	
+					<input type='submit' value="LOGIN" class=' button small-centered light-green-button' style=/>	
+			</div>
+
+			<div class='row' style="margin:auto;text-align:center">
+				<p>Haven't got an account? <a href="#" class='changebutton' >Sign Up</a></p>
+			</div>
+		</form>
+		<form id='signupform' class='flip' style="display:none">
+			<span class='errortext' id='signuperrortext'></span>
+			<div class='row'>
+				<input type='text' class='biginput' name='name' placeholder="First"/>
+				<input type='text' class='biginput' name='lastname' placeholder="Last"/>
+			</div>				
+			<div class='row'>
+			<input type='text' class='biginput' name='email' placeholder="GATech E-Mail"/>
+			</div>
+			<div class='row'>
+			<input type='password' class='biginput' name='password' placeholder="Password"/>
+			</div>
+			<div class='row'>
+			<input type='password' class='biginput' name='confirmpassword' placeholder="Confirm Password"/>
+			</div>
+			<div class='row' style='text-align:center'>
+			<input type='submit' value="Sign Up" class='button light-green-button'  />
+			</div>
+			<div class='row' style="margin:auto;text-align:center">
+			<p>Already have an account? <a href="#" class='changebutton' >Log In</a></p>
+			</div>
+		</form>
 	</div>
-</div>
-
-
-
+	<div class='column'/>
 </div>
 </body>
 </html>

@@ -52,7 +52,7 @@
 
 
 	.logo-img{
-		height:30px;margin-top:6px;margin-left:75px;width:auto;
+		height:30px;margin-top:6px;margin-left:79px;width:auto;
 	}
 
 	@media only screen and (max-width: 40em) {
@@ -155,6 +155,7 @@
 			padding-left: 24px;
 			padding-top: 10px;
 			padding-right: 24px;
+			padding-bottom:10px;
 			min-height: 280px;
 			overflow: hidden;
 			-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */

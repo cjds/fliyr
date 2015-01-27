@@ -1,6 +1,11 @@
 
 <script id="expertise-template" type="text/x-handlebars-template">
-<div class='row' style='margin-top:20px'>
+<div class='row' style="min-height:72px">
+    <div class='columns'>
+    
+    </div>
+</div>
+
           {{#each expertise}}
         <div class='columns large-4 medium-6  small-12 expertisetitle' data-user-id='{{user_id}}' style='padding-left:12px;padding-right:12px;padding-bottom:24px;min-height:300px'>
             <div class='venturebox expertisebox' style="100%">
@@ -33,7 +38,6 @@
         </div>
     {{/each}}
     <div class='column' />
-</div>
 
 </script>
 
@@ -48,8 +52,8 @@
                 <p>
                     <textarea rows="4" cols="35" name='description' placeholder="Please tell the Fliyr community about yourself &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (max 400 characters)" maxLength=400></textarea>
                 </p>
-                <span>Expertise</span>
-                <p> 
+                <span style='margin-bottom:20px'>Expertise</span>
+                <p style='margin-top:5px'> 
                     <input type='text' placeholder='#' class='taginput' name='taginput' cols="35" rows="3" /> 
                 </p>
             <div class='submitdiv row'>
@@ -65,6 +69,7 @@
 
 
 <script id="send-expertise-message-template" type="text/x-handlebars-template">
+{{#if messagable}}
 <div class='row' data-user-id={{user_id}} >
 <div class='row' style='margin-top:-16px;'>
 <span class='usertext'>To: {{user_name}}</span>
@@ -80,7 +85,14 @@
 <div class='row'>
 <button class='submit-expertise-message light-green-button right' style='margin-bottom:0px'>Send</button>
 </div>
+{{else}}
+<div class='row'>
+ You cannot message until you have created a venture
+</div>
+
+{{/if}}
 <a class='close-reveal-modal' ><img src="../img/fliyr_Icon_Cancel.png" style="width:19px;height:auto;margin-top:3px;margin-right:-6px"/></a>
+
 </script>
 
 <script id="my-expertise-template" type="text/x-handlebars-template">

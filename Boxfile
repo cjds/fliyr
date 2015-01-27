@@ -10,6 +10,7 @@ web1:
     - xcache
   php_session_save_handler: redis
   php_session_save_path: "tcp://tunnel.pagodabox.com:6379"
+  php_date_timezone: "US/east"
   shared_writable_dirs:
     - app/storage/cache
     - app/storage/logs

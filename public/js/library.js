@@ -141,7 +141,6 @@ History.Adapter.bind(window, 'statechange', function() {
 			ajaxCallHandler('ajax/get-my-ventures',"GET",{},success);
 		}
 		else if(currentURL=='inbox'){
-			console.log("SD");
 				var success= function(result, textStatus) {
 					data=JSON.parse(result);;
 					var Source = $("#inbox-template").html();
@@ -181,7 +180,9 @@ History.Adapter.bind(window, 'statechange', function() {
 					        	for(var i=0;i<data.tags.length;i++){
 				  					$('.venturebox input[name=taginput]').tagit('createTag', data.tags[i]['tag_name']);
 				  				}
+				  				$('.venturebox').height($('.venturebox').width());
 					        }
+
 				  			tagit('.taginput',success,data);
 				  			
 				  			$('.venturebox textarea[name=description]').val(data.description);
@@ -342,6 +343,7 @@ function tagit(div,successfunction,data){
 
 					},
 					"availableTags":JSON.parse(msg),
+					placeholderText: 'enter tags - min 1, max 10',
 					maxTags:10
 				});
 				console.log(data);
@@ -559,7 +561,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 						positions[i].tag=positions[i].tags;
 						positions[i].name=positions[i].position_name;
 						for (var j = 0; j < positions[i].tags.length; j++) {
-							tagarray+=positions[i].tags[j].tag_name+',';
+							tagarray+='#'+positions[i].tags[j].tag_name+',';
 						}
 					 	if (tagarray.length > 0) {
      						 tagarray = tagarray.substring(0, tagarray.length-1);

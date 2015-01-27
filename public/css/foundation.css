@@ -41,7 +41,7 @@ meta.foundation-mq-xxlarge {
 meta.foundation-data-attribute-namespace {
   font-family: false; }
 
-html, body {
+ body {
   height: 100%; }
 
 *,
@@ -1462,8 +1462,8 @@ input[type="text"], input[type="password"], input[type="date"], input[type="date
   display: block;
   font-size: 0.875rem;
   margin: 0 0 1rem 0;
-  padding: 0.5rem;
-  height: 2.3125rem;
+  padding: 0.1rem;
+  height: 1.3125rem;
   width: 100%;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
