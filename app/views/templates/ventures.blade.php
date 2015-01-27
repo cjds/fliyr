@@ -12,7 +12,7 @@
 
     <div class='large-4 columns small-12 medium-6'  style='padding-left:12px;padding-right:12px;padding-bottom:24px;'>
 
-    <div class='venturebox' data-venture-id={{venture_id}}>
+    <div class='venturebox' data-venture-id={{venture_id}} data-user-id='{{creator_id}}'>
      
     <div class='venturedetails'>
         <div class='row title' style='text-align:center'>
@@ -43,6 +43,8 @@
                 <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto'/>
             </a>
         </div>
+    {{else}}
+    <button class='light-green-button expert-message-btn' style='position:absolute; right:30px;bottom:20px;;'>Message</button>
         {{/if}}
             
     </div>	

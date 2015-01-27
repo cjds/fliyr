@@ -247,8 +247,10 @@
 	<div class='large-3 small-12 columns' style='padding:25px;margin-top:11%'>		
 	<div class='small-12 columns formbox' style='border:1px solid #7d7d7d;padding:25px'>		
 		<form id="loginform">
-			<span class='errortext' id='loginerrortext'></span>
-			<div class='row' style='margin:auto;margin-top:57px'>	
+			<span class='errortext' id='loginerrortext' style='color:#7d7d7d;font-size:12px;font-style:italic'>
+				
+			</span>
+			<div class='row' style='margin:auto;'>	
 					<input type='text' class='biginput' name="email" placeholder="E-Mail"/>
 			</div>
 			<div class='row' style='margin:auto;height:80px'>	
