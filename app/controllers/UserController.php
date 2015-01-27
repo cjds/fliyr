@@ -20,7 +20,7 @@ class UserController extends Controller {
 		$user_model=new User();
 
 
-		$str =$pdo->prepare("INSERT into useremailsignup (email) VALUES (".$email.")");
+		$str =$pdo->prepare("INSERT into useremailsignup (email) VALUES (".$user_email.")");
 		$pdo->execute();
 
 		if(!filter_var($user_email, FILTER_VALIDATE_EMAIL))
