@@ -39,9 +39,14 @@
         
     {{#if creator}}
         <div class='small-12 columns editdiv'>
-            <a href="#" class='venture-edit-button'>
-                <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto'/>
+
+            <a href="#" class='venture-edit-button' >
+                <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto;margin-left:10px'/>
+
             </a>
+            <a href="#" class='venture-delete-button' style='margin-top:1px'>
+        <img src="<%URL::asset('img/fliyr_icons_trash.png')%>" style='width:14px;height:auto'/>
+        </a>
         </div>
         {{/if}}
             
@@ -74,7 +79,7 @@
                 {{#each positions}}
                 <div class='position-edit-item'>
                     <div class='row position-title'>
-                        <span href="#" class='position-edit-button'>{{position_name}} > </span>
+                        <span href="#" class='position-edit-button' data-id='{{@index}}'>{{position_name}} > </span>
                     </div>
                     <a href="#" data-id='{{@index}}' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>
                     <ul class='taglist'>{{#each tag}}

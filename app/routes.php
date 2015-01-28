@@ -24,6 +24,7 @@ Route::get('/venturelist',function(){
 	return View::make('venturelist');
 });
 
+
 Route::get('/thread-{id}','HomeController@thread');
 
 Route::get('/about','HomeController@about');
@@ -71,6 +72,7 @@ Route::post('ajax/post-position-message','MessageController@post_position_messag
 Route::post('ajax/post-reply','MessageController@post_reply');
 Route::get('ajax/get-inbox','MessageController@get_inbox');
 
+Route::get('ajax/delete-venture','VentureController@delete_venture');
 Route::get('ajax/get-user-data','UserController@get_user_data');
 Route::get('ajax/get-message-thread','MessageController@get_message_thread');
 Route::get('ajax/get-notifications','MessageController@get_notifications');

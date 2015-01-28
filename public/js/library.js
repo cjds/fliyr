@@ -240,6 +240,8 @@ History.Adapter.bind(window, 'statechange', function() {
 		}
 		checkForNotifications();
 		checkForSideBar(currentURL);
+		window.scrollTo(0, 0);
+
 	}
 
 //**************************************************************TOP BAR
@@ -520,7 +522,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 
 
 
-/**ADDING A VENTURE******************************************************************************/
+/**ADDING/EDITING A VENTURE******************************************************************************/
 /**ADDING A VENTURE******************************************************************************/
 /**ADDING A VENTURE******************************************************************************/
 /**ADDING A VENTURE******************************************************************************/
@@ -533,12 +535,58 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 
 	var positions=[];
 	var venturestate=true;
+	var currentPositionBeingEdited=-1;
+
+	function addPositionsAgain(){
+	    $('.positionlist').html('');
+	    for(var i = 0; i < positions.length; i++) {
+	    	var tagarray=positions[i].tags.split(',');
+			var taglist='';
+			for (index = 0; index < tagarray.length; ++index) {
+ 			   taglist+="<li>"+tagarray[index]+"</li>";
+			}
+			$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button" data-id='+i+'>'+positions[i].name+'</a></div> <a href="#" data-id='+i+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a><ul class="taglist">'+taglist+'</ul></div>');
+	    }
+		$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
+	}
+
+	function resetPositionBox(){
+		$('#positionform input[name=position]').val('');
+		$('#positionform textarea[name=description]').val('');			
+		$('#positionform input[name=taginput]').tagit('removeAll');
+		if(3-positions.length>0){
+			$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
+		}
+		else{
+			$('.addposition a').html('');	
+		}
+	}
+
 	$('#content').on('click','.addposition a',function(e){
 		e.preventDefault();
 		$('.addpositionbox').show();
 		$('.addventurebox').hide();
 		venturestate=false;
 	});
+
+	$('#content').on('click','.venture-delete-button',function(e){
+		e.preventDefault();
+		var r=confirm("This will delete this venture permanently. Are you sure you want to do that?");
+		if(r){
+			$.ajax({
+			url:"ajax/delete-venture",
+				type: "GET",
+				data: { 
+				  	venture_id:$(this).parent().parent().parent().attr('data-venture-id')
+				},
+				success: function(data, textStatus) {
+					routingUpdate();
+				}				  
+
+			});
+
+		}
+	})
 
 
 	$('#content').on('click','.venture-edit-button',function(e){
@@ -599,17 +647,14 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 	$('#content').on('click','#ventureform .position-cancel-btn',function(e){
 		e.preventDefault();
 	    positions.splice($(this).attr('data-id'), 1);
-	    $('.positionlist').html('');
-	    for (var i = 0; i < positions.length; i++) {
-	    	var tagarray=positions[i].tags.split(',');
-			var taglist='';
-			for (index = 0; index < tagarray.length; ++index) {
- 			   taglist+="<li>"+tagarray[index]+"</li>";
-			}
-	    	$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button">'+positions[i].name+'</a></div> <a href="#" data-id='+i+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a><ul class="taglist">'+taglist+'</ul></div<');
-	    }
-		$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
+	    addPositionsAgain();
+	    resetPositionBox();
 	});
+
+	$('#content').on('click','.position-edit-button',function(e){
+
+	});
+
 
 	$('#content').on('click','.finishbtn',function(e){
 		e.preventDefault();
@@ -656,6 +701,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				alert("You must have at least one tag");
 			}
 			else{
+
 				$('.addpositionbox').hide();
 				$('.addventurebox').show();		    
 				var position = {
@@ -663,22 +709,12 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				    description:$('#positionform textarea[name=description]').val(),
 				    tags:$('#positionform input[name=taginput]').val() 
 				};
-				var tagarray=position.tags.split(',');
-				var taglist='';
-				for (index = 0; index < tagarray.length; ++index) {
-	 			   taglist+="<li>"+tagarray[index]+"</li>";
-							}
-				$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button">'+position.name+'</a></div><a href="#" data-id='+positions.length+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>  <ul class="taglist">'+taglist+'</ul></div>');
+				
+				//$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button" data-id='+positions.length+'>'+position.name+'</a></div><a href="#" data-id='+positions.length+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>  <ul class="taglist">'+taglist+'</ul></div>');
 				positions.push(position);
-				$('#positionform input[name=position]').val('');
-				$('#positionform textarea[name=description]').val('');			
-				$('#positionform input[name=taginput]').tagit('removeAll');
-				if(3-positions.length>0){
-					$('.addposition a').html('Add Position ('+(3-positions.length)+' remaining )');
-				}
-				else{
-					$('.addposition a').html('');	
-				}
+				addPositionsAgain();
+				resetPositionBox()
+				
 				venturestate=true;
 
 			}
@@ -698,9 +734,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 
 		}
 		else{
-			$('#positionform input[name=position]').val('');
-			$('#positionform textarea[name=description]').val('');
-			$('#positionform input[name=taginput]').tagit('removeAll');
+			resetPositionBox();
 			venturestate=true;
 			$('.addpositionbox').hide();
 			$('.addventurebox').show();				

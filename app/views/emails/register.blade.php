@@ -1,4 +1,4 @@
-Hi <%$username%><br />
+Hi <%$user_name%>,<br />
 
 Welcome to Fliyr <br />
 

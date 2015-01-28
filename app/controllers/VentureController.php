@@ -225,7 +225,7 @@ class VentureController extends Controller {
 		//get_tags
 		$pdo=DB::connection()->getPdo();
 		$input=Input::all();
-		$query=$pdo->prepare("SELECT * FROM tag");
+		$query=$pdo->prepare("SELECT * FROM tag WHERE official=1");
 	
 		$query->execute();
 		$result=$query->fetchAll();
@@ -235,7 +235,7 @@ class VentureController extends Controller {
 		}
 		return json_encode($data);
 	}
-
+	
 	protected function add_position()
 	{
 		$input=Input::all();

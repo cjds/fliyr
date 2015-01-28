@@ -232,7 +232,7 @@
 				});
 			});
 
-			$('.formbox').height($('.formbox').width());
+			$('.formbox').css('min-height',$('.formbox').width());
 			$('.changebutton').click(function(e){
 				e.preventDefault();
 

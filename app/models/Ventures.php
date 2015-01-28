@@ -79,7 +79,7 @@ class Ventures{
 		$query = $pdo->prepare("UPDATE venture SET deleted_at=NOW() WHERE venture_id=:venture_id");
 		$query->bindParam('venture_id',$id);
 		$query->execute();
-		
+		return true;
 	}
 
 	public function get_mine($user_id){
@@ -99,6 +99,7 @@ class Ventures{
 				$query->bindParam(':position_id', $row[$key]['positions'][$key2]['position_id']);
 				$query->execute();
 				$row[$key]['positions'][$key2]['tags']=$query->fetchAll();
+				$row[$key]['positions'][$key2]['creator']=true;	
 			}
 			$query = $pdo->prepare("SELECT  tag_name FROM venture_tag,tag WHERE venture_id=:venture_id AND venture_tag.tag_id=tag.tag_id ORDER BY venture_tag.created_at DESC");
 			$query->bindParam(':venture_id', $value['venture_id']);
