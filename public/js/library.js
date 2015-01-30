@@ -528,9 +528,10 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 			success: function(result, textStatus) {
 		        $('#dialog').foundation('reveal','close');
 			}	
-			$(this).addClass('light-green-button-used');
+			
 
 		 });
+		 $(this).addClass('light-green-button-used');
  		}
 		 else{
  		}
@@ -701,22 +702,25 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				alert("You must have at least one position");
 			}
 			else{
-				$.ajax({
-					url: "ajax/add-venture",
-					type: "POST",
-					data: {  // to be changed later
-					  	name: $('#ventureform input[name=venture]').val(),
-						tags:[],
-						description:$('#ventureform textarea[name=description]').val(),
-						venture_id:$('#ventureform').attr('data-venture-id'),
-						positions:positions
-					},
-					success: function(data, textStatus) {
-						if(data=='ok'){
-								routingUpdate();
-							}
-						}				  
-					});
+				if(!$(this).hasClass('rotating-circle-used')){
+					$.ajax({
+						url: "ajax/add-venture",
+						type: "POST",
+						data: {  // to be changed later
+						  	name: $('#ventureform input[name=venture]').val(),
+							tags:[],
+							description:$('#ventureform textarea[name=description]').val(),
+							venture_id:$('#ventureform').attr('data-venture-id'),
+							positions:positions
+						},
+						success: function(data, textStatus) {
+							if(data=='ok'){
+									routingUpdate();
+								}
+							}				  
+						});
+					$(this).addClass('rotating-circle-used');
+				}
 			}
 		}
 		else{

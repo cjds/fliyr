@@ -120,6 +120,20 @@
     	color: #FFFFFF; 
     	cursor:not-allowed;
 	}
+
+	.rotating-circle-used{
+		    -webkit-animation-name: rotate; 
+    -webkit-animation-duration: 0.6s; 
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+
+    -moz-animation-name: rotate; 
+    -moz-animation-duration: 0.6s; 
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    cursor:not-allowed;
+
+	}
 		.green{
 			background:#2AD6AF;
 		}
