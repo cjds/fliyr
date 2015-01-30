@@ -399,9 +399,10 @@ function tagit(div,successfunction,data){
 			        $('#dialog').foundation('reveal','close');
 				}	
 			 });
+			 $(this).addClass('light-green-button-used');
  		}
  		else{
-	 		$(this).addClass('light-green-button-used');
+	 		
  		}
  });
 
@@ -417,9 +418,10 @@ $('#content').on('click','.expertise-button-submit', function(e){
 	  		}).done(function(msg){
 	  			History.pushState("", "My Expertise", "expertise");
 	  		});
+	  		$(this).addClass('light-green-button-used')
 	  	}
 	  	else{
-	  		$(this).addClass('light-green-button-used');
+	  		
 	  	}
   	});
 
@@ -453,7 +455,7 @@ $(document).ready(function(){
 
 
 $('#content').on('click','.position-message-btn',function(e){
- 		var position_id=$(this).parent().parent().attr('data-position-id');
+ 		var position_id=$(this).parent().attr('data-position-id');
  		 $.ajax({
 			url: 'ajax/get-position-data',
 			type: "GET",
@@ -513,6 +515,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 });
 
  $('#dialog').on('click','.submit-message',function(){
+ 	if(!$(this).hasClass('light-green-button-used')){
  		var position_id=$(this).parent().parent().attr('data-position-id');
  		 $.ajax({
 			url: 'ajax/post-position-message',
@@ -525,7 +528,12 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 			success: function(result, textStatus) {
 		        $('#dialog').foundation('reveal','close');
 			}	
+			$(this).addClass('light-green-button-used');
+
 		 });
+ 		}
+		 else{
+ 		}
  });
 
 
