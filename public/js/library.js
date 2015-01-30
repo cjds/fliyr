@@ -85,16 +85,16 @@ History.Adapter.bind(window, 'statechange', function() {
 		$('.venturelink').addClass('grey-sidebar');
 		$('.expertiselink').addClass('grey-sidebar');
 		if(currentURL=='ventures'){
-				        $('.expertiselink').addClass('grey-sidebar');
+	        $('.expertiselink').addClass('grey-sidebar');
 	        $('.expertiselink').removeClass('green-sidebar');
 	        $('.venturelink').removeClass('grey-sidebar');
 	        $('.venturelink').addClass('green-sidebar');
 		}
 		else if(currentURL=='expertise'){
 			$('.expertiselink').addClass('green-sidebar');
-			        $('.expertiselink').removeClass('grey-sidebar');
-			        $('.venturelink').removeClass('green-sidebar');
-			        $('.venturelink').addClass('grey-sidebar');
+	        $('.expertiselink').removeClass('grey-sidebar');
+	        $('.venturelink').removeClass('green-sidebar');
+	        $('.venturelink').addClass('grey-sidebar');
 
 		}		
 	}
@@ -384,24 +384,30 @@ function tagit(div,successfunction,data){
  });
 
  $('#dialog').on('click','.submit-expertise-message',function(){
- 	console.log('sd');
- 		var user_id=$(this).parent().parent().attr('data-user-id');
- 		 $.ajax({
-			url: 'ajax/post-experience-message',
-			type: "POST",
-			data: { 
-				subject:$(this).parent().parent().find('input[name=subject]').val(),
-				message : $(this).parent().parent().find('textarea[name=message]').val(),
-				user_id:user_id
-			},
-			success: function(result, textStatus) {
-		        $('#dialog').foundation('reveal','close');
-			}	
-		 });
+ 		if(!$(this).hasClass('light-green-button-used')){
+	 		var user_id=$(this).parent().parent().attr('data-user-id');
+	 		 $.ajax({
+				url: 'ajax/post-experience-message',
+				type: "POST",
+				data: { 
+					subject:$(this).parent().parent().find('input[name=subject]').val(),
+					message : $(this).parent().parent().find('textarea[name=message]').val(),
+					user_id:user_id
+				},
+				success: function(result, textStatus) {
+
+			        $('#dialog').foundation('reveal','close');
+				}	
+			 });
+ 		}
+ 		else{
+	 		$(this).addClass('light-green-button-used');
+ 		}
  });
 
 $('#content').on('click','.expertise-button-submit', function(e){
-  			e.preventDefault();
+  	e.preventDefault();
+ 		if(!$(this).hasClass('light-green-button-used')){
 			var description=$('.venturebox textarea[name=description]').val();
   			var tags=$('.venturebox input[name=taginput]').val();
 	  		$.ajax({
@@ -410,9 +416,12 @@ $('#content').on('click','.expertise-button-submit', function(e){
 	  			data: { user_id : $(this).parent().parent().attr('user-id'),user_description:description,experience_tags:tags}
 	  		}).done(function(msg){
 	  			History.pushState("", "My Expertise", "expertise");
-   	
 	  		});
-  		});
+	  	}
+	  	else{
+	  		$(this).addClass('light-green-button-used');
+	  	}
+  	});
 
 //**************************************************************VENTURES
 //**************************************************************VENTURES

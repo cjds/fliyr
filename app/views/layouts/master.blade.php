@@ -114,6 +114,12 @@
 		text-transform:uppercase;
 
 	}
+
+	.light-green-button-used{
+		background-color: #2AD6AF; 
+    	color: #FFFFFF; 
+    	cursor:not-allowed;
+	}
 		.green{
 			background:#2AD6AF;
 		}
