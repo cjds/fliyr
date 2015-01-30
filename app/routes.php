@@ -24,7 +24,16 @@ Route::get('/venturelist',function(){
 	return View::make('venturelist');
 });
 
+Route::get('/messagehandlerforemailmessages','HomeController@message_email');
 
+
+Route::get('/mailtest',function(){
+	$data['user_name']='Will Smith';
+	$data['user_email']='wsmith61@gatech.edu';
+		Mail::send('emails.welcome', $data, function($message) use ($data) {
+		    	$message->to($data['user_email'], $data['user_name'])->subject('New Message on Fliyr!');
+		});
+	});
 Route::get('/thread-{id}','HomeController@thread');
 
 Route::get('/about','HomeController@about');
@@ -77,6 +86,9 @@ Route::get('ajax/get-user-data','UserController@get_user_data');
 Route::get('ajax/get-message-thread','MessageController@get_message_thread');
 Route::get('ajax/get-notifications','MessageController@get_notifications');
 Route::post('ajax/post-experience-message','MessageController@post_experience_message');
+
+Route::post('ajax/searchExperience','TagAndSearchController@search_experience');
+Route::get('ajax/searchVentures','TagAndSearchController@search_ventures');
 /*********************\
 /******ADMIN**********\
 /*********************/

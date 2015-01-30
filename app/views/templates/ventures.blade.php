@@ -158,16 +158,14 @@
                 {{/each}}
                 </ul>
             </div>
-    	<div class='row position-message-div'>
     	{{#if creator}}
-        <div class='small-12 columns editdiv'>
+        <div class='small-12 columns editdiv' style='right:0px;bottom:10px'> 
             <a href="#" class='venture-edit-button'>
                 <img src="<%URL::asset('img/fliyr_editIcon.png')%>" style='width:14px;height:auto'/>
             </a>
         </div>
     	{{else}}
-    		<button class='light-green-button position-message-btn'>Message</button>
+    		<button class='light-green-button position-message-btn' style='position:absolute; right:1px;bottom:8px;margin-bottom:0px'>Message</button>
     	{{/if}}
-        </div>
   </div>
 </script>

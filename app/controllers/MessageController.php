@@ -111,7 +111,7 @@ class MessageController extends Controller {
 		$name=explode(',',$data['user_name']);
 		$data['user_name']=$name[0];
 		
-		Mail::send('emails.message', $data, function($message) use ($data) {
+		Mail::send('emails.welcome', $data, function($message) use ($data) {
 		    	$message->to($data['user_email'], $data['user_name'])->subject('New Message on Fliyr!');
 		});
 		

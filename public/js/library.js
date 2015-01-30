@@ -15,7 +15,7 @@ History.Adapter.bind(window, 'statechange', function() {
 	var created_venture=false;
 
 	function menuHandler(e){
-		
+
    		if($(this).html()=='My Ventures'){
     		e.preventDefault();
     		History.pushState(null, "My Ventures", "myventures");
@@ -118,7 +118,7 @@ History.Adapter.bind(window, 'statechange', function() {
 		else if(currentURL=='expertise'){
 			var success= function(result, textStatus) {
 					data=JSON.parse(result);
-					var Source = $("#expertise-template").html();
+					var Source = $("#expertise-template").html(); 	 
 			        var Template = Handlebars.compile(Source);
 			        var HTML = Template({ expertise : data });
 			        $('#content').html(HTML);
@@ -564,6 +564,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 
 	$('#content').on('click','.addposition a',function(e){
 		e.preventDefault();
+
 		$('.addpositionbox').show();
 		$('.addventurebox').hide();
 		venturestate=false;
@@ -652,6 +653,17 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 	});
 
 	$('#content').on('click','.position-edit-button',function(e){
+		currentPositionBeingEdited=$(this).attr('data-id');
+		e.preventDefault();
+		$('#positionform input[name=position]').val(positions[currentPositionBeingEdited].name);
+		$('#positionform textarea[name=description]').val(positions[currentPositionBeingEdited].description);			
+		$('#positionform input[name=taginput]').tagit('removeAll');
+		var tagarray=positions[currentPositionBeingEdited].tags.split(',');
+		for(var i=0;i<tagarray.length;i++)
+			$('#positionform input[name=taginput]').tagit('createTag',tagarray[i]);
+		$('.addpositionbox').show();
+		$('.addventurebox').hide();
+		venturestate=false;
 
 	});
 
@@ -711,7 +723,11 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				};
 				
 				//$('.positionlist').append('<div class="position-edit-item"><div class="row position-title"><a href="#" class="position-edit-button" data-id='+positions.length+'>'+position.name+'</a></div><a href="#" data-id='+positions.length+' class="position-cancel-btn"><img src="../img/fliyr_Icon_Cancel.png" style="width:12px;height:auto"/></a>  <ul class="taglist">'+taglist+'</ul></div>');
+				if(currentPositionBeingEdited==-1)
 				positions.push(position);
+				else
+					positions[currentPositionBeingEdited]=position;
+				currentPositionBeingEdited=-1;
 				addPositionsAgain();
 				resetPositionBox()
 				

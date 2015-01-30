@@ -407,9 +407,9 @@
 		}
 
 		.position-message-div{
-			position: absolute;
+			/*position: absolute;
 			bottom: -6px;
-			right: -6px;
+			right: -6px;*/
 		}
 
 		.inboxdiv  h1{
@@ -491,13 +491,9 @@
 		.reveal-modal-bg {
 background-color: transparent;}
 
-.special:hover{
-cursor:default !important;
-color:#7d7d7d !important;
-}
 
 .position-edit-button:hover{
-	cursor:default !important;
+	cursor:pointer;
 }
 .top-bar-section li:not(.has-form) a:not(.button){
 	line-height:2.3125rem;
@@ -587,9 +583,9 @@ color:#7d7d7d !important;
 	</div>
 	
 	</div>
-		<a href="https://facebook.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_facebook.png')%> class='socialmediaicons facebook' /></a>
-		<a href="https://twitter.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_twitter.png')%> class='socialmediaicons twitter' /></a>
-		<a href="http://instagram.com/fliyr"><img src=<%URL::asset('img/fliyr_icons_instagram.png')%> class='socialmediaicons instagram' /></a>
+		<a href="https://facebook.com/fliyr" target="_blank"><img src=<%URL::asset('img/fliyr_icons_facebook.png')%> class='socialmediaicons facebook' /></a>
+		<a href="https://twitter.com/fliyr" target="_blank"><img src=<%URL::asset('img/fliyr_icons_twitter.png')%> class='socialmediaicons twitter' /></a>
+		<a href="http://instagram.com/fliyr" target="_blank"><img src=<%URL::asset('img/fliyr_icons_instagram.png')%> class='socialmediaicons instagram' /></a>
 
 	</div>        
      @show

@@ -33,6 +33,10 @@ class HomeController extends BaseController {
 		return View::make('magic');
 	}
 
+	public function message_email(){
+		return Redirect::to('/inbox');
+	}
+
 
 
 	public function confirmuser(){

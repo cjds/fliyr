@@ -47,14 +47,18 @@ class VentureController extends Controller {
 				$row=$query->fetchAll();
 				$tag_id=-1;
 				if(!$row){
-					$sql="INSERT INTO tag (tag_name,tag_description) VALUES ('".$tag."','')";
-					$pdo->exec( $sql );
+					$sql="INSERT INTO tag (tag_name,tag_description) VALUES (:tag,'')";
+					$query->bindParam(':tag', $tag);
+					$query->execute();
 					$tag_id=$pdo->lastInsertId();	
 				}
 				else{
 					$tag_id=$row[0]['tag_id'];
 				}
-				$sql="INSERT INTO venture_tag (experience_id,tag_id) VALUES ('".$experience_id."','".$tag_id."')";
+				$sql="INSERT INTO venture_tag (experience_id,tag_id) VALUES (:experience_id,:tag_id)";
+				$query->bindParam(':experience_id', $experience_id);
+				$query->bindParam(':tag_id', $tag_id);
+				$query->execute();
 				$pdo->exec( $sql );
 			}
 
@@ -108,8 +112,9 @@ class VentureController extends Controller {
 				$row=$query->fetchAll();
 				$tag_id=-1;
 				if(!$row){
-					$sql="INSERT INTO tag (tag_name,tag_description) VALUES ('".$tag."','')";
-					$pdo->exec( $sql );
+					$sql="INSERT INTO tag (tag_name,tag_description) VALUES (:tag,'')";
+					$query->bindParam(':tag', $tag);
+					$query->execute();
 					$tag_id=$pdo->lastInsertId();	
 				}
 				else{
