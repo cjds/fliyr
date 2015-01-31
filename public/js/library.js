@@ -1,5 +1,4 @@
 History.Adapter.bind(window, 'statechange', function() {
-	console.log("SD");
   routingUpdate();
 });
 
@@ -15,6 +14,8 @@ History.Adapter.bind(window, 'statechange', function() {
 	var created_venture=false;
 
 	function menuHandler(e){
+		$(this).parent().parent().parent().removeClass('hover');
+		$(this).parent().parent().parent().parent().removeClass('expanded');
 
    		if($(this).html()=='My Ventures'){
     		e.preventDefault();
@@ -34,7 +35,6 @@ History.Adapter.bind(window, 'statechange', function() {
    		}
 
    		else if($(this).html()=='My Expertise'){
-   			e.preventDefault();
     		History.pushState(null,"My Expertise", "myexpertise");
    		}
    		else if($(this).html()=='About'){
@@ -78,26 +78,29 @@ History.Adapter.bind(window, 'statechange', function() {
 	}
 
 	function checkForSideBar(url){
-        
+        //green sidebar
         $('.venturelink').removeClass('green-sidebar');		
-    	
-		$('.expertiselink').removeClass('green-sidebar');
+    	$('.expertiselink').removeClass('green-sidebar');
+    	$('.aboutlink').removeClass('green-sidebar');
+    	//grey sidebar
 		$('.venturelink').addClass('grey-sidebar');
 		$('.expertiselink').addClass('grey-sidebar');
+		$('.aboutlink').addClass('grey-sidebar');
+
 		if(currentURL=='ventures'){
-	        $('.expertiselink').addClass('grey-sidebar');
-	        $('.expertiselink').removeClass('green-sidebar');
 	        $('.venturelink').removeClass('grey-sidebar');
 	        $('.venturelink').addClass('green-sidebar');
 		}
 		else if(currentURL=='expertise'){
 			$('.expertiselink').addClass('green-sidebar');
 	        $('.expertiselink').removeClass('grey-sidebar');
-	        $('.venturelink').removeClass('green-sidebar');
-	        $('.venturelink').addClass('grey-sidebar');
-
-		}		
+		}	
+		else if(currentURL=='about'){
+			$('.aboutlink').addClass('green-sidebar');
+	        $('.aboutlink').removeClass('grey-sidebar');
+		}
 	}
+
 	function routingUpdate(){
 		
 		currentURL=routingFunction();
@@ -166,16 +169,20 @@ History.Adapter.bind(window, 'statechange', function() {
 			  			type: "GET",
 			  			
 		  			})
-				 .done(function(msg){
+				 .success(function(msg){
 				  			var tags="";
 				  			var data=JSON.parse(msg);	
 							if(data.response=='fail'){
 					        	 window.location.href = data.redirect;
 							}	
+
 							var Source = $("#my-expertise-template").html();
 					        var Template = Handlebars.compile(Source);
 					        var HTML = Template({user_name:data.user_name,user_id:data.user_id});
 					        $('#content').html(HTML);
+					        if(data.experience_id==null){
+								$('.notenteredtext').show();
+							}
 					        var success=function success(data){
 					        	for(var i=0;i<data.tags.length;i++){
 				  					$('.venturebox input[name=taginput]').tagit('createTag', data.tags[i]['tag_name']);
@@ -188,7 +195,7 @@ History.Adapter.bind(window, 'statechange', function() {
 				  			$('.venturebox textarea[name=description]').val(data.description);
 				  			//$('.venturebox textarea[name=taginput]').val(tags);
 		  			})
-				 .fail(function(msg){
+				 	.fail(function(msg){
 				 			$('.notenteredtext').show();
 				 	});
 			
@@ -267,7 +274,6 @@ History.Adapter.bind(window, 'statechange', function() {
 				type: 'get',
 				data: {},
 				success: function(result, textStatus) {
-					console.log(result);
 					data=result;
 
 					if(data.response=='fail'){
@@ -277,7 +283,9 @@ History.Adapter.bind(window, 'statechange', function() {
 						$('.notification-menu-item').html('<div href="#" class="notification"><span>'+data+'</span></div>')
 					}
 					else
-						$('.notification-menu-item').html('')
+						$('.notification-menu-item').html('');
+					$('.notification').parent().parent().parent().removeClass('expanded');
+
 				},
 				fail:function(){
 					
@@ -288,8 +296,8 @@ History.Adapter.bind(window, 'statechange', function() {
 
 	$('body').on('click','.notification',function(e){
 		e.preventDefault();
-    	History.pushState(null, "My Inbox", "inbox");
 
+		History.pushState(null, "My Inbox", "inbox");
 	});
 
 
@@ -408,7 +416,7 @@ function tagit(div,successfunction,data){
 
 $('#content').on('click','.expertise-button-submit', function(e){
   	e.preventDefault();
- 		if(!$(this).hasClass('light-green-button-used')){
+ 		if(!$(this).hasClass('rotating-circle-used')){
 			var description=$('.venturebox textarea[name=description]').val();
   			var tags=$('.venturebox input[name=taginput]').val();
 	  		$.ajax({
@@ -418,7 +426,7 @@ $('#content').on('click','.expertise-button-submit', function(e){
 	  		}).done(function(msg){
 	  			History.pushState("", "My Expertise", "expertise");
 	  		});
-	  		$(this).addClass('light-green-button-used')
+	  		$(this).addClass('rotating-circle-used')
 	  	}
 	  	else{
 	  		
@@ -464,7 +472,6 @@ $('#content').on('click','.position-message-btn',function(e){
 			},
 			success: function(result, textStatus) {
 				var data=JSON.parse(result);
-
 				var position=data;
 				var Source = $("#send-message-template").html();
 		        var Template = Handlebars.compile(Source);
@@ -515,26 +522,30 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 });
 
  $('#dialog').on('click','.submit-message',function(){
- 	if(!$(this).hasClass('light-green-button-used')){
- 		var position_id=$(this).parent().parent().attr('data-position-id');
- 		 $.ajax({
-			url: 'ajax/post-position-message',
-			type: "POST",
-			data: { 
-				position_id:$(this).parent().parent().find('input[name=position-id]').val(),
-				message : $(this).parent().parent().find('textarea[name=message]').val(),
-				receiver_id:$(this).parent().parent().find('input[name=receiver-id]').val()
-			},
-			success: function(result, textStatus) {
-		        $('#dialog').foundation('reveal','close');
-			}	
-			
-
-		 });
-		 $(this).addClass('light-green-button-used');
- 		}
-		 else{
- 		}
+ 	if($(this).parent().parent().find('textarea[name=message]').val()!=''){
+	 	if(!$(this).hasClass('light-green-button-used')){
+	 		var position_id=$(this).parent().parent().attr('data-position-id');
+	 		 $.ajax({
+				url: 'ajax/post-position-message',
+				type: "POST",
+				data: { 
+					position_id:$(this).parent().parent().find('input[name=position-id]').val(),
+					message : $(this).parent().parent().find('textarea[name=message]').val(),
+					receiver_id:$(this).parent().parent().find('input[name=receiver-id]').val()
+				},
+				success: function(result, textStatus) {
+			        $('#dialog').foundation('reveal','close');
+				}	
+			});
+			 $(this).addClass('light-green-button-used');
+	 	}
+	}
+	else{
+		var Source = $("#error-template").html();
+	    var Template = Handlebars.compile(Source);
+	    var HTML = Template({message:"The message cannot be blank"});
+	    $(this).parent().parent().append(HTML);
+	}
  });
 
 

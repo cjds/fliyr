@@ -11,7 +11,7 @@
      
         <tr data-sender-id={{sender_id}} data-receiver-id={{receiver_id}} data-message-id={{message_id}}  class='messagethread'>
         <td>{{#if count}} <span class='circle'></span>{{/if}}</td>
-        <td class='large-2 columns hide-for-small datetext'>{{formatDate created_at "short"}} </a></td>        
+        <td class='large-2 columns hide-for-small datetext'>{{formatDate timestamp "short"}} </a></td>        
         <td class='large-2 columns hide-for-small usertext' >{{user_name}}</td>
         <td class='large-8 columns hide-for-small titletext' ><span class='subjecttext'>{{subject}}</span><span class='messagetext'>&nbsp;&nbsp;-&nbsp;&nbsp;{{message}}</span></td>
         <td class='small-12 columns show-for-small-only'>

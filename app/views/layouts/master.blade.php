@@ -523,7 +523,7 @@ background-color: transparent;}
 .notificaition-mobile{
 	right:50px !important;
 	position:absolute !important;
-	top:14px !important;
+	top:6px !important;
 }
 
 	</style>
@@ -599,7 +599,7 @@ background-color: transparent;}
 	<a href="<% URL::to('ventures') %>" class="venturelink grey-sidebar">Ventures</a>
 	<a href="<% URL::to('expertise') %>" class="expertiselink green-sidebar">Expertise</a>
 	<hr style='padding-left:20px;padding-right:20px;'>
-	<a href="<% URL::to('about-us') %>" class=" grey-sidebar">About</a>
+	<a href="<% URL::to('about-us') %>" class="aboutlink grey-sidebar">About</a>
 	</div>
 	
 	</div>

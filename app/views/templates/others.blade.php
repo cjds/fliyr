@@ -46,3 +46,11 @@ Chase Roberts, Business, <i>Business Administration Major</i>
 <script id="confirmuser-template" type="text/x-handlebars-template">
 Your account has been activated. You can now log in.
 </script>
+
+<script id='error-template' type="text/x-handlebars-template">
+<div data-alert class="alert-box info radius">
+{{message}}  
+<a href="#" class="close">&times;</a>
+</div>
+
+</script>
