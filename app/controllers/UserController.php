@@ -33,7 +33,7 @@ class UserController extends Controller {
 		if($user_confirmpassword!=$input['user_password'])
 			return '{"result": "fail","message":"Passwords do not match"}'; 
 
-		$user=$user_model->find_user_by_email($user_email);
+		$user=$user_model->find_user_by_email_confirm_not_checked($user_email);
 		if($user){
 			return '{"result": "fail","message":"This e-mail already exists"}';
 		}
@@ -43,7 +43,7 @@ class UserController extends Controller {
 		if($user!=false){
 			$name=explode(';',$user_name);
 			
-			$data=['full_name'=>$name[0].' '.$name[1],'user_email'=>$user_email,'username'=>$name[0],'confirmationstring'=>$user['randomstring'],'user_id'=>$user['user_id']];
+			$data=['full_name'=>$name[0].' '.$name[1],'user_email'=>$user_email,'user_name'=>$name[0],'confirmationstring'=>$user['randomstring'],'user_id'=>$user['user_id']];
 			//random_string
 			Mail::send('emails.register', $data, function($message) use ($data) {
 		    	$message->to($data['user_email'], $data['full_name'])->subject('Welcome to Fliyr');
@@ -124,8 +124,10 @@ class UserController extends Controller {
 		$experience=$query->fetchAll();
 
 		if(!$experience){
-			$sql="INSERT INTO experience (user_id,description,created_at) VALUES ('".$user_id."','".addslashes($user_description)."',NOW())";
-			$pdo->exec( $sql );
+			$sql=$pdo->prepare("INSERT INTO experience (user_id,description,created_at) VALUES (':user_id',':user_description',NOW())");
+			$sql->bindParam('user_id',$user_id);
+			$sql->bindParam('description',$user_description);
+			$sql->execute();
 			$experience_id=$pdo->lastInsertId();
 
 			foreach ($experience_tags as $tag) {
@@ -136,15 +138,18 @@ class UserController extends Controller {
 				$row=$query->fetchAll();
 				$tag_id=-1;
 				if(!$row){
-					$sql="INSERT INTO tag (tag_name,tag_description) VALUES ('".$tag."','')";
-					$pdo->exec( $sql );
+					$sql=$pdo->prepare("INSERT INTO tag (tag_name,tag_description) VALUES (':tag','')");
+					$sql->bindParam('tag', $tag);
+					$sql->execute();
 					$tag_id=$pdo->lastInsertId();	
 				}
 				else{
 					$tag_id=$row[0]['tag_id'];
 				}
-				$sql="INSERT INTO experience_tag (experience_id,tag_id) VALUES ('".$experience_id."','".$tag_id."')";
-				$pdo->exec( $sql );
+				$sql=$pdo->prepare("INSERT INTO experience_tag (experience_id,tag_id) VALUES (':experience_id',':tag_id')");
+				$sql->bindParam('experience_id', $experience_id);
+				$sql->bindParam('tag_id', $tag_id);
+				$sql->execute();
 			}
 		}
 		else{
@@ -166,15 +171,18 @@ class UserController extends Controller {
 				$row=$query->fetchAll();
 				$tag_id=-1;
 				if(!$row){
-					$sql="INSERT INTO tag (tag_name,tag_description) VALUES ('".$tag."','')";
-					$pdo->exec( $sql );
+					$sql=$pdo->prepare("INSERT INTO tag (tag_name,tag_description) VALUES (':tag','')");
+					$sql->bindParam('tag', $tag);
+					$sql->execute();
 					$tag_id=$pdo->lastInsertId();	
 				}
 				else{
 					$tag_id=$row[0]['tag_id'];
 				}
-				$sql="INSERT INTO experience_tag (experience_id,tag_id) VALUES ('".$experience_id."','".$tag_id."')";
-				$pdo->exec( $sql );
+				$sql=$pdo->prepare("INSERT INTO experience_tag (experience_id,tag_id) VALUES (':experience_id',':tag_id')");
+				$sql->bindParam('experience_id', $experience_id);
+				$sql->bindParam('tag_id', $tag_id);
+				$sql->execute();
 			}			
 		}
 		return 'ok';

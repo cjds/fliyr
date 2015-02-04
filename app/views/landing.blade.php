@@ -171,9 +171,11 @@
 		}
 
 	.formbox{
+			perspective:1000;
 			-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
 			-mozilla-transition: all 0.5s;
     		transition: all 0.5s;
+    		transform-style:preserve-3d;
 		}
 	</style>
 	    <script> 
@@ -238,12 +240,12 @@
 
 				$('.formbox').toggleClass('flip');
 				if($('#loginform').is(':visible')){
-					$('#loginform').hide(500);
-					$('#signupform').show(500);
+					$('#loginform').delay(200).hide(0);
+					$('#signupform').delay(200).show(0);
 				}
 				else if($('#signupform').is(':visible')){
-					$('#signupform').hide(500);
-					$('#loginform').show(500);
+					$('#signupform').delay(200).hide(0);
+					$('#loginform').delay(200).show(0);
 				}
 			})
         });
@@ -269,7 +271,7 @@
 	<div class='small-12 columns formbox' style='border:1px solid #7d7d7d;padding:25px'>		
 		<form id="loginform">
 
-			<p class='errortext' id='loginerrortext' style='color:#7d7d7d;font-size:12px;font-style:italic;line-height:16px'>
+			<p class='errortext' id='loginerrortext' style='color:#7d7d7d;font-size:12px;font-style:italic;line-height:16px;margin-top:3px'>
 				"Winners never quit and quitters never win." -Vince Lombardi
 			</p>
 			<div class='row' style='margin:auto;'>	
@@ -305,7 +307,7 @@
 			<input type='submit' value="Sign Up" class='button light-green-button'  />
 			</div>
 			<div class='row' style="margin:auto;text-align:center">
-			<p>or <a href="#" class='changebutton' >sign in</a></p>
+			<p style="margin-bottom:1rem">or <a href="#" class='changebutton' >sign in</a></p>
 			</div>
 		</form>
 

@@ -183,6 +183,7 @@
 			-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
 			-mozilla-transition: all 0.5s;
     		transition: all 0.5s;
+    		transform-style: preserve-3d;
 		}
 
 		.venturebox .title{
@@ -241,11 +242,13 @@
 			text-align: center;
 			margin-top: 6px;
 			color:#7d7d7d;
+
 		}
 
 		.flip{
 		transform: rotateY(180deg);
 		}
+
 
 		.venturebox .row{
 			margin-left: 0em;
@@ -526,6 +529,54 @@ background-color: transparent;}
 	top:6px !important;
 }
 
+.side-menu-notification .notification{
+	display: inline-block;
+	margin-top: -2px;
+	margin-left: 5px;
+}
+
+.flip-container {
+	perspective: 1000;
+}
+	/* flip the pane when hovered */
+.flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 480px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+
 	</style>
 </head>
 <body>
@@ -566,7 +617,7 @@ background-color: transparent;}
 						
 							<li><a href="<% URL::to('myexpertise')%>">My Expertise</a></li>
 							<li><a href="<% URL::to('myventures')%>">My Ventures</a></li> 
-							<li><a href="<% URL::to('inbox')%>">Message Inbox</a></li>
+							<li><a href="<% URL::to('inbox')%>">Inbox</a></li>
 							<li><a href="<% URL::to('signout')%>">Sign out</a></li>
 						
 						
@@ -574,10 +625,10 @@ background-color: transparent;}
         @endif
       </li>
 
-    <li class="notification-menu-item hide-for-small">
-    </li>
+    <!--<li class="notification-menu-item hide-for-small">
+    </li>-->
       <li class='show-for-small' style='border:1px solid #7d7d7d;margin-top:-1px'><a href="<% URL::to('ventures') %>" >Ventures</a></li>
-	  <li class='show-for-small' style='border:1px solid #7d7d7d;margin-top:-1px'><a href="<% URL::to('expertise') %>" >Expertise</a></li>
+	  <li class='show-for-small' style='border:1px solid #7d7d7d;margin-top:-1px'><a href="<% URL::to('expertise') %>" >People</a></li>
 		<li class='show-for-small' style='border:1px solid #7d7d7d;margin-top:-1px'><a href="<% URL::to('about-us') %>">About</a></li>
       <li>
       <a href="#" class='special'>Georgia Tech</a></li>
@@ -595,13 +646,16 @@ background-color: transparent;}
 	
 	
 	<div class="large-12 columns left-menu hide-for-small">
-	<div class='row'>
-	<a href="<% URL::to('ventures') %>" class="venturelink grey-sidebar">Ventures</a>
-	<a href="<% URL::to('expertise') %>" class="expertiselink green-sidebar">Expertise</a>
-	<hr style='padding-left:20px;padding-right:20px;'>
-	<a href="<% URL::to('about-us') %>" class="aboutlink grey-sidebar">About</a>
-	</div>
-	
+		<div class='row'>
+			<a href="<% URL::to('ventures') %>" class="venturelink grey-sidebar">Ventures</a>
+			<a href="<% URL::to('expertise') %>" class="expertiselink green-sidebar">People</a>
+			<hr style='padding-left:20px;padding-right:20px;'>
+			<a href="<% URL::to('myexpertise') %>" class="myexpertiselink grey-sidebar">My Expertise</a>
+			<a href="<% URL::to('myventures')%>" class="myventurelink grey-sidebar">My Ventures</a>
+			<a href="<% URL::to('inbox')%>"  class="messageinboxlink grey-sidebar">Inbox <span class='notification-menu-item side-menu-notification'></span></a>
+			<hr style='padding-left:20px;padding-right:20px;'>
+			<a href="<% URL::to('about-us') %>" class="aboutlink grey-sidebar">About</a>
+		</div>
 	</div>
 		<a href="https://facebook.com/fliyr" target="_blank"><img src=<%URL::asset('img/fliyr_icons_facebook.png')%> class='socialmediaicons facebook' /></a>
 		<a href="https://twitter.com/fliyr" target="_blank"><img src=<%URL::asset('img/fliyr_icons_twitter.png')%> class='socialmediaicons twitter' /></a>
@@ -617,6 +671,28 @@ background-color: transparent;}
             </div>
     </div>
 
+<style>
+.notification-bar{
+	position:absolute;
+	top:0;
+	background-color:#ddd;
+	color:#7d7d7d;
+	min-height:26px;
+	width:60%;
+	margin-left:20%;
+	text-align:center;
+	box-shadow:0px 0px 7px 3px #aaa;
+	display: none;
+}
+
+.notification-bar a{
+	text-decoration: underline;
+	font-weight: 500;
+}
+</style>
+<div class='notification-bar'>
+df
+</div>
 </body>
 	<script src="<% URL::asset('js/library.js')%>"></script>    
 <script type="text/javascript">

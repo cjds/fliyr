@@ -10,7 +10,7 @@ class TagAndSearchController extends Controller{
 		$tagArray=$matches;
 		$search=preg_replace('/(\s*#[A-z]*\s*)/',' ', $searchterm);
 		$search=trim($search);
-		$query = $pdo->prepare("SELECT  tag_id FROM experience,experience_tag,tag WHERE tag_name = :tag");
+		$query = $pdo->prepare("SELECT  tag_id FROM experience,experience_tag,tag WHERE tag_id IN (SELECT * FROM experience_tag GROUP BY ))");
 
 		// SELECT experience e FROM experience_tag et,experience e WHERE etx
 		$query->bindParam(':tag', $tag);

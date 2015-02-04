@@ -41,6 +41,13 @@ class User{
 		return $query->fetch();	
 	}
 
+	function find_user_by_email_confirm_not_checked($user_email){
+		$query = $this->pdo->prepare("SELECT  * FROM user WHERE user_email = :user_email");
+		$query->bindParam(':user_email', $user_email);
+		$query->execute();
+		return $query->fetch();	
+	}
+
 	function find_user_by_username($user_name){
 		$query = $this->pdo->prepare("SELECT  * FROM user WHERE user_name = :user_name");
 		$query->bindParam('user_name', $user_name);

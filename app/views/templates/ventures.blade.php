@@ -10,7 +10,7 @@
     </div>
 	{{#each ventures}}
 
-    <div class='large-4 columns small-12 medium-6'  style='padding-left:12px;padding-right:12px;padding-bottom:24px;'>
+    <div class='large-4 columns small-12 medium-6'  style='padding-left:12px;padding-right:12px;padding-bottom:24px;perspective:1000'>
 
     <div class='venturebox' data-venture-id={{venture_id}} data-user-id='{{creator_id}}'>
      

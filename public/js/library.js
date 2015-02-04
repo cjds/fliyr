@@ -3,8 +3,15 @@ History.Adapter.bind(window, 'statechange', function() {
 });
 
 
+//**********************************************************TOP NOTIFICATIONS
+
+
+function system_notification(data){
+	$('.notification-bar').html(data);
+	$('.notification-bar').slideDown(200).delay(6500).slideUp(200);
+}
 //**************************************************************LIBRAR
-//**************************************************************LIBRA
+//**************************************************************LIBRARY
 
 	var DateFormats = {
        short: "DD MMM YYYY",
@@ -16,12 +23,12 @@ History.Adapter.bind(window, 'statechange', function() {
 	function menuHandler(e){
 		$(this).parent().parent().parent().removeClass('hover');
 		$(this).parent().parent().parent().parent().removeClass('expanded');
-
+		console.log($(this).html());
    		if($(this).html()=='My Ventures'){
     		e.preventDefault();
     		History.pushState(null, "My Ventures", "myventures");
    		}
-   		else if($(this).html()=='Message Inbox'){
+   		else if($(this).html().substring(0,5)=='Inbox'){
    			e.preventDefault();
     		History.pushState(null, "My Inbox", "inbox");
    		}
@@ -29,12 +36,13 @@ History.Adapter.bind(window, 'statechange', function() {
    			e.preventDefault();
     		History.pushState(null, "Ventures", "ventures");
    		}
-   		else if($(this).html()=='Expertise'){
+   		else if($(this).html()=='Expertise' || $(this).html()=='People'){
    			e.preventDefault();
     		History.pushState(null, "Expertise", "expertise");
    		}
 
    		else if($(this).html()=='My Expertise'){
+   			e.preventDefault();
     		History.pushState(null,"My Expertise", "myexpertise");
    		}
    		else if($(this).html()=='About'){
@@ -82,23 +90,48 @@ History.Adapter.bind(window, 'statechange', function() {
         $('.venturelink').removeClass('green-sidebar');		
     	$('.expertiselink').removeClass('green-sidebar');
     	$('.aboutlink').removeClass('green-sidebar');
+    	$('.myexpertiselink').removeClass('green-sidebar');
+    	$('.myventurelink').removeClass('green-sidebar');
+    	$('.expertiselink').removeClass('green-sidebar');
+    	$('.messageinboxlink').removeClass('green-sidebar');
+    	
+    	
     	//grey sidebar
 		$('.venturelink').addClass('grey-sidebar');
 		$('.expertiselink').addClass('grey-sidebar');
 		$('.aboutlink').addClass('grey-sidebar');
+    	$('.myexpertiselink').addClass('grey-sidebar');
+    	$('.myventurelink').addClass('grey-sidebar');
+    	$('.expertiselink').addClass('grey-sidebar');
+    	$('.messageinboxlink').addClass('grey-sidebar');
 
-		if(currentURL=='ventures'){
-	        $('.venturelink').removeClass('grey-sidebar');
-	        $('.venturelink').addClass('green-sidebar');
-		}
-		else if(currentURL=='expertise'){
-			$('.expertiselink').addClass('green-sidebar');
-	        $('.expertiselink').removeClass('grey-sidebar');
-		}	
-		else if(currentURL=='about'){
-			$('.aboutlink').addClass('green-sidebar');
-	        $('.aboutlink').removeClass('grey-sidebar');
-		}
+    	switch(currentURL){
+    		case 'ventures':
+    			$('.venturelink').removeClass('grey-sidebar');
+	        	$('.venturelink').addClass('green-sidebar');
+	        	break;
+	        case 'expertise':
+    			$('.expertiselink').removeClass('grey-sidebar');
+	        	$('.expertiselink').addClass('green-sidebar');
+	        	break;
+	        case 'about':
+				$('.aboutlink').addClass('green-sidebar');
+		        $('.aboutlink').removeClass('grey-sidebar');
+		        break;
+		    case 'myexpertise':
+				$('.myexpertiselink').addClass('green-sidebar');
+		        $('.myexpertiselink').removeClass('grey-sidebar');
+		        break;
+		    case 'inbox':
+				$('.messageinboxlink').addClass('green-sidebar');
+		        $('.messageinboxlink').removeClass('grey-sidebar');
+		        break;
+		    case 'myventures':
+				$('.myventurelink').addClass('green-sidebar');
+		        $('.myventurelink').removeClass('grey-sidebar');
+		        break;
+
+    	}
 	}
 
 	function routingUpdate(){
@@ -387,24 +420,35 @@ function tagit(div,successfunction,data){
 		        $('#dialog').html(HTML);
 		        $('#dialog').addClass('tiny');
 		        $('#dialog').foundation('reveal','open');
+
 			}	
 		 });
  });
 
  $('#dialog').on('click','.submit-expertise-message',function(){
+ 	 	var subject=$(this).parent().parent().find('input[name=subject]').val();
+ 	 	var message=$(this).parent().parent().find('textarea[name=message]').val();
+
+ 	 if(subject==''){
+ 		alert("The subject cannot be blank");
+ 	}
+ 	else if(message==''){
+ 		alert("The message cannot be blank");
+ 	}
+ 	else{
  		if(!$(this).hasClass('light-green-button-used')){
 	 		var user_id=$(this).parent().parent().attr('data-user-id');
 	 		 $.ajax({
 				url: 'ajax/post-experience-message',
 				type: "POST",
 				data: { 
-					subject:$(this).parent().parent().find('input[name=subject]').val(),
-					message : $(this).parent().parent().find('textarea[name=message]').val(),
+					subject:subject,
+					message : message,
 					user_id:user_id
 				},
 				success: function(result, textStatus) {
-
 			        $('#dialog').foundation('reveal','close');
+			        system_notification("Your message was successfully sent. You can check it in <a href='inbox'>Inbox</a>");
 				}	
 			 });
 			 $(this).addClass('light-green-button-used');
@@ -412,6 +456,7 @@ function tagit(div,successfunction,data){
  		else{
 	 		
  		}
+ 	}
  });
 
 $('#content').on('click','.expertise-button-submit', function(e){
@@ -425,6 +470,7 @@ $('#content').on('click','.expertise-button-submit', function(e){
 	  			data: { user_id : $(this).parent().parent().attr('user-id'),user_description:description,experience_tags:tags}
 	  		}).done(function(msg){
 	  			History.pushState("", "My Expertise", "expertise");
+	  			system_notification("Awesome! You updated your expertise");
 	  		});
 	  		$(this).addClass('rotating-circle-used')
 	  	}
@@ -454,9 +500,9 @@ $('#content').on('click','.expertise-button-submit', function(e){
 $(document).ready(function(){
  $('#content').on('click','.position-link',function(e){
  		e.preventDefault();
- 		$(".position[data-position-id="+$(this).attr('data-position-id')+"]").show();
+ 		$(".position[data-position-id="+$(this).attr('data-position-id')+"]").delay(200).show(0);
  		$(this).parent().parent().parent().toggleClass('flip');
- 		$(this).parent().parent().hide(500);
+ 		$(this).parent().parent().delay(200).hide(0);
  		
  		
  });
@@ -489,7 +535,7 @@ $('#content').on('click','.position-message-btn',function(e){
  		e.preventDefault();
  		$(this).parent().parent().hide();
  		$(this).parent().parent().parent().toggleClass('flip');
- 		$(this).parent().parent().parent().find('.venturedetails').show(500);
+ 		$(this).parent().parent().parent().find('.venturedetails').delay(200).show(0);
  });
 
 $('#content').on('click','.create-venture-button',function(){
@@ -535,16 +581,14 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				},
 				success: function(result, textStatus) {
 			        $('#dialog').foundation('reveal','close');
+			        system_notification("Your message was successfully sent. You can check it in <a href='inbox'>Inbox</a>");
 				}	
 			});
 			 $(this).addClass('light-green-button-used');
 	 	}
 	}
 	else{
-		var Source = $("#error-template").html();
-	    var Template = Handlebars.compile(Source);
-	    var HTML = Template({message:"The message cannot be blank"});
-	    $(this).parent().parent().append(HTML);
+		alert("The message cannot be blank");
 	}
  });
 
@@ -611,6 +655,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 				},
 				success: function(data, textStatus) {
 					routingUpdate();
+					system_notification("Your have successfully deleted your venture");
 				}				  
 
 			});
@@ -727,6 +772,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 						success: function(data, textStatus) {
 							if(data=='ok'){
 									routingUpdate();
+									system_notification("Awesome! You have created/edited your venture");
 								}
 							}				  
 						});

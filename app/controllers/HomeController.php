@@ -34,6 +34,7 @@ class HomeController extends BaseController {
 	}
 
 	public function message_email(){
+		
 		return Redirect::to('/inbox');
 	}
 
