@@ -178,7 +178,8 @@ class UserController extends Controller {
 				else{
 					$tag_id=$row['tag_id'];
 				}
-				echo $experience_id.' XXX'.$tag_id;
+				
+				 
 				$sql=$pdo->prepare("INSERT INTO experience_tag (experience_id,tag_id) VALUES (:experience_id,:tag_id)");
 				$sql->bindParam(':experience_id', $experience_id);
 				$sql->bindParam(':tag_id', $tag_id);
