@@ -121,12 +121,12 @@ class UserController extends Controller {
 		$query = $pdo->prepare("SELECT  * FROM experience WHERE user_id=:user_id ORDER BY created_at DESC");
 		$query->bindParam(':user_id', $user_id);
 		$query->execute();
-		$experience=$query->fetchAll();
+		$experience=$query->fetch();
 
 		if(!$experience){
-			$sql=$pdo->prepare("INSERT INTO experience (user_id,description,created_at) VALUES (':user_id',':user_description',NOW())");
-			$sql->bindParam('user_id',$user_id);
-			$sql->bindParam('description',$user_description);
+			$sql=$pdo->prepare("INSERT INTO experience (user_id,description,created_at) VALUES (:user_id,:user_description,NOW())");
+			$sql->bindParam(':user_id',$user_id);
+			$sql->bindParam(':description',$user_description);
 			$sql->execute();
 			$experience_id=$pdo->lastInsertId();
 
@@ -138,17 +138,17 @@ class UserController extends Controller {
 				$row=$query->fetchAll();
 				$tag_id=-1;
 				if(!$row){
-					$sql=$pdo->prepare("INSERT INTO tag (tag_name,tag_description) VALUES (':tag','')");
-					$sql->bindParam('tag', $tag);
+					$sql=$pdo->prepare("INSERT INTO tag (tag_name,tag_description) VALUES (:tag,'')");
+					$sql->bindParam(':tag', $tag);
 					$sql->execute();
 					$tag_id=$pdo->lastInsertId();	
 				}
 				else{
 					$tag_id=$row[0]['tag_id'];
 				}
-				$sql=$pdo->prepare("INSERT INTO experience_tag (experience_id,tag_id) VALUES (':experience_id',':tag_id')");
-				$sql->bindParam('experience_id', $experience_id);
-				$sql->bindParam('tag_id', $tag_id);
+				$sql=$pdo->prepare("INSERT INTO experience_tag (experience_id,tag_id) VALUES (:experience_id,:tag_id)");
+				$sql->bindParam(':experience_id', $experience_id);
+				$sql->bindParam(':tag_id', $tag_id);
 				$sql->execute();
 			}
 		}
@@ -159,8 +159,7 @@ class UserController extends Controller {
 			$query->bindParam(':user_description', $user_description);
 			$query->execute();
 
-			$experience_id=$experience[0]['experience_id'];
-
+			$experience_id=$experience['experience_id'];
 			$sql="DELETE FROM experience_tag WHERE experience_id=".$experience_id;
 			$pdo->exec( $sql );
 			foreach ($experience_tags as $tag) {
@@ -168,21 +167,24 @@ class UserController extends Controller {
 				$query = $pdo->prepare("SELECT  tag_id FROM tag WHERE tag_name = :tag");
 				$query->bindParam(':tag', $tag);
 				$query->execute();
-				$row=$query->fetchAll();
+				$row=$query->fetch();
 				$tag_id=-1;
 				if(!$row){
-					$sql=$pdo->prepare("INSERT INTO tag (tag_name,tag_description) VALUES (':tag','')");
-					$sql->bindParam('tag', $tag);
+					$sql=$pdo->prepare("INSERT INTO tag (tag_name,tag_description) VALUES (:tag,'')");
+					$sql->bindParam(':tag', $tag);
 					$sql->execute();
 					$tag_id=$pdo->lastInsertId();	
 				}
 				else{
-					$tag_id=$row[0]['tag_id'];
+					$tag_id=$row['tag_id'];
 				}
-				$sql=$pdo->prepare("INSERT INTO experience_tag (experience_id,tag_id) VALUES (':experience_id',':tag_id')");
-				$sql->bindParam('experience_id', $experience_id);
-				$sql->bindParam('tag_id', $tag_id);
+				echo $experience_id.' XXX'.$tag_id;
+				$sql=$pdo->prepare("INSERT INTO experience_tag (experience_id,tag_id) VALUES (:experience_id,:tag_id)");
+				$sql->bindParam(':experience_id', $experience_id);
+				$sql->bindParam(':tag_id', $tag_id);
 				$sql->execute();
+
+
 			}			
 		}
 		return 'ok';
