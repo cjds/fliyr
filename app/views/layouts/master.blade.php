@@ -639,7 +639,7 @@ background-color: transparent;}
 
 
 @section('sidebar')
-	<div class="column large-2 small-12 menu hide-for-small hide-for-medium" style='position:fixed;height:100%' >
+	<div class="column large-2 medium-3 small-12 menu hide-for-small hide-for-medium" style='position:fixed;height:100%' >
 			<a href="<% URL::to('/') %>" style="">
 				<img src="<%URL::asset('img/fliyr_logo2.png')%>" style="width:55px;height:auto;margin:auto;margin-top:15px;display:block;margin-bottom:10px" alt="fliyr">
 			</a>		
@@ -664,7 +664,7 @@ background-color: transparent;}
 	</div>        
      @show
 
-	<div class="large-10 medium-12 small-12 columns body" >
+	<div class="large-10 medium-9 small-12 columns body" >
 	
 			<div class='row'>
             	@yield('content')
