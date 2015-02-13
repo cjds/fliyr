@@ -5,6 +5,7 @@
     <button class='light-green-button create-venture-button' style='margin-top:30px;margin-left:12px'>Create Venture</button>
     </div>
 </div>
+
     <div class='create-venture-div large-4 columns small-12 medium-6'>
 
     </div>

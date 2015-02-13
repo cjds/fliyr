@@ -259,12 +259,12 @@
 
 <div class=" otherdiv" style='margin-top:4%;height:100px;padding:0px;margin:0'>
 
-	<div class="large-6 columns hide-for-small" style='padding:0px;margin-top:14.5%'>
+	<div class="large-6 medium-6 columns hide-for-small" style='padding:0px;margin-top:14.5%'>
 					<%HTML::image('img/fliyr_landing4.jpg', 'Fliyr',array('style'=>'margin-left:auto;margin-top:-30px;float:right;margin-right:50px;display:block;width:65%'));%><br />
 			
 	</div>
 	
-	<div class='large-3 small-12 columns loginboxdiv' style='padding:25px;margin-top:7%'>		
+	<div class='large-3 medium-5 small-12 columns loginboxdiv' style='padding:25px;margin-top:7%'>		
 			<%HTML::image('img/fliyr_logo.png', 'Fliyr',array('style'=>'margin-left:auto;margin-top:-30px;margin-right:10px;width:50px','class'=>'show-for-small-only logo-img'));%>
 			<%HTML::image('img/fliyr_logo2.png', 'Fliyr',array('style'=>'margin-left:auto;margin-top:-30px;margin-right:2px;width:50px','class'=>'show-for-small-only logo-img2'));%>
 			<br />
