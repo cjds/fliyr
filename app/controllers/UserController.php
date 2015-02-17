@@ -126,7 +126,7 @@ class UserController extends Controller {
 		if(!$experience){
 			$sql=$pdo->prepare("INSERT INTO experience (user_id,description,created_at) VALUES (:user_id,:user_description,NOW())");
 			$sql->bindParam(':user_id',$user_id);
-			$sql->bindParam(':description',$user_description);
+			$sql->bindParam(':user_description',$user_description);
 			$sql->execute();
 			$experience_id=$pdo->lastInsertId();
 
