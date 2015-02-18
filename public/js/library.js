@@ -1,5 +1,6 @@
 History.Adapter.bind(window, 'statechange', function() {
   routingUpdate();
+
 });
 
 
@@ -137,6 +138,7 @@ function system_notification(data){
 	function routingUpdate(){
 		
 		currentURL=routingFunction();
+		ga('send', 'pageview', { page: currentURL});
 		if(currentURL=='ventures'){
 			var success=function(result, textStatus) {
 					data=JSON.parse(result);

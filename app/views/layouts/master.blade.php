@@ -586,7 +586,7 @@ background-color: transparent;}
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-41260149-2', 'auto');
-  ga('send', 'pageview');
+ //ga('send', 'pageview');
 
 </script>    
 <body>
