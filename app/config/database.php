@@ -1,6 +1,8 @@
 <?php
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-
+if($url['path']==NULL){
+	$url=NULL;
+}
 return array(
 
 	/*

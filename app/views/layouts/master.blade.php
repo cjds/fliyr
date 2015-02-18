@@ -673,7 +673,7 @@ background-color: transparent;}
 
 <style>
 .notification-bar{
-	position:absolute;
+	position:fixed;
 	top:0;
 	background-color:#ddd;
 	color:#7d7d7d;
@@ -691,7 +691,6 @@ background-color: transparent;}
 }
 </style>
 <div class='notification-bar'>
-df
 </div>
 </body>
 	<script src="<% URL::asset('js/library.js')%>"></script>    

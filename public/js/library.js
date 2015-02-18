@@ -464,15 +464,23 @@ $('#content').on('click','.expertise-button-submit', function(e){
  		if(!$(this).hasClass('rotating-circle-used')){
 			var description=$('.venturebox textarea[name=description]').val();
   			var tags=$('.venturebox input[name=taginput]').val();
-	  		$.ajax({
-				url: 'ajax/add-experience',
-	  			type: "POST",
-	  			data: { user_id : $(this).parent().parent().attr('user-id'),user_description:description,experience_tags:tags}
-	  		}).done(function(msg){
-	  			History.pushState("", "My Expertise", "expertise");
-	  			system_notification("Awesome! You updated your expertise");
-	  		});
-	  		$(this).addClass('rotating-circle-used')
+  			if(description==''){
+  				alert("You must fill up a description");
+  			}
+  			else if(tags==''){
+  				alert("You must have at least one tag");
+  			}
+  			else{
+		  		$.ajax({
+					url: 'ajax/add-experience',
+		  			type: "POST",
+		  			data: { user_id : $(this).parent().parent().attr('user-id'),user_description:description,experience_tags:tags}
+		  		}).done(function(msg){
+		  			History.pushState("", "My Expertise", "expertise");
+		  			system_notification("Awesome! You updated your expertise");
+		  		});
+		  		$(this).addClass('rotating-circle-used')
+		  	}
 	  	}
 	  	else{
 	  		
