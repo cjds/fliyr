@@ -79,12 +79,16 @@
                     Expertise
                 </div>
                 <ul class='taglist2'>
-                        <li>#programming</li>
-                        <li>#websitedesign</li>
-                        <li>#html5</li>
-                        <li>#frontendprogramming</li>
-                        <li>#inventor</li>
-                        <li>#buzzing</li>
+                        <li>#Strategy</li>
+                        <li>#ProjectManagement</li>
+                        <li>#Consulting </li>
+                        <li>#Networking </li>
+                        <li>#Business </li>
+                        <li>#Leadership </li>
+                        <li>#FinancialManagement </li>
+                        <li>#Ideation </li>
+                        <li>#Communication </li>
+                        <li>#IndustrialEngineering</li>
                 </ul>
                     <button class='light-green-button' style='position:absolute; right:30px;bottom:20px;;'>Example</button>
             </div>
