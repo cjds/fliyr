@@ -43,10 +43,11 @@
 
 <script id="my-expertise-template" type="text/x-handlebars-template">
     <div class='row notenteredtext' style="display:none;margin-bottom:20px"> 
-    Hi. Welcome to Fliyr. This expertise card is your profile on this site and it's how other people will find you. Please fill it out
+    Hi. Welcome to Fliyr. This expertise card is your profile on this site and it&#39;s how other people will find you. Please fill it out
     </div>
     <div class='row'>
-            <div class='columns large-4 medium-6  small-12  venturebox' data-equalizer-watch>
+            <div class='columns large-4 medium-6  small-12  ex'  style='padding-left:12px;padding-right:12px;padding-bottom:24px;min-height:300px'>
+            <div class='venturebox expertisebox' style="100%">
             <form id='experienceform' user-id={{user_id}}>
                 <div class='title' >{{user_name}}</div>
                 <p>
@@ -58,18 +59,21 @@
                 <p style='margin-top:5px'> 
                     <input type='text' placeholder='#' class='taginput' name='taginput' cols="35" rows="3" /> 
                 </p>
-            <div class='submitdiv row'>
-                    <a href="#" class='expertise-button-submit'>
-                        <img src="../img/fliyr_Icon_Check.png" style="width:16px;height:auto"/>
-                    </a>
-            </div>
+                <div class='submitdiv row' style='position:absolute; right:20px;bottom:40px;;'>
+                        <a href="#" class='expertise-button-submit'>
+                            <img src="../img/fliyr_Icon_Check.png" style="width:16px;height:auto"/>
+                        </a>
+                </div>
+
             </form>
+            </div>
         </div>
         <div class='columns large-4 medium-6  small-12 expertisetitle' style='padding-left:12px;padding-right:12px;padding-bottom:24px;min-height:300px'>
             <div class='venturebox expertisebox' style="100%">
-                <div class='row title'>George</div>
+                <div class='row title'>Will</div>
                 <div class='row card-description'>
-                    Hi I&rsquo;m George Burdell, a junior in the Computer Science Dept. I'm good at programming, specialize in websites and am very interested in startups
+                    Co-Founder/Director of Strategy at Fliyr. 4th year Industrial Engineering major. Message me if you want help connecting with the expertise you need to launch your idea or if you just want to talk startups!
+
                 </div>
                 <div class='row positiontitle' style='text-align:center'>
                     Expertise

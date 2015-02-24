@@ -1,14 +1,21 @@
 <?php
 
+
+//Handles all the methods for the get all expertise page
 class ExpertController extends BaseController{
 
 
+	// this is split into 2 parts with and without the search
 	public function get_expertise(){
-				$session =new SessionModel;
+		
+		//handle redirection as you cannot check expertise without being there
+		$session =new SessionModel;
 		$redirection=$session->handle_json_redirection();
 		
 		if($redirection!=null)
 			return $redirection;
+
+		$input=Input::all();
 		$user_id=$session->get_user_id();
 		$pdo=DB::connection()->getPdo();		
 		$query = $pdo->prepare("SELECT  experience.*,user.user_name FROM experience,user WHERE user.user_id=experience.user_id ORDER BY created_at DESC");

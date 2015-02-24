@@ -108,10 +108,10 @@ class MessageController extends Controller {
 		$query->bindParam('receiver_id', $receiver_id);
 		$query->execute();
 		$data=$query->fetch();
-		$name=explode(';',$data['user_name']);
+		$name=explode(';',$data['user_name'],2);
 		$data['user_name']=$name[0];
 		$data['sender_name']=$session->get_user_name();
-		$data['message_text']=explode(';',$message);
+		$data['message_text']=explode(';',$message,2);
 		
 		Mail::send('emails.welcome', $data, function($message) use ($data) {
 		    	$message->to($data['user_email'], $data['user_name'])->subject('New Message on Fliyr!');
@@ -165,19 +165,19 @@ class MessageController extends Controller {
 
 			
 			if($row[$key]['sender_id']==$user_id){
-				$name=explode(';',$row[$key]['receiver_name']);
+				$name=explode(';',$row[$key]['receiver_name'],2);
 				$row[$key]['user_name']=$name[0];
 			}
 			else{
-				$name=explode(';',$row[$key]['sender_name']);
+				$name=explode(';',$row[$key]['sender_name'],2);
 				$row[$key]['user_name']=$name[0];
 			}
-				$array = explode(';', $row[$key]['ref_message']); //will break if ~ is used in title cancel
+				$array = explode(';', $row[$key]['ref_message'],2); //will break if ~ is used in title cancel
 				$message='';
 
-				$messagetest=explode(';',$row[$key]['message']);
+				$messagetest=explode(';',$row[$key]['message'],2);
 				for($i=1;$i<count($messagetest);$i++)
-					$row[$key]['message']=$messagetest[$i];
+					$row[$key]['message'].=$messagetest[$i];
 				//for($i=1;$i<count($array);$i++)
 				//	$message.=$array[$i];
 				if(strlen($row[$key]['message'])>80)
@@ -214,10 +214,10 @@ class MessageController extends Controller {
 			if($value['user_id']==$user_id)
 				$data['thread'][$key]['user_name']='me';
 			else{
-				$name=explode(';',$data['thread'][$key]['user_name']);
+				$name=explode(';',$data['thread'][$key]['user_name'],2);
 				$data['thread'][$key]['user_name']=$name[0];
 			}
-				$messagedata=explode(';',$data['thread'][$key]['message']);
+				$messagedata=explode(';',$data['thread'][$key]['message'],2);
 				$data['thread'][$key]['message']='';
 				if(count($messagedata)!=1){
 					for($i=1;$i<count($messagedata);$i++)
@@ -238,7 +238,7 @@ class MessageController extends Controller {
 		$query->execute();
 
 		$data['data']=($query->fetch());
-		$messagedata=explode(';',$data['data']['message']);
+		$messagedata=explode(';',$data['data']['message'],2);
 			$data['data']['message']=$messagedata[0];
 
 

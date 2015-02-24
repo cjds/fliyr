@@ -20,7 +20,7 @@ class TagAndSearchController extends Controller{
 		$tagArrayString=implode(",",$tagArray);
 		echo ($tagArrayString);
 
-		$query = $pdo->prepare("SELECT  t.tag_id 
+		$query = $pdo->prepare("SELECT  et.experience_id
 								FROM experience_tag et,tag t
 								WHERE tag_name IN (".$tagArrayString.") AND t.tag_id=et.tag_id" ) ;
 
