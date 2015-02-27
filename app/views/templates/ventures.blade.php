@@ -22,21 +22,23 @@
     	<div class='row card-description'>
             {{venture_description}}
         </div>
-        <div class='row positiontitle' style='text-align:center'>
-            Positions Needed
-        </div>
-    	{{#each positions}}
-            <div class='row position-title'>
-        		<a href="#" class='position-link' data-position-id={{position_id}}>{{position_name}} > </a>
+        {{#if positions}}
+            <div class='row positiontitle' style='text-align:center'>
+                Positions Needed
             </div>
-            <div class='row'>
-        		<ul class='taglist' style='margin-bottom:2px'>
-        		{{#each tags}}
-        			<li>#{{tag_name}}</li>
-        		{{/each}}
-        		</ul>
-            </div>
-        {{/each}}
+        	{{#each positions}}
+                <div class='row position-title'>
+            		<a href="#" class='position-link' data-position-id={{position_id}}>{{position_name}} > </a>
+                </div>
+                <div class='row'>
+            		<ul class='taglist' style='margin-bottom:2px'>
+            		{{#each tags}}
+            			<li>#{{tag_name}}</li>
+            		{{/each}}
+            		</ul>
+                </div>
+            {{/each}}
+        {{/if}}
         
     {{#if creator}}
         <div class='small-12 columns editdiv'>

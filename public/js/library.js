@@ -783,6 +783,7 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 						success: function(data, textStatus) {
 							if(data=='ok'){
 									routingUpdate();
+									positions=[];
 									system_notification("Awesome! You have created/edited your venture");
 								}
 							}				  
