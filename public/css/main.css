@@ -1,0 +1,105 @@
+/*For the small screen */
+@media only screen and (max-width: 40em) {
+	.logo-img{
+		margin-left: 0px;
+		margin-top:-20px;
+		display:inline-block !important;
+	}
+
+	.logo-img2{
+		display:inline-block !important
+	}
+
+	.loginboxdiv{
+		margin-top:0%!important;
+	}
+}
+
+select{
+	width: 250px;
+}
+
+		
+.venturetext{
+	font-size:18px;
+	text-transform:lowercase;
+	font-weight:300;
+}
+
+/*colours */
+.black{
+	background: #333;
+}
+.black:hover{
+	background: #666;
+}
+
+.green{
+	background:#58b947;
+}
+
+.green:hover{
+	background:#58d946;
+}
+
+.green,.black{	
+	margin: auto;
+	display: inline-block;
+	margin-bottom: 10px
+}
+
+
+
+.biginput{
+	line-height: 1.5em;
+	height: 30px !important;
+	width:98% !important;
+	font-size: 20px;
+	display: inline-block !important;
+	border: 1px solid #888;
+	font-family: 'Oswald','Helvetica',Arial,sans-serif;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 5px;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.short{
+	width:48%!important;
+}
+
+.biginput::-webkit-input-placeholder,.biginput:-moz-placeholder,.biginput::-moz-placeholder,.biginput:-ms-input-placeholder{
+		text-align: center;
+		font-family: 'Oswald','Helvetica',Arial,sans-serif;
+}
+
+
+.light-green-button{
+	padding: 5px;
+	font-size: 12px;
+	padding-right: 8px;
+	padding-left: 8px;
+	background:#fff;
+	border:1px #2AD6AE solid;
+	color:#2AD6AE;
+	text-transform:uppercase;
+}
+
+.otherdiv{
+	margin-top:20%;
+}
+
+.flip{
+	transform: rotateY(180deg);
+}
+
+.formbox{
+	perspective:1000;
+	-webkit-transition: all 0.5s; /* For Safari 3.1 to 6.0 */
+	-mozilla-transition: all 0.5s;
+	transition: all 0.5s;
+	transform-style:preserve-3d;
+}

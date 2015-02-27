@@ -284,18 +284,11 @@ class UserController extends Controller {
 		if($user_id==null){
 			return ['response'=>'fail','redirect'=>'/'];
 		}
-		$pdo=DB::connection()->getPdo();		
-		$query = $pdo->prepare("SELECT  * FROM experience WHERE user_id=:user_id");
-		$query->bindParam('user_id', $user_id);
-		$query->execute();
-		$row=$query->fetch();
-		$row['user_name']=$session->get_user_name();
-		$row['user_id']=$user_id;
-		$query = $pdo->prepare("SELECT  tag_name FROM experience_tag e,tag t WHERE experience_id=:experience_id AND e.tag_id = t.tag_id ORDER BY e.created_at DESC");
-		$query->bindParam(':experience_id', $row['experience_id']);
-		$query->execute();
-		$row['tags']=$query->fetchAll();
-		return  json_encode($row);
+		$expertise=new Expertise();
+		if($row=$expertise->get_my_expertise())
+			return  json_encode($row);
+		else
+			return ['response'=>'fail','reason'=>'Unkown'];
 
 	}
 	/**

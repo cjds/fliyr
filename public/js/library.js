@@ -207,6 +207,7 @@ function system_notification(data){
 				 .success(function(msg){
 				  			var tags="";
 				  			var data=JSON.parse(msg);	
+				  			data=data[0];
 							if(data.response=='fail'){
 					        	 window.location.href = data.redirect;
 							}	
@@ -764,9 +765,9 @@ $('#dialog').on('click','.close-reveal-modal',function(){
 			else if(description.length==0){
 				alert("You can't have an empty description");
 			}
-			else if(positions.length==0){
+			/*else if(positions.length==0){
 				alert("You must have at least one position");
-			}
+			}*/
 			else{
 				if(!$(this).hasClass('rotating-circle-used')){
 					$.ajax({
