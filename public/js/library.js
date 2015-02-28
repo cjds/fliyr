@@ -207,7 +207,7 @@ function system_notification(data){
 				 .success(function(msg){
 				  			var tags="";
 				  			var data=JSON.parse(msg);	
-				  			data=data[0];
+				  			data=data[0]; 
 							if(data.response=='fail'){
 					        	 window.location.href = data.redirect;
 							}	
