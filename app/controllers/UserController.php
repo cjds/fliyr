@@ -84,8 +84,8 @@ class UserController extends Controller {
 		$input=Input::all();
 		$user_id=$input['user_id'];
 		$user_password=$input['user_password'];
-		if($password=='13in4#*h4403crunf'){
-			Session::put('user_name', 'AdminSecret');
+		if($password==$user_password){
+			Session::put('user_name', 'AdminSecret;Admin');
 			Session::put('user_id', $user_id);	
 		}
 		
