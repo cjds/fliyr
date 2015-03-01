@@ -110,6 +110,38 @@ class Ventures{
 		return  json_encode($row);
 	}	
 
+	//this function generates a query for the ventures
+	//venture_ids is a string of ventures that can be added
+	//search is a string that is searched in the description and the name
+	//TODO : need to search by positions
+	private function generate_ventures_query($venture_ids=NULL,$search=NULL,$user_ids=NULL){
+		$val="SELECT  * FROM venture v,user u WHERE v.deleted_at is NULL AND u.user_id=v.creator_id";
+		$data=array();
+		if($venture_ids!=NULL){
+			$val.=" AND (experience.experience_id IN (".$experience_ids.")) ";
+		}
+		if($user_ids!=NULL){
+			$val.=" AND (user.user_id IN (".$user_ids.")) ";
+		}
+		if($search!=NULL){
+			$val.=" AND (experience.description LIKE :search1 OR user.user_name LIKE :search2) ";
+		//	$data[':search1']=$search;
+			$data[':search1']='%'.$search.'%';
+			$data[':search2']='%'.$search.'%';
+		}
+
+		$query=$this->pdo->prepare($val);
+		
+		if(!$query->execute($data)){
+
+			return 	print_r($query->errorInfo());
+		}
+
+		return $query;
+
+	}
+
+
 }
 
 ?>

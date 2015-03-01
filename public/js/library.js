@@ -206,11 +206,20 @@ function system_notification(data){
 		  			})
 				 .success(function(msg){
 				  			var tags="";
-				  			var data=JSON.parse(msg);	
-				  			data=data[0]; 
+				  			var data;
+				  			if(typeof msg !='object'){
+				  				data=JSON.parse(msg);
+				  				data=data[0];
+				  			}
+				  			else 
+				  				data=msg
+				  			
 							if(data.response=='fail'){
-					        	 window.location.href = data.redirect;
-							}	
+
+								if(data.redirect!=undefined)
+					        	 	window.location.href = data.redirect;
+							}
+
 
 							var Source = $("#my-expertise-template").html();
 					        var Template = Handlebars.compile(Source);
