@@ -2,6 +2,12 @@
 
 class Ventures{
 
+	protected $pdo="";
+
+	function __construct(){
+		$pdo=DB::connection()->getPdo();		
+	}
+
 	public function get_all(){
 		
 		$session = new SessionModel;
@@ -114,7 +120,8 @@ class Ventures{
 	//venture_ids is a string of ventures that can be added
 	//search is a string that is searched in the description and the name
 	//TODO : need to search by positions
-	private function generate_ventures_query($venture_ids=NULL,$search=NULL,$user_ids=NULL){
+	//
+	public function generate_ventures_query($venture_ids=NULL,$search=NULL,$user_ids=NULL){
 		$val="SELECT  * FROM venture v,user u WHERE v.deleted_at is NULL AND u.user_id=v.creator_id";
 		$data=array();
 		if($venture_ids!=NULL){

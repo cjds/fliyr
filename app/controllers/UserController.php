@@ -300,7 +300,7 @@ class UserController extends Controller {
 		if($row=$expertise->get_my_expertise())
 			return  json_encode($row);
 		else
-			return ['response'=>'fail','reason'=>'Unkown'];
+			return ['response'=>'fail','reason'=>'Unkown','user_id'=>$session->get_user_id(),'user_name'=>$session->get_user_name()];
 
 	}
 	/**

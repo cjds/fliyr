@@ -171,6 +171,8 @@ class VentureController extends Controller {
 
 		$ventures=new Ventures;
 		return $ventures->get_all();
+		//$ventures =new Ventures;
+		//$ventures->generate_ventures_query();
 
 	}
 
